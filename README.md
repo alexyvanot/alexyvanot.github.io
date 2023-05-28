@@ -1,4 +1,2 @@
-# Alexy's Static Website
+# Website
 ---
-### Just a website de test some things...
-❤
