@@ -80,7 +80,10 @@
 									<!-- <li><a href="#"><i class="icon-facebook2"></i></a></li> -->
 								</ul>
 							</p>
-							<div id="google_translate_element"></div>
+							<div class="page-language-selector-wrapper">
+								<div class="page-language-selector-text">Language:</div>
+								<div id="google_translate_element" class="page-language-selector-select"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -685,18 +688,55 @@
 	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 	<script type="text/javascript">
 		function googleTranslateElementInit() {
-		  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+			new google.translate.TranslateElement(
+				{ pageLanguage: 'en' },
+				'google_translate_element'
+				);
 		}
 	</script>
-	
+
+	<!-- Hide google translate toolbar -->
 	<style>
-		.goog-te-banner-frame.skiptranslate {
+		/* hide by id goog-gt-tt */
+		#goog-gt-tt {
+			display: none !important;
+		}
+		.VIpgJd-ZVi9od-ORHb-OEVmcd {
 			display: none !important;
 		}
 		body {
 			top: 0px !important;
 		}
-		iframe.skiptranslate { visibility: hidden !important; }
+
+		body{ top: 0 !important; }
+		.goog-te-banner-frame{ display: none !important; }
+
+		.goog-logo-link{ display: none !important; }
+		.goog-te-gadget{ height: 28px !important;  overflow: hidden }
+		
+		#goog-gt-tt, .goog-te-balloon-frame{ display: none !important; } 
+		.goog-text-highlight { background: none !important; box-shadow: none !important; }
+		
+		.page-language-selector-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 10px;
+		}
+		.page-language-selector-text {
+			display: none;
+			color: white;
+			font-size: 0.8em;
+			margin-right: 10px;
+		}
+		.page-language-selector-select select {
+			background-color: #fff;
+			color: #000;
+			border: none;
+			border-radius: 5px;
+			padding: 5px;
+			font-size: 0.8em;	
+		}
 	</style>
 
 	<!-- Remove lateral scroll bar -->
