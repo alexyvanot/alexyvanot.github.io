@@ -80,6 +80,7 @@
 									<!-- <li><a href="#"><i class="icon-facebook2"></i></a></li> -->
 								</ul>
 							</p>
+							<div id="google_translate_element"></div>
 						</div>
 					</div>
 				</div>
@@ -676,7 +677,30 @@
 	<!-- Google Map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="js/google_map.js"></script>
+	<!-- Google Translate -->
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+		  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+		}
+	</script>
 	
+	<style>
+		.goog-te-banner-frame.skiptranslate {
+			display: none !important;
+		}
+		body {
+			top: 0px !important;
+		}
+	</style>
+
+	<!-- Remove lateral scroll bar -->
+	<style>
+		::-webkit-scrollbar {
+			display: none;
+		}
+	</style>
+
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
