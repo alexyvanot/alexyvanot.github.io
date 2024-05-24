@@ -82,7 +82,9 @@
 							</p>
 							<div class="page-language-selector-wrapper">
 								<div class="page-language-selector-text">Language:</div>
-								<div id="google_translate_element" class="page-language-selector-select"></div>
+								<div class="page-language-selector-parent-select">
+									<div id="google_translate_element" class="page-language-selector-select"></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -692,6 +694,11 @@
 				{ pageLanguage: 'en' },
 				'google_translate_element'
 				);
+		}
+		function turnOffTranslate() {
+			var select = document.querySelector('.goog-te-combo');
+			select.value = 'en';
+			select.dispatchEvent(new Event('change'));
 		}
 	</script>
 
