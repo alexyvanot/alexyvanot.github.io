@@ -180,7 +180,6 @@
 				{/if}
 			</div>
 		</FancyBanner>
-		<Separator />
 		<!-- Navigation en haut -->
 		<div class="mb-6 mt-12">
 			<div class="flex items-center justify-between gap-4 flex-wrap">
@@ -246,8 +245,7 @@
 				<Muted>Cet article sera bientôt disponible.</Muted>
 			</div>
 		{/if}
-		<Separator />
-		<div class="flex flex-col gap-4 p-4">
+		<div class="flex flex-col gap-4 p-4 mt-8">
 			<div class="flex items-center justify-between">
 				<Muted>Article publié dans la catégorie Blog</Muted>
 				<div class="flex items-center gap-2">
@@ -264,8 +262,7 @@
 				</div>
 			</div>
 			{#if currentItem.screenshots && currentItem.screenshots.length > 0}
-				<Separator />
-				<div class="flex flex-col gap-2">
+				<div class="flex flex-col gap-2 mt-6 pt-6 border-t border-border/30">
 					<Muted>Captures d'écran</Muted>
 					<div class="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{#each currentItem.screenshots as img, index (index)}
@@ -289,8 +286,7 @@
 		</div>
 		
 		<!-- Navigation en bas -->
-		<Separator />
-		<div class="mt-8 mb-6">
+		<div class="mt-12 mb-6">
 			<div class="flex items-center justify-between gap-4 flex-wrap">
 				<!-- Article précédent -->
 				{#if previousPost}
