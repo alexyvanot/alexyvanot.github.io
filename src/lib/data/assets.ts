@@ -72,7 +72,9 @@ const Assets = {
 	Postcss: asset('postcss.svg'),
 	Soleil: asset('soleil.png'),
 	AGH: asset('agh.png'),
-	InTech: asset('intech.png')
+	InTech: asset('intech.png'),
+	ESIEA: asset('esiea.png'),
+	PMF: asset('pmf.png')
 };
 
 export default Assets;

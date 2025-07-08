@@ -1,9 +1,9 @@
 @import 'prismjs/themes/prism-tomorrow.css';
 
 .markdown-container {
-	--hr-border: hsl(var(--border) / var(--tw-bg-opacity, 1));
-	--link-text: #3b82f6;
-	--badge-bg: hsl(var(--secondary) / var(--tw-bg-opacity, 1));
+	--hr-border: hsl(var(--border));
+	--link-text: hsl(var(--primary));
+	--badge-bg: hsl(var(--secondary));
 
 	--code-border: rgba(211, 211, 211, 0.639);
 	--code-text: #abb2bf;
@@ -24,6 +24,15 @@
 	font-size: 14px;
 
 	overflow-y: auto !important;
+	
+	/* Amélioration du contraste avec un fond approprié */
+	background-color: hsl(var(--background));
+	border: 1px solid hsl(var(--border));
+	border-radius: 0.5rem;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	
+	/* Marge et padding pour plus d'espace */
+	margin: 1rem 0;
 }
 .markdown-container code[class*='language-'],
 .markdown-container pre[class*='language-'] {
@@ -89,6 +98,7 @@
 	margin-bottom: 0.45em;
 	margin-top: 0.45em;
 	font-weight: 900;
+	color: hsl(var(--foreground));
 }
 
 .markdown-container h1 {
@@ -105,18 +115,22 @@
 
 .markdown-container h4 {
 	font-size: 1.45em;
+	color: hsl(var(--foreground));
 }
 
 .markdown-container h5 {
 	font-size: 1.3em;
+	color: hsl(var(--foreground));
 }
 
 .markdown-container h6 {
 	font-size: 1.2em;
+	color: hsl(var(--foreground));
 }
 
 .markdown-container p {
 	line-height: 1.75rem;
+	color: hsl(var(--foreground));
 }
 
 .markdown-container ul {
@@ -128,6 +142,7 @@
 	padding: 5px 0px;
 	line-height: 1.75rem;
 	list-style-type: disc;
+	color: hsl(var(--foreground));
 }
 
 .markdown-container a {
@@ -147,6 +162,13 @@ pre[class*='language-'] {
 	border: 1px solid var(--code-border);
 	border-radius: 0.25em;
 	font-size: 0.9em;
+}
+
+/* Support pour le thème sombre/clair sur les blocs de code */
+:root[data-theme='light'] .markdown-container :not(pre) > code[class*='language-'],
+:root[data-theme='light'] .markdown-container pre[class*='language-'] {
+	background-color: #f8f8f8;
+	border: 1px solid #e5e7eb;
 }
 
 markdown a :is(code):not(pre code) {
@@ -169,4 +191,23 @@ markdown a :is(code):not(pre code) {
 	border-top: 0.5px solid var(--hr-border);
 	color: var(--hr-border);
 	margin: 20px 0px;
+}
+
+.markdown-container img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+	margin: 1rem auto;
+	display: block;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Style spécial pour les logos/icônes (images plus petites) */
+.markdown-container img[alt*="logo"], 
+.markdown-container img[alt*="Logo"],
+.markdown-container img[alt*="icon"],
+.markdown-container img[alt*="Icon"] {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 1.5rem auto;
 }
