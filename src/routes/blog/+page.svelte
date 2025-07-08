@@ -97,12 +97,12 @@
 									</div>
 									{#if isRecent(item.publishedAt)}
 										<div class="absolute top-2 right-2 z-10">
-											<Badge variant="destructive" class="text-xs">
+											<Badge variant="destructive" class="text-xs animate-pulse">
 												Nouveau
 											</Badge>
 										</div>
 									{/if}
-									<div class="flex flex-col md:flex-row gap-6 p-6 border border-border rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+									<div class="flex flex-col md:flex-row gap-6 p-6 border border-border rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
 										<!-- Avatar et infos -->
 										<div class="flex items-center gap-3 md:flex-col md:items-center md:min-w-0">
 											<Avatar class="w-16 h-16">
