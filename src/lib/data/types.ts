@@ -83,3 +83,18 @@ export interface Education<S extends string = string> extends Item<S> {
 	degree: string;
 	links: Array<Link>;
 }
+
+export interface BlogPost<S extends string = string> extends Item<S> {
+	title: string;
+	excerpt: string;
+	content: string;
+	author: string;
+	publishedAt: Date;
+	updatedAt?: Date;
+	tags: Array<string>;
+	coverImage?: Asset;
+	readingTime: number;
+	color?: Color;
+	links?: Array<Link>;
+	pinned?: boolean;
+}

@@ -11,6 +11,7 @@
 	import { Tooltip, TooltipContent, TooltipTrigger } from '$lib/components/ui/tooltip';
 	import Large from '$lib/components/ui/typography/large.svelte';
 	import Assets from '$lib/data/assets';
+	import BlogData from '$lib/data/blog';
 	import { NAMED_COLORS } from '$lib/data/colors';
 	import EducationData from '$lib/data/education';
 	import ExperienceData from '$lib/data/experience';
@@ -54,6 +55,14 @@
 				it.degree.toLowerCase().includes(q) ||
 				it.location.toLowerCase().includes(q) ||
 				it.organization.toLowerCase().includes(q)
+		);
+
+		const blog = BlogData.items.filter(
+			(it) =>
+				it.title.toLowerCase().includes(q.toLowerCase()) ||
+				it.excerpt.toLowerCase().includes(q.toLowerCase()) ||
+				it.tags.some(tag => tag.toLowerCase().includes(q.toLowerCase())) ||
+				it.author.toLowerCase().includes(q.toLowerCase())
 		);
 
 		const groups: Array<Group> = [];
@@ -106,6 +115,19 @@
 					logo: $mode === 'dark' ? it.logo.dark : it.logo.light,
 					link: `/education/${it.slug}`,
 					color: NAMED_COLORS.gray
+				}))
+			});
+		}
+
+		if (blog.length) {
+			groups.push({
+				icon: 'i-carbon-blog',
+				name: 'Blog',
+				items: blog.map((it) => ({
+					name: it.title,
+					logo: $mode === 'dark' ? it.logo.dark : it.logo.light,
+					link: `/blog/${it.slug}`,
+					color: NAMED_COLORS.blue
 				}))
 			});
 		}

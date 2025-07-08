@@ -65,7 +65,7 @@
 			<Muted>{HomeData.hero.description}</Muted>
 			<div class="flex flex-row gap-1">
 				{#each HomeData.hero.links as item}
-					<a href={item.href} target="_blank">
+					<a href={item.href} target={item.href.startsWith('http') ? '_blank' : '_self'}>
 						<Tooltip>
 							<TooltipTrigger>
 								<Button variant="outline" size="icon">

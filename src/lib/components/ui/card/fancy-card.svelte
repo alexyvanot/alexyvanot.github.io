@@ -148,6 +148,7 @@
 		background: transparent;
 		border-radius: inherit;
 		transform-style: preserve-3d;
+		height: 100%;
 	}
 
 	.card-color:hover {
