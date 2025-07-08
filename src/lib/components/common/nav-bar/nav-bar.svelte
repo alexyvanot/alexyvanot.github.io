@@ -17,8 +17,14 @@
 	import NavBarData from '$lib/data/nav-bar';
 	import { href } from '$lib/utils';
 	import { mode, toggleMode } from 'mode-watcher';
+	import { page } from '$app/stores';
 
 	let isDarkMode = $derived($mode === 'dark');
+	
+	// Fonction pour vérifier si un lien est actif
+	function isActiveLink(itemHref: string): boolean {
+		return $page.url.pathname === itemHref || $page.url.pathname.startsWith(itemHref + '/');
+	}
 </script>
 
 <div
@@ -49,7 +55,10 @@
 			<a href={href(item.href)}>
 				<Tooltip>
 					<TooltipTrigger>
-						<Button class="flex flex-row items-center justify-center gap-2" variant="ghost">
+						<Button 
+							class="flex flex-row items-center justify-center gap-2" 
+							variant={isActiveLink(item.href) ? "default" : "ghost"}
+						>
 							<Icon icon={item.icon} className="text-xl" />
 							<div class="hidden lg:block">{item.title}</div>
 						</Button>
@@ -63,7 +72,7 @@
 	</div>
 	<div class="hidden flex-row items-center justify-end gap-2 sm:flex sm:flex-1">
 		<a href={href('/search')}>
-			<Button variant="ghost" class="text-xl">
+			<Button variant={isActiveLink('/search') ? "default" : "ghost"} class="text-xl">
 				<Icon icon="i-carbon-search" />
 			</Button>
 		</a>
@@ -92,7 +101,7 @@
 							<a href={href(item.href)} class="w-full">
 								<Button
 									class="flex w-full flex-row items-center justify-start gap-2"
-									variant="ghost"
+									variant={isActiveLink(item.href) ? "default" : "ghost"}
 								>
 									<Icon icon={item.icon} className="text-xl" />
 									<div>{item.title}</div>
@@ -103,7 +112,10 @@
 					<Separator />
 					<DialogClose>
 						<a href={href('/search')} class="w-full">
-							<Button class="flex w-full flex-row items-center justify-start gap-2" variant="ghost">
+							<Button 
+								class="flex w-full flex-row items-center justify-start gap-2" 
+								variant={isActiveLink('/search') ? "default" : "ghost"}
+							>
 								<Icon icon={'i-carbon-search'} className="text-xl" />
 								<div>Search</div>
 							</Button>
