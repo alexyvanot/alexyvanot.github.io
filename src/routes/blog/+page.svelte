@@ -154,8 +154,8 @@
 						</Carousel.Item>
 					{/each}
 				</Carousel.Content>
-				<Carousel.Previous class="left-2" />
-				<Carousel.Next class="right-2" />
+				<Carousel.Previous class="-left-9" />
+				<Carousel.Next class="-right-9" />
 			</Carousel.Root>
 		</div>
 		<Separator class="mb-6" />

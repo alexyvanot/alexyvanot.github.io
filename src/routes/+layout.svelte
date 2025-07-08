@@ -1,5 +1,6 @@
 <script lang="ts">
 	import NavBar from '$lib/components/common/nav-bar/nav-bar.svelte';
+	import ScrollToTop from '$lib/components/common/scroll-to-top/scroll-to-top.svelte';
 	import { AnimatedBackground } from '$lib/components/ui/animated-background';
 	import 'virtual:uno.css';
 	import '../app.css';
@@ -15,3 +16,4 @@
 	<NavBar />
 	<div class="mt-[50px] flex flex-1 flex-col">{@render children()}</div>
 </div>
+<ScrollToTop />
