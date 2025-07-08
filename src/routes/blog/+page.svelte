@@ -16,6 +16,8 @@
 	import BlogData from '$lib/data/blog';
 	import { href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
+	import { type CarouselAPI } from '$lib/components/ui/carousel/context.js';
+	import { onMount } from 'svelte';
 
 	let search = $state('');
 
@@ -106,6 +108,47 @@
 		
 		return () => clearTimeout(timeout);
 	});
+
+	// Gestion de la rotation automatique du carrousel (inspiré de la page d'accueil)
+	let api: CarouselAPI = $state();
+	let intervalId: number | null = null;
+	let isHovered = $state(false);
+
+	function startAutoScroll() {
+		if (intervalId) return;
+		intervalId = setInterval(() => {
+			if (!api || isHovered || pinnedPosts.length <= 1) return;
+			api.scrollNext();
+		}, 10000); // 10 secondes
+	}
+
+	function stopAutoScroll() {
+		if (intervalId) {
+			clearInterval(intervalId);
+			intervalId = null;
+		}
+	}
+
+	onMount(() => {
+		return () => {
+			stopAutoScroll();
+		};
+	});
+
+	// Démarrer l'auto-scroll quand l'API est disponible
+	$effect(() => {
+		if (api) {
+			startAutoScroll();
+		}
+	});
+
+	function handleMouseEnter() {
+		isHovered = true;
+	}
+
+	function handleMouseLeave() {
+		isHovered = false;
+	}
 </script>
 
 <svelte:head>
@@ -117,12 +160,18 @@
 	{#if !isSearching && pinnedPosts.length > 0}
 		<div class="mb-6">
 			<H2 class="mb-4">Articles en vedette</H2>
-			<Carousel.Root opts={{ align: "center", loop: true }} class="w-full max-w-4xl mx-auto carousel-root">
+			<Carousel.Root 
+				bind:api 
+				opts={{ align: "center", loop: true }} 
+				class="w-full max-w-4xl mx-auto carousel-root"
+				on:mouseenter={handleMouseEnter}
+				on:mouseleave={handleMouseLeave}
+			>
 				<Carousel.Content>
 					{#each pinnedPosts as item (item.slug)}
 						<Carousel.Item class="basis-full">
 							<div class="px-4">
-								<FancyCard color={item.color} href={href(`/blog/${item.slug}`)} class="relative carousel-card" tilt={0}>
+								<FancyCard color={item.color} href={href(`/blog/${item.slug}`)} class="relative carousel-card" tilt={1}>
 									<div class="absolute top-2 left-2 z-10">
 										<Badge variant="secondary" class="text-xs bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">
 											📌
@@ -301,6 +350,8 @@
 		box-shadow: none !important;
 		transition: none !important;
 		transform: none !important;
+		/* Désactiver les transformations 3D mais garder le tracking de souris */
+		transform-style: flat !important;
 	}
 	
 	:global(.carousel-card.card:hover) {
@@ -309,6 +360,8 @@
 		box-shadow: none !important;
 		transform: none !important;
 		border-color: transparent !important;
+		/* Forcer pas de transformation 3D */
+		transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) !important;
 	}
 	
 	:global(.carousel-card .card-color) {
@@ -317,8 +370,14 @@
 	}
 	
 	:global(.carousel-card .card-color:hover) {
-		background: transparent !important;
-		background-color: transparent !important;
+		/* Garder l'effet de couleur au hover mais pas la transformation */
+		background: 
+			radial-gradient(
+				circle at var(--drop-x) var(--drop-y),
+				var(--drop-color) 0%,
+				transparent 60%
+			) !important;
+		background-color: var(--hover-backdrop) !important;
 		transform: none !important;
 	}
 	
@@ -332,9 +391,10 @@
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 	
+	/* Enlever l'effet de soulèvement au hover */
 	:global(.carousel-card:hover .carousel-card-content) {
-		transform: translateY(-2px);
-		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+		/* Pas de transform: translateY(-2px) */
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	}
 	
 	/* S'assurer que les cartes de la grille gardent leur comportement normal */
