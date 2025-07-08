@@ -18,7 +18,7 @@ const items: Array<Education> = [
 		shortDescription: 'Diplôme RNCP Niveau 7 (Bac+5)',
 		slug: 'master-esiea',
 		subjects: [],
-		links: [{ label: 'Site web ESIEA', to: 'https://www.esiea.fr', newTab: true, icon: 'i-carbon-launch' }]
+		links: [{ label: 'Site web ESIEA', to: 'https://www.esiea.fr', newTab: true }]
 	},
 	{
 		degree: 'Bachelor en ingénierie informatique',
@@ -31,7 +31,7 @@ const items: Array<Education> = [
 		shortDescription: 'Diplôme Bac+3 en génie informatique',
 		slug: 'bachelor-intech',
 		subjects: [],
-		links: [{ label: 'Site web InTech', to: 'https://www.intechinfo.fr', newTab: true, icon: 'i-carbon-launch' }]
+		links: [{ label: 'Site web InTech', to: 'https://www.intechinfo.fr', newTab: true }]
 	},
 	{
 		degree: 'Baccalauréat (SVT / SES)',
@@ -45,7 +45,7 @@ const items: Array<Education> = [
 		slug: 'bac-pmf-2020',
 		subjects: ['SVT', 'SES'],
 		links: [
-			{ label: 'Site Web PMF', to: 'https://www.lyceepmf-savigny77.fr', newTab: true, icon: 'i-carbon-launch' }
+			{ label: 'Site Web PMF', to: 'https://www.lyceepmf-savigny77.fr', newTab: true }
 		]
 	}
 ];

@@ -16,11 +16,11 @@ const items: Array<Experience> = [
 		location: 'Saint-Aubin, France',
 		period: { from: new Date(2023, 8, 1) },
 		skills: getSkills('java', 'react', 'node', 'docker', 'ci', 'linux'),
-		name: 'Full‑Stack Developer',
+		name: 'Full-Stack Developer',
 		color: 'orange',
-		links: [{ to: 'https://www.synchrotron-soleil.fr/', label: 'Site Web', newTab: true, icon: 'i-carbon-launch' }],
+		links: [{ to: 'https://www.synchrotron-soleil.fr/', label: 'Site Web', newTab: true }],
 		logo: Assets.Soleil,
-		shortDescription: 'Développement full‑stack et automatisation au Synchrotron SOLEIL'
+		shortDescription: 'Développement full-stack et automatisation au Synchrotron SOLEIL'
 	},
 	{
 		slug: 'stagiaire-aghb',

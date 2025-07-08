@@ -74,7 +74,15 @@ const Assets = {
 	AGH: asset('agh.png'),
 	InTech: asset('intech.png'),
 	ESIEA: asset('esiea.png'),
-	PMF: asset('pmf.png')
+	PMF: asset('pmf.png'),
+	// Assets manquants ajoutés
+	Git: asset('no-img.svg'), // Pas de logo git trouvé, utilise fallback
+	Linux: asset('no-img.svg'), // Pas de logo linux trouvé, utilise fallback
+	SQLite: asset('no-img.svg'), // Pas de logo sqlite trouvé, utilise fallback
+	CICD: asset('no-img.svg'), // Pas de logo ci/cd trouvé, utilise fallback
+	Teamwork: asset('no-img.svg'), // Soft skill
+	Autonomy: asset('no-img.svg'), // Soft skill
+	Creativity: asset('no-img.svg') // Soft skill
 };
 
 export default Assets;
