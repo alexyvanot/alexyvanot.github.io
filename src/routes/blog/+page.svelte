@@ -73,6 +73,39 @@
 		const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 		return date > thirtyDaysAgo;
 	};
+
+	// Réinitialiser les styles au montage pour éviter les bugs de navigation SPA
+	$effect(() => {
+		// Forcer la réinitialisation des transformations CSS qui pourraient persister
+		const resetStyles = () => {
+			// Reset pour les cartes du carrousel spécifiquement
+			const carouselCards = document.querySelectorAll('.carousel-card.card');
+			carouselCards.forEach(card => {
+				const element = card as HTMLElement;
+				element.style.transform = '';
+				element.style.boxShadow = '';
+				element.style.transition = '';
+				element.style.background = '';
+				element.style.border = '';
+				element.style.borderColor = '';
+			});
+			
+			// Reset pour les card-color dans le carrousel
+			const cardColors = document.querySelectorAll('.carousel-card .card-color');
+			cardColors.forEach(cardColor => {
+				const element = cardColor as HTMLElement;
+				element.style.transform = '';
+				element.style.background = '';
+				element.style.backgroundColor = '';
+			});
+		};
+		
+		// Réinitialiser immédiatement et après un petit délai
+		resetStyles();
+		const timeout = setTimeout(resetStyles, 100);
+		
+		return () => clearTimeout(timeout);
+	});
 </script>
 
 <svelte:head>
@@ -84,12 +117,12 @@
 	{#if !isSearching && pinnedPosts.length > 0}
 		<div class="mb-6">
 			<H2 class="mb-4">Articles en vedette</H2>
-			<Carousel.Root opts={{ align: "center", loop: true }} class="w-full max-w-4xl mx-auto">
+			<Carousel.Root opts={{ align: "center", loop: true }} class="w-full max-w-4xl mx-auto carousel-root">
 				<Carousel.Content>
 					{#each pinnedPosts as item (item.slug)}
 						<Carousel.Item class="basis-full">
 							<div class="px-4">
-								<FancyCard color={item.color} href={href(`/blog/${item.slug}`)} class="relative">
+								<FancyCard color={item.color} href={href(`/blog/${item.slug}`)} class="relative carousel-card" tilt={0}>
 									<div class="absolute top-2 left-2 z-10">
 										<Badge variant="secondary" class="text-xs bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">
 											📌
@@ -102,7 +135,7 @@
 											</Badge>
 										</div>
 									{/if}
-									<div class="flex flex-col md:flex-row gap-6 p-6 border border-border rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 bg-card/50 backdrop-blur-sm">
+									<div class="carousel-card-content flex flex-col md:flex-row gap-6 p-6">
 										<!-- Avatar et infos -->
 										<div class="flex items-center gap-3 md:flex-col md:items-center md:min-w-0">
 											<Avatar class="w-16 h-16">
@@ -232,6 +265,12 @@
 	:global(html) {
 		scroll-behavior: smooth;
 	}
+	
+	/* Force reset des styles au chargement de la page */
+	:global(.fancy-card) {
+		transition: all 0.3s ease-out !important;
+		transform: none !important;
+	}
 
 	/* Custom grid animation */
 	:global(.grid > *) {
@@ -255,11 +294,52 @@
 	}
 
 	/* Enhanced carousel styling */
-	:global(.carousel-item .fancy-card) {
+	:global(.carousel-card.card) {
+		/* Override complet des styles de FancyCard avec spécificité élevée */
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		transition: none !important;
+		transform: none !important;
+	}
+	
+	:global(.carousel-card.card:hover) {
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		transform: none !important;
+		border-color: transparent !important;
+	}
+	
+	:global(.carousel-card .card-color) {
+		background: transparent !important;
+		transform: none !important;
+	}
+	
+	:global(.carousel-card .card-color:hover) {
+		background: transparent !important;
+		background-color: transparent !important;
+		transform: none !important;
+	}
+	
+	:global(.carousel-card-content) {
+		/* Appliquer les styles directement sur le contenu */
+		border: 1px solid hsl(var(--border));
+		border-radius: 0.5rem;
+		box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+		background: hsl(var(--card) / 0.5);
+		backdrop-filter: blur(8px);
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
-
-	:global(.carousel-item:hover .fancy-card) {
+	
+	:global(.carousel-card:hover .carousel-card-content) {
 		transform: translateY(-2px);
+		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	}
+	
+	/* S'assurer que les cartes de la grille gardent leur comportement normal */
+	:global(.grid .fancy-card:hover) {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 	}
 </style>
