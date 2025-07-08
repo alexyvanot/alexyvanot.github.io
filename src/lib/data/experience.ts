@@ -1,57 +1,43 @@
 import Assets from './assets';
 import { getSkills } from './skills';
 import { ContractType, type Experience } from './types';
+import soleilMd from './md/experience/soleil.md?raw';
+import aghMd from './md/experience/agh.md?raw';
 
-const title = 'Experience';
+const title = 'Expérience';
 
 const items: Array<Experience> = [
 	{
-		slug: 'open-sourcer',
-		company: 'Self-employed',
-		description: 'Creating awesome tools for developers.',
-		contract: ContractType.SelfEmployed,
-		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date() },
-		skills: getSkills('ts', 'js'),
-		name: 'Open Source Developer',
-		color: 'red',
-		links: [],
-		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome tools for developers.'
+		slug: 'fullstack-synchrotron-soleil',
+		company: 'Synchrotron SOLEIL',
+		description: soleilMd,
+		contract: ContractType.Apprenticeship,
+		type: 'Développement Full-Stack',
+		location: 'Saint-Aubin, France',
+		period: { from: new Date(2023, 8, 1) },
+		skills: getSkills('java', 'react', 'node', 'docker', 'ci', 'linux'),
+		name: 'Full‑Stack Developer',
+		color: 'orange',
+		links: [{ to: 'https://www.synchrotron-soleil.fr/', label: 'Site Web', newTab: true }],
+		logo: Assets.Soleil,
+		shortDescription: 'Développement full‑stack et automatisation au Synchrotron SOLEIL'
 	},
 	{
-		slug: 'software-freelance',
-		company: 'Self-employed',
-		description: 'Creating awesome applications for customers.',
-		contract: ContractType.Freelance,
-		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date() },
-		skills: getSkills('svelte', 'ts', 'sass', 'css', 'html', 'js'),
-		name: 'Freelancer',
-		color: 'blue',
+		slug: 'stagiaire-aghb',
+		company: 'AGH Bâtiment',
+		description: aghMd,
+		contract: ContractType.Internship,
+		type: 'Développement Web',
+		location: 'France',
+		period: { from: new Date(2022, 7, 1), to: new Date(2022, 7, 31) },
+		skills: getSkills('html', 'css', 'js', 'svg'),
+		name: 'Stagiaire – Rénovation administrative',
+		color: 'teal',
 		links: [],
-		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome applications for customers.'
-	},
-	{
-		slug: 'software-freelance-junior',
-		company: 'Self-employed',
-		description: 'Creating awesome applications for customers.',
-		contract: ContractType.Freelance,
-		type: 'Software Development',
-		location: 'Home',
-		period: { from: new Date(2022, 0, 1), to: new Date() },
-		skills: getSkills('css', 'html', 'js'),
-		name: 'Junior Freelancer',
-		color: 'green',
-		links: [],
-		logo: Assets.Unknown,
-		shortDescription: 'Creating awesome applications for customers.'
+		logo: Assets.AGH,
+		shortDescription: 'Stage de développement web & logo chez AGH Bâtiment'
 	}
 ];
 
 const ExperienceData = { title, items };
-
 export default ExperienceData;
