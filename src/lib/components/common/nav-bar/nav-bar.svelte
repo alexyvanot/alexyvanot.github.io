@@ -29,7 +29,11 @@
 		<a href={href('/')} class="flex flex-row items-center justify-start gap-2 text-2xl">
 			<Tooltip>
 				<TooltipTrigger>
-					<Icon icon={NavBarData.left.icon} />
+					{#if NavBarData.left.icon.startsWith('/') || NavBarData.left.icon.startsWith('http')}
+						<img src={NavBarData.left.icon} alt="Logo" class="h-6 w-6" />
+					{:else}
+						<Icon icon={NavBarData.left.icon as `i-carbon-${string}`} />
+					{/if}
 				</TooltipTrigger>
 				<TooltipContent side="bottom" class="lg:hidden">
 					{NavBarData.left.title}

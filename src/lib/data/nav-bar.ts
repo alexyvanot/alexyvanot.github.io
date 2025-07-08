@@ -1,5 +1,8 @@
 import BaseData from './base';
 
+// icon can take any value from the Carbon icon set
+// https://icon-sets.iconify.design/carbon/
+// or can take image URLs or local Path
 const left = { title: BaseData.fullName, icon: 'i-carbon-code' } as const;
 
 const items: Array<{
