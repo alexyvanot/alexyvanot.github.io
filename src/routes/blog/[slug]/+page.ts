@@ -1,6 +1,7 @@
 import BlogData from '$lib/data/blog';
+import type { PageLoad } from './$types';
 
-export function load({ params }: { params: Record<string, string> }) {
+export const load: PageLoad = ({ params }) => {
 	if (params.slug) {
 		const item = BlogData.items.find((item) => {
 			return item.slug === params.slug;
@@ -8,4 +9,6 @@ export function load({ params }: { params: Record<string, string> }) {
 
 		return { item };
 	}
-}
+	
+	return { item: undefined };
+};
