@@ -22,10 +22,43 @@
 	// Variable pour déterminer si la page nécessite les boutons de navigation en bas
 	let needsBottomNav = $state(false);
 	let scrollContainers = $state<Element[]>([]);
+	// Variable pour la gestion du partage (sans notification visuelle)
+	let shareMessageTimer: ReturnType<typeof setTimeout> | null = null;
 
 	// Utiliser le slug de la page pour forcer la réactivité
 	let currentSlug = $derived($page.params.slug);
 	let currentItem = $derived(BlogData.items.find(item => item.slug === currentSlug));
+
+	// Fonction pour gérer le partage d'un article
+	async function handleShare(title: string, url: string) {
+		if (!browser) return;
+		
+		try {
+			// Essayer d'utiliser l'API Web Share si disponible
+			if (navigator.share) {
+				await navigator.share({
+					title: title,
+					url: url
+				});
+			} else {
+				// Fallback: copier l'URL dans le presse-papier
+				await navigator.clipboard.writeText(url);
+			}
+		} catch (error) {
+			// En cas d'erreur (utilisateur annule le partage ou autre problème)
+			// Essayer de copier l'URL dans le presse-papier
+			try {
+				await navigator.clipboard.writeText(url);
+			} catch (clipboardError) {
+				console.error("Erreur de partage:", error, clipboardError);
+			}
+		}
+	}
+
+	// Nettoyage du timer au démontage du composant
+	onDestroy(() => {
+		if (shareMessageTimer) clearTimeout(shareMessageTimer);
+	});
 
 	let title = $derived(`${currentItem?.title ?? 'Article non trouvé'} - Blog`);
 	let banner = $derived(
@@ -143,7 +176,7 @@
 		if (!browser) return;
 		
 		// Utiliser les conteneurs scrollables trouvés
-		scrollContainers.forEach(container => {
+		scrollContainers.forEach((container) => {
 			container.scrollTo({ top: 0, behavior: 'smooth' });
 		});
 		
@@ -180,17 +213,17 @@
 		window.addEventListener('load', checkPageNeedsScroll);
 		
 		// Ajouter les écouteurs sur tous les conteneurs scrollables
-		scrollContainers.forEach(container => {
+		scrollContainers.forEach((container) => {
 			container.addEventListener('scroll', checkPageNeedsScroll, { passive: true });
 		});
 		
 		// Vérifier périodiquement s'il y a de nouveaux conteneurs scrollables
 		const interval = setInterval(() => {
 			const newContainers = findScrollContainers();
-			const added = newContainers.filter(c => !scrollContainers.includes(c));
+			const added = newContainers.filter((c) => !scrollContainers.includes(c));
 			
 			// Ajouter des écouteurs aux nouveaux conteneurs
-			added.forEach(container => {
+			added.forEach((container) => {
 				container.addEventListener('scroll', checkPageNeedsScroll, { passive: true });
 			});
 			
@@ -208,7 +241,7 @@
 			window.removeEventListener('resize', checkPageNeedsScroll);
 			window.removeEventListener('load', checkPageNeedsScroll);
 			
-			scrollContainers.forEach(container => {
+			scrollContainers.forEach((container) => {
 				container.removeEventListener('scroll', checkPageNeedsScroll);
 			});
 			
@@ -364,7 +397,7 @@
 					<Muted>Partager :</Muted>
 					<button 
 						class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 text-sm shadow-sm hover:shadow-md"
-						onclick={() => navigator.share?.({ title: currentItem?.title, url: window.location.href }) || navigator.clipboard.writeText(window.location.href)}
+						onclick={() => handleShare(currentItem?.title || 'Article de blog', window.location.href)}
 						title="Partager cet article"
 						aria-label="Partager cet article"
 					>
