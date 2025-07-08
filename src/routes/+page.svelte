@@ -18,14 +18,39 @@
 	import { onMount } from 'svelte';
 
 	let api: CarouselAPI;
+	let intervalId: number | null = null;
+	let isHovered = false;
 
-	onMount(() => {
-		setInterval(() => {
-			if (!api) return;
-
+	function startAutoScroll() {
+		if (intervalId) return;
+		intervalId = setInterval(() => {
+			if (!api || isHovered) return;
 			api.scrollNext();
 		}, 2000);
+	}
+
+	function stopAutoScroll() {
+		if (intervalId) {
+			clearInterval(intervalId);
+			intervalId = null;
+		}
+	}
+
+	onMount(() => {
+		startAutoScroll();
+		
+		return () => {
+			stopAutoScroll();
+		};
 	});
+
+	function handleMouseEnter() {
+		isHovered = true;
+	}
+
+	function handleMouseLeave() {
+		isHovered = false;
+	}
 </script>
 
 <Title title={HomeData.title} />
@@ -54,15 +79,23 @@
 			</div>
 		</div>
 		<div>
-			<Carousel bind:api class="w-[200px] md:ml-14" opts={{ loop: true }}>
+			<Carousel 
+				bind:api 
+				class="w-[200px] md:ml-14" 
+				opts={{ loop: true }}
+				on:mouseenter={handleMouseEnter}
+				on:mouseleave={handleMouseLeave}
+			>
 				<CarouselContent>
 					{#each HomeData.carousel as item}
 						<CarouselItem class="flex flex-col items-center justify-center gap-4">
-							<img
-								src={$mode === 'dark' ? item.logo.dark : item.logo.light}
-								class="h-[150px] w-[150px]"
-								alt={item.name}
-							/>
+							<a href={href(`/skills/${item.slug}`)} class="cursor-pointer">
+								<img
+									src={$mode === 'dark' ? item.logo.dark : item.logo.light}
+									class="h-[150px] w-[150px]"
+									alt={item.name}
+								/>
+							</a>
 							<a href={href(`/skills/${item.slug}`)}>
 								<Button variant="ghost">
 									{item.name}
