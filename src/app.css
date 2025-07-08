@@ -2,8 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Optimisation du chargement des fonts avec fallback */
 body {
-	font-family: 'Inter';
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+	font-display: swap; /* Améliore le FOUT */
+	background-color: white; /* Évite l'écran noir pendant les transitions */
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #0a0a0a; /* Mode sombre */
+	}
+}
+
+/* Évite le flash pendant les transitions */
+html, body {
+	min-height: 100%;
+}
+
+/* S'assurer que l'app container a le bon background */
+.app-container {
+	min-height: 100vh;
+	background-color: transparent; /* Transparent pour laisser voir l'AnimatedBackground */
+	position: relative;
+	z-index: 1;
 }
 
 @layer base {

@@ -152,16 +152,20 @@
 	onMount(() => {
 		emailjs.init(PUBLIC_KEY);
 		
-		// Vérifier si un message a déjà été envoyé récemment
+		// Vérifier si un message a déjà été envoyé récemment (optimisé)
 		if (browser) {
-			const lastSentTime = localStorage.getItem('contactFormLastSent');
-			if (lastSentTime) {
-				const timeSinceLastSend = Date.now() - parseInt(lastSentTime);
-				// Si moins de 5 minutes (300000 ms), afficher le message de confirmation
-				if (timeSinceLastSend < 300000) {
-					messageSent = true;
-					emailSentThisSession = true;
+			try {
+				const lastSentTime = localStorage.getItem('contactFormLastSent');
+				if (lastSentTime) {
+					const timeSinceLastSend = Date.now() - parseInt(lastSentTime);
+					// Si moins de 5 minutes (300000 ms), afficher le message de confirmation
+					if (timeSinceLastSend < 300000) {
+						messageSent = true;
+						emailSentThisSession = true;
+					}
 				}
+			} catch (error) {
+				// Ignore les erreurs localStorage (mode privé, etc.)
 			}
 		}
 	});
@@ -186,19 +190,8 @@
 			
 			// Vérification de sécurité : ne jamais envoyer un email vide
 			if (!finalName?.trim() || !finalEmail?.trim() || !finalMessage?.trim()) {
-				console.error('EmailJS: Tentative d\'envoi bloquée - valeurs vides détectées', {
-					finalName: finalName?.trim() || 'vide',
-					finalEmail: finalEmail?.trim() || 'vide',
-					finalMessage: finalMessage?.trim() || 'vide'
-				});
 				return false;
 			}
-			
-			console.log('EmailJS: Envoi avec valeurs valides', {
-				name: finalName.substring(0, 10) + '...',
-				email: finalEmail,
-				messageLength: finalMessage.length
-			});
 			
 			const templateParams = {
 				to_name: 'Alexy VANOT',
@@ -207,44 +200,31 @@
 				message: finalMessage.trim()
 			};
 
-			const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
-			console.log('EmailJS: Email envoyé avec succès:', result.text);
+			await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
 			
 			// Marquer l'envoi dans le localStorage pour éviter les renvois
 			if (browser) {
-				localStorage.setItem('contactFormLastSent', Date.now().toString());
+				try {
+					localStorage.setItem('contactFormLastSent', Date.now().toString());
+				} catch (error) {
+					// Ignore les erreurs localStorage
+				}
 			}
 			
 			return true;
 		} catch (error) {
-			console.error('EmailJS: Erreur lors de l\'envoi:', error);
 			return false;
 		}
 	}
 
 	// Fonction pour gérer le succès de l'action serveur
 	async function handleFormSuccess() {
-		console.log('handleFormSuccess appelée avec:', { 
-			emailSentThisSession, 
-			formData: form?.data,
-			name: name.substring(0, 10) + '...', 
-			email, 
-			messageLength: message.length 
-		});
-		
 		if (!emailSentThisSession) {
 			// Récupérer les valeurs depuis les données du serveur si disponibles, 
 			// sinon utiliser les valeurs actuelles du formulaire
 			const nameToSend = form?.data?.name || name;
 			const emailToSend = form?.data?.email || email;
 			const messageToSend = form?.data?.message || message;
-			
-			console.log('Valeurs sauvegardées:', {
-				nameToSend: nameToSend?.substring(0, 10) + '...',
-				emailToSend,
-				messageToSendLength: messageToSend?.length || 0,
-				source: form?.data ? 'server' : 'local'
-			});
 			
 			// Vérification finale avant envoi
 			if (nameToSend?.trim() && emailToSend?.trim() && messageToSend?.trim()) {
@@ -277,15 +257,8 @@
 					emailSentThisSession = false; // Permettre une nouvelle tentative en cas d'erreur
 				}
 			} else {
-				console.error('Tentative d\'envoi bloquée : valeurs vides détectées', {
-					nameToSend: nameToSend?.trim() || 'vide',
-					emailToSend: emailToSend?.trim() || 'vide',
-					messageToSend: messageToSend?.trim() || 'vide'
-				});
 				toast.error('Erreur : données du formulaire vides');
 			}
-		} else {
-			console.log('Email déjà envoyé cette session, skip');
 		}
 	}
 

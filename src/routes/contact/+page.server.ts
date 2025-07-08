@@ -51,7 +51,6 @@ const defaultAction: Action = async ({ request }) => {
 
 	// Validation réussie côté serveur
 	// L'envoi d'email se fait côté client via EmailJS
-	console.log('Formulaire validé côté serveur:', { name, email, message });
 	
 	return {
 		success: true,

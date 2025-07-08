@@ -15,11 +15,12 @@ export default defineConfig({
 			fonts: {
 				sans: {
 					name: 'Inter',
-					weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-					italic: true,
+					weights: [400, 500, 600, 700], // Réduire les poids pour améliorer le chargement
+					italic: false, // Désactiver l'italique si pas utilisé
 					provider: 'google'
 				}
-			}
+			},
+			inlineImports: false // Éviter l'import inline pour un meilleur contrôle
 		}),
 		presetIcons({
 			extraProperties: {
