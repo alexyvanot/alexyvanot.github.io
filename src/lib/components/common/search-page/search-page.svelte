@@ -15,12 +15,18 @@
 	$effect(() => {
 		if (mounted) {
 			let searchParams = new URLSearchParams(window.location.search);
-
-			searchParams.set('q', query);
-
-			const url = `${window.location.protocol}//${window.location.host}${
-				window.location.pathname
-			}?${searchParams.toString()}`;
+			
+			// Ajouter le paramètre q uniquement si la requête n'est pas vide
+			if (query.trim() !== '') {
+				searchParams.set('q', query);
+			} else {
+				searchParams.delete('q');  // Supprimer le paramètre q s'il existe et que la requête est vide
+			}
+			
+			// Construire l'URL avec ou sans paramètres de recherche
+			const url = searchParams.toString() 
+				? `${window.location.protocol}//${window.location.host}${window.location.pathname}?${searchParams.toString()}`
+				: `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
 
 			const state = window.history.state;
 
