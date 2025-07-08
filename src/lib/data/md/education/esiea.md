@@ -12,3 +12,17 @@ L’ESIEA est une école d’ingénieurs reconnue, spécialisée dans les techno
 - Réalité virtuelle et innovation technologique
 - Gestion de projet agile
 - Approche humaine du numérique (projets éthiques et collaboratifs)
+
+**Projets marquants :**
+- **Développement d’une application de réalité virtuelle** pour la formation en entreprise, intégrant des éléments de gamification.
+- **Mise en place d’un système de sécurité réseau** pour une PME, incluant l’analyse des risques et la configuration de pare-feu.
+- **Participation à un projet de recherche** sur l’impact des technologies numériques sur la société, avec une approche éthique et responsable.
+
+**Compétences développées :**
+- Maîtrise des technologies de développement web et mobile
+- Expertise en sécurité informatique et gestion des réseaux
+- Capacité à travailler en équipe sur des projets complexes
+- Sensibilisation aux enjeux éthiques et sociétaux du numérique
+
+**Pourquoi l’ESIEA ?**
+L’ESIEA se distingue par son approche innovante et humaine de l’ingénierie informatique. L’école met un point d’honneur à former des ingénieurs capables de répondre aux défis technologiques tout en intégrant une dimension éthique et sociale. Les projets collaboratifs et l’alternance permettent d’acquérir une expérience concrète et de développer des compétences techniques solides.

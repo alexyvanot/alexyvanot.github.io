@@ -14,8 +14,14 @@
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { onMount, onDestroy } from 'svelte';
+	import { browser } from '$app/environment';
 
 	let { data }: { data: { item?: BlogPost } } = $props();
+	
+	// Variable pour déterminer si la page nécessite les boutons de navigation en bas
+	let needsBottomNav = $state(false);
+	let scrollContainers = $state<Element[]>([]);
 
 	// Utiliser le slug de la page pour forcer la réactivité
 	let currentSlug = $derived($page.params.slug);
@@ -61,12 +67,11 @@
 		currentIndex < allPosts.length - 1 && currentIndex !== -1 ? allPosts[currentIndex + 1] : null
 	);
 
-	// Fonction pour remonter en haut (inspirée du composant scroll-to-top)
-	const scrollToTop = () => {
-		if (typeof window === 'undefined') return;
+	// Fonction pour trouver les conteneurs de défilement (similaire à scroll-to-top)
+	const findScrollContainers = () => {
+		if (!browser) return [];
 		
-		// Trouver tous les conteneurs scrollables
-		const scrollContainers: Element[] = [];
+		const containers: Element[] = [];
 		
 		// Chercher les éléments avec overflow
 		const overflowElements = document.querySelectorAll(
@@ -75,7 +80,7 @@
 		
 		for (const el of overflowElements) {
 			if (el.scrollHeight > el.clientHeight) {
-				scrollContainers.push(el);
+				containers.push(el);
 			}
 		}
 		
@@ -83,13 +88,61 @@
 		const allElements = document.querySelectorAll('*');
 		for (const el of allElements) {
 			if (el.scrollHeight > el.clientHeight && el.scrollTop > 0) {
-				if (!scrollContainers.includes(el)) {
-					scrollContainers.push(el);
+				if (!containers.includes(el)) {
+					containers.push(el);
 				}
 			}
 		}
 		
-		// Scroll sur tous les conteneurs trouvés
+		return containers;
+	};
+
+	// Fonction pour vérifier si la page nécessite un défilement (et donc des boutons de navigation en bas)
+	function checkPageNeedsScroll() {
+		if (!browser) return;
+		
+		// Mettre à jour la liste des conteneurs scrollables
+		scrollContainers = findScrollContainers();
+		
+		// On considère qu'on a besoin des boutons en bas si la hauteur du document est supérieure 
+		// à la hauteur de la fenêtre + une marge (pour éviter des apparitions/disparitions trop fréquentes)
+		const margin = 200; // marge en pixels
+		
+		// Hauteur du contenu de la page
+		const documentHeight = Math.max(
+			document.body.scrollHeight,
+			document.documentElement.scrollHeight,
+			document.body.offsetHeight,
+			document.documentElement.offsetHeight,
+			document.body.clientHeight,
+			document.documentElement.clientHeight
+		);
+		
+		// Hauteur de la fenêtre
+		const windowHeight = window.innerHeight;
+		
+		// Vérifier si la page principale nécessite un défilement
+		let needsScroll = documentHeight > (windowHeight + margin);
+		
+		// Vérifier également si l'un des conteneurs scrollables nécessite un défilement
+		if (!needsScroll && scrollContainers.length > 0) {
+			for (const container of scrollContainers) {
+				if (container.scrollHeight > container.clientHeight + margin) {
+					needsScroll = true;
+					break;
+				}
+			}
+		}
+		
+		// Mise à jour de la variable d'état
+		needsBottomNav = needsScroll;
+	}
+
+	// Fonction pour remonter en haut (inspirée du composant scroll-to-top)
+	const scrollToTop = () => {
+		if (!browser) return;
+		
+		// Utiliser les conteneurs scrollables trouvés
 		scrollContainers.forEach(container => {
 			container.scrollTo({ top: 0, behavior: 'smooth' });
 		});
@@ -112,6 +165,65 @@
 		// Attendre un peu que la page se charge puis remonter
 		setTimeout(scrollToTop, 100);
 	}
+	
+	// Fonction pour surveiller le défilement sur tous les conteneurs
+	function setupScrollListeners() {
+		if (!browser) return;
+		
+		// Vérifier d'abord au chargement
+		checkPageNeedsScroll();
+		
+		// Ajouter les écouteurs d'événements sur la fenêtre et le document
+		window.addEventListener('scroll', checkPageNeedsScroll, { passive: true });
+		document.addEventListener('scroll', checkPageNeedsScroll, { passive: true });
+		window.addEventListener('resize', checkPageNeedsScroll);
+		window.addEventListener('load', checkPageNeedsScroll);
+		
+		// Ajouter les écouteurs sur tous les conteneurs scrollables
+		scrollContainers.forEach(container => {
+			container.addEventListener('scroll', checkPageNeedsScroll, { passive: true });
+		});
+		
+		// Vérifier périodiquement s'il y a de nouveaux conteneurs scrollables
+		const interval = setInterval(() => {
+			const newContainers = findScrollContainers();
+			const added = newContainers.filter(c => !scrollContainers.includes(c));
+			
+			// Ajouter des écouteurs aux nouveaux conteneurs
+			added.forEach(container => {
+				container.addEventListener('scroll', checkPageNeedsScroll, { passive: true });
+			});
+			
+			// Mettre à jour la liste des conteneurs
+			if (added.length > 0) {
+				scrollContainers = newContainers;
+				checkPageNeedsScroll();
+			}
+		}, 2000);
+		
+		// Retourner une fonction de nettoyage
+		return () => {
+			window.removeEventListener('scroll', checkPageNeedsScroll);
+			document.removeEventListener('scroll', checkPageNeedsScroll);
+			window.removeEventListener('resize', checkPageNeedsScroll);
+			window.removeEventListener('load', checkPageNeedsScroll);
+			
+			scrollContainers.forEach(container => {
+				container.removeEventListener('scroll', checkPageNeedsScroll);
+			});
+			
+			clearInterval(interval);
+		};
+	}
+	
+	// Initialisation et nettoyage des écouteurs d'événements
+	onMount(() => {
+		// Décalage pour s'assurer que le DOM est complètement chargé
+		setTimeout(() => {
+			const cleanup = setupScrollListeners();
+			return () => cleanup && cleanup();
+		}, 300);
+	});
 </script>
 
 <svelte:head>
@@ -286,59 +398,61 @@
 		</div>
 		
 		<!-- Navigation en bas -->
-		<div class="mt-12 mb-6">
-			<div class="flex items-center justify-between gap-4 flex-wrap">
-				<!-- Article précédent -->
-				{#if previousPost}
-					<button 
-						onclick={() => navigateToPost(previousPost.slug)}
-						class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
-					>
-						<div class="i-carbon-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></div>
-						<div class="text-left hidden sm:block">
-							<div class="text-xs text-muted-foreground">Article précédent</div>
-							<div class="line-clamp-1 max-w-[200px]">{previousPost.title}</div>
+		{#if needsBottomNav}
+			<div class="mt-12 mb-6">
+				<div class="flex items-center justify-between gap-4 flex-wrap">
+					<!-- Article précédent -->
+					{#if previousPost}
+						<button 
+							onclick={() => navigateToPost(previousPost.slug)}
+							class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
+						>
+							<div class="i-carbon-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></div>
+							<div class="text-left hidden sm:block">
+								<div class="text-xs text-muted-foreground">Article précédent</div>
+								<div class="line-clamp-1 max-w-[200px]">{previousPost.title}</div>
+							</div>
+							<span class="sm:hidden">Précédent</span>
+						</button>
+					{:else}
+						<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
+							<div class="i-carbon-arrow-left"></div>
+							<span class="hidden sm:inline">Article précédent</span>
+							<span class="sm:hidden">Précédent</span>
 						</div>
-						<span class="sm:hidden">Précédent</span>
-					</button>
-				{:else}
-					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
-						<div class="i-carbon-arrow-left"></div>
-						<span class="hidden sm:inline">Article précédent</span>
-						<span class="sm:hidden">Précédent</span>
-					</div>
-				{/if}
-				
-				<!-- Retour au blog -->
-				<button 
-					onclick={navigateToBlog}
-					class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
-				>
-					<div class="i-carbon-list"></div>
-					<span>Retour au blog</span>
-				</button>
-				
-				<!-- Article suivant -->
-				{#if nextPost}
+					{/if}
+					
+					<!-- Retour au blog -->
 					<button 
-						onclick={() => navigateToPost(nextPost.slug)}
-						class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
+						onclick={navigateToBlog}
+						class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 shadow-sm hover:shadow-md text-sm font-medium"
 					>
-						<div class="text-right hidden sm:block">
-							<div class="text-xs text-muted-foreground">Article suivant</div>
-							<div class="line-clamp-1 max-w-[200px]">{nextPost.title}</div>
-						</div>
-						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform duration-200"></div>
+						<div class="i-carbon-list"></div>
+						<span>Retour au blog</span>
 					</button>
-				{:else}
-					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
-						<span class="hidden sm:inline">Article suivant</span>
-						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right"></div>
-					</div>
-				{/if}
+					
+					<!-- Article suivant -->
+					{#if nextPost}
+						<button 
+							onclick={() => navigateToPost(nextPost.slug)}
+							class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
+						>
+							<div class="text-right hidden sm:block">
+								<div class="text-xs text-muted-foreground">Article suivant</div>
+								<div class="line-clamp-1 max-w-[200px]">{nextPost.title}</div>
+							</div>
+							<span class="sm:hidden">Suivant</span>
+							<div class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform duration-200"></div>
+						</button>
+					{:else}
+						<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
+							<span class="hidden sm:inline">Article suivant</span>
+							<span class="sm:hidden">Suivant</span>
+							<div class="i-carbon-arrow-right"></div>
+						</div>
+					{/if}
+				</div>
 			</div>
-		</div>
+		{/if}
 	{/if}
 </BasePage>

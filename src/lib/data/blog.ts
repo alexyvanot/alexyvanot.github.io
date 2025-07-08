@@ -7,10 +7,32 @@ import typescriptBestPracticesMd from './md/blog/typescript-best-practices.md?ra
 import modernCssTechniquesMd from './md/blog/modern-css-techniques.md?raw';
 import svelteKitFullStackMd from './md/blog/sveltekit-full-stack-framework.md?raw';
 import blogPlatformDemoMd from './md/blog/blog-platform-demo.md?raw';
+import miniArticleMd from './md/blog/mini-article.md?raw';
 
 const title = 'Blog';
 
 const blogPosts: Array<BlogPost> = [
+	{
+		slug: 'mini-article',
+		name: 'Mini Article',
+		title: 'Mini Article',
+		logo: Assets.MiniArticle,
+		excerpt: 'La technologie évolue rapidement, transformant notre quotidien. Rester curieux et apprendre en continu permet de s’adapter à ce monde en mouvement.',
+		shortDescription: 'Un bref aperçu de l’importance de la curiosité et de l’apprentissage continu dans un monde technologique en évolution.',
+		description: miniArticleMd,
+		content: miniArticleMd,
+		author: 'Alexy VANOT',
+		publishedAt: new Date('2023-10-01'),
+		updatedAt: new Date('2023-10-02'),
+		tags: ['technology', 'curiosity', 'learning', 'innovation'],
+		coverImage: Assets.MiniArticle,
+		readingTime: 2,
+		color: 'lightgray',
+		links: [
+			{ to: 'https://www.alexyvanot.com', label: 'Mon site personnel', newTab: true },
+		],
+		pinned: false,
+	},
 	{
 		slug: 'getting-started-with-svelte',
 		name: 'Commencer avec Svelte : Un guide pour débutants',

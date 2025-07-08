@@ -82,7 +82,8 @@ const Assets = {
 	CICD: asset('no-img.svg'), // Pas de logo ci/cd trouvé, utilise fallback
 	Teamwork: asset('no-img.svg'), // Soft skill
 	Autonomy: asset('no-img.svg'), // Soft skill
-	Creativity: asset('no-img.svg') // Soft skill
+	Creativity: asset('no-img.svg'), // Soft skill
+	MiniArticle: asset('mini-article.png'),
 };
 
 export default Assets;
