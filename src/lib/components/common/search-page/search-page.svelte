@@ -2,6 +2,7 @@
 	import Input from '$lib/components/ui/input/input.svelte';
 	import { onMount, type Snippet } from 'svelte';
 	import TitledPage from '../titled-page/titled-page.svelte';
+	import { goto } from '$app/navigation';
 
 	let {
 		title = 'Untitled',
@@ -14,23 +15,17 @@
 
 	$effect(() => {
 		if (mounted) {
-			let searchParams = new URLSearchParams(window.location.search);
+			let url = new URL(window.location.href);
 			
 			// Ajouter le paramètre q uniquement si la requête n'est pas vide
 			if (query.trim() !== '') {
-				searchParams.set('q', query);
+				url.searchParams.set('q', query);
 			} else {
-				searchParams.delete('q');  // Supprimer le paramètre q s'il existe et que la requête est vide
+				url.searchParams.delete('q');  // Supprimer le paramètre q s'il existe et que la requête est vide
 			}
 			
-			// Construire l'URL avec ou sans paramètres de recherche
-			const url = searchParams.toString() 
-				? `${window.location.protocol}//${window.location.host}${window.location.pathname}?${searchParams.toString()}`
-				: `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
-
-			const state = window.history.state;
-
-			window.history.replaceState(state, '', url);
+			// Utiliser goto de SvelteKit au lieu de history.replaceState
+			goto(url.toString(), { replaceState: true, keepFocus: true, noScroll: true });
 
 			onSearch(query);
 		}

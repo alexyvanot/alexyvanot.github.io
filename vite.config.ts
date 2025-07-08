@@ -3,5 +3,8 @@ import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
 
 export default defineConfig({
-	plugins: [sveltekit(), UnoCSS()]
+	plugins: [sveltekit(), UnoCSS()],
+	optimizeDeps: {
+		include: ['@emailjs/browser', 'svelte-sonner']
+	}
 });
