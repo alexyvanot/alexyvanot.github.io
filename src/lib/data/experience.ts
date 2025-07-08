@@ -18,7 +18,7 @@ const items: Array<Experience> = [
 		skills: getSkills('java', 'react', 'node', 'docker', 'ci', 'linux'),
 		name: 'Full‑Stack Developer',
 		color: 'orange',
-		links: [{ to: 'https://www.synchrotron-soleil.fr/', label: 'Site Web', newTab: true }],
+		links: [{ to: 'https://www.synchrotron-soleil.fr/', label: 'Site Web', newTab: true, icon: 'i-carbon-launch' }],
 		logo: Assets.Soleil,
 		shortDescription: 'Développement full‑stack et automatisation au Synchrotron SOLEIL'
 	},

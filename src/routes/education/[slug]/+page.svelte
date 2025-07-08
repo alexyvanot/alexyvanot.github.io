@@ -40,6 +40,20 @@
 				<Muted><Muted>{duration}</Muted></Muted>
 				<Separator />
 				<div class="flex flex-row flex-wrap justify-center gap-2">
+					{#each data.item.links as link (link.to)}
+						<a href={link.to} target="_blank">
+							<Badge variant="outline" class="flex flex-row items-center justify-center gap-2">
+								{#if link.icon}
+									<div class={link.icon}></div>
+								{:else}
+									<div class="i-carbon-launch"></div>
+								{/if}
+								{link.label}
+							</Badge>
+						</a>
+					{/each}
+				</div>
+				<div class="flex flex-row flex-wrap justify-center gap-2">
 					{#each data.item.subjects as subject (subject)}
 						<Badge variant="outline" class="flex flex-row items-center justify-center gap-2">
 							<Muted>{subject}</Muted>

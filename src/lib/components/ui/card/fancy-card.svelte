@@ -30,7 +30,7 @@
 	let bgColor = $derived(changeColorOpacity(computedColor, 0.01));
 	
 	// Enhanced glassmorphism effects based on mode - optimized for performance
-	let glassBackdrop = $derived($mode === 'dark' ? 'rgba(15, 15, 15, 0.98)' : 'rgba(250, 250, 250, 0.98)');
+	let glassBackdrop = $derived($mode === 'dark' ? 'rgba(15, 15, 15, 0.1)' : 'rgba(250, 250, 250, 0.1)');
 	let glassBorder = $derived($mode === 'dark' ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.2)');
 	let hoverBackdrop = $derived($mode === 'dark' ? 'rgba(0, 0, 0, 0.15)' : 'rgba(220, 220, 220, 0.15)');
 	let shadowColor = $derived($mode === 'dark' ? 'rgba(0, 0, 0, 0.6)' : 'rgba(0, 0, 0, 0.15)');

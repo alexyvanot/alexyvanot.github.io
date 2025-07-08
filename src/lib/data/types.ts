@@ -42,10 +42,7 @@ export interface Link {
 	to: string;
 	label: string;
 	newTab?: boolean;
-}
-
-export interface IconLink extends Link {
-	icon: Asset;
+	icon?: Icon;
 }
 
 export interface SkillCategory<S extends string = string> {
@@ -84,4 +81,5 @@ export interface Education<S extends string = string> extends Item<S> {
 	};
 	subjects: Array<string>;
 	degree: string;
+	links: Array<Link>;
 }
