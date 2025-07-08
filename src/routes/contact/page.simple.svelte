@@ -65,7 +65,7 @@
 
 <Title title={ContactData.title} />
 
-<ResponsiveContainer class="mt-10">
+<ResponsiveContainer className="mt-10">
 	<div class="flex flex-col gap-8 w-full max-w-2xl mx-auto">
 		<Card>
 			<CardHeader>

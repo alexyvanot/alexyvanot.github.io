@@ -1,9 +1,18 @@
 import { base } from '$app/paths';
 
+// Fonction modifiée pour gérer les fichiers manquants de manière générique
 const url = (file: string) => `${base}/logos/${file}`;
 
+// Image transparente 1x1 à utiliser comme fallback
+const transparentGif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
 const asset = (lightFilename: string, darkFilename = lightFilename) => {
-	return { light: url(lightFilename), dark: url(darkFilename) };
+	return { 
+		light: url(lightFilename), 
+		dark: url(darkFilename),
+		// Ajouter une propriété pour indiquer un fallback en cas d'erreur de chargement
+		fallback: transparentGif
+	};
 };
 
 const Assets = {
