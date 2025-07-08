@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Title from '$lib/components/common/title/title.svelte';
+	import TitledPage from '$lib/components/common/titled-page/titled-page.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import ResponsiveContainer from '$lib/components/ui/responsive-container/responsive-container.svelte';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -63,11 +62,9 @@
 	}
 </script>
 
-<Title title={ContactData.title} />
-
-<ResponsiveContainer className="mt-10">
-	<div class="flex flex-col gap-8 w-full max-w-2xl mx-auto">
-		<Card>
+<TitledPage title={ContactData.title}>
+	<div class="flex flex-col items-center justify-center w-full max-w-2xl mx-auto">
+		<Card class="w-full">
 			<CardHeader>
 				<CardTitle>Contactez-moi</CardTitle>
 				<CardDescription>{ContactData.description}</CardDescription>
@@ -109,6 +106,6 @@
 			</CardFooter>
 		</Card>
 	</div>
-</ResponsiveContainer>
+</TitledPage>
 
 <Toaster />
