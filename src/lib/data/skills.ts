@@ -71,6 +71,23 @@ export const groupByCategory = (
 	if (others.length !== 0) {
 		out.push({ category: { name: 'Others', slug: 'others' }, items: others });
 	}
+	
+	// Trier les catégories selon l'ordre défini dans la liste 'categories'
+	out.sort((a, b) => {
+		const indexA = categories.findIndex(cat => cat.slug === a.category.slug);
+		const indexB = categories.findIndex(cat => cat.slug === b.category.slug);
+		
+		// Si une catégorie n'est pas dans la liste (par exemple 'others'), la placer à la fin
+		if (indexA === -1) return 1;
+		if (indexB === -1) return -1;
+		
+		return indexA - indexB;
+	});
+	
+	// Trier les compétences à l'intérieur de chaque catégorie par ordre alphabétique
+	out.forEach(category => {
+		category.items.sort((a, b) => a.name.localeCompare(b.name));
+	});
 
 	return out;
 };

@@ -110,7 +110,7 @@
 	});
 
 	// Gestion de la rotation automatique du carrousel (inspiré de la page d'accueil)
-	let api: CarouselAPI = $state();
+	let api: CarouselAPI | undefined = $state();
 	let intervalId: number | null = null;
 	let isHovered = $state(false);
 
@@ -158,8 +158,10 @@
 
 <SearchPage title={BlogData.title} {onSearch}>
 	{#if !isSearching && pinnedPosts.length > 0}
-		<div class="mb-6">
-			<H2 class="mb-4">Articles en vedette</H2>
+		<div class="mb-10">
+			<div class="flex justify-center items-center mt-6 mb-4">
+				<H2>Articles à la une</H2>
+			</div>
 			<Carousel.Root 
 				bind:api 
 				opts={{ align: "center", loop: true }} 
@@ -240,7 +242,12 @@
 				<Carousel.Next class="-right-9" />
 			</Carousel.Root>
 		</div>
-		<Separator class="mb-6" />
+		{#if !isSearching && pinnedPosts.length > 0}
+			<Separator class="my-4" />
+			<div class="flex justify-center items-center mt-6 mb-4">
+				<H2>Tous les articles</H2>
+			</div>
+		{/if}
 	{/if}
 
 	{#if result.length === 0}
