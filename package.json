@@ -1,5 +1,5 @@
 {
-	"name": "slick-portfolio-svelte-5",
+	"name": "alexyvanot.github.io",
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
@@ -50,6 +50,7 @@
 		"vite": "^5.0.3"
 	},
 	"dependencies": {
-		"@emailjs/browser": "^4.4.1"
+		"@emailjs/browser": "^4.4.1",
+		"@emailjs/nodejs": "^5.0.2"
 	}
 }
