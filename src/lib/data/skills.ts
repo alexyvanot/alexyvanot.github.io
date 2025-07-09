@@ -2,6 +2,7 @@ import type { Skill, SkillCategory } from './types';
 import type { StringWithAutoComplete } from '@riadh-adrani/utils';
 import { omit } from '@riadh-adrani/utils';
 import Assets from './assets';
+import svelteMd from './md/skills/svelte.md?raw';
 
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
@@ -128,8 +129,7 @@ const items = [
 	defineSkill({
 		slug: 'svelte',
 		color: 'orange',
-		description:
-			'Framework front-end réactif, léger et moderne. Utilisé pour mon portfolio et mes projets personnels.',
+		description: svelteMd,
 		logo: Assets.Svelte,
 		name: 'Svelte',
 		category: 'framework'
