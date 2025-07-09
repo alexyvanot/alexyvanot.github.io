@@ -20,11 +20,12 @@
 	let api: CarouselAPI;
 	let intervalId: number | null = null;
 	let isHovered = false;
+	let isTouched = false;
 
 	function startAutoScroll() {
 		if (intervalId) return;
 		intervalId = setInterval(() => {
-			if (!api || isHovered) return;
+			if (!api || isHovered || isTouched) return;
 			api.scrollNext();
 		}, 2000);
 	}
@@ -39,8 +40,45 @@
 	onMount(() => {
 		startAutoScroll();
 		
+		// Ajouter les écouteurs d'événements tactiles directement
+		const carouselElement = document.querySelector('.w-\\[200px\\]');
+		let handleTouchStartDirect: () => void;
+		let handleTouchEndDirect: () => void;
+		
+		if (carouselElement) {
+			handleTouchStartDirect = () => {
+				isTouched = true;
+			};
+			
+			handleTouchEndDirect = () => {
+				// Garder le carrousel en pause un moment après le touch
+				setTimeout(() => {
+					isTouched = false;
+				}, 1500);
+			};
+			
+			// Événements tactiles
+			carouselElement.addEventListener('touchstart', handleTouchStartDirect, { passive: true });
+			carouselElement.addEventListener('touchend', handleTouchEndDirect, { passive: true });
+			carouselElement.addEventListener('touchcancel', handleTouchEndDirect, { passive: true });
+			
+			// Événements pointer (plus universels)
+			carouselElement.addEventListener('pointerdown', handleTouchStartDirect, { passive: true });
+			carouselElement.addEventListener('pointerup', handleTouchEndDirect, { passive: true });
+			carouselElement.addEventListener('pointercancel', handleTouchEndDirect, { passive: true });
+		}
+		
 		return () => {
 			stopAutoScroll();
+			// Nettoyer les événements tactiles
+			if (carouselElement && handleTouchStartDirect && handleTouchEndDirect) {
+				carouselElement.removeEventListener('touchstart', handleTouchStartDirect);
+				carouselElement.removeEventListener('touchend', handleTouchEndDirect);
+				carouselElement.removeEventListener('touchcancel', handleTouchEndDirect);
+				carouselElement.removeEventListener('pointerdown', handleTouchStartDirect);
+				carouselElement.removeEventListener('pointerup', handleTouchEndDirect);
+				carouselElement.removeEventListener('pointercancel', handleTouchEndDirect);
+			}
 		};
 	});
 
@@ -50,6 +88,17 @@
 
 	function handleMouseLeave() {
 		isHovered = false;
+	}
+
+	function handleTouchStart() {
+		isTouched = true;
+	}
+
+	function handleTouchEnd() {
+		// Garder le carrousel en pause un moment après le touch pour éviter les transitions abruptes
+		setTimeout(() => {
+			isTouched = false;
+		}, 1500);
 	}
 </script>
 
@@ -85,6 +134,8 @@
 				opts={{ loop: true }}
 				on:mouseenter={handleMouseEnter}
 				on:mouseleave={handleMouseLeave}
+				on:touchstart={handleTouchStart}
+				on:touchend={handleTouchEnd}
 			>
 				<CarouselContent>
 					{#each HomeData.carousel as item}

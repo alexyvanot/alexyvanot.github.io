@@ -113,13 +113,14 @@
 	let api: CarouselAPI | undefined = $state();
 	let intervalId: number | null = null;
 	let isHovered = $state(false);
+	let isTouched = $state(false);
 
 	function startAutoScroll() {
 		if (intervalId) return;
-		intervalId = setInterval(() => {
-			if (!api || isHovered || pinnedPosts.length <= 1) return;
+		intervalId = Number(setInterval(() => {
+			if (!api || isHovered || isTouched || pinnedPosts.length <= 1) return;
 			api.scrollNext();
-		}, 10000); // 10 secondes
+		}, 10000)); // 10 secondes
 	}
 
 	function stopAutoScroll() {
@@ -139,6 +140,41 @@
 	$effect(() => {
 		if (api) {
 			startAutoScroll();
+			
+			// Ajouter les écouteurs d'événements tactiles directement sur l'élément du carrousel
+			const carouselElement = document.querySelector('.carousel-root');
+			if (carouselElement) {
+				const handleTouchStartDirect = () => {
+					isTouched = true;
+				};
+				
+				const handleTouchEndDirect = () => {
+					// Garder le carrousel en pause un moment après le touch
+					setTimeout(() => {
+						isTouched = false;
+					}, 1500);
+				};
+				
+				// Événements tactiles
+				carouselElement.addEventListener('touchstart', handleTouchStartDirect, { passive: true });
+				carouselElement.addEventListener('touchend', handleTouchEndDirect, { passive: true });
+				carouselElement.addEventListener('touchcancel', handleTouchEndDirect, { passive: true });
+				
+				// Événements pointer (plus universels, couvrent souris et tactile)
+				carouselElement.addEventListener('pointerdown', handleTouchStartDirect, { passive: true });
+				carouselElement.addEventListener('pointerup', handleTouchEndDirect, { passive: true });
+				carouselElement.addEventListener('pointercancel', handleTouchEndDirect, { passive: true });
+				
+				// Nettoyer les événements quand le composant est détruit ou l'API change
+				return () => {
+					carouselElement.removeEventListener('touchstart', handleTouchStartDirect);
+					carouselElement.removeEventListener('touchend', handleTouchEndDirect);
+					carouselElement.removeEventListener('touchcancel', handleTouchEndDirect);
+					carouselElement.removeEventListener('pointerdown', handleTouchStartDirect);
+					carouselElement.removeEventListener('pointerup', handleTouchEndDirect);
+					carouselElement.removeEventListener('pointercancel', handleTouchEndDirect);
+				};
+			}
 		}
 	});
 
@@ -148,6 +184,17 @@
 
 	function handleMouseLeave() {
 		isHovered = false;
+	}
+
+	function handleTouchStart() {
+		isTouched = true;
+	}
+
+	function handleTouchEnd() {
+		// Garder le carrousel en pause un moment après le touch pour éviter les transitions abruptes
+		setTimeout(() => {
+			isTouched = false;
+		}, 1500);
 	}
 </script>
 
@@ -168,6 +215,8 @@
 				class="w-full max-w-4xl mx-auto carousel-root"
 				on:mouseenter={handleMouseEnter}
 				on:mouseleave={handleMouseLeave}
+				on:touchstart={handleTouchStart}
+				on:touchend={handleTouchEnd}
 			>
 				<Carousel.Content>
 					{#each pinnedPosts as item (item.slug)}
