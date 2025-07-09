@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ArrowRight from "lucide-svelte/icons/arrow-right";
 	import type { VariantProps } from "tailwind-variants";
 	import { getEmblaContext } from "./context.js";
 	import { cn } from "$lib/utils.js";
@@ -34,6 +33,6 @@
 	on:keydown={handleKeyDown}
 	{...$$restProps}
 >
-	<ArrowRight class="h-4 w-4" />
+	<div class="i-carbon-chevron-right h-4 w-4"></div>
 	<span class="sr-only">Next slide</span>
 </Button>
