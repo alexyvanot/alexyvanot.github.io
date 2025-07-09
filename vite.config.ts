@@ -66,7 +66,15 @@ export default defineConfig({
 	server: {
 		fs: {
 			strict: false
+		},
+		// Améliorer les performances de dev
+		hmr: {
+			overlay: false
 		}
+	},
+	// Optimisations pour transitions rapides
+	experimental: {
+		renderBuiltUrl: () => ({ relative: true })
 	},
 	// Éviter la découverte dynamique des dépendances
 	ssr: {

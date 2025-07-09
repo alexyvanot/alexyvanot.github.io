@@ -21,8 +21,8 @@
 			// Attendre que le loader commence à disparaître avant de montrer l'app
 			setTimeout(() => {
 				appReady = true;
-			}, 50);
-		}, 300); // Réduit de 500ms à 300ms
+			}, 20);
+		}, 100); // Réduit de 300ms à 100ms
 	});
 </script>
 

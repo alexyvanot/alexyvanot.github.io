@@ -83,3 +83,25 @@ html, body {
 		@apply bg-background text-foreground;
 	}
 }
+
+/* Optimisations des performances */
+* {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+/* Transitions plus rapides */
+a, button {
+	transition: all 0.15s ease-out;
+}
+
+/* Améliorer le rendu */
+html {
+	will-change: scroll-position;
+	transform: translateZ(0);
+}
+
+/* Preload hover effects */
+a[data-sveltekit-preload-data="hover"]:hover {
+	transform: translateZ(0);
+}

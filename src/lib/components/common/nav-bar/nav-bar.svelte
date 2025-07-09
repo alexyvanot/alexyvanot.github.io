@@ -32,7 +32,7 @@
 	style="--bg : hsl(var(--background) / 0.5)"
 >
 	<div class="sm:flex-1">
-		<a href={href('/')} class="flex flex-row items-center justify-start gap-2 text-2xl">
+		<a href={href('/')} class="flex flex-row items-center justify-start gap-2 text-2xl" data-sveltekit-preload-data="hover" data-sveltekit-preload-code="hover">
 			<Tooltip>
 				<TooltipTrigger>
 					{#if NavBarData.left.icon.startsWith('/') || NavBarData.left.icon.startsWith('http')}
@@ -52,7 +52,7 @@
 	<!-- larger than sm -->
 	<div class="hidden flex-[2] flex-row items-center justify-center gap-2 sm:flex">
 		{#each NavBarData.items as item}
-			<a href={href(item.href)}>
+			<a href={href(item.href)} data-sveltekit-preload-data="hover" data-sveltekit-preload-code="hover">
 				<Tooltip>
 					<TooltipTrigger>
 						<Button 
@@ -71,7 +71,7 @@
 		{/each}
 	</div>
 	<div class="hidden flex-row items-center justify-end gap-2 sm:flex sm:flex-1">
-		<a href={href('/search')}>
+		<a href={href('/search')} data-sveltekit-preload-data="hover" data-sveltekit-preload-code="hover">
 			<Button variant={isActiveLink('/search') ? "default" : "ghost"} class="text-xl">
 				<Icon icon="i-carbon-search" />
 			</Button>
@@ -98,7 +98,7 @@
 				<div class="flex flex-col gap-2 pt-4">
 					{#each NavBarData.items as item}
 						<DialogClose>
-							<a href={href(item.href)} class="w-full">
+							<a href={href(item.href)} class="w-full" data-sveltekit-preload-data="hover" data-sveltekit-preload-code="hover">
 								<Button
 									class="flex w-full flex-row items-center justify-start gap-2"
 									variant={isActiveLink(item.href) ? "default" : "ghost"}
@@ -111,7 +111,7 @@
 					{/each}
 					<Separator />
 					<DialogClose>
-						<a href={href('/search')} class="w-full">
+						<a href={href('/search')} class="w-full" data-sveltekit-preload-data="hover" data-sveltekit-preload-code="hover">
 							<Button 
 								class="flex w-full flex-row items-center justify-start gap-2" 
 								variant={isActiveLink('/search') ? "default" : "ghost"}
