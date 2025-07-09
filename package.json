@@ -51,6 +51,7 @@
 	},
 	"dependencies": {
 		"@emailjs/browser": "^4.4.1",
-		"@emailjs/nodejs": "^5.0.2"
+		"@emailjs/nodejs": "^5.0.2",
+		"vara": "^1.4.1"
 	}
 }

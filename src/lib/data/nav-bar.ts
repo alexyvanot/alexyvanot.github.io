@@ -10,6 +10,7 @@ const items: Array<{
 	icon: `i-carbon-${string}`;
 	href: string;
 }> = [
+	{ title: 'About', icon: 'i-carbon-user', href: '/about' },
 	{ title: 'Skills', icon: 'i-carbon-assembly-cluster', href: '/skills' },
 	{ title: 'Projects', icon: 'i-carbon-cube', href: '/projects' },
 	{ title: 'Experience', icon: 'i-carbon-development', href: '/experience' },
