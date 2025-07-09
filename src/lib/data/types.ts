@@ -82,6 +82,7 @@ export interface Education<S extends string = string> extends Item<S> {
 	subjects: Array<string>;
 	degree: string;
 	links: Array<Link>;
+	color?: Color;
 }
 
 export interface BlogPost<S extends string = string> extends Item<S> {

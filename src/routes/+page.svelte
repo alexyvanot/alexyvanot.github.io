@@ -24,10 +24,10 @@
 
 	function startAutoScroll() {
 		if (intervalId) return;
-		intervalId = setInterval(() => {
+		intervalId = Number(setInterval(() => {
 			if (!api || isHovered || isTouched) return;
 			api.scrollNext();
-		}, 2000);
+		}, 2000));
 	}
 
 	function stopAutoScroll() {
