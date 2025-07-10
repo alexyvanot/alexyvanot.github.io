@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import type { Snippet } from 'svelte';
 
 	// Props optionnels pour personnaliser le comportement
 	const {
 		disableScrollbar = false,  // Si true, désactive complètement la scrollbar
-		customClass = ''           // Classe CSS supplémentaire pour le conteneur
+		customClass = '',          // Classe CSS supplémentaire pour le conteneur
+		children                   // Contenu enfant à rendre
 	}: {
 		disableScrollbar?: boolean;
 		customClass?: string;
+		children?: Snippet;
 	} = $props();
 
 	// Ajouter/supprimer les classes CSS au montage/démontage
@@ -27,7 +30,7 @@
 
 <!-- Pas de contenu visible, uniquement un composant utilitaire -->
 <div class={`scrollbar-custom ${customClass}`}>
-	<slot />
+	{@render children?.()}
 </div>
 
 <style>
