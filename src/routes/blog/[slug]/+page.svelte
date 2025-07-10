@@ -334,7 +334,7 @@
 						onclick={() => navigateToPost(previousPost.slug)}
 						class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
 					>
-						<div class="i-carbon-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></div>
+						<div class="i-carbon-chevron-left group-hover:-translate-x-1 transition-transform duration-200"></div>
 						<div class="text-left hidden sm:block">
 							<div class="text-xs text-muted-foreground">Article précédent</div>
 							<div class="line-clamp-1 max-w-[200px]">{previousPost.title}</div>
@@ -343,7 +343,7 @@
 					</button>
 				{:else}
 					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
-						<div class="i-carbon-arrow-left"></div>
+						<div class="i-carbon-chevron-left"></div>
 						<span class="hidden sm:inline">Article précédent</span>
 						<span class="sm:hidden">Précédent</span>
 					</div>
@@ -369,13 +369,13 @@
 							<div class="line-clamp-1 max-w-[200px]">{nextPost.title}</div>
 						</div>
 						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform duration-200"></div>
+						<div class="i-carbon-chevron-right group-hover:translate-x-1 transition-transform duration-200"></div>
 					</button>
 				{:else}
 					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
 						<span class="hidden sm:inline">Article suivant</span>
 						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right"></div>
+						<div class="i-carbon-chevron-right"></div>
 					</div>
 				{/if}
 			</div>
@@ -440,7 +440,7 @@
 							onclick={() => navigateToPost(previousPost.slug)}
 							class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
 						>
-							<div class="i-carbon-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></div>
+							<div class="i-carbon-chevron-left group-hover:-translate-x-1 transition-transform duration-200"></div>
 							<div class="text-left hidden sm:block">
 								<div class="text-xs text-muted-foreground">Article précédent</div>
 								<div class="line-clamp-1 max-w-[200px]">{previousPost.title}</div>
@@ -449,7 +449,7 @@
 						</button>
 					{:else}
 						<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
-							<div class="i-carbon-arrow-left"></div>
+							<div class="i-carbon-chevron-left"></div>
 							<span class="hidden sm:inline">Article précédent</span>
 							<span class="sm:hidden">Précédent</span>
 						</div>
@@ -475,13 +475,13 @@
 								<div class="line-clamp-1 max-w-[200px]">{nextPost.title}</div>
 							</div>
 							<span class="sm:hidden">Suivant</span>
-							<div class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform duration-200"></div>
+							<div class="i-carbon-chevron-right group-hover:translate-x-1 transition-transform duration-200"></div>
 						</button>
 					{:else}
 						<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
 							<span class="hidden sm:inline">Article suivant</span>
 							<span class="sm:hidden">Suivant</span>
-							<div class="i-carbon-arrow-right"></div>
+							<div class="i-carbon-chevron-right"></div>
 						</div>
 					{/if}
 				</div>

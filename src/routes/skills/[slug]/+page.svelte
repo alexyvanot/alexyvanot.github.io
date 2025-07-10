@@ -260,7 +260,7 @@
 						onclick={() => navigateToSkill(previousSkill.slug)}
 						class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
 					>
-						<div class="i-carbon-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></div>
+						<div class="i-carbon-chevron-left group-hover:-translate-x-1 transition-transform duration-200"></div>
 						<div class="text-left hidden sm:block">
 							<div class="text-xs text-muted-foreground">Compétence précédente</div>
 							<div class="line-clamp-1 max-w-[200px]">{previousSkill.name}</div>
@@ -269,7 +269,7 @@
 					</button>
 				{:else}
 					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
-						<div class="i-carbon-arrow-left"></div>
+						<div class="i-carbon-chevron-left"></div>
 						<span class="hidden sm:inline">Compétence précédente</span>
 						<span class="sm:hidden">Précédent</span>
 					</div>
@@ -295,13 +295,13 @@
 							<div class="line-clamp-1 max-w-[200px]">{nextSkill.name}</div>
 						</div>
 						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform duration-200"></div>
+						<div class="i-carbon-chevron-right group-hover:translate-x-1 transition-transform duration-200"></div>
 					</button>
 				{:else}
 					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
 						<span class="hidden sm:inline">Compétence suivante</span>
 						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right"></div>
+						<div class="i-carbon-chevron-right"></div>
 					</div>
 				{/if}
 			</div>
@@ -341,7 +341,7 @@
 							onclick={() => navigateToSkill(previousSkill.slug)}
 							class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition-all duration-200 group shadow-sm hover:shadow-md text-sm font-medium"
 						>
-							<div class="i-carbon-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></div>
+							<div class="i-carbon-chevron-left group-hover:-translate-x-1 transition-transform duration-200"></div>
 							<div class="text-left hidden sm:block">
 								<div class="text-xs text-muted-foreground">Compétence précédente</div>
 								<div class="line-clamp-1 max-w-[200px]">{previousSkill.name}</div>
@@ -350,7 +350,7 @@
 						</button>
 					{:else}
 						<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
-							<div class="i-carbon-arrow-left"></div>
+							<div class="i-carbon-chevron-left"></div>
 							<span class="hidden sm:inline">Compétence précédente</span>
 							<span class="sm:hidden">Précédent</span>
 						</div>
@@ -376,13 +376,13 @@
 							<div class="line-clamp-1 max-w-[200px]">{nextSkill.name}</div>
 						</div>
 						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform duration-200"></div>
+						<div class="i-carbon-chevron-right group-hover:translate-x-1 transition-transform duration-200"></div>
 					</button>
 				{:else}
 					<div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-muted text-muted-foreground cursor-not-allowed shadow-sm text-sm font-medium opacity-50">
 						<span class="hidden sm:inline">Compétence suivante</span>
 						<span class="sm:hidden">Suivant</span>
-						<div class="i-carbon-arrow-right"></div>
+						<div class="i-carbon-chevron-right"></div>
 					</div>
 				{/if}
 			</div>
