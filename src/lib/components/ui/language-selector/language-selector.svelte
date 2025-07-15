@@ -480,7 +480,7 @@
 			}
 
 			if (!foundOption) {
-				return;
+				return false;
 			}
 			
 			// Méthode 1: Utiliser l'API interne de Google Translate
@@ -489,6 +489,7 @@
 				const googleTranslateInstance = (window as any).google?.translate?.TranslateElement?.getInstance?.();
 				if (googleTranslateInstance) {
 					googleTranslateInstance.setLanguage(optionValue);
+					return true;
 				} else {
 					throw new Error('Instance Google Translate non trouvée');
 				}
@@ -510,24 +511,44 @@
 				if (translateSelect.onchange) {
 					translateSelect.onchange(event as any);
 				}
-			}
-			
-			// Vérification avec un délai plus long
-			setTimeout(() => {
-				const bodyLang = document.documentElement.lang || document.body.lang;
-				const translatedElements = document.querySelectorAll('[lang]').length;
-				const gtElements = document.querySelectorAll('[class*="VIpgJd"]').length;
 				
-				// Si toujours pas de traduction, forcer avec URL
-				if (translatedElements <= 1 && gtElements === 0) {
-					forceTranslationByReload(langCode);
-				}
-			}, 3000);
+				return true;
+			}
 		}
+		
+		return false;
 	}
 
-	// Fonction pour forcer la traduction avec URL
+	// Fonction pour forcer la traduction avec ou sans rechargement
 	function forceTranslationByReload(langCode: string) {
+		// D'abord essayer la traduction directe sans rechargement
+		if (isTranslateReady) {
+			applyTranslation(langCode);
+			
+			// Vérifier après un délai si la traduction a fonctionné
+			setTimeout(() => {
+				const translateSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+				if (translateSelect) {
+					const currentValue = translateSelect.value;
+					const expectedCode = getGoogleTranslateCode(langCode);
+					
+					// Si la traduction directe a échoué, utiliser l'URL
+					if (!currentValue || (!currentValue.includes(expectedCode) && currentValue !== expectedCode)) {
+						forceTranslationByUrl(langCode);
+					}
+				} else {
+					// Pas de Google Translate initialisé, utiliser l'URL
+					forceTranslationByUrl(langCode);
+				}
+			}, 1000);
+		} else {
+			// Google Translate pas encore prêt, utiliser l'URL
+			forceTranslationByUrl(langCode);
+		}
+	}
+	
+	// Fonction pour forcer la traduction avec URL (rechargement)
+	function forceTranslationByUrl(langCode: string) {
 		// Construire l'URL avec le paramètre googtrans
 		const url = new URL(window.location.href);
 		// Nettoyer les anciens paramètres
