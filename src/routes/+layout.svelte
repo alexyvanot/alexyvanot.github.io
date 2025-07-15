@@ -3,6 +3,7 @@
 	import ScrollToTop from '$lib/components/common/scroll-to-top/scroll-to-top.svelte';
 	import Loader from '$lib/components/common/loader/loader.svelte';
 	import { AnimatedBackground } from '$lib/components/ui/animated-background';
+	import { InConstruction } from '$lib/components/ui/in-construction';
 	import 'virtual:uno.css';
 	import '../app.css';
 	import '../markdown.css';
@@ -55,6 +56,7 @@
 		<div class="flex h-screen w-screen flex-col overflow-x-hidden">
 			<NavBar />
 			<div class="mt-[50px] flex flex-1 flex-col">{@render children()}</div>
+			<InConstruction />
 		</div>
 		<ScrollToTop />
 	</div>
