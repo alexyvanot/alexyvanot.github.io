@@ -13,6 +13,7 @@
 	import TooltipContent from '$lib/components/ui/tooltip/tooltip-content.svelte';
 	import H4 from '$lib/components/ui/typography/h4.svelte';
 	import Large from '$lib/components/ui/typography/large.svelte';
+	import { LanguageSelector } from '$lib/components/ui/language-selector';
 	import BaseData from '$lib/data/base';
 	import NavBarData from '$lib/data/nav-bar';
 	import { href } from '$lib/utils';
@@ -76,6 +77,7 @@
 				<Icon icon="i-carbon-search" />
 			</Button>
 		</a>
+		<LanguageSelector />
 		<Button variant="ghost" class="text-xl" on:click={toggleMode}>
 			<Icon icon={isDarkMode ? 'i-carbon-moon' : 'i-carbon-sun'} />
 		</Button>
@@ -121,6 +123,14 @@
 							</Button>
 						</a>
 					</DialogClose>
+					<Separator />
+					<div class="flex flex-row items-center justify-between gap-2 px-3 py-2">
+						<div class="flex flex-row items-center gap-2">
+							<Icon icon="i-carbon-language" className="text-xl" />
+							<div>Langue</div>
+						</div>
+						<LanguageSelector />
+					</div>
 					<Separator />
 					<Button
 						class="flex w-full flex-row items-center justify-start gap-2"
