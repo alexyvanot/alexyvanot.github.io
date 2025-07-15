@@ -36,11 +36,11 @@ const aboutData = {
 	
 	profile: {
 		photo: 'https://avatars.githubusercontent.com/u/48055002',
-		name: 'Alexy Vanot',
+		name: 'Alexy VANOT',
 		subtitle: 'Développeur passionné, mélomane et créatif',
 		quote: `"Le code, c'est de la poésie qui compile"`,
 		description: `
-			Bonjour ! Je suis **Alexy Vanot**, un *développeur full-stack* passionné par la **technologie** et l'**innovation**. 
+			Bonjour ! Je suis **Alexy VANOT**, un *développeur full-stack* passionné par la **technologie** et l'**innovation**. 
 			Actuellement en formation à l'*ESIEA* pour un **Master en ingénierie informatique**, je combine mes compétences 
 			techniques avec une *approche créative* pour créer des **solutions élégantes** et **performantes**.
 		`,
