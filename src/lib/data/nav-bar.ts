@@ -10,13 +10,13 @@ const items: Array<{
 	icon: `i-carbon-${string}`;
 	href: string;
 }> = [
-	{ title: 'About', icon: 'i-carbon-user', href: '/about' },
+	{ title: 'À Propos', icon: 'i-carbon-user', href: '/about' },
 	{ title: 'Skills', icon: 'i-carbon-assembly-cluster', href: '/skills' },
-	{ title: 'Projects', icon: 'i-carbon-cube', href: '/projects' },
+	{ title: 'Projets', icon: 'i-carbon-cube', href: '/projects' },
 	{ title: 'Experience', icon: 'i-carbon-development', href: '/experience' },
 	{ title: 'Education', icon: 'i-carbon-education', href: '/education' },
 	{ title: 'Blog', icon: 'i-carbon-blog', href: '/blog' },
-	{ title: 'Resume', icon: 'i-carbon-document', href: '/resume' },
+	{ title: 'CV', icon: 'i-carbon-document', href: '/resume' },
 	{ title: 'Contact', icon: 'i-carbon-email', href: '/contact' }
 ];
 
