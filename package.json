@@ -52,6 +52,10 @@
 	"dependencies": {
 		"@emailjs/browser": "^4.4.1",
 		"@emailjs/nodejs": "^5.0.2",
+		"@iconify-json/circle-flags": "^1.2.6",
+		"@iconify-json/flag": "^1.2.6",
+		"@iconify-json/noto": "^1.2.3",
+		"@iconify-json/twemoji": "^1.2.2",
 		"vara": "^1.4.1"
 	}
 }

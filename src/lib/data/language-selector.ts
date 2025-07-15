@@ -2,31 +2,32 @@
 
 import type { LanguageSelectorConfig } from '$lib/types/language-selector';
 
-// Configuration par défaut
-const defaultConfig: LanguageSelectorConfig = {
+// Configuration unique - chaque langue peut avoir son propre type d'affichage
+const languageConfig: LanguageSelectorConfig = {
 	defaultLanguage: 'fr',
 	pageLanguage: 'fr',
-	
+
 	supportedLanguages: [
-		{ code: 'fr', name: 'Français', flag: '🇫🇷' },
-		{ code: 'en', name: 'English', flag: '🇺🇸' },
-		{ code: 'es', name: 'Español', flag: '🇪🇸' },
-		{ code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-		{ code: 'it', name: 'Italiano', flag: '🇮🇹' },
-		{ code: 'pt', name: 'Português', flag: '🇵🇹' },
-		{ code: 'ru', name: 'Русский', flag: '🇷🇺' },
-		{ code: 'ja', name: '日本語', flag: '🇯🇵' },
-		{ code: 'ko', name: '한국어', flag: '🇰🇷' },
-		{ code: 'zh', name: '中文', flag: '🇨🇳' },
-		{ code: 'ar', name: 'العربية', flag: '🇸🇦' }
+		{ code: 'fr', name: 'Français', flag: { type: 'icon', value: 'i-circle-flags-fr' } },
+		{ code: 'en', name: 'English', flag: { type: 'icon', value: 'i-circle-flags-us' } },
+		{ code: 'es', name: 'Español', flag: { type: 'icon', value: 'i-circle-flags-es' } },
+		{ code: 'de', name: 'Deutsch', flag: { type: 'icon', value: 'i-circle-flags-de' } },
+		{ code: 'it', name: 'Italiano', flag: { type: 'icon', value: 'i-circle-flags-it' } },
+		{ code: 'pt', name: 'Português', flag: { type: 'icon', value: 'i-circle-flags-pt' } },
+		{ code: 'ru', name: 'Русский', flag: { type: 'icon', value: 'i-circle-flags-ru' } },
+		{ code: 'ja', name: '日本語', flag: { type: 'icon', value: 'i-circle-flags-jp' } },
+		{ code: 'ko', name: '한국어', flag: { type: 'icon', value: 'i-circle-flags-kr' } },
+		{ code: 'zh', name: '中文', flag: { type: 'icon', value: 'i-circle-flags-cn' } },
+		{ code: 'ar', name: 'العربية', flag: { type: 'icon', value: 'i-circle-flags-sa' } }
+
 	],
-	
+
 	persistence: {
 		enabled: true,
 		storageKey: 'selectedLanguage',
 		detectBrowserLanguage: true
 	},
-	
+
 	googleTranslate: {
 		initializationDelay: 3000,
 		translationDelay: 3000,
@@ -34,44 +35,45 @@ const defaultConfig: LanguageSelectorConfig = {
 		changeEventDelay: 200,
 		uiUpdateDelay: 50
 	},
-	
+
 	ui: {
 		tooltipText: 'Changer la langue',
 		dropdownWidth: 'w-48',
-		flagSize: 'text-lg',
-		buttonFlagSize: 'text-base'
+		flagSize: 'text-lg', // Pour emoji et icon
+		buttonFlagSize: 'text-base' // Pour emoji et icon
+		// Pour les images, utilise 'w-5 h-5' dans flagSize et 'w-4 h-4' dans buttonFlagSize
 	}
 };
 
 // Fonction pour merger la configuration personnalisée avec la configuration par défaut
 export function createLanguageSelectorConfig(customConfig?: Partial<LanguageSelectorConfig>): LanguageSelectorConfig {
 	if (!customConfig) {
-		return defaultConfig;
+		return languageConfig;
 	}
 	
 	return {
-		defaultLanguage: customConfig.defaultLanguage ?? defaultConfig.defaultLanguage,
-		pageLanguage: customConfig.pageLanguage ?? defaultConfig.pageLanguage,
-		supportedLanguages: customConfig.supportedLanguages ?? defaultConfig.supportedLanguages,
+		defaultLanguage: customConfig.defaultLanguage ?? languageConfig.defaultLanguage,
+		pageLanguage: customConfig.pageLanguage ?? languageConfig.pageLanguage,
+		supportedLanguages: customConfig.supportedLanguages ?? languageConfig.supportedLanguages,
 		
 		persistence: {
-			...defaultConfig.persistence,
+			...languageConfig.persistence,
 			...customConfig.persistence
 		},
 		
 		googleTranslate: {
-			...defaultConfig.googleTranslate,
+			...languageConfig.googleTranslate,
 			...customConfig.googleTranslate
 		},
 		
 		ui: {
-			...defaultConfig.ui,
+			...languageConfig.ui,
 			...customConfig.ui
 		}
 	};
 }
 
 // Export de la configuration par défaut
-export const LanguageSelectorData = defaultConfig;
+export const LanguageSelectorData = languageConfig;
 
 export default LanguageSelectorData;

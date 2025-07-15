@@ -4,6 +4,7 @@
 	import Icon from '$lib/components/ui/icon/icon.svelte';
 	import { Tooltip, TooltipTrigger } from '$lib/components/ui/tooltip';
 	import TooltipContent from '$lib/components/ui/tooltip/tooltip-content.svelte';
+	import FlagDisplay from './flag-display.svelte';
 	import { onMount } from 'svelte';
 	import type { LanguageSelectorConfig } from '$lib/types/language-selector';
 	import { createLanguageSelectorConfig } from '$lib/data/language-selector';
@@ -415,7 +416,10 @@
 						class="text-xl"
 					>
 						<div class="flex items-center justify-center">
-							<span class={ui.buttonFlagSize}>{currentLanguage?.flag || supportedLanguages[0]?.flag}</span>
+							<FlagDisplay 
+								flag={currentLanguage?.flag || supportedLanguages[0]?.flag} 
+								class={ui.buttonFlagSize}
+							/>
 						</div>
 					</Button>
 				{/key}
@@ -432,7 +436,7 @@
 				class="flex items-center gap-3 cursor-pointer {currentLang === language.code ? 'bg-accent' : ''}"
 				translate="no"
 			>
-				<span class={ui.flagSize}>{language.flag}</span>
+				<FlagDisplay flag={language.flag} class={ui.flagSize} />
 				<span class="flex-1" translate="no">{language.name}</span>
 				{#if currentLang === language.code}
 					<Icon icon="i-carbon-checkmark" className="text-sm text-primary" />

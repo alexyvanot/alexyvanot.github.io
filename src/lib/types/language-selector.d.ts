@@ -1,9 +1,21 @@
 // Types pour le sélecteur de langue
 
+export type FlagDisplay = {
+	type: 'emoji';
+	value: string;
+} | {
+	type: 'icon';
+	value: string; // Nom de l'icône (ex: 'i-flag-fr')
+} | {
+	type: 'image';
+	value: string; // URL de l'image
+	alt?: string; // Texte alternatif pour l'image
+};
+
 export interface Language {
 	code: string;
 	name: string;
-	flag: string;
+	flag: FlagDisplay;
 }
 
 export interface LanguageSelectorConfig {
