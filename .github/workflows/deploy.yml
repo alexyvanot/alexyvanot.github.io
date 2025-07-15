@@ -30,6 +30,9 @@ jobs:
       - name: Build project
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
+          PUBLIC_SERVICE_ID: ${{ secrets.PUBLIC_SERVICE_ID }}
+          PUBLIC_TEMPLATE_ID: ${{ secrets.PUBLIC_TEMPLATE_ID }}
+          PUBLIC_EMAILJS_KEY: ${{ secrets.PUBLIC_EMAILJS_KEY }}
         run: |
           npm run build
           touch build/.nojekyll
