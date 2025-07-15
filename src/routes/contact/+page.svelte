@@ -22,6 +22,11 @@
 	// Propriétés pour les données de l'action serveur
 	export let form: ActionData;
 
+	// Configuration EmailJS depuis les variables d'environnement
+	const SERVICE_ID = PUBLIC_SERVICE_ID;
+	const TEMPLATE_ID = PUBLIC_TEMPLATE_ID;
+	const PUBLIC_KEY = PUBLIC_EMAILJS_KEY;
+
 	let name = '';
 	let email = '';
 	let message = '';
@@ -145,6 +150,8 @@
 	$: isFormValid = allFieldsValid && captchaVerified;
 
 	onMount(() => {
+		emailjs.init(PUBLIC_KEY);
+		
 		// Vérifier si un message a déjà été envoyé récemment pour éviter le spam
 		if (browser) {
 			try {
@@ -171,6 +178,64 @@
 		}
 		// Forcer la mise à jour de la réactivité
 		captchaVerified = captchaVerified;
+	}
+
+	// Fonction pour envoyer l'email directement via EmailJS (fallback pour GitHub Pages)
+	async function sendEmailDirectly() {
+		try {
+			const templateParams = {
+				to_name: 'Alexy VANOT',
+				from_name: name.trim(),
+				reply_to: email.trim(),
+				message: message.trim(),
+				timestamp: new Date().toISOString()
+			};
+
+			await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+			
+			// Marquer l'envoi dans le localStorage pour éviter les renvois
+			if (browser) {
+				try {
+					localStorage.setItem('contactFormLastSent', Date.now().toString());
+				} catch (error) {
+					// Ignore les erreurs localStorage
+				}
+			}
+			
+			return true;
+		} catch (error) {
+			console.error('Erreur EmailJS:', error);
+			return false;
+		}
+	}
+
+	// Fonction pour valider les champs côté client
+	function validateForm() {
+		if (name.trim() === '') {
+			toast.error('Veuillez entrer votre nom');
+			return false;
+		}
+		if (email.trim() === '') {
+			toast.error('Veuillez entrer votre adresse email');
+			return false;
+		}
+		if (!emailRegex.test(email.trim())) {
+			toast.error('Veuillez entrer une adresse email valide');
+			return false;
+		}
+		if (message.trim() === '') {
+			toast.error('Veuillez entrer votre message');
+			return false;
+		}
+		if (message.length > MESSAGE_MAX_LENGTH) {
+			toast.error(`Le message ne peut pas dépasser ${MESSAGE_MAX_LENGTH} caractères`);
+			return false;
+		}
+		if (!captchaVerified) {
+			toast.error('Veuillez compléter la vérification anti-robot');
+			return false;
+		}
+		return true;
 	}
 
 	// Fonction pour gérer le succès de l'action serveur
@@ -257,56 +322,50 @@
 				{:else}
 					<!-- Formulaire de contact -->
 				<form 
-					method="POST" 
-					on:mouseenter={handleFormMouseEnter}
-					use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-						// Validation côté client avant envoi
-						if (name.trim() === '') {
-							toast.error('Veuillez entrer votre nom');
-							cancel();
-							return;
-						}
-
-						if (email.trim() === '') {
-							toast.error('Veuillez entrer votre adresse email');
-							cancel();
-							return;
-						}
-
-						if (!emailRegex.test(email.trim())) {
-							toast.error('Veuillez entrer une adresse email valide');
-							cancel();
-							return;
-						}
-
-						if (message.trim() === '') {
-							toast.error('Veuillez entrer votre message');
-							cancel();
-							return;
-						}
-
-						if (message.length > MESSAGE_MAX_LENGTH) {
-							toast.error(`Le message ne peut pas dépasser ${MESSAGE_MAX_LENGTH} caractères`);
-							cancel();
-							return;
-						}
-
-						if (!captchaVerified) {
-							toast.error('Veuillez compléter la vérification anti-robot');
-							cancel();
-							return;
-						}
-
-						// Ajouter la réponse correcte du captcha au FormData
-						formData.set('captcha_correct', correctAnswer.toString());
+					on:submit|preventDefault={async (e) => {
+						if (!validateForm()) return;
 						
 						submitting = true;
 						
-						return async ({ result, update }) => {
-							submitting = false;
-							await update();
-						};
+						// Essayer d'abord l'action serveur pour le dev
+						try {
+							const formData = new FormData();
+							formData.set('name', name);
+							formData.set('email', email);
+							formData.set('message', message);
+							formData.set('captcha_answer', captchaComponent?.getUserInput() || '');
+							formData.set('captcha_correct', correctAnswer.toString());
+							
+							const response = await fetch(window.location.pathname, {
+								method: 'POST',
+								body: formData
+							});
+							
+							if (response.ok) {
+								// Action serveur a fonctionné (dev)
+								const result = await response.json();
+								if (result.type === 'success') {
+									await handleFormSuccess();
+									return;
+								}
+							}
+						} catch (error) {
+							console.log('Action serveur indisponible, utilisation EmailJS direct');
+						}
+						
+						// Fallback: envoi direct via EmailJS (production GitHub Pages)
+						const emailSent = await sendEmailDirectly();
+						
+						if (emailSent) {
+							await handleFormSuccess();
+							toast.success('Message envoyé avec succès!');
+						} else {
+							toast.error('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+						}
+						
+						submitting = false;
 					}}
+					on:mouseenter={handleFormMouseEnter}
 					class="space-y-6"
 				>
 					<input type="hidden" name="captcha_answer" value={captchaComponent?.getUserInput() || ''} />
