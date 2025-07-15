@@ -14,7 +14,7 @@ const items: Array<{
 	{ title: 'Skills', icon: 'i-carbon-assembly-cluster', href: '/skills' },
 	{ title: 'Projets', icon: 'i-carbon-cube', href: '/projects' },
 	{ title: 'Experience', icon: 'i-carbon-development', href: '/experience' },
-	{ title: 'Education', icon: 'i-carbon-education', href: '/education' },
+	{ title: 'Formation', icon: 'i-carbon-education', href: '/education' },
 	{ title: 'Blog', icon: 'i-carbon-blog', href: '/blog' },
 	{ title: 'CV', icon: 'i-carbon-document', href: '/resume' },
 	{ title: 'Contact', icon: 'i-carbon-email', href: '/contact' }

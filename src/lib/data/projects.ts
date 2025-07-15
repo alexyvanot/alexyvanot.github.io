@@ -68,7 +68,7 @@ const items: Array<Project> = [
 	}
 ];
 
-const title = 'Projects';
+const title = 'Projets';
 
 const ProjectsData = { title, items };
 

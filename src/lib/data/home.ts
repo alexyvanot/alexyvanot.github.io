@@ -2,7 +2,7 @@ import BaseData from './base';
 import { getSkills } from './skills';
 import type { Skill } from './types';
 
-const title = 'Home';
+const title = 'Acceuil';
 
 const hero: {
 	title: string;
