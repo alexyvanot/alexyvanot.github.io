@@ -22,11 +22,6 @@
 	// Propriétés pour les données de l'action serveur
 	export let form: ActionData;
 
-	// Configuration EmailJS depuis les variables d'environnement
-	const SERVICE_ID = PUBLIC_SERVICE_ID;
-	const TEMPLATE_ID = PUBLIC_TEMPLATE_ID;
-	const PUBLIC_KEY = PUBLIC_EMAILJS_KEY;
-
 	let name = '';
 	let email = '';
 	let message = '';
@@ -150,9 +145,7 @@
 	$: isFormValid = allFieldsValid && captchaVerified;
 
 	onMount(() => {
-		emailjs.init(PUBLIC_KEY);
-		
-		// Vérifier si un message a déjà été envoyé récemment (optimisé)
+		// Vérifier si un message a déjà été envoyé récemment pour éviter le spam
 		if (browser) {
 			try {
 				const lastSentTime = localStorage.getItem('contactFormLastSent');
@@ -180,29 +173,13 @@
 		captchaVerified = captchaVerified;
 	}
 
-	// Fonction pour envoyer l'email via EmailJS côté client
-	async function sendEmailViaEmailJS(nameValue?: string, emailValue?: string, messageValue?: string) {
-		try {
-			// Utiliser les valeurs passées en paramètre ou les valeurs actuelles
-			const finalName = nameValue || name;
-			const finalEmail = emailValue || email;
-			const finalMessage = messageValue || message;
+	// Fonction pour gérer le succès de l'action serveur
+	async function handleFormSuccess() {
+		if (!emailSentThisSession) {
+			// Marquer comme envoyé pour éviter les renvois
+			emailSentThisSession = true;
 			
-			// Vérification de sécurité : ne jamais envoyer un email vide
-			if (!finalName?.trim() || !finalEmail?.trim() || !finalMessage?.trim()) {
-				return false;
-			}
-			
-			const templateParams = {
-				to_name: 'Alexy VANOT',
-				from_name: finalName.trim(),
-				reply_to: finalEmail.trim(),
-				message: finalMessage.trim()
-			};
-
-			await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
-			
-			// Marquer l'envoi dans le localStorage pour éviter les renvois
+			// Marquer l'envoi dans le localStorage pour protection anti-spam
 			if (browser) {
 				try {
 					localStorage.setItem('contactFormLastSent', Date.now().toString());
@@ -211,64 +188,34 @@
 				}
 			}
 			
-			return true;
-		} catch (error) {
-			return false;
-		}
-	}
-
-	// Fonction pour gérer le succès de l'action serveur
-	async function handleFormSuccess() {
-		if (!emailSentThisSession) {
-			// Récupérer les valeurs depuis les données du serveur si disponibles, 
-			// sinon utiliser les valeurs actuelles du formulaire
-			const nameToSend = form?.data?.name || name;
-			const emailToSend = form?.data?.email || email;
-			const messageToSend = form?.data?.message || message;
+			// Réinitialiser le formulaire après envoi réussi
+			name = '';
+			email = '';
+			message = '';
+			emailError = '';
+			nameError = '';
+			messageError = '';
+			emailTouched = false;
+			nameTouched = false;
+			messageTouched = false;
+			captchaVerified = false;
+			captchaUnlocked = false;
+			formHovered = false;
+			captchaComponent?.generateNewCaptcha();
 			
-			// Vérification finale avant envoi
-			if (nameToSend?.trim() && emailToSend?.trim() && messageToSend?.trim()) {
-				// Marquer comme envoyé pour éviter les renvois
-				emailSentThisSession = true;
-				
-				// Envoyer l'email côté client avec les valeurs sauvegardées
-				const emailSent = await sendEmailViaEmailJS(nameToSend, emailToSend, messageToSend);
-				
-				if (emailSent) {
-					// Réinitialiser le formulaire SEULEMENT après envoi réussi
-					name = '';
-					email = '';
-					message = '';
-					emailError = '';
-					nameError = '';
-					messageError = '';
-					emailTouched = false;
-					nameTouched = false;
-					messageTouched = false;
-					captchaVerified = false;
-					captchaUnlocked = false;
-					formHovered = false;
-					captchaComponent?.generateNewCaptcha();
-					
-					messageSent = true; // Afficher l'état de confirmation
-					toast.success('Message envoyé avec succès!');
-				} else {
-					toast.error('Message validé mais erreur lors de l\'envoi. Veuillez réessayer.');
-					emailSentThisSession = false; // Permettre une nouvelle tentative en cas d'erreur
-				}
-			} else {
-				toast.error('Erreur : données du formulaire vides');
-			}
+			messageSent = true; // Afficher l'état de confirmation
+			toast.success(form?.message || 'Message envoyé avec succès!');
 		}
 	}
 
-	// Réagir aux résultats de l'action serveur avec protection contre les exécutions multiples
+	// Réagir aux résultats de l'action serveur
 	$: if (form?.success && form !== lastProcessedFormId) {
 		lastProcessedFormId = form;
 		handleFormSuccess();
 	}
 
 	$: if (form?.errors) {
+		console.log('Erreurs du formulaire:', form.errors);
 		if (form.errors.general) {
 			toast.error(form.errors.general);
 		} else {
