@@ -2,6 +2,16 @@
   "version": 1.2,
   "atDirectives": [
     {
+      "name": "@tailwind",
+      "description": "Use the `@tailwind` directive to insert Tailwind's `base`, `components`, `utilities` and `screens` styles into your CSS.",
+      "references": [
+        {
+          "name": "Tailwind Documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#tailwind"
+        }
+      ]
+    },
+    {
       "name": "@theme",
       "description": "Use the `@theme` directive to define your project's custom design tokens, like fonts, colors, and breakpoints.",
       "references": [
