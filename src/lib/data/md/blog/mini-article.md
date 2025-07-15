@@ -1,0 +1,1 @@
+La technologie évolue rapidement, transformant notre quotidien. Rester curieux et apprendre en continu permet de s’adapter à ce monde en mouvement.
