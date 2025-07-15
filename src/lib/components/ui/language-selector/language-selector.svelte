@@ -81,7 +81,43 @@
 		// Forcer la mise à jour initiale
 		updateTrigger++;
 		forceRerender++;
+
+        // Si la langue actuelle n'est pas la langue par défaut, neutraliser les artefacts de Google Translate
+        if (currentLang !== defaultLanguage) {
+			const interval = setInterval(() => {
+				neutralizeGoogleTranslateArtifacts();
+			}, 1500);
+			return () => clearInterval(interval);
+		}
 	});
+
+    // Fonction pour neutraliser les artefacts de Google Translate
+	function neutralizeGoogleTranslateArtifacts() {
+		const elements = document.querySelectorAll('[class*="VIpgJd"], .goog-text-highlight, font, span');
+		elements.forEach((el) => {
+			const className = (el.className && el.className.toString) ? el.className.toString() : '';
+			if (
+				(el as HTMLElement).dataset?.gtCleaned === 'true' ||
+				!(className.includes('VIpgJd') || className.includes('goog-text-highlight') || el.tagName.toLowerCase() === 'font')
+			) return;
+
+			el.removeAttribute('style');
+			Object.assign((el as HTMLElement).style, {
+				all: 'unset',
+				background: 'transparent',
+				boxShadow: 'none',
+				color: 'inherit',
+				fontSize: 'inherit',
+				fontWeight: 'inherit',
+				lineHeight: 'inherit',
+				padding: '0',
+				margin: '0',
+				border: 'none',
+				textShadow: 'none'
+			});
+			el.setAttribute('data-gt-cleaned', 'true');
+		});
+	}
 
 	function initializeGoogleTranslate() {
 		// Créer l'élément Google Translate s'il n'existe pas
