@@ -1,0 +1,1 @@
+export const env={"PUBLIC_TEMPLATE_ID":"template_zgw5g9p","PUBLIC_SERVICE_ID":"service_la9t3vg","PUBLIC_EMAILJS_KEY":"Nfdh6yKiRF9gapO2o"}
