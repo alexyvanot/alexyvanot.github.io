@@ -19,7 +19,7 @@ export interface Language {
 }
 
 export interface LanguageSelectorConfig {
-	// Langue par défaut de la page
+	// Langue par défaut de la page ('auto' pour détection automatique)
 	defaultLanguage: string;
 	
 	// Page language pour Google Translate (langue source)
@@ -38,6 +38,24 @@ export interface LanguageSelectorConfig {
 		
 		// Si true, détecte automatiquement la langue du navigateur au premier chargement
 		detectBrowserLanguage: boolean;
+	};
+
+	// Configuration de la détection automatique
+	autoDetection: {
+		// Active la détection automatique quand defaultLanguage = 'auto'
+		enabled: boolean;
+		
+		// Langue de fallback si détection échoue
+		fallbackLanguage: string;
+		
+		// Utilise navigator.languages pour avoir toutes les langues préférées
+		useNavigatorLanguages: boolean;
+		
+		// Utilise le fuseau horaire comme indice géographique
+		useTimezone: boolean;
+		
+		// Priorité de détection : 'browser' | 'timezone' | 'mixed'
+		priority: 'browser' | 'timezone' | 'mixed';
 	};
 	
 	// Configuration de Google Translate

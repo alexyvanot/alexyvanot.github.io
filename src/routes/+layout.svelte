@@ -9,6 +9,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { cleanGoogleTranslateArtifacts } from '$lib/utils/googleTranslateCleaner';
 
 	let { children } = $props();
 	let showLoader = $state(true);
@@ -23,6 +24,17 @@
 				appReady = true;
 			}, 20);
 		}, 100); // Réduit de 300ms à 100ms
+		
+		cleanGoogleTranslateArtifacts();
+
+		const observer = new MutationObserver(() => {
+			cleanGoogleTranslateArtifacts();
+		});
+
+		observer.observe(document.body, {
+			childList: true,
+			subtree: true
+		});
 	});
 </script>
 

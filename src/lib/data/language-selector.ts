@@ -4,7 +4,7 @@ import type { LanguageSelectorConfig } from '$lib/types/language-selector';
 
 // Configuration unique - chaque langue peut avoir son propre type d'affichage
 const languageConfig: LanguageSelectorConfig = {
-	defaultLanguage: 'fr',
+	defaultLanguage: 'auto', // 'auto' = détection automatique, sinon utilise un code comme 'fr'
 	pageLanguage: 'fr',
 
 	supportedLanguages: [
@@ -26,6 +26,15 @@ const languageConfig: LanguageSelectorConfig = {
 		enabled: true,
 		storageKey: 'selectedLanguage',
 		detectBrowserLanguage: true
+	},
+
+	// Nouvelle configuration pour la détection automatique
+	autoDetection: {
+		enabled: true, // Active la détection automatique
+		fallbackLanguage: 'fr', // Langue par défaut si détection échoue ou langue non supportée
+		useNavigatorLanguages: true, // Utilise navigator.languages (liste des langues préférées)
+		useTimezone: true, // Utilise le fuseau horaire comme indice supplémentaire
+		priority: 'browser' // 'browser' | 'timezone' | 'mixed'
 	},
 
 	googleTranslate: {
@@ -59,6 +68,11 @@ export function createLanguageSelectorConfig(customConfig?: Partial<LanguageSele
 		persistence: {
 			...languageConfig.persistence,
 			...customConfig.persistence
+		},
+		
+		autoDetection: {
+			...languageConfig.autoDetection,
+			...customConfig.autoDetection
 		},
 		
 		googleTranslate: {

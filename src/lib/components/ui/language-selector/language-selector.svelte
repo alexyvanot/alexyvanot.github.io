@@ -11,6 +11,7 @@
 	import TooltipContent from '$lib/components/ui/tooltip/tooltip-content.svelte';
 	import FlagDisplay from './flag-display.svelte';
 	import { onMount } from 'svelte';
+	import { replaceState } from '$app/navigation';
 	import type { LanguageSelectorConfig } from '$lib/types/language-selector';
 	import { createLanguageSelectorConfig } from '$lib/data/language-selector';
 
@@ -43,7 +44,134 @@
 		return lang;
 	});
 
+	// Fonction de détection automatique de la langue
+	function detectBrowserLanguage(): string {
+		if (!config.autoDetection.enabled || config.defaultLanguage !== 'auto') {
+			return config.defaultLanguage;
+		}
+
+		const supportedCodes = config.supportedLanguages.map(lang => lang.code);
+		let detectedLanguage = config.autoDetection.fallbackLanguage;
+
+		if (config.autoDetection.useNavigatorLanguages) {
+			// Utilise navigator.languages pour avoir toutes les préférences
+			const browserLanguages = navigator.languages || [navigator.language];
+			
+			for (const lang of browserLanguages) {
+				const langCode = lang.split('-')[0]; // 'fr-FR' -> 'fr'
+				if (supportedCodes.includes(langCode)) {
+					detectedLanguage = langCode;
+					break;
+				}
+			}
+		}
+
+		// Si détection par timezone activée et pas encore trouvé
+		if (config.autoDetection.useTimezone && 
+			(detectedLanguage === config.autoDetection.fallbackLanguage || 
+			 config.autoDetection.priority === 'timezone' || 
+			 config.autoDetection.priority === 'mixed')) {
+			
+			try {
+				const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+				const timezoneToLanguage: Record<string, string> = {
+					// Europe
+					'Europe/Paris': 'fr',
+					'Europe/London': 'en',
+					'Europe/Berlin': 'de',
+					'Europe/Madrid': 'es',
+					'Europe/Rome': 'it',
+					'Europe/Amsterdam': 'nl',
+					'Europe/Brussels': 'nl',
+					'Europe/Lisbon': 'pt',
+					'Europe/Warsaw': 'pl',
+					'Europe/Prague': 'cs',
+					'Europe/Stockholm': 'sv',
+					'Europe/Copenhagen': 'da',
+					'Europe/Oslo': 'no',
+					'Europe/Helsinki': 'fi',
+					'Europe/Vienna': 'de',
+					'Europe/Zurich': 'de',
+					
+					// Amériques
+					'America/New_York': 'en',
+					'America/Los_Angeles': 'en',
+					'America/Chicago': 'en',
+					'America/Toronto': 'en',
+					'America/Montreal': 'fr',
+					'America/Mexico_City': 'es',
+					'America/Sao_Paulo': 'pt',
+					'America/Buenos_Aires': 'es',
+					
+					// Asie
+					'Asia/Tokyo': 'ja',
+					'Asia/Shanghai': 'zh',
+					'Asia/Seoul': 'ko',
+					'Asia/Mumbai': 'en',
+					'Asia/Bangkok': 'th',
+					'Asia/Manila': 'en',
+					
+					// Autres
+					'Australia/Sydney': 'en',
+					'Africa/Cairo': 'ar',
+					'Africa/Johannesburg': 'en'
+				};
+
+				const timezoneLanguage = timezoneToLanguage[timezone];
+				if (timezoneLanguage && supportedCodes.includes(timezoneLanguage)) {
+					if (config.autoDetection.priority === 'timezone') {
+						detectedLanguage = timezoneLanguage;
+					} else if (config.autoDetection.priority === 'mixed' && 
+							   detectedLanguage === config.autoDetection.fallbackLanguage) {
+						detectedLanguage = timezoneLanguage;
+					}
+				}
+			} catch (error) {
+				console.warn('Erreur lors de la détection du fuseau horaire:', error);
+			}
+		}
+
+		return detectedLanguage;
+	}
+
 	onMount(() => {
+		// Vérifier d'abord si on a un paramètre de traduction dans l'URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const googtrans = urlParams.get('googtrans');
+		
+		if (googtrans) {
+			// Si on a un paramètre googtrans, extraire la langue cible
+			const match = googtrans.match(/\/[^\/]+\/([^\/]+)/);
+			if (match) {
+				const urlLang = match[1];
+				currentLang = urlLang;
+				
+				// Nettoyer l'URL (enlever le paramètre googtrans)
+				const newUrl = new URL(window.location.href);
+				newUrl.searchParams.delete('googtrans');
+				replaceState(newUrl.pathname + newUrl.search, {});
+				
+				// IMPORTANT: Initialiser Google Translate pour que la traduction fonctionne !
+				initializeGoogleTranslate(() => {
+					// Après l'initialisation, forcer la traduction
+					setTimeout(() => {
+						applyTranslation(urlLang);
+					}, 500);
+				});
+				
+				// Sauvegarder la langue détectée - TOUJOURS marquer comme choix manuel si vient d'une URL googtrans
+				if (persistence.enabled && urlLang !== pageLanguage) {
+					localStorage.setItem(persistence.storageKey, urlLang);
+					localStorage.setItem(persistence.storageKey + '_manual', 'true');
+				}
+				
+				return;
+			}
+		}
+
+		// Vérifier si on a un choix manuel précédent AVANT toute autre logique
+		const isManualChoice = persistence.enabled && localStorage.getItem(persistence.storageKey + '_manual') === 'true';
+		
 		// Charger la langue sauvegardée ou détecter celle du navigateur (selon la configuration)
 		if (persistence.enabled) {
 			const savedLang = localStorage.getItem(persistence.storageKey);
@@ -53,43 +181,50 @@
 				supportedLanguages.find((lang: { code: string }) => lang.code === savedLang)
 			) {
 				currentLang = savedLang;
-				// Initialiser Google Translate SEULEMENT si on a une langue sauvegardée (non-par défaut)
-				if (savedLang !== defaultLanguage) {
-					initializeGoogleTranslate();
-					// Appliquer la langue sauvegardée après initialisation
-					setTimeout(() => {
-						changeLanguage(savedLang);
-					}, googleTranslate.initializationDelay);
+				// Si langue sauvegardée != langue par défaut, rediriger avec googtrans
+				if (savedLang !== pageLanguage) {
+					forceTranslationByReload(savedLang);
+					return;
 				}
-			} else if (persistence.detectBrowserLanguage) {
-				// Pas de langue sauvegardée, détecter celle du navigateur
+			} else if (defaultLanguage === 'auto' && !isManualChoice) {
+				// Mode détection automatique UNIQUEMENT si pas de choix manuel précédent
+				const detectedLang = detectBrowserLanguage();
+				currentLang = detectedLang;
+				
+				// Si la langue détectée n'est pas la langue de la page (source), rediriger
+				if (detectedLang !== pageLanguage) {
+					forceTranslationByReload(detectedLang);
+					return;
+				} else {
+					localStorage.removeItem(persistence.storageKey);
+				}
+			} else if (isManualChoice) {
+				// Si c'est un choix manuel de rester en français, ne rien faire de plus
+				currentLang = pageLanguage;
+			} else if (persistence.detectBrowserLanguage && !isManualChoice) {
+				// Pas de langue sauvegardée, détecter celle du navigateur (ancien système) UNIQUEMENT si pas de choix manuel
 				const browserLang = navigator.language.split('-')[0];
 				const supportedLang = supportedLanguages.find(
 					(lang: { code: string }) => lang.code === browserLang
 				);
-				if (supportedLang && supportedLang.code !== defaultLanguage) {
+				if (supportedLang && supportedLang.code !== pageLanguage) {
 					currentLang = supportedLang.code;
-					// Initialiser Google Translate pour la langue du navigateur
-					initializeGoogleTranslate();
-					setTimeout(() => {
-						changeLanguage(supportedLang.code);
-					}, googleTranslate.initializationDelay);
+					forceTranslationByReload(supportedLang.code);
+					return;
 				} else {
 					currentLang = defaultLanguage;
-					// S'assurer que localStorage est propre pour la langue par défaut
 					localStorage.removeItem(persistence.storageKey);
-					isTranslateReady = false; // Pas prêt car pas initialisé
+					localStorage.removeItem(persistence.storageKey + '_manual');
 				}
 			} else {
 				// Pas de détection du navigateur, utiliser la langue par défaut
 				currentLang = defaultLanguage;
 				localStorage.removeItem(persistence.storageKey);
-				isTranslateReady = false;
+				localStorage.removeItem(persistence.storageKey + '_manual');
 			}
 		} else {
 			// Persistance désactivée, toujours utiliser la langue par défaut
 			currentLang = defaultLanguage;
-			isTranslateReady = false;
 		}
 
 		// Forcer la mise à jour initiale
@@ -163,7 +298,7 @@
 		if (gLink) gLink.remove();
 	}
 
-	function initializeGoogleTranslate() {
+	function initializeGoogleTranslate(callback?: () => void) {
 		// Créer l'élément Google Translate s'il n'existe pas
 		if (!document.getElementById('google_translate_element')) {
 			const translateDiv = document.createElement('div');
@@ -189,6 +324,11 @@
 
 					// Configurer la détection de langue
 					setupLanguageDetection();
+					
+					// Exécuter le callback s'il existe
+					if (callback) {
+						callback();
+					}
 				}
 			}, 2000);
 		};
@@ -229,52 +369,34 @@
 
 	// Fonction pour changer la langue
 	function changeLanguage(langCode: string) {
-		// Bloquer la détection automatique pendant le changement manuel
+		// Marquer comme changement manuel pour empêcher la détection auto
 		isManualChange = true;
-
+		
 		// Mettre à jour immédiatement l'état pour l'icône
 		currentLang = langCode;
 		updateTrigger++;
-		forceRerender++; // Force le re-rendu
+		forceRerender++;
 
-		// Ajouter un petit délai pour s'assurer que l'interface se met à jour
-		setTimeout(() => {
-			forceRerender++;
-		}, googleTranslate.uiUpdateDelay);
-
-		if (langCode === defaultLanguage) {
-			// Pour la langue par défaut, supprimer la langue sauvegardée et recharger
+		if (langCode === pageLanguage) {
+			// Pour la langue par défaut, marquer comme choix manuel et supprimer la langue sauvegardée
 			if (persistence.enabled) {
 				localStorage.removeItem(persistence.storageKey);
+				// IMPORTANT: Marquer comme choix manuel pour empêcher la détection auto future
+				localStorage.setItem(persistence.storageKey + '_manual', 'true');
 			}
+			// Recharger pour revenir au français original (sans traduction)
 			window.location.reload();
 			return;
 		}
 
-		// Pour les autres langues, vérifier si Google Translate est initialisé
-		if (!isTranslateReady) {
-			// Sauvegarder la langue avant d'initialiser (si la persistance est activée)
-			if (persistence.enabled) {
-				localStorage.setItem(persistence.storageKey, langCode);
-			}
-			// Initialiser Google Translate puis appliquer la langue
-			initializeGoogleTranslate();
-			setTimeout(() => {
-				// Une fois initialisé, appliquer la traduction
-				applyTranslation(langCode);
-			}, googleTranslate.translationDelay);
-		} else {
-			// Google Translate déjà prêt, appliquer directement
-			if (persistence.enabled) {
-				localStorage.setItem(persistence.storageKey, langCode);
-			}
-			applyTranslation(langCode);
+		// Pour les autres langues, sauvegarder et rediriger avec googtrans
+		if (persistence.enabled) {
+			localStorage.setItem(persistence.storageKey, langCode);
+			// Marquer que c'est un choix manuel pour empêcher la détection auto future
+			localStorage.setItem(persistence.storageKey + '_manual', 'true');
 		}
-
-		// Réactiver la détection automatique après un délai
-		setTimeout(() => {
-			isManualChange = false;
-		}, googleTranslate.manualChangeDelay);
+		
+		forceTranslationByReload(langCode);
 	}
 
 	// Fonction pour mapper notre code vers le code Google Translate
@@ -321,15 +443,17 @@
 	// Fonction pour appliquer la traduction
 	function applyTranslation(langCode: string) {
 		const translateSelect = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+		
 		if (translateSelect) {
 			const googleCode = getGoogleTranslateCode(langCode);
 
 			// Essayer de trouver l'option exacte dans le select
 			let foundOption = false;
+			let optionValue = '';
 			for (let i = 0; i < translateSelect.options.length; i++) {
 				const option = translateSelect.options[i];
 				if (option.value === googleCode || option.value.includes(langCode)) {
-					translateSelect.value = option.value;
+					optionValue = option.value;
 					foundOption = true;
 					break;
 				}
@@ -346,7 +470,7 @@
 							option.text.toLowerCase().includes('chinese') ||
 							option.text.includes('中文')
 						) {
-							translateSelect.value = option.value;
+							optionValue = option.value;
 							foundOption = true;
 							break;
 						}
@@ -358,15 +482,74 @@
 			if (!foundOption) {
 				return;
 			}
-
-			translateSelect.dispatchEvent(new Event('change', { bubbles: true }));
+			
+			// Méthode 1: Utiliser l'API interne de Google Translate
+			try {
+				// Accéder à l'instance Google Translate
+				const googleTranslateInstance = (window as any).google?.translate?.TranslateElement?.getInstance?.();
+				if (googleTranslateInstance) {
+					googleTranslateInstance.setLanguage(optionValue);
+				} else {
+					throw new Error('Instance Google Translate non trouvée');
+				}
+			} catch (error) {
+				// Méthode 2: Manipulation directe du select
+				translateSelect.value = optionValue;
+				
+				// Créer et déclencher l'événement change de manière plus agressive
+				const event = new Event('change', { 
+					bubbles: true, 
+					cancelable: true,
+					composed: true 
+				});
+				
+				// Déclencher immédiatement
+				translateSelect.dispatchEvent(event);
+				
+				// Et aussi avec onchange si disponible
+				if (translateSelect.onchange) {
+					translateSelect.onchange(event as any);
+				}
+			}
+			
+			// Vérification avec un délai plus long
+			setTimeout(() => {
+				const bodyLang = document.documentElement.lang || document.body.lang;
+				const translatedElements = document.querySelectorAll('[lang]').length;
+				const gtElements = document.querySelectorAll('[class*="VIpgJd"]').length;
+				
+				// Si toujours pas de traduction, forcer avec URL
+				if (translatedElements <= 1 && gtElements === 0) {
+					forceTranslationByReload(langCode);
+				}
+			}, 3000);
 		}
+	}
+
+	// Fonction pour forcer la traduction avec URL
+	function forceTranslationByReload(langCode: string) {
+		// Construire l'URL avec le paramètre googtrans
+		const url = new URL(window.location.href);
+		// Nettoyer les anciens paramètres
+		url.searchParams.delete('googtrans');
+		
+		// Ajouter le paramètre de traduction
+		url.searchParams.set('googtrans', `/${pageLanguage}/${langCode}`);
+		
+		// Rediriger
+		window.location.href = url.toString();
 	}
 
 	// Fonction pour détecter la langue actuellement active et mettre à jour l'icône
 	function detectAndUpdateCurrentLanguage() {
 		// Ignorer si on est en plein changement manuel
 		if (isManualChange) {
+			return;
+		}
+		
+		// Ignorer si un choix manuel a été fait précédemment
+		const isManualChoice = persistence.enabled && localStorage.getItem(persistence.storageKey + '_manual') === 'true';
+		if (isManualChoice) {
 			return;
 		}
 
@@ -536,4 +719,17 @@
 	:global(.goog-te-combo) {
 		display: none !important;
 	}
+
+    :global(a.VIpgJd-ZVi9od-l4eHX-hSRGPd) {
+	    display: none !important;
+	    opacity: 0 !important;
+	    pointer-events: none !important;
+	    position: absolute !important;
+	    top: -9999px !important;
+	    left: -9999px !important;
+	    width: 0 !important;
+	    height: 0 !important;
+	    overflow: hidden !important;
+    }
+
 </style>
