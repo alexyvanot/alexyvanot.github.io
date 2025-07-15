@@ -30,7 +30,7 @@
 		// Utiliser updateTrigger ET forceRerender pour forcer la réactivité
 		updateTrigger;
 		forceRerender;
-		const lang = supportedLanguages.find(lang => lang.code === currentLang) || supportedLanguages[0];
+		const lang = supportedLanguages.find((lang: { code: string }) => lang.code === currentLang) || supportedLanguages[0];
 		return lang;
 	});
 
@@ -39,7 +39,7 @@
 		if (persistence.enabled) {
 			const savedLang = localStorage.getItem(persistence.storageKey);
 			
-			if (savedLang && supportedLanguages.find(lang => lang.code === savedLang)) {
+			if (savedLang && supportedLanguages.find((lang: { code: string }) => lang.code === savedLang)) {
 				currentLang = savedLang;
 				// Initialiser Google Translate SEULEMENT si on a une langue sauvegardée (non-par défaut)
 				if (savedLang !== defaultLanguage) {
@@ -52,7 +52,7 @@
 			} else if (persistence.detectBrowserLanguage) {
 				// Pas de langue sauvegardée, détecter celle du navigateur
 				const browserLang = navigator.language.split('-')[0];
-				const supportedLang = supportedLanguages.find(lang => lang.code === browserLang);
+				const supportedLang = supportedLanguages.find((lang: { code: string }) => lang.code === browserLang);
 				if (supportedLang && supportedLang.code !== defaultLanguage) {
 					currentLang = supportedLang.code;
 					// Initialiser Google Translate pour la langue du navigateur
