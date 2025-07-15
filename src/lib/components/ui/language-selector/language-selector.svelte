@@ -420,19 +420,20 @@
 					</Button>
 				{/key}
 			</TooltipTrigger>
-			<TooltipContent side="bottom">
+			<TooltipContent side="bottom" translate="no">
 				{ui.tooltipText}
 			</TooltipContent>
 		</Tooltip>
 	</DropdownMenuTrigger>
-	<DropdownMenuContent align="end" class={ui.dropdownWidth}>
+	<DropdownMenuContent align="end" class={ui.dropdownWidth} translate="no">
 		{#each supportedLanguages as language}
 			<DropdownMenuItem 
 				on:click={() => changeLanguage(language.code)}
 				class="flex items-center gap-3 cursor-pointer {currentLang === language.code ? 'bg-accent' : ''}"
+				translate="no"
 			>
 				<span class={ui.flagSize}>{language.flag}</span>
-				<span class="flex-1">{language.name}</span>
+				<span class="flex-1" translate="no">{language.name}</span>
 				{#if currentLang === language.code}
 					<Icon icon="i-carbon-checkmark" className="text-sm text-primary" />
 				{/if}
@@ -470,5 +471,16 @@
 	:global(.goog-text-highlight) {
 		background: none !important;
 		box-shadow: none !important;
+	}
+
+	/* Exclure le sélecteur de langue de la traduction */
+	:global([translate="no"]) {
+		font-family: inherit !important;
+		font-size: inherit !important;
+		color: inherit !important;
+	}
+	
+	:global(.goog-te-combo) {
+		display: none !important;
 	}
 </style>
