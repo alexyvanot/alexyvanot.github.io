@@ -295,13 +295,13 @@
 			} else {
 				// D'abord essayer la conversion inverse pour les codes spéciaux
 				const mappedCode = getOurLanguageCode(selectedValue);
-				const matchedLanguage = supportedLanguages.find(lang => lang.code === mappedCode);
+				const matchedLanguage = supportedLanguages.find((lang: { code: string }) => lang.code === mappedCode);
 				
 				if (matchedLanguage) {
 					newLang = matchedLanguage.code;
 				} else {
 					// Fallback : chercher par inclusion comme avant
-					const fallbackLanguage = supportedLanguages.find(lang => 
+					const fallbackLanguage = supportedLanguages.find((lang: { code: string }) => 
 						selectedValue === lang.code || selectedValue.includes(lang.code)
 					);
 					
