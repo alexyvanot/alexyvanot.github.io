@@ -17,7 +17,7 @@
 	import BaseData from '$lib/data/base';
 	import NavBarData from '$lib/data/nav-bar';
 	import { href } from '$lib/utils';
-	import { mode, toggleMode } from 'mode-watcher';
+	import { mode, setMode } from 'mode-watcher';
 	import { page } from '$app/stores';
 
 	let isDarkMode = $derived($mode === 'dark');
@@ -25,6 +25,21 @@
 	// Fonction pour vérifier si un lien est actif
 	function isActiveLink(itemHref: string): boolean {
 		return $page.url.pathname === itemHref || $page.url.pathname.startsWith(itemHref + '/');
+	}
+	
+	// Fonction personnalisée pour toggle avec transition
+	function toggleModeWithTransition() {
+		// Ajouter la classe pour activer les transitions
+		document.documentElement.classList.add('theme-transitioning');
+		
+		// Changer le mode
+		const newMode = $mode === 'dark' ? 'light' : 'dark';
+		setMode(newMode);
+		
+		// Supprimer la classe après l'animation (100ms + 50ms de marge)
+		setTimeout(() => {
+			document.documentElement.classList.remove('theme-transitioning');
+		}, 150);
 	}
 </script>
 
@@ -78,7 +93,7 @@
 			</Button>
 		</a>
 		<LanguageSelector />
-		<Button variant="ghost" class="text-xl" on:click={toggleMode}>
+		<Button variant="ghost" class="text-xl" on:click={toggleModeWithTransition}>
 			<Icon icon={isDarkMode ? 'i-carbon-moon' : 'i-carbon-sun'} />
 		</Button>
 	</div>
@@ -135,7 +150,7 @@
 					<Button
 						class="flex w-full flex-row items-center justify-start gap-2"
 						variant="ghost"
-						on:click={toggleMode}
+						on:click={toggleModeWithTransition}
 					>
 						<Icon icon={isDarkMode ? 'i-carbon-moon' : 'i-carbon-sun'} className="text-xl" />
 						<div>{isDarkMode ? 'Dark' : 'Light'}</div>

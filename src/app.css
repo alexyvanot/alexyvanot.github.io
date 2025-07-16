@@ -84,14 +84,26 @@ html, body {
 	}
 }
 
+/* Support pour les transitions de thème personnalisées - Ultra optimisé */
+html.theme-transitioning *[class*="bg-"],
+html.theme-transitioning nav,
+html.theme-transitioning button,
+html.theme-transitioning .card,
+html.theme-transitioning [role="dialog"],
+html.theme-transitioning [role="tooltip"] {
+	transition: background-color 150ms ease-out !important;
+	/* Pas de transition sur color/border = changement instantané */
+}
+
 /* Optimisations des performances */
 * {
 	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
 }
 
-/* Transitions plus rapides */
-a, button {
+/* Transitions pour les interactions uniquement (pas pendant le changement de thème) */
+html:not(.theme-transitioning) a, 
+html:not(.theme-transitioning) button {
 	transition: all 0.15s ease-out;
 }
 
