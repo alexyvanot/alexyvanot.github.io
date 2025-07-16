@@ -26,9 +26,7 @@
 		return text
 			// Support markdown : **gras** et *italique* 
 			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-			.replace(/\*(.*?)\*/g, '<em>$1</em>')
-			// Mots clés en gras automatique (seulement si pas déjà dans markdown)
-			.replace(/(?<![*])(collaborer|projets|défis|ensemble|contact|échanges|idées|opportunités)(?![*])/gi, '<strong>$1</strong>');
+			.replace(/\*(.*?)\*/g, '<em>$1</em>');
 	}
 </script>
 

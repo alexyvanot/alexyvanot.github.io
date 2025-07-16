@@ -26,11 +26,7 @@
 		return text
 			// Support markdown : **gras** et *italique* 
 			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-			.replace(/\*(.*?)\*/g, '<em>$1</em>')
-			// Mots techniques en gras automatique (seulement si pas déjà dans markdown)
-			.replace(/(?<![*])(développeur|développement|web|mobile|intelligence artificielle|système|technologie|innovation|créativité|performance|élégance|qualité|collaboration|rigueur technique|solutions|code|projets|applications|ingénierie informatique|full-stack|ESIEA|Master)(?![*])/gi, '<strong>$1</strong>')
-			// Mots de personnalité en gras automatique (seulement si pas déjà dans markdown)
-			.replace(/(?<![*])(musique|piano|discipline|apprentissage|innovation|détails|équilibre|passion|mélomane|artistes|genres musicaux|perspective unique|travail d'équipe|partager|connaissances|limites|approches|créative|précision|vie professionnelle|personnelle|hobbies|créatif|motivé)(?![*])/gi, '<strong>$1</strong>');
+			.replace(/\*(.*?)\*/g, '<em>$1</em>');
 	}
 </script>
 
