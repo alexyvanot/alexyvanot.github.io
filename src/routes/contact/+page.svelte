@@ -23,9 +23,9 @@
 	export let form: ActionData;
 
 	// Configuration EmailJS depuis les variables d'environnement
-	const SERVICE_ID = PUBLIC_SERVICE_ID;
-	const TEMPLATE_ID = PUBLIC_TEMPLATE_ID;
-	const PUBLIC_KEY = PUBLIC_EMAILJS_KEY;
+	const SERVICE_ID = PUBLIC_SERVICE_ID || '';
+	const TEMPLATE_ID = PUBLIC_TEMPLATE_ID || '';
+	const PUBLIC_KEY = PUBLIC_EMAILJS_KEY || '';
 
 	let name = '';
 	let email = '';
