@@ -9,6 +9,8 @@ services:
         - PUBLIC_SERVICE_ID=${PUBLIC_SERVICE_ID:-}
         - PUBLIC_TEMPLATE_ID=${PUBLIC_TEMPLATE_ID:-}
         - PUBLIC_EMAILJS_KEY=${PUBLIC_EMAILJS_KEY:-}
+    env_file:
+      - .env
     container_name: alexyvanot-portfolio
     ports:
       - "8080:80"
