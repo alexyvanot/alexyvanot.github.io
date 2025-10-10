@@ -16,3 +16,10 @@ declare module '*.md' {
 	const content: string;
 	export default content;
 }
+
+// Déclaration des variables d'environnement publiques
+declare module '$env/static/public' {
+	export const PUBLIC_SERVICE_ID: string;
+	export const PUBLIC_TEMPLATE_ID: string;
+	export const PUBLIC_EMAILJS_KEY: string;
+}
