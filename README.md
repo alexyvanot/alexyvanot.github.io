@@ -2,6 +2,9 @@
 
 <div align="center">
 
+<img src="screenshots/demo.png#gh-light-mode-only" alt="Alexy VANOT Logo" width="120" height="120"/>
+<img src="screenshots/demo-dark.png#gh-dark-mode-only" alt="Alexy VANOT Logo" width="120" height="120"/>
+
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
