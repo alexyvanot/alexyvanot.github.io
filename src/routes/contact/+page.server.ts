@@ -1,11 +1,27 @@
 import { fail } from '@sveltejs/kit';
 import type { Action, Actions } from '@sveltejs/kit';
-import { PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID, PUBLIC_EMAILJS_KEY } from '$env/static/public';
+import { env } from '$env/dynamic/public';
+
+// Configuration EmailJS depuis les variables d'environnement (avec fallback gracieux)
+const SERVICE_ID = env.PUBLIC_SERVICE_ID || '';
+const TEMPLATE_ID = env.PUBLIC_TEMPLATE_ID || '';
+const PUBLIC_KEY = env.PUBLIC_EMAILJS_KEY || '';
+const isEmailJSConfigured = SERVICE_ID !== '' && TEMPLATE_ID !== '' && PUBLIC_KEY !== '';
 
 // Regex strict pour validation email côté serveur
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const defaultAction: Action = async ({ request }) => {
+	// Vérifier si EmailJS est configuré
+	if (!isEmailJSConfigured) {
+		console.warn('⚠️ EmailJS non configuré côté serveur');
+		return fail(503, {
+			errors: {
+				general: 'Le service de messagerie n\'est pas configuré. Veuillez contacter l\'administrateur.'
+			}
+		});
+	}
+
 	const data = await request.formData();
 	const name = data.get('name') as string;
 	const email = data.get('email') as string;
@@ -54,9 +70,9 @@ const defaultAction: Action = async ({ request }) => {
 	try {
 		// Simulation d'un vrai navigateur pour bypasser la restriction EmailJS
 		const emailData = {
-			service_id: PUBLIC_SERVICE_ID,
-			template_id: PUBLIC_TEMPLATE_ID,
-			user_id: PUBLIC_EMAILJS_KEY,
+			service_id: SERVICE_ID,
+			template_id: TEMPLATE_ID,
+			user_id: PUBLIC_KEY,
 			template_params: {
 				to_name: 'Alexy VANOT',
 				from_name: name.trim(),

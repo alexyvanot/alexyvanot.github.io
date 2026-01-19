@@ -13,19 +13,22 @@
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { browser } from '$app/environment';
-	import { PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID, PUBLIC_EMAILJS_KEY } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-	import { Check, X, Asterisk } from 'lucide-svelte';
+	import { Check, X, Asterisk, AlertTriangle } from 'lucide-svelte';
 	import Icon from '$lib/components/ui/icon/icon.svelte';
 
 	// Propriétés pour les données de l'action serveur
 	export let form: ActionData;
 
-	// Configuration EmailJS depuis les variables d'environnement
-	const SERVICE_ID = PUBLIC_SERVICE_ID || '';
-	const TEMPLATE_ID = PUBLIC_TEMPLATE_ID || '';
-	const PUBLIC_KEY = PUBLIC_EMAILJS_KEY || '';
+	// Configuration EmailJS depuis les variables d'environnement (avec fallback gracieux)
+	const SERVICE_ID = env.PUBLIC_SERVICE_ID || '';
+	const TEMPLATE_ID = env.PUBLIC_TEMPLATE_ID || '';
+	const PUBLIC_KEY = env.PUBLIC_EMAILJS_KEY || '';
+	
+	// Vérifier si EmailJS est configuré
+	const isEmailJSConfigured = SERVICE_ID !== '' && TEMPLATE_ID !== '' && PUBLIC_KEY !== '';
 
 	let name = '';
 	let email = '';
@@ -150,7 +153,13 @@
 	$: isFormValid = allFieldsValid && captchaVerified;
 
 	onMount(() => {
-		emailjs.init(PUBLIC_KEY);
+		// Vérifier si EmailJS est configuré
+		if (!isEmailJSConfigured) {
+			console.warn('⚠️ EmailJS non configuré: les variables PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID et PUBLIC_EMAILJS_KEY ne sont pas définies dans le fichier .env');
+			console.warn('📧 Le formulaire de contact sera désactivé.');
+		} else {
+			emailjs.init(PUBLIC_KEY);
+		}
 		
 		// Vérifier si un message a déjà été envoyé récemment pour éviter le spam
 		if (browser) {
@@ -298,7 +307,28 @@
 				<CardDescription>{ContactData.description}</CardDescription>
 			</CardHeader>
 			<CardContent>
-				{#if messageSent}
+				{#if !isEmailJSConfigured}
+					<!-- Message d'avertissement quand EmailJS n'est pas configuré -->
+					<div class="flex flex-col items-center justify-center py-12 text-center space-y-6">
+						<div class="relative">
+							<AlertTriangle class="w-24 h-24 text-amber-500" />
+						</div>
+						<div class="space-y-2">
+							<h3 class="text-xl font-semibold text-amber-600 dark:text-amber-400">
+								Formulaire de contact indisponible
+							</h3>
+							<p class="text-muted-foreground max-w-md">
+								Le formulaire de contact n'est pas configuré. Les variables d'environnement EmailJS ne sont pas définies.
+							</p>
+							<p class="text-xs text-muted-foreground mt-4">
+								Si vous êtes le développeur, créez un fichier <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">.env</code> basé sur <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">.env.example</code>.
+							</p>
+						</div>
+						<div class="text-sm text-muted-foreground">
+							Vous pouvez me contacter directement par email : <a href="mailto:contact@alexyvanot.fr" class="text-primary underline">contact@alexyvanot.fr</a>
+						</div>
+					</div>
+				{:else if messageSent}
 					<!-- État de confirmation après envoi -->
 					<div class="flex flex-col items-center justify-center py-12 text-center space-y-6">
 						<div class="relative">
