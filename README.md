@@ -1,109 +1,282 @@
-# Slick Portfolio With Svelte.
+# 🚀 Portfolio - Alexy VANOT
 
-Portfolio
+<div align="center">
 
-## Libraries
+![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
-The main libraries used here are :
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Falexyvanot.fr&style=for-the-badge)](https://alexyvanot.fr)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-- `shadcn-svelte` : component library.
-- `tailwindcss` : css styling.
-- `unocss` : fonts and icons.
-  - using `carbon` (and thus the icon names `i-carbon-*`) icons that could be browsed [here](https://icones.js.org/collection/carbon)
-- `mode-watcher` : color mode utility.
-- `prismjs` : markdown parsing in combination with `marked`, `marked-mangle`, `marked-gfm-heading-id` and `dompurify`.
+**Portfolio personnel moderne et responsive présentant mes compétences, projets et expériences professionnelles.**
 
-### `clone`
+[🌐 Voir le site](https://alexyvanot.fr) • [📧 Contact](https://alexyvanot.fr/contact)
 
-- using `git` :
+</div>
+
+---
+
+## 📋 Table des matières
+
+- [✨ Fonctionnalités](#-fonctionnalités)
+- [🛠️ Technologies utilisées](#️-technologies-utilisées)
+- [📁 Structure du projet](#-structure-du-projet)
+- [🚀 Installation et démarrage](#-installation-et-démarrage)
+- [🐳 Déploiement avec Docker](#-déploiement-avec-docker)
+- [⚙️ Configuration](#️-configuration)
+- [📝 Scripts disponibles](#-scripts-disponibles)
+- [🌐 Déploiement](#-déploiement)
+- [📄 Licence](#-licence)
+
+---
+
+## ✨ Fonctionnalités
+
+| Fonctionnalité | Description |
+|----------------|-------------|
+| 🏠 **Page d'accueil** | Présentation rapide, porte d'entrée du site |
+| 👤 **À propos** | Section détaillée sur qui je suis |
+| 💼 **Expériences** | Timeline interactive de mes expériences professionnelles |
+| 🎓 **Formation** | Parcours éducatif avec détails des diplômes |
+| 🛠️ **Compétences** | Catalogue organisé par catégories (langages, frameworks, outils, soft skills...) |
+| 📂 **Projets** | Galerie de projets avec descriptions détaillées |
+| 📝 **Blog** | Articles et publications techniques |
+| 📄 **CV** | CV téléchargeable en PDF |
+| 📧 **Contact** | Formulaire de contact intégré avec EmailJS |
+| 🔍 **Recherche** | Recherche globale dans le contenu du site |
+| 🌐 **Multilingue** | Support pour plusieurs langues |
+| 🌙 **Mode sombre** | Thème clair/sombre adaptatif |
+| 📱 **Responsive** | Design adapté à tous les écrans |
+
+---
+
+## 🛠️ Technologies utilisées
+
+### Frontend
+- **[SvelteKit 2](https://kit.svelte.dev/)** - Framework web full-stack moderne
+- **[Svelte 5](https://svelte.dev/)** - Compilateur UI réactif
+- **[TypeScript](https://www.typescriptlang.org/)** - Typage statique JavaScript
+- **[TailwindCSS](https://tailwindcss.com/)** - Framework CSS utilitaire
+- **[UnoCSS](https://unocss.dev/)** - Moteur CSS atomique
+- **[Bits UI](https://www.bits-ui.com/)** - Composants UI headless
+
+### Bibliothèques UI
+- **[Lucide Svelte](https://lucide.dev/)** - Icônes SVG
+- **[Iconify](https://iconify.design/)** - Collection d'icônes universelle
+- **[Embla Carousel](https://www.embla-carousel.com/)** - Carrousel performant
+- **[Svelte Sonner](https://svelte-sonner.vercel.app/)** - Notifications toast
+- **[Vara.js](http://vara.js.org/)** - Animation d'écriture manuscrite
+
+### Outils de développement
+- **[Vite](https://vitejs.dev/)** - Build tool ultra-rapide
+- **[ESLint](https://eslint.org/)** - Linting JavaScript/TypeScript
+- **[Prettier](https://prettier.io/)** - Formatage de code
+- **[PrismJS](https://prismjs.com/)** - Coloration syntaxique
+
+### Backend & Services
+- **[EmailJS](https://www.emailjs.com/)** - Service d'envoi d'emails
+- **[Nginx](https://nginx.org/)** - Serveur web et reverse proxy
+- **[Docker](https://www.docker.com/)** - Conteneurisation
+
+---
+
+## 🚀 Installation et démarrage
+
+### Prérequis
+
+- **Node.js** >= 18.x
+- **npm** >= 9.x (ou pnpm/yarn)
+
+### Installation
 
 ```bash
-# ssh
-git clone https://github.com/alexyvanot/alexyvanot.github.io.git protfolio
+# Cloner le repository
+git clone https://github.com/alexyvanot/alexyvanot.github.io.git
 
-# https
-git clone https://github.com/alexyvanot/alexyvanot.github.io.git protfolio
+# Accéder au dossier
+cd alexyvanot.github.io
+
+# Installer les dépendances
+npm install
 ```
 
-## Deploy to GitHub pages
-
-Before deploying to `GitHub Pages`:
-
-### Enable workflows for `Forks`
-
-If you forked the repo, go to the `Actions` tab in the newly generated repository, and enable workflows, click on the green button `I understand my workflows, go ahead and enable them` :
-
-![alt text](./screenshots/enable-fork-workflow.png)
-
-### Actions Settings
-
-Allow `GitHub Pages` in your repo settings with correct permissions:
-
-- go to your repo `Settings` > `Actions` > `General`
-- in `Actions permissions` : make sure that `Allow all actions and reusable workflows` checkbox is checked
-
-![alt text](./screenshots/settings-actions.png)
-
-### svelte.config.js
-
-Depending on the name of your repository, you would like to set the `base` variable to that, starting with a leading slash like this:
-
-```js
-const base = '/portfolio';
-```
-
-But if your repository name is the same as your Github domain name; my Github name is `alexyvanot` so my domain name is `alexyvanot.github.io` (lower cased), and so the special repository name is also `alexyvanot.github.io`: if that is the case, you need to set the base to an empty string
-
-```js
-const base = '';
-```
-
-### Launching the build and deploy workflow
-
-If you didn't commit and push the changes in the `svelte.config.js` yet, you can do that now, otherwise you can create an empty commit:
+### Démarrage en développement
 
 ```bash
-git commit --allow-empty -m "chore: trigger workflow"
+# Lancer le serveur de développement
+npm run dev
+
+# Ou ouvrir automatiquement dans le navigateur
+npm run dev -- --open
 ```
 
-and push it to your `master` or `main` branch.
+Le site de développement sera accessible sur `http://localhost:5173`
 
-In the `Actions` tab, make sure that the `Build and Deploy` workflow is successful (wait for it to complete): you should have at least one successfull workflow run:
+### Build de production
 
-![alt text](./screenshots/build-and-deploy-action.png)
+```bash
+# Générer le build statique
+npm run build
 
-### Enable GitHub pages
+# Prévisualiser le build
+npm run preview
+```
 
-- go to your repo's `Settings` > `Pages`
-- in Source section, select `Deploy from a branch`.
-- in Branch section, select `gh-pages` and `/ (root)` and click on save
+Le site de build sera accessible sur `http://localhost:4173`
 
-![alt text](./screenshots/enable-gh-pages.png)
+---
 
-Again in the `Actions` tab, make sure that the `pages-build-deployment` workflow is successful (wait for it to complete): you should have at least one successfull workflow run:
+## 🐳 Déploiement avec Docker
 
-![alt text](./screenshots/pages-build-deployment-action.png)
+### Prérequis Docker
 
-> If for some reason no action was launched, try pushing empty commit.
+- **Docker** >= 20.x
+- **Docker Compose** >= 2.x
 
-## That's it
+### Configuration des variables d'environnement
 
-That's it, you can click on the latest deployment and visit it.
+Créez un fichier `.env` à la racine du projet :
 
-## Adapt to your needs
+```env
+# Configuration EmailJS pour le formulaire de contact
+PUBLIC_SERVICE_ID=your_emailjs_service_id
+PUBLIC_TEMPLATE_ID=your_emailjs_template_id
+PUBLIC_EMAILJS_KEY=your_emailjs_public_key
+```
 
-If you want to use the template as it is, you can :
+### Lancement avec Docker Compose
 
-- update files in `src/lib/data` with your data.
-- update `src/lib/index.css` for custom styling.
-- update `src/lib/index.css` for custom markdown styling.
+```bash
+# Build et démarrage
+docker-compose up -d --build
 
-- update `static/favicon.png` to customize the tab's icon.
+# Vérifier les logs
+docker-compose logs -f
 
-- You can find `shadcn-svelte` component in `src/lib/components/ui`, other components are arranged by their page, or in the `common` folder.
+# Arrêter les conteneurs
+docker-compose down
+```
 
-But feel free to explore and hack the template to your needs if you feel like it.
+Le site sera accessible sur `http://localhost:8080`
 
-## Known issues:
+### Build Docker manuel
 
-- Svelte no longer support `node 14`, use a newer version instead.
+```bash
+# Build de l'image
+docker build -t alexyvanot-portfolio \
+  --build-arg PUBLIC_SERVICE_ID=$PUBLIC_SERVICE_ID \
+  --build-arg PUBLIC_TEMPLATE_ID=$PUBLIC_TEMPLATE_ID \
+  --build-arg PUBLIC_EMAILJS_KEY=$PUBLIC_EMAILJS_KEY \
+  .
+
+# Lancement du conteneur
+docker run -d -p 8080:80 --name portfolio alexyvanot-portfolio
+```
+
+---
+
+## ⚙️ Configuration
+
+### Variables d'environnement
+
+| Variable | Description | Requis |
+|----------|-------------|--------|
+| `PUBLIC_SERVICE_ID` | ID du service EmailJS | ✅ |
+| `PUBLIC_TEMPLATE_ID` | ID du template EmailJS | ✅ |
+| `PUBLIC_EMAILJS_KEY` | Clé publique EmailJS | ✅ |
+
+### Personnalisation des données
+
+Les données du portfolio sont centralisées dans `src/lib/data/` :
+
+| Fichier | Contenu |
+|---------|---------|
+| `base.ts` | Informations de base (nom, prénom) |
+| `about.ts` | Section "À propos" |
+| `skills.ts` | Compétences techniques |
+| `experience.ts` | Expériences professionnelles |
+| `education.ts` | Formation et diplômes |
+| `projects.ts` | Projets réalisés |
+| `blog.ts` | Articles de blog |
+| `contact.ts` | Informations de contact |
+
+---
+
+## 📝 Scripts disponibles
+
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Lance le serveur de développement |
+| `npm run build` | Génère le build de production |
+| `npm run preview` | Prévisualise le build de production |
+| `npm run check` | Vérifie les types TypeScript |
+| `npm run check:watch` | Vérifie les types en mode watch |
+| `npm run lint` | Lint le code avec ESLint et Prettier |
+| `npm run format` | Formate le code avec Prettier |
+
+---
+
+## 🌐 Déploiement
+
+### GitHub Pages (Automatique)
+
+Le site est configuré pour être déployé automatiquement sur GitHub Pages via le build statique généré par `@sveltejs/adapter-static`.
+
+1. Pusher sur la branche `main`
+2. Le build est généré dans le dossier `build/`
+3. GitHub Pages sert le contenu statique
+
+### Domaine personnalisé
+
+Le domaine `alexyvanot.fr` est configuré via le fichier `CNAME`.
+
+### Auto-hébergement
+
+Pour un déploiement sur votre propre serveur :
+
+1. Clonez le repository
+2. Configurez les variables d'environnement
+3. Lancez avec Docker Compose
+4. Configurez un reverse proxy (optionnel)
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à :
+
+1. 🍴 Fork le projet
+2. 🔀 Créer une branche (`git checkout -b feature/AmazingFeature`)
+3. 💾 Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. 📤 Push sur la branche (`git push origin feature/AmazingFeature`)
+5. 🔃 Ouvrir une Pull Request
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+## 📬 Contact
+
+**Alexy VANOT** - Full Stack Developer & Software Engineer
+
+- 🌐 Website: [alexyvanot.fr](https://alexyvanot.fr)
+- 💼 LinkedIn: [linkedin.com/in/alexyvanot](https://linkedin.com/in/alexyvanot)
+- 🐙 GitHub: [github.com/alexyvanot](https://github.com/alexyvanot)
+
+---
+
+<div align="center">
+
+**⭐ Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile !**
+
+Made with ❤️ by [Alexy VANOT](https://alexyvanot.fr)
+
+</div>
+
