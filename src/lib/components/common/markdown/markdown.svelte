@@ -39,24 +39,30 @@
 	});
 </script>
 
-<div bind:this={container} class="markdown-container p-6"></div>
+<div class="markdown-wrapper">
+	<div bind:this={container} class="markdown-container"></div>
+</div>
 
 <style>
-	.markdown-container {
-		background: hsl(var(--card) / 0.85);
-		backdrop-filter: blur(4px);
-		border-radius: 0.75rem;
-		border: 1px solid hsl(var(--border) / 0.3);
-		margin: 1rem 0;
-		transition: all 0.2s ease-out;
+	.markdown-wrapper {
+		position: relative;
 	}
 	
-	.markdown-container:hover {
-		background: hsl(var(--card) / 0.92);
-		border-color: hsl(var(--border) / 0.5);
+	/* Effet de lueur subtile derrière le conteneur */
+	.markdown-wrapper::before {
+		content: '';
+		position: absolute;
+		inset: 10px;
+		background: radial-gradient(
+			ellipse at 50% 0%,
+			hsl(var(--primary) / 0.08) 0%,
+			transparent 70%
+		);
+		border-radius: 1rem;
+		z-index: -1;
+		pointer-events: none;
 	}
 	
-	/* Assurer que le contenu reste lisible */
 	.markdown-container {
 		position: relative;
 		z-index: 1;
