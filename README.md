@@ -267,16 +267,12 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 **Alexy VANOT** - Full Stack Developer & Software Engineer
 
 - 🌐 Website: [alexyvanot.fr](https://alexyvanot.fr)
-- 💼 LinkedIn: [linkedin.com/in/alexyvanot](https://linkedin.com/in/alexyvanot)
+- 💼 LinkedIn: [linkedin.com/in/alexyvanot](https://linkedin.com/in/vanot)
 - 🐙 GitHub: [github.com/alexyvanot](https://github.com/alexyvanot)
 
 ---
 
 <div align="center">
-
-**⭐ Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile !**
-
-Made with ❤️ by [Alexy VANOT](https://alexyvanot.fr)
 
 </div>
 
