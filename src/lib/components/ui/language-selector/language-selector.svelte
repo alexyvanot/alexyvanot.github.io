@@ -20,10 +20,10 @@
 		config?: Partial<LanguageSelectorConfig>;
 	}
 
-	let { config: customConfig }: Props = $props();
+	const props: Props = $props();
 
 	// Fusionner la configuration personnalisée avec la configuration par défaut
-	const config = createLanguageSelectorConfig(customConfig);
+	const config = createLanguageSelectorConfig(props.config);
 	const { supportedLanguages, defaultLanguage, pageLanguage, persistence, googleTranslate, ui } =
 		config;
 
