@@ -9,7 +9,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "prettier --check . && eslint .",
+		"postinstall": "svelte-kit sync"
 	},
 	"devDependencies": {
 		"@iconify-json/carbon": "^1.2.4",
@@ -22,7 +23,7 @@
 		"@types/node": "^24.0.11",
 		"@types/prismjs": "^1.26.5",
 		"autoprefixer": "^10.4.20",
-		"bits-ui": "^0.21.16",
+		"bits-ui": "^2.15.4",
 		"clsx": "^2.1.1",
 		"dompurify": "^3.2.1",
 		"embla-carousel-svelte": "^8.4.0",
@@ -33,7 +34,7 @@
 		"lucide-svelte": "^0.460.1",
 		"marked-gfm-heading-id": "^4.1.1",
 		"marked-mangle": "^1.1.10",
-		"mode-watcher": "^0.4.1",
+		"mode-watcher": "^1.1.0",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
