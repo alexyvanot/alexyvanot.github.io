@@ -1,6 +1,7 @@
 ---
 name: Créativité
 slug: creativity
+published: true
 category: soft
 color: purple
 logo: Creativity

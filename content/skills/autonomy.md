@@ -1,6 +1,7 @@
 ---
 name: Autonomie & apprentissage
 slug: autonomy
+published: true
 category: soft
 color: blue
 logo: Autonomy

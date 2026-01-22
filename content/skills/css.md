@@ -1,6 +1,7 @@
 ---
 name: CSS
 slug: css
+published: true
 category: markup-style
 color: blue
 logo: CSS

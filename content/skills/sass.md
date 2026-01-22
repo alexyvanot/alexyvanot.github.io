@@ -1,6 +1,7 @@
 ---
 name: Sass
 slug: sass
+published: true
 category: markup-style
 color: pink
 logo: Sass

@@ -1,6 +1,7 @@
 ---
 title: "Démonstration de la plateforme de blog"
 slug: blog-platform-demo
+published: true
 excerpt: "Découvrez toutes les fonctionnalités de notre plateforme de blog moderne : recherche, navigation, épinglage, et bien plus encore."
 author: Alexy VANOT
 publishedAt: 2025-07-08

@@ -1,6 +1,7 @@
 ---
 name: Docker
 slug: docker
+published: true
 category: devops
 color: blue
 logo: Docker

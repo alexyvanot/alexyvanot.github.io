@@ -384,6 +384,7 @@ interface SkillMeta {
 	category?: string;
 	color?: string;
 	logo?: string;
+	published?: boolean;
 }
 
 let _skillsCache: Skill[] | null = null;
@@ -399,6 +400,12 @@ function loadAllSkills(): Skill[] {
 	for (const [path, raw] of Object.entries(skillFiles)) {
 		const slug = extractSlug(path);
 		const { meta, content } = parseMarkdownFile<SkillMeta>(raw, slug);
+		
+		// Skip unpublished content
+		if (meta.published === false) {
+			console.log(`[loadAllSkills] Skipping ${slug} (published: false)`);
+			continue;
+		}
 		
 		console.log(`[loadAllSkills] Processing ${slug}:`, { name: meta.name, logo: meta.logo, rawLogoType: typeof meta.logo });
 		
@@ -485,6 +492,7 @@ interface BlogMeta {
 	color?: string;
 	pinned?: boolean;
 	links?: any[];
+	published?: boolean;
 }
 
 function loadAllBlogPosts(): BlogPost[] {
@@ -493,6 +501,9 @@ function loadAllBlogPosts(): BlogPost[] {
 	for (const [path, raw] of Object.entries(blogFiles)) {
 		const slug = extractSlug(path);
 		const { meta, content } = parseMarkdownFile<BlogMeta>(raw, slug);
+		
+		// Skip unpublished content
+		if (meta.published === false) continue;
 		
 		posts.push({
 			slug: meta.slug || slug,
@@ -534,6 +545,7 @@ interface ProjectMeta {
 	links?: any[];
 	screenshots?: any[];
 	attachments?: any[];
+	published?: boolean;
 }
 
 function loadAllProjects(): Project[] {
@@ -542,6 +554,9 @@ function loadAllProjects(): Project[] {
 	for (const [path, raw] of Object.entries(projectFiles)) {
 		const slug = extractSlug(path);
 		const { meta, content } = parseMarkdownFile<ProjectMeta>(raw, slug);
+		
+		// Skip unpublished content
+		if (meta.published === false) continue;
 		
 		projects.push({
 			slug: meta.slug || slug,
@@ -584,6 +599,7 @@ interface ExperienceMeta {
 	skills?: string[];
 	links?: any[];
 	attachments?: any[];
+	published?: boolean;
 }
 
 function loadAllExperiences(): Experience[] {
@@ -592,6 +608,9 @@ function loadAllExperiences(): Experience[] {
 	for (const [path, raw] of Object.entries(experienceFiles)) {
 		const slug = extractSlug(path);
 		const { meta, content } = parseMarkdownFile<ExperienceMeta>(raw, slug);
+		
+		// Skip unpublished content
+		if (meta.published === false) continue;
 		
 		console.log(`[loadAllExperiences] ${slug}:`, {
 			name: meta.name,
@@ -641,6 +660,7 @@ interface EducationMeta {
 	subjects?: string[];
 	links?: any[];
 	attachments?: any[];
+	published?: boolean;
 }
 
 function loadAllEducation(): Education[] {
@@ -649,6 +669,9 @@ function loadAllEducation(): Education[] {
 	for (const [path, raw] of Object.entries(educationFiles)) {
 		const slug = extractSlug(path);
 		const { meta, content } = parseMarkdownFile<EducationMeta>(raw, slug);
+		
+		// Skip unpublished content
+		if (meta.published === false) continue;
 		
 		education.push({
 			slug: meta.slug || slug,

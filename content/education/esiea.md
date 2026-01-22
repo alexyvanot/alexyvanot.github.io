@@ -1,6 +1,7 @@
 ---
 name: ESIEA
 slug: master-esiea
+published: true
 shortDescription: Master en ingénierie informatique en alternance. Spécialisation en architecture logicielle, sécurité, réseaux et technologies immersives.
 degree: Master en ingénierie informatique
 organization: ESIEA

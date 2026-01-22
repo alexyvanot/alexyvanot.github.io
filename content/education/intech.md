@@ -1,6 +1,7 @@
 ---
 name: InTech
 slug: bachelor-intech
+published: true
 shortDescription: Bachelor en ingénierie informatique orienté projets. Formation complète en développement full-stack JavaScript/TypeScript avec React, Node.js et méthodologies agiles.
 degree: Bachelor en ingénierie informatique
 organization: InTech

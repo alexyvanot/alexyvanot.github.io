@@ -1,6 +1,7 @@
 ---
 name: Full-Stack Developer
 slug: fullstack-synchrotron-soleil
+published: true
 shortDescription: Développeur full-stack en alternance au sein d'un grand équipement scientifique. Développement Java/React, tests automatisés, CI/CD et administration Linux.
 company: Synchrotron SOLEIL
 type: Développement Full-Stack

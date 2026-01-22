@@ -2,7 +2,23 @@
 
 Ce dossier contient **TOUT** le contenu du site. Pour modifier le site, il suffit d'éditer ces fichiers - **aucune connaissance en programmation n'est requise** !
 
-## 📁 Structure
+## � Activer / Désactiver un contenu
+
+Chaque fichier peut être **activé ou désactivé** avec le champ `published` :
+
+```yaml
+---
+name: Ma compétence
+published: true   # ✅ Visible sur le site (valeur par défaut)
+# published: false  # ❌ Masqué du site
+---
+```
+
+> **Par défaut**, tout contenu est `published: true`. Ajoutez `published: false` pour masquer un élément sans le supprimer.
+
+---
+
+## �📁 Structure
 
 ```
 content/
@@ -25,6 +41,7 @@ content/
 ---
 title: "Titre de l'article"
 slug: mon-article
+published: true    # ← mettre false pour masquer
 excerpt: "Résumé court affiché dans les listes"
 author: Alexy VANOT
 publishedAt: 2025-01-22
@@ -57,6 +74,7 @@ Votre contenu en Markdown ici...
 ---
 name: Nom du projet
 slug: mon-projet
+published: true    # ← mettre false pour masquer
 type: Website
 color: "#ff3e00"
 logo: Svelte
@@ -88,6 +106,7 @@ Description du projet en Markdown...
 ---
 name: Nom de la compétence
 slug: ma-skill
+published: true    # ← mettre false pour masquer
 category: framework
 color: orange
 logo: Svelte
@@ -117,6 +136,7 @@ Description de la compétence...
 ---
 name: Poste occupé
 slug: mon-experience
+published: true    # ← mettre false pour masquer
 company: Nom de l'entreprise
 type: Développement Full-Stack
 contract: Apprenticeship
@@ -151,6 +171,7 @@ Description de l'expérience en Markdown...
 ---
 name: Nom de l'école
 slug: ma-formation
+published: true    # ← mettre false pour masquer
 degree: Master en informatique
 organization: Nom de l'organisation
 location: Paris, France

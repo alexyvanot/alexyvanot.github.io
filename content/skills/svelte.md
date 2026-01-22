@@ -1,6 +1,7 @@
 ---
 name: Svelte
 slug: svelte
+published: true
 category: framework
 color: orange
 logo: Svelte

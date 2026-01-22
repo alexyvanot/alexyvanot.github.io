@@ -1,6 +1,7 @@
 ---
 name: CI/CD
 slug: ci-cd
+published: true
 category: devops
 color: gray
 logo: CICD

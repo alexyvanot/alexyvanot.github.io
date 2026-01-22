@@ -1,6 +1,7 @@
 ---
 name: Svelte Template
 slug: template-svelte
+published: true
 type: Website Template
 color: "#ff3e00"
 logo: Svelte

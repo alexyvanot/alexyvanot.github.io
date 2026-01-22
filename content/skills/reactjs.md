@@ -1,6 +1,7 @@
 ---
 name: React.js
 slug: reactjs
+published: true
 category: library
 color: cyan
 logo: ReactJs

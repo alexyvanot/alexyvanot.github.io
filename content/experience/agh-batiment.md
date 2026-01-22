@@ -1,6 +1,7 @@
 ---
 name: Stagiaire – Rénovation administrative
 slug: stagiaire-aghb
+published: true
 shortDescription: "Stage d'un mois dédié à la transformation digitale d'une entreprise du BTP."
 company: AGH Bâtiment
 type: Développement Web

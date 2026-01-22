@@ -1,6 +1,7 @@
 ---
 name: Git
 slug: git
+published: true
 category: devtools
 color: orange
 logo: Git

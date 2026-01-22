@@ -1,6 +1,7 @@
 ---
 name: TypeScript
 slug: ts
+published: true
 category: pro-lang
 color: blue
 logo: TypeScript

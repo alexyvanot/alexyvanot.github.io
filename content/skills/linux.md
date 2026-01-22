@@ -1,6 +1,7 @@
 ---
 name: Linux
 slug: linux
+published: true
 category: devtools
 color: gray
 logo: Linux

@@ -1,6 +1,7 @@
 ---
 name: Java
 slug: java
+published: true
 category: pro-lang
 color: red
 logo: Java

@@ -1,6 +1,7 @@
 ---
 title: "Mini Article"
 slug: mini-article
+published: true
 excerpt: "La technologie évolue rapidement, transformant notre quotidien. Rester curieux et apprendre en continu permet de s'adapter à ce monde en mouvement."
 author: Alexy VANOT
 publishedAt: 2023-10-01

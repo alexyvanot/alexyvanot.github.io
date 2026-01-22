@@ -1,6 +1,7 @@
 ---
 name: Pierre Mendès France
 slug: bac-pmf-2020
+published: true
 shortDescription: Baccalauréat général avec spécialités SVT et SES. Formation pluridisciplinaire alliant rigueur scientifique et culture économique.
 degree: Baccalauréat (SVT / SES)
 organization: Lycée Pierre Mendès France

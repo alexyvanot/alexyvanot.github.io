@@ -1,6 +1,7 @@
 ---
 name: Travail en équipe
 slug: teamwork
+published: true
 category: soft
 color: green
 logo: Teamwork

@@ -1,6 +1,7 @@
 ---
 name: JavaScript
 slug: js
+published: true
 category: pro-lang
 color: yellow
 logo: JavaScript

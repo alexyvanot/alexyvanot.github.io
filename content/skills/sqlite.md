@@ -1,6 +1,7 @@
 ---
 name: SQLite
 slug: sqlite
+published: true
 category: db
 color: gray
 logo: SQLite

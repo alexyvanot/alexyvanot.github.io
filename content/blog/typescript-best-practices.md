@@ -1,6 +1,7 @@
 ---
 title: "Meilleures pratiques TypeScript en 2024"
 slug: typescript-best-practices
+published: true
 excerpt: "Explorez les meilleures pratiques et patterns pour écrire du TypeScript maintenable et performant."
 author: Alexy VANOT
 publishedAt: 2024-02-10
