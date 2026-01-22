@@ -1,4 +1,4 @@
-import ProjectsData from '$lib/data/projects';
+import { ProjectsData } from '$lib/data';
 
 export function load({ params }: { params: Record<string, string> }) {
 	if (params.slug) {

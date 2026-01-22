@@ -1,9 +1,9 @@
 <script lang="ts">
-	import EmptyResult from '$lib/components/common/empty-result/empty-result.svelte';
-	import SearchPage from '$lib/components/common/search-page/search-page.svelte';
-	import EducationCard from '$lib/components/education/education-card.svelte';
-	import Icon from '$lib/components/ui/icon/icon.svelte';
-	import EducationData from '$lib/data/education';
+	import { EmptyResult } from '$lib/components/feedback';
+	import { SearchPage } from '$lib/components/layout';
+	import { EducationCard } from '$lib/components/features';
+	import { Icon } from '$lib/components/ui';
+	import { EducationData } from '$lib/data';
 
 	let search = $state('');
 

@@ -1,9 +1,10 @@
-import BaseData from './base';
+import { SiteConfigData } from './content-loader';
 
 // icon can take any value from the Carbon icon set
 // https://icon-sets.iconify.design/carbon/
 // or can take image URLs or local Path
-const left = { title: BaseData.fullName, icon: 'i-carbon-code' } as const;
+const fullName = `${SiteConfigData.firstName} ${SiteConfigData.lastName}`;
+const left = { title: fullName, icon: 'i-carbon-code' } as const;
 
 const items: Array<{
 	title: string;

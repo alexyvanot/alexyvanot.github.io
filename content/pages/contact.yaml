@@ -1,0 +1,23 @@
+# Page Contact
+# Personnalise le contenu de ta page Contact ici
+
+title: Contact
+description: N'hésitez pas à me contacter pour toute question ou opportunité professionnelle.
+email: contact@alexyvanot.fr
+
+# Labels du formulaire
+form:
+  nameLabel: Nom
+  namePlaceholder: Votre nom
+  emailLabel: Email
+  emailPlaceholder: votre@email.com
+  messageLabel: Message
+  messagePlaceholder: Votre message...
+  submitLabel: Envoyer
+  sendingLabel: Envoi en cours...
+  
+# Messages de succès/erreur
+messages:
+  success: Message envoyé avec succès !
+  error: Une erreur est survenue. Veuillez réessayer.
+  validationError: Veuillez remplir tous les champs correctement.

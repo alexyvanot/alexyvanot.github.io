@@ -1,0 +1,72 @@
+<script lang="ts">
+	import { Assets } from '$lib/data';
+	import type { Education } from '$lib/data/types';
+	import { computeExactDuration, getMonthAndYear, href, ellipsify } from '$lib/utils';
+	import { mode } from 'mode-watcher';
+	import {
+		Avatar, AvatarFallback, AvatarImage,
+		Badge, CardContent, CardTitle,
+		Icon, Tooltip, TooltipContent, TooltipTrigger,
+		Muted
+	} from '$lib/components/ui';
+	import FancyCard from '$lib/components/ui/card/fancy-card.svelte';
+
+	const props: { it: Education } = $props();
+	const it = props.it;
+
+	const exactDuration = $derived(computeExactDuration(it.period.from, it.period.to));
+
+	let from = $derived(getMonthAndYear(it.period.from));
+	let to = $derived(getMonthAndYear(it.period.to));
+
+	let period = $derived(`${from} - ${to}`);
+
+	let location = $derived(`${it.organization}, ${it.location}`);
+</script>
+
+<FancyCard color={it.color} href={href(`/education/${it.slug}`)}>
+	<CardContent class="flex flex-col gap-8 sm:flex-row">
+		<Avatar>
+			<AvatarFallback>
+				<img src={$mode === 'dark' ? Assets.Unknown.dark : Assets.Unknown.light} alt={it.name} />
+			</AvatarFallback>
+			<AvatarImage src={$mode === 'dark' ? it.logo.dark : it.logo.light} />
+		</Avatar>
+		<div class="flex flex-col gap-4">
+			<CardTitle>{it.degree}</CardTitle>
+			<Tooltip openDelay={300}>
+				<TooltipTrigger>
+					<Muted className="flex flex-row items-center gap-2">
+						<Icon icon="i-carbon-location" />
+						<div>{location}</div>
+					</Muted>
+				</TooltipTrigger>
+				<TooltipContent>Location</TooltipContent>
+			</Tooltip>
+			<Tooltip openDelay={300}>
+				<TooltipTrigger>
+					<Muted className="flex flex-row items-center gap-2">
+						<Icon icon="i-carbon-calendar" />
+						<div>{period}</div>
+					</Muted>
+				</TooltipTrigger>
+				<TooltipContent>Date range</TooltipContent>
+			</Tooltip>
+			<Tooltip openDelay={300}>
+				<TooltipTrigger>
+					<Muted className="flex flex-row items-center gap-2">
+						<Icon icon="i-carbon-time" />
+						<div>{exactDuration}</div>
+					</Muted>
+					<TooltipContent side="bottom">Exact duration</TooltipContent>
+				</TooltipTrigger>
+			</Tooltip>
+			<div class="py-2 text-sm text-muted-foreground">{ellipsify(it.shortDescription, 150)}</div>
+			<div class="flex flex-row flex-wrap gap-2">
+				{#each it.subjects as subject (subject)}
+					<Badge variant="secondary">{subject}</Badge>
+				{/each}
+			</div>
+		</div>
+	</CardContent>
+</FancyCard>

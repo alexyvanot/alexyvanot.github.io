@@ -22,12 +22,48 @@ export enum ContractType {
 	Apprenticeship = 'Apprenticeship'
 }
 
-export type Asset = { light: string; dark: string };
+export type Asset = { light: string; dark: string; fallback?: string };
 
 export type Screenshot = {
 	src: string;
 	label: string;
 };
+
+/**
+ * Types de pièces jointes supportés
+ */
+export enum AttachmentType {
+	Image = 'image',
+	PDF = 'pdf',
+	Document = 'document',  // Word, etc.
+	Archive = 'archive',    // ZIP, RAR, etc.
+	Video = 'video',
+	Audio = 'audio',
+	Code = 'code',
+	Link = 'link',          // URL externe
+	Other = 'other'
+}
+
+/**
+ * Pièce jointe générique
+ * Peut être une image, PDF, document, archive, lien externe, etc.
+ */
+export interface Attachment {
+	/** Nom/label de la pièce jointe */
+	label: string;
+	/** Source : URL externe ou chemin local (ex: /pdf/cv.pdf, https://example.com/doc.pdf) */
+	src: string;
+	/** Type de pièce jointe (auto-détecté si non spécifié) */
+	type?: AttachmentType;
+	/** Description optionnelle */
+	description?: string;
+	/** Taille du fichier (optionnel, pour affichage) */
+	size?: string;
+	/** Icône personnalisée (optionnel) */
+	icon?: Icon;
+	/** Ouvrir dans un nouvel onglet (défaut: true pour liens externes) */
+	newTab?: boolean;
+}
 
 export interface Item<S extends string = string> {
 	slug: S;
@@ -36,6 +72,8 @@ export interface Item<S extends string = string> {
 	shortDescription: string;
 	description: string;
 	screenshots?: Array<Screenshot>;
+	/** Pièces jointes (images, PDF, documents, liens, etc.) */
+	attachments?: Array<Attachment>;
 }
 
 export interface Link {

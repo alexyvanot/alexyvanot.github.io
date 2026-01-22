@@ -1,228 +1,158 @@
 <script lang="ts">
-	import BasePage from '$lib/components/common/base-page/base-page.svelte';
-	import Icon from '$lib/components/ui/icon/icon.svelte';
-	import AboutHero from '$lib/components/about/about-hero.svelte';
-	import AboutSectionSlide from '$lib/components/about/about-section-slide.svelte';
-	import ContactSection from '$lib/components/about/contact-section.svelte';
-	import SectionNavigation from '$lib/components/about/about-navigation.svelte';
-	import { ScrollbarCustom } from '$lib/components/ui/scrollbar-custom';
-	import aboutData from '$lib/data/about';
-	import { onMount, onDestroy } from 'svelte';
-	import './about-styles.css';
+	import { TitledPage } from '$lib/components/layout';
+	import { MarkdownAnimated, ScreenshotCard, AttachmentCard } from '$lib/components/content';
+	import { AboutPageData } from '$lib/data/content-loader';
+	import { AttachmentType } from '$lib/data/types';
 
-	let mounted = $state(false);
-	let currentSection = $state('hero');
-	let varaLoaded = $state(false);
-	let aboutPageContainer: HTMLElement;
-	let sectionElements: HTMLElement[] = [];
-	let isScrolling = $state(false);
-	let lastScrollTime = 0;
-	let currentSectionIndex = 0;
-	let allSections = ['hero', ...aboutData.sections.map(s => s.id)];
-	
-	onMount(() => {
-		// Charger Vara.js dans la page principale pour s'assurer qu'il est bien chargé
-		const loadVaraScript = () => {
-			return new Promise<void>((resolve, reject) => {
-				// Vérifier si le script existe déjà
-				if (document.querySelector('script[src="/scripts/vara.min.js"]')) {
-					console.log('Vara.js est déjà chargé dans la page principale');
-					varaLoaded = true;
-					resolve();
-					return;
-				}
-				
-				const script = document.createElement('script');
-				script.src = '/scripts/vara.min.js';
-				script.onload = () => {
-					console.log('Vara.js chargé avec succès dans la page principale');
-					varaLoaded = true;
-					resolve();
-				};
-				script.onerror = (error) => {
-					console.error('Erreur lors du chargement de Vara.js:', error);
-					reject(error);
-				};
-				document.body.appendChild(script);
-			});
-		};
-		
-		// Charger le script puis activer le composant
-		loadVaraScript()
-			.then(() => {
-				setTimeout(() => {
-					mounted = true;
-					console.log('Page mounted, Vara loaded:', varaLoaded);
-					
-					// Initialiser le système de défilement fluide
-					setupSmoothScroll();
-				}, 500); // Attendre un peu après le chargement du script
-			})
-			.catch((error) => {
-				console.error('Échec du chargement de Vara, mais on continue:', error);
-				mounted = true; // Monter quand même pour avoir le fallback
-				setupSmoothScroll();
-			});
-	});
-	
-	// Nettoyer les événements lorsque la page est déchargée
-	onDestroy(() => {
-		// Nettoyer les écouteurs d'événements
-		window.removeEventListener('wheel', handleWheel);
-		document.removeEventListener('touchstart', handleTouchStart);
-		document.removeEventListener('touchend', handleTouchEnd);
-	});
-
-	// Configuration du défilement fluide entre les sections
-	function setupSmoothScroll() {
-		// Collecter toutes les sections
-		sectionElements = allSections.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-		currentSectionIndex = 0;
-		
-		// Désactiver le défilement standard et utiliser notre logique personnalisée
-		window.addEventListener('wheel', handleWheel, { passive: false });
-		
-		// Aussi écouter les événements tactiles pour le mobile
-		document.addEventListener('touchstart', handleTouchStart, { passive: true });
-		document.addEventListener('touchend', handleTouchEnd, { passive: true });
-	}
-	
-	// Variables pour la gestion du tactile
-	let touchStartY = 0;
-	
-	function handleTouchStart(e: TouchEvent) {
-		touchStartY = e.touches[0].clientY;
-	}
-	
-	function handleTouchEnd(e: TouchEvent) {
-		const touchEndY = e.changedTouches[0].clientY;
-		const diff = touchStartY - touchEndY;
-		
-		// Seuil minimum pour considérer comme un swipe
-		if (Math.abs(diff) > 50) {
-			if (diff > 0) {
-				// Swipe vers le haut, aller à la section suivante
-				navigateToSection(1);
-			} else {
-				// Swipe vers le bas, aller à la section précédente
-				navigateToSection(-1);
-			}
-		}
-	}
-	
-	// Gérer l'événement de la molette de souris
-	function handleWheel(e: WheelEvent) {
-		e.preventDefault();
-		
-		// Ne pas réagir si un défilement est déjà en cours
-		if (isScrolling) return;
-		
-		// Vérifier si le défilement est suffisant pour changer de section
-		// et s'assurer qu'un certain délai s'est écoulé depuis le dernier défilement
-		const now = Date.now();
-		if (now - lastScrollTime < 800) return;
-		lastScrollTime = now;
-		
-		// Déterminer la direction
-		if (e.deltaY > 0) {
-			// Défilement vers le bas
-			navigateToSection(1);
-		} else {
-			// Défilement vers le haut
-			navigateToSection(-1);
-		}
-	}
-	
-	// Naviguer vers une section relative à la position actuelle
-	function navigateToSection(direction: number) {
-		// Trouver l'index de la section actuelle
-		const currentIndex = allSections.indexOf(currentSection);
-		
-		// Calculer le nouvel index
-		let newIndex = currentIndex + direction;
-		
-		// S'assurer que l'index est dans les limites
-		if (newIndex < 0) newIndex = 0;
-		if (newIndex >= allSections.length) newIndex = allSections.length - 1;
-		
-		// Si c'est une section différente, y naviguer
-		if (newIndex !== currentIndex) {
-			isScrolling = true;
-			const targetSection = allSections[newIndex];
-			scrollToSection(targetSection);
-			
-			// Mettre à jour la section courante
-			currentSection = targetSection;
-			
-			// Réinitialiser l'état de défilement après l'animation
-			setTimeout(() => {
-				isScrolling = false;
-			}, 800);
-		}
-	}
-	
-	// Fonction pour défiler vers une section
-	function scrollToSection(sectionId: string) {
-		const element = document.getElementById(sectionId);
-		if (element) {
-			element.scrollIntoView({ 
-				behavior: 'smooth',
-				block: 'start'
-			});
-		}
-	}
-
-	// Séparer la section contact des autres
-	const regularSections = aboutData.sections.filter(s => s.id !== 'contact');
-	const contactSection = aboutData.sections.find(s => s.id === 'contact');
+	const { title, content, attachments } = AboutPageData;
 </script>
 
-<svelte:head>
-	<!-- Ajouter la police manuscrite de secours au cas où -->
-	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-</svelte:head>
-
-<BasePage title={aboutData.title}>
-	<ScrollbarCustom disableScrollbar={true}>
-		<div class="about-page-container max-w-full overflow-hidden">
-			<div class="about-page w-full" bind:this={aboutPageContainer}>
-		<!-- Section héro avec photo et présentation -->
-		<div id="hero" class="about-section relative">
-			<AboutHero profile={aboutData.profile} {mounted} {varaLoaded} />
+<TitledPage {title}>
+	<div class="about-page">
+		<div class="container mx-auto max-w-4xl px-4">
+			<!-- Contenu Markdown -->
+			<article class="prose prose-lg dark:prose-invert max-w-none">
+				<MarkdownAnimated {content} />
+			</article>
 			
-			<!-- Indicateur de scroll centré en bas - attaché à la première diapo -->
-			{#if mounted}
-				<button 
-					type="button"
-					class="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer bg-transparent border-none z-10"
-					onclick={() => navigateToSection(1)}
-					aria-label="Défiler vers la section suivante"
-				>
-					<div class="flex flex-col items-center">
-						<span class="text-sm text-muted-foreground mb-2">Découvrez plus</span>
-						<Icon icon="i-carbon-chevron-down" className="text-xl text-muted-foreground" />
+			<!-- Pièces jointes (en bas, comme les projets) -->
+			{#if attachments && attachments.length > 0}
+				<div class="attachments-section mt-12">
+					<h3 class="section-title flex items-center gap-2 text-xl font-semibold mb-6">
+						<div class="i-carbon-attachment"></div>
+						Pièces jointes
+					</h3>
+					<div class="attachments-grid">
+						{#each attachments as attachment, index (index)}
+							{#if attachment.type === AttachmentType.Image}
+								<ScreenshotCard item={{ src: attachment.src, label: attachment.label }} />
+							{:else}
+								<AttachmentCard {attachment} />
+							{/if}
+						{/each}
 					</div>
-				</button>
+				</div>
 			{/if}
 		</div>
-		
-		<!-- Sections de contenu avec scroll -->
-		{#each regularSections as section, index}
-			<div id={section.id} class="about-section">
-				<AboutSectionSlide {section} {mounted} {index} />
-			</div>
-		{/each}
-
-		<!-- Section contact spéciale -->
-		{#if contactSection}
-			<div id={contactSection.id} class="about-section">
-				<ContactSection section={contactSection} profile={aboutData.profile} {mounted} delay={600} />
-			</div>
-		{/if}
 	</div>
+</TitledPage>
 
-	<!-- Navigation entre sections -->
-	<SectionNavigation sections={allSections} sectionTitles={['Introduction', ...aboutData.sections.map(s => s.title)]} bind:currentSection />
-	</div>
-	</ScrollbarCustom>
-</BasePage>
+<style>
+	.about-page {
+		min-height: calc(100vh - 4rem);
+	}
+
+	.attachments-section {
+		border-top: 1px solid hsl(var(--border) / 0.5);
+		padding-top: 2rem;
+	}
+
+	.section-title {
+		color: hsl(var(--primary) / 0.8);
+	}
+
+	.attachments-grid {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	@media (min-width: 640px) {
+		.attachments-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.attachments-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	/* Styles pour les images dans le markdown */
+	:global(.about-page .markdown-container img) {
+		max-width: 100%;
+		height: auto;
+		border-radius: 1rem;
+		margin: 1.5rem auto;
+		display: block;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	/* Image de profil centrée et ronde */
+	:global(.about-page .markdown-container img[alt="Photo de profil"]) {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		object-fit: cover;
+		border: 4px solid hsl(var(--primary) / 0.2);
+	}
+
+	/* Blockquotes stylées */
+	:global(.about-page .markdown-container blockquote) {
+		border-left: 4px solid hsl(var(--primary));
+		background: hsl(var(--secondary) / 0.3);
+		padding: 1rem 1.5rem;
+		border-radius: 0 0.5rem 0.5rem 0;
+		font-style: italic;
+		margin: 2rem 0;
+	}
+
+	/* Séparateurs */
+	:global(.about-page .markdown-container hr) {
+		border: none;
+		height: 1px;
+		background: linear-gradient(to right, transparent, hsl(var(--border)), transparent);
+		margin: 2.5rem 0;
+	}
+
+	/* Headers */
+	:global(.about-page .markdown-container h1),
+	:global(.about-page .markdown-container h2),
+	:global(.about-page .markdown-container h3) {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	:global(.about-page .markdown-container h2) {
+		border-bottom: 1px solid hsl(var(--border) / 0.5);
+		padding-bottom: 0.5rem;
+	}
+
+	/* Listes */
+	:global(.about-page .markdown-container ul),
+	:global(.about-page .markdown-container ol) {
+		padding-left: 1.5rem;
+	}
+
+	:global(.about-page .markdown-container li) {
+		margin-bottom: 0.5rem;
+	}
+
+	/* Liens */
+	:global(.about-page .markdown-container a) {
+		color: hsl(var(--primary));
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		transition: border-color 0.2s;
+	}
+
+	:global(.about-page .markdown-container a:hover) {
+		border-bottom-color: hsl(var(--primary));
+	}
+
+	/* Code inline */
+	:global(.about-page .markdown-container code:not(pre code)) {
+		background: hsl(var(--secondary));
+		padding: 0.2rem 0.4rem;
+		border-radius: 0.25rem;
+		font-size: 0.875em;
+	}
+
+	/* Conteneur d'écriture manuscrite */
+	:global(.about-page .handwritten-container) {
+		display: flex;
+		justify-content: center;
+		margin: 1rem 0;
+	}
+</style>

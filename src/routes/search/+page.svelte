@@ -1,22 +1,17 @@
 <script lang="ts">
-	import EmptyResult from '$lib/components/common/empty-result/empty-result.svelte';
-	import SearchPage from '$lib/components/common/search-page/search-page.svelte';
-	import AvatarFallback from '$lib/components/ui/avatar/avatar-fallback.svelte';
-	import AvatarImage from '$lib/components/ui/avatar/avatar-image.svelte';
-	import Avatar from '$lib/components/ui/avatar/avatar.svelte';
-	import { CardContent, CardTitle } from '$lib/components/ui/card';
+	import { EmptyResult } from '$lib/components/feedback';
+	import { SearchPage } from '$lib/components/layout';
+	import { 
+		Avatar, AvatarFallback, AvatarImage,
+		CardContent, CardTitle,
+		Icon, Separator, Large,
+		Tooltip, TooltipContent, TooltipTrigger 
+	} from '$lib/components/ui';
 	import FancyCard from '$lib/components/ui/card/fancy-card.svelte';
-	import Icon from '$lib/components/ui/icon/icon.svelte';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import { Tooltip, TooltipContent, TooltipTrigger } from '$lib/components/ui/tooltip';
-	import Large from '$lib/components/ui/typography/large.svelte';
-	import Assets from '$lib/data/assets';
-	import BlogData from '$lib/data/blog';
-	import { NAMED_COLORS } from '$lib/data/colors';
-	import EducationData from '$lib/data/education';
-	import ExperienceData from '$lib/data/experience';
-	import ProjectsData from '$lib/data/projects';
-	import SkillsData from '$lib/data/skills';
+	import { 
+		Assets, BlogData, EducationData, ExperienceData, 
+		ProjectsData, SkillsData, NAMED_COLORS 
+	} from '$lib/data';
 	import { href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 

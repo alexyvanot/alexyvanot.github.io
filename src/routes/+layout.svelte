@@ -1,16 +1,14 @@
 <script lang="ts">
-	import NavBar from '$lib/components/common/nav-bar/nav-bar.svelte';
-	import ScrollToTop from '$lib/components/common/scroll-to-top/scroll-to-top.svelte';
-	import Loader from '$lib/components/common/loader/loader.svelte';
-	import { AnimatedBackground } from '$lib/components/ui/animated-background';
-	import { InConstruction } from '$lib/components/ui/in-construction';
+	import { NavBar, ScrollToTop } from '$lib/components/layout';
+	import { Loader, InConstruction } from '$lib/components/feedback';
+	import { AnimatedBackground } from '$lib/components/effects';
+	import { cleanGoogleTranslateArtifacts } from '$lib/utils';
 	import 'virtual:uno.css';
 	import '../app.css';
 	import '../markdown.css';
 	import { ModeWatcher } from 'mode-watcher';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { cleanGoogleTranslateArtifacts } from '$lib/utils/googleTranslateCleaner';
 
 	let { children } = $props();
 	let showLoader = $state(true);

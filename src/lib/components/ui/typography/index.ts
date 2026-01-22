@@ -1,0 +1,9 @@
+export { default as H1 } from './h1.svelte';
+export { default as H2 } from './h2.svelte';
+export { default as H3 } from './h3.svelte';
+export { default as H4 } from './h4.svelte';
+export { default as Large } from './large.svelte';
+export { default as Lead } from './lead.svelte';
+export { default as Muted } from './muted.svelte';
+export { default as P } from './p.svelte';
+export { default as Small } from './small.svelte';

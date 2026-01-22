@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { DetailPage } from '$lib/components/common/detail-page';
-	import Assets from '$lib/data/assets';
-	import ExperienceData from '$lib/data/experience';
-	import type { Experience } from '$lib/data/types';
+	import { DetailPage } from '$lib/components/layout';
+	import { Assets, ExperienceData } from '$lib/data';
+	import type { Experience } from '$lib/types';
 	import { computeExactDuration, getMonthAndYear, href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';
@@ -25,7 +24,15 @@
 			: ''
 	);
 
-	const allExperiences = ExperienceData.items.sort((a, b) => b.period.from.getTime() - a.period.from.getTime());
+	// Helper pour obtenir un timestamp safe
+	const safeTime = (date: Date | undefined | null): number => {
+		if (!date || !(date instanceof Date) || isNaN(date.getTime())) return 0;
+		return date.getTime();
+	};
+
+	const allExperiences = ExperienceData.items
+		.filter(exp => exp.period?.from)
+		.sort((a, b) => safeTime(b.period.from) - safeTime(a.period.from));
 	const currentIndex = $derived(
 		currentItem ? allExperiences.findIndex(exp => exp.slug === currentItem?.slug) : -1
 	);

@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { DetailPage } from '$lib/components/common/detail-page';
-	import Assets from '$lib/data/assets';
-	import EducationData from '$lib/data/education';
-	import type { Education } from '$lib/data/types';
+	import { DetailPage } from '$lib/components/layout';
+	import { Assets, EducationData } from '$lib/data';
+	import type { Education } from '$lib/types';
 	import { computeExactDuration, getMonthAndYear, href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';

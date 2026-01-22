@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { DetailPage } from '$lib/components/common/detail-page';
-	import Assets from '$lib/data/assets';
-	import ProjectsData from '$lib/data/projects';
-	import type { Project } from '$lib/data/types';
+	import { DetailPage } from '$lib/components/layout';
+	import { Assets, ProjectsData } from '$lib/data';
+	import type { Project } from '$lib/types';
 	import { computeExactDuration, getMonthAndYear, href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';
@@ -25,7 +24,15 @@
 			: ''
 	);
 
-	const allProjects = ProjectsData.items.sort((a, b) => b.period.from.getTime() - a.period.from.getTime());
+	// Helper pour obtenir un timestamp safe
+	const safeTime = (date: Date | undefined | null): number => {
+		if (!date || !(date instanceof Date) || isNaN(date.getTime())) return 0;
+		return date.getTime();
+	};
+
+	const allProjects = ProjectsData.items
+		.filter(proj => proj.period?.from)
+		.sort((a, b) => safeTime(b.period.from) - safeTime(a.period.from));
 	const currentIndex = $derived(
 		currentItem ? allProjects.findIndex(proj => proj.slug === currentItem?.slug) : -1
 	);
@@ -57,6 +64,7 @@
 	itemTitle={currentItem?.name ?? ''}
 	description={currentItem?.description ?? ''}
 	screenshots={currentItem?.screenshots ?? []}
+	attachments={currentItem?.attachments ?? []}
 	exists={!!currentItem}
 	entityName="Projet"
 	entityNamePlural="Tous les projets"

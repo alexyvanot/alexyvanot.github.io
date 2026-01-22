@@ -1,0 +1,7 @@
+# Page CV
+# Personnalise le contenu de ta page CV ici
+
+title: CV
+pdfPath: /pdf/CV_Alexy_Vanot.pdf
+downloadLabel: Télécharger
+fullscreenLabel: Plein écran

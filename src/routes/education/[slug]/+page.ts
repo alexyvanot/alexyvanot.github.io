@@ -1,4 +1,4 @@
-import EducationData from '$lib/data/education';
+import { EducationData } from '$lib/data';
 
 export function load({ params }: { params: Record<string, string> }) {
 	if (params.slug) {

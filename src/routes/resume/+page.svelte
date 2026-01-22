@@ -1,17 +1,19 @@
-<script>
-	import TitledPage from '$lib/components/common/titled-page/titled-page.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import ResumeData from '$lib/data/resume';
+<script lang="ts">
+	import { TitledPage } from '$lib/components/layout';
+	import { Button } from '$lib/components/ui';
+	import { ResumePageData } from '$lib/data';
+
+	const { title, pdfPath, downloadLabel, fullscreenLabel } = ResumePageData;
 </script>
 
-<TitledPage title={ResumeData.title}>
+<TitledPage {title}>
 	<div class="flex flex-col items-center gap-3 mb-4">
-		<a href={ResumeData.resume} download>
+		<a href={pdfPath} download>
 			<Button>
 				<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
 				</svg>
-				Download
+				{downloadLabel}
 			</Button>
 		</a>
 	</div>
@@ -25,9 +27,9 @@
 				<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7V4a1 1 0 011-1h3m0 0l-3 3m3-3v4M20 7V4a1 1 0 00-1-1h-3m0 0l3 3m-3-3v4M4 17v3a1 1 0 001 1h3m0 0l-3-3m3 3v-4M20 17v3a1 1 0 01-1 1h-3m0 0l3-3m-3 3v-4"></path>
 				</svg>
-				Plein écran
+				{fullscreenLabel}
 			</button>
 		</div>
-		<iframe id="resume-iframe" src={ResumeData.resume} class="w-full h-[calc(100%-3rem)]" title={ResumeData.title}></iframe>
+		<iframe id="resume-iframe" src={pdfPath} class="w-full h-[calc(100%-3rem)]" {title}></iframe>
 	</div>
 </TitledPage>

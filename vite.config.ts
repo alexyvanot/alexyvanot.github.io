@@ -1,11 +1,24 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import UnoCSS from 'unocss/vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-	plugins: [sveltekit(), UnoCSS()],
+	plugins: [
+		sveltekit(), 
+		UnoCSS({
+			inspector: false // Désactiver l'inspector UnoCSS
+		})
+	],
+	// Permet d'importer depuis /content
+	resolve: {
+		alias: {
+			'/content': resolve(__dirname, 'content')
+		}
+	},
 	optimizeDeps: {
 		include: [
+			'js-yaml',
 			'@emailjs/browser', 
 			'svelte-sonner',
 			'marked',
@@ -21,7 +34,6 @@ export default defineConfig({
 			'tailwind-merge',
 			'embla-carousel-svelte',
 			'tailwind-variants',
-			'@riadh-adrani/utils',
 			// Icônes Lucide communes
 			'lucide-svelte',
 			'lucide-svelte/icons/circle',
@@ -52,6 +64,8 @@ export default defineConfig({
 			'lucide-svelte/icons/more-horizontal',
 			'lucide-svelte/icons/chevron-down',
 			'lucide-svelte/icons/chevron-up',
+			'lucide-svelte/icons/chevron-left',
+			'lucide-svelte/icons/ellipsis',
 			'lucide-svelte/icons/plus',
 			'lucide-svelte/icons/minus',
 			'lucide-svelte/icons/edit',
@@ -59,9 +73,8 @@ export default defineConfig({
 			'lucide-svelte/icons/settings',
 			'lucide-svelte/icons/sun',
 			'lucide-svelte/icons/moon'
-		],
-		// Force le rebuild des dépendances au lieu de les exclure
-		force: true
+		]
+		// Note: 'force: true' supprimé pour éviter la ré-optimisation à chaque démarrage
 	},
 	server: {
 		fs: {

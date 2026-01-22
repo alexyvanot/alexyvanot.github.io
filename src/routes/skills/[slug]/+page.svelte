@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { DetailPage } from '$lib/components/common/detail-page';
-	import Assets from '$lib/data/assets';
-	import ExperienceData from '$lib/data/experience';
-	import ProjectsData from '$lib/data/projects';
-	import SkillsData from '$lib/data/skills';
-	import type { Skill } from '$lib/data/types';
+	import { DetailPage } from '$lib/components/layout';
+	import { Assets, ExperienceData, ProjectsData, SkillsData } from '$lib/data';
+	import type { Skill } from '$lib/types';
 	import { href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';

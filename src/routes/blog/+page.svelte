@@ -1,19 +1,14 @@
 <script lang="ts">
-	import EmptyResult from '$lib/components/common/empty-result/empty-result.svelte';
-	import SearchPage from '$lib/components/common/search-page/search-page.svelte';
-	import AvatarFallback from '$lib/components/ui/avatar/avatar-fallback.svelte';
-	import AvatarImage from '$lib/components/ui/avatar/avatar-image.svelte';
-	import Avatar from '$lib/components/ui/avatar/avatar.svelte';
-	import Badge from '$lib/components/ui/badge/badge.svelte';
-	import { CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card';
+	import { EmptyResult } from '$lib/components/feedback';
+	import { SearchPage } from '$lib/components/layout';
+	import { 
+		Avatar, AvatarFallback, AvatarImage,
+		Badge, CardContent, CardDescription, CardHeader, CardTitle,
+		Input, Separator, Muted, H2
+	} from '$lib/components/ui';
 	import FancyCard from '$lib/components/ui/card/fancy-card.svelte';
 	import * as Carousel from '$lib/components/ui/carousel';
-	import Input from '$lib/components/ui/input/input.svelte';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import Muted from '$lib/components/ui/typography/muted.svelte';
-	import H2 from '$lib/components/ui/typography/h2.svelte';
-	import Assets from '$lib/data/assets';
-	import BlogData from '$lib/data/blog';
+	import { Assets, BlogData } from '$lib/data';
 	import { href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context.js';
@@ -21,11 +16,17 @@
 
 	let search = $state('');
 
+	// Helper pour obtenir un timestamp safe
+	const safeTime = (date: Date | undefined | null): number => {
+		if (!date || !(date instanceof Date) || isNaN(date.getTime())) return 0;
+		return date.getTime();
+	};
+
 	// Articles épinglés pour le carrousel
 	let pinnedPosts = $derived(
 		BlogData.items
 			.filter(item => item.pinned)
-			.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+			.sort((a, b) => safeTime(b.publishedAt) - safeTime(a.publishedAt))
 	);
 
 	// Vérifier si on est en mode recherche
@@ -41,13 +42,16 @@
 				item.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase())) ||
 				item.author.toLowerCase().includes(search.toLowerCase())
 			)
-			.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+			.sort((a, b) => safeTime(b.publishedAt) - safeTime(a.publishedAt))
 	);
 
 	const onSearch = (query: string) => (search = query);
 
-	// Fonction pour formater la date
-	const formatDate = (date: Date) => {
+	// Fonction pour formater la date avec protection contre les dates invalides
+	const formatDate = (date: Date | undefined | null) => {
+		if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+			return 'Date inconnue';
+		}
 		return new Intl.DateTimeFormat('fr-FR', {
 			year: 'numeric',
 			month: 'long',
@@ -56,7 +60,10 @@
 	};
 
 	// Fonction pour formater la date d'édition en format court
-	const formatEditDate = (date: Date) => {
+	const formatEditDate = (date: Date | undefined | null) => {
+		if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+			return '';
+		}
 		return new Intl.DateTimeFormat('fr-FR', {
 			year: 'numeric',
 			month: '2-digit',

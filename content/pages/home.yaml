@@ -1,0 +1,10 @@
+# Page d'accueil
+# Personnalise le contenu de ta page d'accueil ici
+
+title: Accueil
+
+hero:
+  description: >
+    Développeur Full-Stack passionné, je crée des applications web modernes
+    et performantes. Actuellement en alternance au Synchrotron SOLEIL et 
+    en Master à l'ESIEA.

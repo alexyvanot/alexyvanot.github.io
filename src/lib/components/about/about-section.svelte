@@ -16,7 +16,7 @@
 		index?: number;
 	} = $props();
 
-	const delay = 200 + index * 100;
+	const delay = $derived(200 + index * 100);
 </script>
 
 <section 

@@ -1,4 +1,4 @@
-import BlogData from '$lib/data/blog';
+import { BlogData } from '$lib/data';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ params }) => {

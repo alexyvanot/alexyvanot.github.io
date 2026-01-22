@@ -1,12 +1,10 @@
 <script lang="ts">
-	import TitledPage from '$lib/components/common/titled-page/titled-page.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Captcha } from '$lib/components/ui/captcha';
-	import ContactData from '$lib/data/contact';
+	import { TitledPage } from '$lib/components/layout';
+	import { 
+		Button, Input, Label, Textarea, Icon, Captcha,
+		Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
+	} from '$lib/components/ui';
+	import { ContactPageData } from '$lib/data';
 	import { toast, Toaster } from 'svelte-sonner';
 	import emailjs from '@emailjs/browser';
 	import { onMount } from 'svelte';
@@ -17,7 +15,6 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { Check, X, Asterisk, AlertTriangle } from 'lucide-svelte';
-	import Icon from '$lib/components/ui/icon/icon.svelte';
 
 	// Propriétés pour les données de l'action serveur
 	export let form: ActionData;
@@ -299,12 +296,12 @@
 	}
 </script>
 
-<TitledPage title={ContactData.title}>
+<TitledPage title={ContactPageData.title}>
 	<div class="flex flex-col items-center justify-start w-full max-w-2xl mx-auto pt-4 pb-8">
 		<Card class="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
 			<CardHeader>
 				<CardTitle>Contactez-moi</CardTitle>
-				<CardDescription>{ContactData.description}</CardDescription>
+				<CardDescription>{ContactPageData.description}</CardDescription>
 			</CardHeader>
 			<CardContent>
 				{#if !isEmailJSConfigured}
@@ -505,7 +502,7 @@
 			</CardContent>
 			<CardFooter class="flex-col items-start gap-2">
 				<div class="text-sm text-muted-foreground">
-					Vous pouvez également me contacter directement par email à <a href={`mailto:${ContactData.email}`} class="font-medium underline underline-offset-4">{ContactData.email}</a>
+					Vous pouvez également me contacter directement par email à <a href={`mailto:${ContactPageData.email}`} class="font-medium underline underline-offset-4">{ContactPageData.email}</a>
 				</div>
 			</CardFooter>
 		</Card>

@@ -4,8 +4,60 @@ import { cubicOut } from 'svelte/easing';
 import type { TransitionConfig } from 'svelte/transition';
 import { base } from '$app/paths';
 
+// Re-export utilities from utils folder
+export { cleanGoogleTranslateArtifacts } from './utils/googleTranslateCleaner';
+export { handleImageError } from './utils/imageUtils';
+
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
+}
+
+// ============================================================================
+// Replacements for @riadh-adrani/utils (to fix 404 error)
+// ============================================================================
+
+/**
+ * Truncate a string to a maximum length and add ellipsis
+ */
+export function ellipsify(str: string, maxLength: number): string {
+	if (!str) return '';
+	if (str.length <= maxLength) return str;
+	return str.slice(0, maxLength - 3) + '...';
+}
+
+/**
+ * Check if a string is a valid hex color
+ */
+export function isHexColor(color: string): boolean {
+	if (!color || typeof color !== 'string') return false;
+	return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
+}
+
+/**
+ * Change the opacity of a hex color
+ */
+export function changeColorOpacity(hexColor: string, opacity: number): string {
+	if (!hexColor) return 'rgba(128, 128, 128, ' + opacity + ')';
+	
+	// Remove # if present
+	const hex = hexColor.replace('#', '');
+	
+	// Parse hex to RGB
+	let r: number, g: number, b: number;
+	
+	if (hex.length === 3) {
+		r = parseInt(hex[0] + hex[0], 16);
+		g = parseInt(hex[1] + hex[1], 16);
+		b = parseInt(hex[2] + hex[2], 16);
+	} else if (hex.length === 6) {
+		r = parseInt(hex.substring(0, 2), 16);
+		g = parseInt(hex.substring(2, 4), 16);
+		b = parseInt(hex.substring(4, 6), 16);
+	} else {
+		return 'rgba(128, 128, 128, ' + opacity + ')';
+	}
+	
+	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
 type FlyAndScaleParams = {
@@ -61,9 +113,15 @@ const WEEK = 7 * 24 * 60 * 60 * 1000;
 const MONTH = 30 * 24 * 60 * 60 * 1000;
 const YEAR = 365 * 24 * 60 * 60 * 1000;
 
-export function computeExactDuration(from: Date, to: Date = new Date()): string {
-	const fromMs = from.getTime();
-	const toMs = to.getTime();
+export function computeExactDuration(from: Date | undefined | null, to: Date | undefined | null = new Date()): string {
+	// Protection contre les dates invalides
+	const fromValid = from instanceof Date && !isNaN(from.getTime());
+	const toValid = to instanceof Date && !isNaN(to.getTime());
+	
+	if (!fromValid) return '';
+	
+	const fromMs = from!.getTime();
+	const toMs = toValid ? to!.getTime() : new Date().getTime();
 
 	const display: Array<string> = [];
 
@@ -132,8 +190,8 @@ export const getMonthName = (index: number): string => {
 
 export const href = (url: string) => `${base}${url}`;
 
-export const getMonthAndYear = (date?: Date) => {
-	if (!date) return 'Present';
+export const getMonthAndYear = (date?: Date | null) => {
+	if (!date || !(date instanceof Date) || isNaN(date.getTime())) return 'Present';
 
 	return `${getMonthName(date.getMonth())} ${date.getFullYear()}`;
 };

@@ -1,21 +1,21 @@
 <script lang="ts">
-	import Title from '$lib/components/common/title/title.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import CarouselContent from '$lib/components/ui/carousel/carousel-content.svelte';
-	import CarouselItem from '$lib/components/ui/carousel/carousel-item.svelte';
-	import CarouselNext from '$lib/components/ui/carousel/carousel-next.svelte';
-	import CarouselPrevious from '$lib/components/ui/carousel/carousel-previous.svelte';
-	import Carousel from '$lib/components/ui/carousel/carousel.svelte';
-	import Icon from '$lib/components/ui/icon/icon.svelte';
-	import ResponsiveContainer from '$lib/components/ui/responsive-container/responsive-container.svelte';
-	import { Tooltip, TooltipContent, TooltipTrigger } from '$lib/components/ui/tooltip';
-	import H1 from '$lib/components/ui/typography/h1.svelte';
-	import Muted from '$lib/components/ui/typography/muted.svelte';
-	import HomeData from '$lib/data/home';
+	import { Title } from '$lib/components/content';
+	import { ResponsiveContainer } from '$lib/components/layout';
+	import { 
+		Button, Icon,
+		Tooltip, TooltipContent, TooltipTrigger,
+		H1, Muted
+	} from '$lib/components/ui';
+	import * as Carousel from '$lib/components/ui/carousel';
+	import { HomePageData, getSkills } from '$lib/data';
 	import { href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context.js';
 	import { onMount } from 'svelte';
+
+	// Données de la page
+	const { title, fullName, heroDescription, socialLinks } = HomePageData;
+	const carousel = getSkills();
 
 	let api: CarouselAPI;
 	let intervalId: number | null = null;
@@ -102,7 +102,7 @@
 	}
 </script>
 
-<Title title={HomeData.title} />
+<Title title={title} />
 <ResponsiveContainer className="flex flex-col justify-center flex-1 relative z-10">
 	<div
 		class="flex flex-1 flex-col items-center justify-center gap-8 px-14 md:flex-row md:justify-between backdrop-blur-sm rounded-lg p-8"
@@ -110,10 +110,10 @@
 		<div
 			class="flex flex-col items-center justify-center gap-4 text-center md:items-start md:text-left"
 		>
-			<H1>{HomeData.hero.title}</H1>
-			<Muted>{HomeData.hero.description}</Muted>
+			<H1>{fullName},</H1>
+			<Muted>{heroDescription}</Muted>
 			<div class="flex flex-row gap-1">
-				{#each HomeData.hero.links as item}
+				{#each socialLinks as item}
 					<a href={item.href} target={item.href.startsWith('http') ? '_blank' : '_self'}>
 						<Tooltip>
 							<TooltipTrigger>
@@ -128,7 +128,7 @@
 			</div>
 		</div>
 		<div>
-			<Carousel 
+			<Carousel.Root 
 				bind:api 
 				class="w-[200px] md:ml-14" 
 				opts={{ loop: true }}
@@ -137,9 +137,9 @@
 				on:touchstart={handleTouchStart}
 				on:touchend={handleTouchEnd}
 			>
-				<CarouselContent>
-					{#each HomeData.carousel as item}
-						<CarouselItem class="flex flex-col items-center justify-center gap-4">
+				<Carousel.Content>
+					{#each carousel as item}
+						<Carousel.Item class="flex flex-col items-center justify-center gap-4">
 							<a href={href(`/skills/${item.slug}`)} class="cursor-pointer">
 								<img
 									src={$mode === 'dark' ? item.logo.dark : item.logo.light}
@@ -152,12 +152,12 @@
 									{item.name}
 								</Button>
 							</a>
-						</CarouselItem>
+						</Carousel.Item>
 					{/each}
-				</CarouselContent>
-				<CarouselNext />
-				<CarouselPrevious />
-			</Carousel>
+				</Carousel.Content>
+				<Carousel.Next />
+				<Carousel.Previous />
+			</Carousel.Root>
 		</div>
 	</div>
 </ResponsiveContainer>

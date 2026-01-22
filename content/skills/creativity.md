@@ -1,0 +1,9 @@
+---
+name: Créativité
+slug: creativity
+category: soft
+color: purple
+logo: Creativity
+---
+
+Création d'expériences originales, notamment en réalité virtuelle ou dans la conception d'UI.

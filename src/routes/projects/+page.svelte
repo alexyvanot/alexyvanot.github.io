@@ -1,12 +1,10 @@
 <script lang="ts">
-	import EmptyResult from '$lib/components/common/empty-result/empty-result.svelte';
-	import SearchPage from '$lib/components/common/search-page/search-page.svelte';
-	import ProjectCard from '$lib/components/projects/project-card.svelte';
-	import Icon from '$lib/components/ui/icon/icon.svelte';
-	import Toggle from '$lib/components/ui/toggle/toggle.svelte';
-	import ProjectsData from '$lib/data/projects';
-	import SkillsData from '$lib/data/skills';
-	import type { Skill } from '$lib/data/types';
+	import { EmptyResult } from '$lib/components/feedback';
+	import { SearchPage } from '$lib/components/layout';
+	import { ProjectCard } from '$lib/components/features';
+	import { Icon, Toggle } from '$lib/components/ui';
+	import { ProjectsData, SkillsData } from '$lib/data';
+	import type { Skill } from '$lib/types';
 
 	interface SkillFilter extends Skill {
 		isSelected?: boolean;

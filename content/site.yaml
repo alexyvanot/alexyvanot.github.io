@@ -1,0 +1,28 @@
+# Site Configuration
+# Ce fichier contient les paramètres globaux du site
+
+firstName: Alexy
+lastName: VANOT
+jobTitle: Full Stack Developer & Software Engineer
+email: contact@alexyvanot.fr
+
+# Bandeau "En construction"
+inConstruction:
+  enabled: true  # Mettre à false pour désactiver le bandeau
+  title: "En cours de développement"
+  message: "Les informations présentes sur ce site peuvent être incorrectes, merci de ne pas en prendre compte"
+
+# Liens sociaux
+socialLinks:
+  - label: GitHub
+    href: https://github.com/alexyvanot
+    icon: i-carbon-logo-github
+  - label: LinkedIn
+    href: https://linkedin.com/in/vanot
+    icon: i-carbon-logo-linkedin
+  - label: Email
+    href: mailto:contact@alexyvanot.fr
+    icon: i-carbon-at
+  - label: Blog
+    href: /blog
+    icon: i-carbon-blog

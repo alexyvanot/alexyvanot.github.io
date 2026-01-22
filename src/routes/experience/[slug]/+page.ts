@@ -1,4 +1,4 @@
-import ExperienceData from '$lib/data/experience';
+import { ExperienceData } from '$lib/data';
 
 export function load({ params }: { params: Record<string, string> }) {
 	if (params.slug) {

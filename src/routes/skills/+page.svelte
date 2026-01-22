@@ -1,12 +1,9 @@
 <script lang="ts">
-	import EmptyResult from '$lib/components/common/empty-result/empty-result.svelte';
-	import SearchPage from '$lib/components/common/search-page/search-page.svelte';
-	import CardContent from '$lib/components/ui/card/card-content.svelte';
-	import CardTitle from '$lib/components/ui/card/card-title.svelte';
+	import { EmptyResult } from '$lib/components/feedback';
+	import { SearchPage } from '$lib/components/layout';
+	import { CardContent, CardTitle, Separator, Muted } from '$lib/components/ui';
 	import FancyCard from '$lib/components/ui/card/fancy-card.svelte';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import Muted from '$lib/components/ui/typography/muted.svelte';
-	import SkillsData, { groupByCategory } from '$lib/data/skills';
+	import { SkillsData, groupByCategory } from '$lib/data';
 	import { href } from '$lib/utils';
 	import { mode } from 'mode-watcher';
 

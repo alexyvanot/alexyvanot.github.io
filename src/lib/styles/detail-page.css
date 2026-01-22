@@ -343,8 +343,18 @@
 	grid-template-columns: repeat(1, 1fr);
 }
 
+/* Grille pour les pièces jointes (mixte images + liens) */
+.detail-attachments {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(1, 1fr);
+}
+
 @media (min-width: 640px) {
 	.detail-screenshots {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.detail-attachments {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
@@ -353,10 +363,16 @@
 	.detail-screenshots {
 		grid-template-columns: repeat(3, 1fr);
 	}
+	.detail-attachments {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (min-width: 1280px) {
 	.detail-screenshots {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.detail-attachments {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }

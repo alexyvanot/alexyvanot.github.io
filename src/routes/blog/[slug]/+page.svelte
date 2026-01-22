@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { DetailPage } from '$lib/components/common/detail-page';
-	import Assets from '$lib/data/assets';
-	import BlogData from '$lib/data/blog';
-	import type { BlogPost } from '$lib/data/types';
+	import { DetailPage } from '$lib/components/layout';
+	import { Assets, BlogData } from '$lib/data';
+	import type { BlogPost } from '$lib/types';
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -50,7 +49,10 @@
 			: undefined
 	);
 
-	const formatDate = (date: Date) => {
+	const formatDate = (date: Date | undefined | null) => {
+		if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+			return 'Date inconnue';
+		}
 		return new Intl.DateTimeFormat('fr-FR', {
 			year: 'numeric',
 			month: 'long',
@@ -66,7 +68,9 @@
 		return Math.ceil(words / wordsPerMinute);
 	};
 
-	const allPosts = BlogData.items.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+	const allPosts = BlogData.items
+		.filter(p => p.publishedAt instanceof Date && !isNaN(p.publishedAt.getTime()))
+		.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 	const currentIndex = $derived(
 		currentItem ? allPosts.findIndex(post => post.slug === currentItem?.slug) : -1
 	);

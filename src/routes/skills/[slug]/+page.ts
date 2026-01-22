@@ -1,4 +1,4 @@
-import SkillsData from '$lib/data/skills';
+import { SkillsData } from '$lib/data';
 
 export function load({ params }: { params: Record<string, string> }) {
 	if (params.slug) {

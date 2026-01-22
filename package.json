@@ -10,16 +10,18 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
-		"postinstall": "svelte-kit sync"
+		"postinstall": "svelte-kit sync",
+		"icons": "node scripts/download-icons.js",
+		"icons:all": "node scripts/download-icons.js --all"
 	},
 	"devDependencies": {
 		"@iconify-json/carbon": "^1.2.4",
-		"@riadh-adrani/utils": "^1.0.0",
 		"@sveltejs/adapter-auto": "^3.2.5",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.8.1",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/eslint": "^9.6.0",
+		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^24.0.11",
 		"@types/prismjs": "^1.26.5",
 		"autoprefixer": "^10.4.20",
@@ -58,6 +60,7 @@
 		"@iconify-json/flag": "^1.2.6",
 		"@iconify-json/noto": "^1.2.3",
 		"@iconify-json/twemoji": "^1.2.2",
+		"js-yaml": "^4.1.0",
 		"vara": "^1.4.1"
 	},
 	"overrides": {
