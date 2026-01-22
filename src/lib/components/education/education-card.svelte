@@ -13,16 +13,17 @@
 	import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 	import Muted from '../ui/typography/muted.svelte';
 
-	const { it }: { it: Education } = $props();
+	const props: { it: Education } = $props();
+	const it = props.it;
 
-	const exactDuration = computeExactDuration(it.period.from, it.period.to);
+	const exactDuration = $derived(computeExactDuration(it.period.from, it.period.to));
 
 	let from = $derived(getMonthAndYear(it.period.from));
 	let to = $derived(getMonthAndYear(it.period.to));
 
 	let period = $derived(`${from} - ${to}`);
 
-	let location = `${it.organization}, ${it.location}`;
+	let location = $derived(`${it.organization}, ${it.location}`);
 </script>
 
 <FancyCard color={it.color} href={href(`/education/${it.slug}`)}>

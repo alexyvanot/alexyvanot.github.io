@@ -8,18 +8,17 @@
 	import { fade, fly } from 'svelte/transition';
 	import type { AboutSection } from '$lib/data/about';
 
-	const {
-		section,
-		mounted = false,
-		index = 0
-	}: {
+	const props: {
 		section: AboutSection;
 		mounted?: boolean;
 		index?: number;
 	} = $props();
+	const section = props.section;
+	const mounted = props.mounted ?? false;
+	const index = props.index ?? 0;
 
 	// Animation delay basé sur l'index de la section
-	const delay = (index + 1) * 200;
+	const delay = $derived((index + 1) * 200);
 
 	// Fonction pour formater le texte avec des mots en gras et support markdown
 	function formatText(text: string): string {

@@ -14,9 +14,10 @@
 	import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 	import Muted from '../ui/typography/muted.svelte';
 
-	const { it }: { it: Experience } = $props();
+	const props: { it: Experience } = $props();
+	const it = props.it;
 
-	const exactDuration = computeExactDuration(it.period.from, it.period.to);
+	const exactDuration = $derived(computeExactDuration(it.period.from, it.period.to));
 
 	let from = $derived(getMonthAndYear(it.period.from));
 	let to = $derived(getMonthAndYear(it.period.to));
