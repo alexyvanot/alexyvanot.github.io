@@ -190,9 +190,9 @@
 													</AvatarFallback>
 													<AvatarImage src={$mode === 'dark' ? project.logo.dark : project.logo.light} class="w-full h-full object-cover" />
 												</Avatar>
-												<div class="flex flex-col gap-1 md:text-center">
+												<div class="flex flex-col gap-1 md:text-center md:items-center">
 													<Muted class="text-xs">{formatPeriod(project.period.from, project.period.to)}</Muted>
-													<Badge variant="outline" class="text-xs">{project.type}</Badge>
+													<Badge variant="outline" class="text-xs justify-center">{project.type}</Badge>
 												</div>
 											</div>
 											
