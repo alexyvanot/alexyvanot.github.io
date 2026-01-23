@@ -1,5 +1,5 @@
 ---
-name: Svelte Static Blog
+name: Svelte Static Blog - Mon premier projet Svelte
 slug: svelte-blog
 category: technique
 type: Web Development
@@ -21,89 +21,158 @@ skills:
   - html
   - css
   - markdown
+team:
+  - name: Alexy VANOT
+    role: Développeur
 ---
 
-# Svelte Static Blog Generator
+::toc
 
-Mon **premier projet Svelte** ! 🎉 Un générateur de site statique moderne et minimaliste, conçu pour créer des blogs rapidement avec le support complet du **Markdown**.
+## Mon regard critique
 
-Ce projet m'a permis de découvrir l'écosystème Svelte et d'explorer comment construire un système de gestion de contenu léger et performant.
+> Ce projet marque ma **découverte de Svelte** et le début d'une passion ! En créant ce générateur de blog statique, j'ai été convaincu par la simplicité et l'élégance du framework. C'est d'ailleurs pourquoi **ce portfolio est aussi construit avec Svelte**.
 
-# ✨ Pourquoi ce projet ?
+**Mes apports principaux :**
+- Architecture modulaire pour la gestion des articles Markdown
+- Pipeline CI/CD complet avec GitHub Actions
+- Design minimaliste orienté contenu
 
-L'idée était simple : créer un outil permettant de générer un blog statique sans la complexité des CMS traditionnels. Juste du **Markdown**, du **Svelte**, et c'est parti !
+**Ce que j'en retire :** Ce projet m'a fait découvrir l'écosystème Svelte et SvelteKit. La courbe d'apprentissage douce et les performances exceptionnelles m'ont convaincu. J'ai aussi approfondi mes connaissances en génération de sites statiques et en CI/CD.
 
-# 🚀 Fonctionnalités
+---
 
-- 📝 **Support Markdown complet** - Écrivez vos articles en Markdown, ils sont automatiquement convertis en HTML
-- ⚡ **Génération statique** - Site ultra-rapide, déployable partout (GitHub Pages, Netlify, Vercel...)
-- 🎨 **Design minimaliste** - Interface épurée qui met le contenu en avant
-- 🔄 **Hot Reload** - Rechargement automatique en développement
-- 📁 **Organisation simple** - Un dossier `posts/` pour tous vos articles
-- 🌐 **SEO-friendly** - Pages statiques optimisées pour le référencement
-- 🚀 **CI/CD intégré** - Déploiement automatique via GitHub Actions
+## Présentation du projet
 
-# 💡 Ce que j'ai appris
+**Svelte Static Blog** est un générateur de blog statique moderne et minimaliste. Il permet de créer des articles en **Markdown** qui sont automatiquement convertis en pages HTML statiques, déployables partout.
 
-Ce projet a été l'occasion parfaite pour découvrir :
+Ce projet m'a servi de terrain d'apprentissage pour explorer **SvelteKit** et comprendre comment construire un système de gestion de contenu léger et performant.
 
-| Concept | Description |
-|---------|-------------|
-| **Réactivité Svelte** | Le système de réactivité simple et intuitif de Svelte |
-| **SvelteKit** | Le framework full-stack pour Svelte |
-| **Static Adapter** | Génération de sites statiques avec SvelteKit |
-| **Markdown Processing** | Parsing et rendu de fichiers Markdown |
-| **GitHub Pages** | Déploiement automatisé de sites statiques |
-| **GitHub Actions** | Workflows CI/CD pour l'automatisation |
+---
 
-# 🛠️ Architecture
+## Objectifs, Contexte et Enjeux
+
+### Contexte personnel
+
+Premier projet Svelte, réalisé en **autoformation** pour découvrir le framework et son écosystème.
+
+### Objectifs du projet
+
+| Objectif | Réalisation |
+|----------|-------------|
+| Découvrir Svelte et SvelteKit | Mission accomplie ✅ |
+| Créer un blog statique | Générateur fonctionnel |
+| Implémenter un pipeline CI/CD | GitHub Actions |
+| Maîtriser le déploiement statique | GitHub Pages |
+
+### Enjeux et défis
+
+**Enjeux :**
+- **Apprentissage** : comprendre la philosophie Svelte
+- **Performance** : site statique ultra-rapide
+- **Maintenabilité** : architecture claire et évolutive
+
+**Défis rencontrés :**
+- Comprendre le système de routing de SvelteKit
+- Configurer correctement l'adapter statique
+- Mettre en place le déploiement automatisé
+
+---
+
+## Étapes de réalisation
+
+### Phase 1 : Découverte de Svelte (3 jours)
+
+- Tutoriel officiel Svelte
+- Compréhension du système de réactivité
+- Premiers composants basiques
+
+### Phase 2 : Setup SvelteKit (2 jours)
+
+- Initialisation du projet SvelteKit
+- Configuration TypeScript
+- Mise en place de la structure de fichiers
 
 ```
 svelte-blog/
 ├── posts/              # Articles en Markdown
-│   ├── article-1.md
-│   └── article-2.md
 ├── src/
 │   ├── routes/         # Pages Svelte
 │   └── lib/            # Composants réutilisables
 ├── static/             # Assets statiques
-├── svelte.config.js    # Configuration SvelteKit
-└── vite.config.ts      # Configuration Vite
+└── svelte.config.js    # Configuration SvelteKit
 ```
 
-# 🎯 Utilisation
+### Phase 3 : Système de blog (4 jours)
 
-## Ajouter un article
+- Parsing des fichiers Markdown avec frontmatter
+- Génération dynamique des pages d'articles
+- Liste des articles avec tri par date
+- Navigation entre articles
 
-1. Créez un fichier `.md` dans le dossier `posts/`
-2. Ajoutez votre contenu en Markdown
-3. Le site se met à jour automatiquement !
+### Phase 4 : Déploiement et CI/CD (3 jours)
 
-## Développement local
+- Configuration de l'adapter statique
+- Workflow GitHub Actions pour le build automatique
+- Déploiement sur GitHub Pages
 
-```bash
-# Cloner le projet
-git clone https://github.com/alexyvanot/testing-blog.git
-cd testing-blog
+---
 
-# Installer les dépendances
-npm install
+## Acteurs et interactions
 
-# Lancer le serveur de développement
-npm run dev
-```
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Moi (développeur)** | Développement complet | Projet personnel |
+| **Communauté Svelte** | Ressources et documentation | Discord, docs officielles |
 
-## Déploiement
+---
 
-Le site se déploie automatiquement sur GitHub Pages via GitHub Actions à chaque push sur `main`.
+## Résultats obtenus
 
-# 🔮 Pourquoi Svelte ?
+### Application fonctionnelle
 
-Après avoir travaillé avec d'autres frameworks, j'ai voulu explorer Svelte pour :
+- **Support Markdown complet** avec frontmatter
+- **Génération statique** ultra-performante
+- **Design minimaliste** orienté contenu
+- **SEO-friendly** par défaut
+- **Déploiement automatique** à chaque push
 
-- **Sa simplicité** - Moins de boilerplate, plus de productivité
-- **Ses performances** - Compilation en JavaScript vanilla, pas de virtual DOM
-- **Sa courbe d'apprentissage** - Plus accessible que React ou Vue
-- **Son écosystème moderne** - SvelteKit offre une expérience développeur exceptionnelle
+### Pour moi
 
-Ce premier projet m'a convaincu, et c'est pourquoi mon portfolio actuel est aussi construit avec Svelte ! 🧡
+| Concept appris | Description |
+|----------------|-------------|
+| **Réactivité Svelte** | Système simple et intuitif |
+| **SvelteKit** | Framework full-stack moderne |
+| **Static Adapter** | Génération de sites statiques |
+| **Markdown Processing** | Parsing et rendu de fichiers |
+| **GitHub Actions** | Workflows CI/CD |
+
+---
+
+## Lendemains du projet
+
+### Aujourd'hui
+
+Le projet est accessible en démo et a servi de **base d'apprentissage** pour créer ce portfolio.
+
+### Impact sur mes projets suivants
+
+Ce premier projet Svelte m'a tellement convaincu que :
+- **Ce portfolio** est construit avec SvelteKit
+- J'ai adopté Svelte comme framework frontend principal
+- J'explore maintenant les fonctionnalités avancées (runes Svelte 5, etc.)
+
+### Ce que j'ai réinvesti
+
+Les connaissances acquises m'ont permis de créer ce portfolio bien plus élaboré, avec des composants custom et une architecture plus complexe.
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Svelte]{link=/skills/svelte icon=i-logos-svelte-icon}
+::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
+::button[Créativité]{link=/skills/creativity icon=i-carbon-idea}
+:::

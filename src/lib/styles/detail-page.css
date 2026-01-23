@@ -22,7 +22,7 @@
 	);
 	border: 1px solid hsl(var(--border) / 0.3);
 	border-radius: 1.5rem;
-	overflow: hidden;
+	overflow: visible;
 }
 
 /* Header avec image de fond */

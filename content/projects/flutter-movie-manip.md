@@ -1,5 +1,5 @@
 ---
-name: Flutter Movie App
+name: Flutter Movie App - Découverte des API REST
 slug: flutter-movie-manip
 category: technique
 type: Mobile Development
@@ -20,82 +20,153 @@ attachments:
     src: https://raw.githubusercontent.com/alexyvanot/flutter_movie_manip/main/assets/images/HomePage.png
   - label: Détail d'un film
     src: https://raw.githubusercontent.com/alexyvanot/flutter_movie_manip/main/assets/images/MovieDetail.png
+team:
+  - name: Alexy VANOT
+    role: Développeur unique
 ---
 
-# Flutter Movie App
+::toc
 
-Bienvenue dans le projet **Flutter Movie Manip** ! Ce projet a pour but d'explorer les concepts clés de Flutter tout en construisant une application qui récupère les films à venir à partir de l'API [The Movie Database (TMDb)](https://www.themoviedb.org/).
+## Mon regard critique
+
+> Ce projet m'a permis de **maîtriser les fondamentaux de Flutter** tout en construisant quelque chose de concret. Ma valeur ajoutée ? Avoir structuré le code de manière propre dès le départ, avec une séparation claire entre les appels HTTP, les modèles de données et l'interface utilisateur.
+
+**Mes apports principaux :**
+- Architecture modulaire avec séparation des responsabilités
+- Gestion sécurisée des clés API via `flutter_dotenv`
+- Code documenté et réutilisable
+
+**Ce que j'en retire :** Ce projet m'a appris l'importance de la gestion d'état dans Flutter. La différence entre Stateless et Stateful widgets est devenue concrète quand j'ai dû mettre à jour la liste des films dynamiquement.
+
+---
+
+## Présentation du projet
+
+**Flutter Movie App** est une application mobile qui récupère et affiche les films à venir depuis l'API **The Movie Database (TMDb)**. Ce projet a été conçu dans le cadre d'un cours de Flutter pour pratiquer les concepts fondamentaux du framework.
+
+L'application permet de parcourir une liste de films avec leurs affiches, titres et descriptions, et d'accéder aux détails de chaque film.
 
 ![Page d'accueil|clean](https://raw.githubusercontent.com/alexyvanot/flutter_movie_manip/main/assets/images/HomePage.png)
 
-# Objectifs pédagogiques
+---
 
-Ce projet a été conçu dans le cadre d'un cours de Flutter afin de pratiquer et comprendre les notions suivantes :
+## Objectifs, Contexte et Enjeux
 
-1. **Stateless vs Stateful Widgets** : comprendre la différence entre des widgets statiques et ceux dont l'état peut changer
-2. **Appels HTTP dans Flutter** : apprendre à faire des requêtes à une API externe
-3. **Gestion de l'état** : manipulation de l'état dans une application Flutter via `setState`
-4. **Affichage dynamique avec `ListView.builder`** : utilisation de ce widget pour générer des listes dynamiques basées sur des données reçues d'une API
-5. **Utilisation d'environnements avec `flutter_dotenv`** : apprendre à gérer des informations sensibles comme les clés d'API
+### Contexte académique
 
-# Structure du projet
+Ce projet a été réalisé dans le cadre d'un **cours de développement mobile Flutter**. L'objectif pédagogique était de mettre en pratique les concepts théoriques vus en cours sur un cas d'usage réel.
 
-```
-lib/
-├── main.dart          # Point d'entrée, initialisation de dotenv
-├── home_page.dart     # Page principale avec liste des films (StatefulWidget)
-├── http_helper.dart   # Classe utilitaire pour les appels HTTP à TMDb
-└── model/
-    └── movie.dart     # Modèle de données pour représenter un film
-```
+### Objectifs pédagogiques
 
-# Concepts clés
+| Objectif | Concept Flutter associé |
+|----------|-------------------------|
+| Comprendre les widgets | Stateless vs Stateful Widgets |
+| Consommer une API REST | Package `http`, appels asynchrones |
+| Gérer l'état de l'application | `setState()` et cycle de vie |
+| Afficher des listes dynamiques | `ListView.builder` |
+| Sécuriser les données sensibles | `flutter_dotenv` pour les clés API |
 
-## 1. Stateful Widgets et `setState()`
+### Enjeux et défis
 
-Dans Flutter, un widget peut être **Stateful** ou **Stateless**. Ce projet utilise un `StatefulWidget` dans `home_page.dart` pour maintenir la liste des films à jour. Chaque fois que les données des films sont récupérées, la méthode `setState()` est appelée pour mettre à jour l'interface utilisateur.
+**Enjeux :**
+- **Apprentissage** : comprendre le paradigme déclaratif de Flutter
+- **Bonnes pratiques** : structurer le code dès le début
+- **Performance** : gérer efficacement les listes longues
 
-## 2. Appels HTTP et gestion des données
+**Défis rencontrés :**
+- Gestion des états de chargement (loading, erreur, succès)
+- Parsing du JSON retourné par l'API
+- Affichage des images avec gestion du cache
 
-Pour communiquer avec une API externe, nous utilisons le package [http](https://pub.dev/packages/http). L'appel HTTP se fait dans `http_helper.dart`, où nous envoyons une requête GET pour obtenir les films à venir. La réponse JSON est décodée puis transformée en objets Dart avec `Movie.fromJson()`.
+---
 
-## 3. Gestion des environnements avec `flutter_dotenv`
+## Étapes de réalisation
 
-Afin de sécuriser la clé API, le package `flutter_dotenv` est utilisé pour charger les variables d'environnement. Cela permet de garder les informations sensibles hors du code source.
+### Phase 1 : Mise en place du projet (1h)
 
-## 4. Affichage dynamique avec `ListView.builder`
+- Création du projet Flutter avec structure de dossiers organisée
+- Configuration de `flutter_dotenv` pour les variables d'environnement
+- Obtention d'une clé API sur TMDb
 
-Le widget `ListView.builder` est utilisé pour afficher une liste de films récupérés de manière dynamique. Ce widget est efficace pour les listes longues.
+### Phase 2 : Modèle de données et appels HTTP (2h)
 
-# Installation
+**Création du modèle Movie :**
+- Classe Dart représentant un film
+- Factory `fromJson()` pour le parsing automatique
 
-```bash
-# Cloner le projet
-git clone https://github.com/alexyvanot/flutter_movie_manip.git
-cd flutter_movie_manip
+**Helper HTTP :**
+- Classe utilitaire pour les appels à l'API TMDb
+- Gestion des erreurs et des timeouts
 
-# Installer les dépendances
-flutter pub get
+### Phase 3 : Interface utilisateur (3h)
 
-# Configurer l'API (créer un fichier .env)
-echo "API_KEY=your_api_key_here" > .env
+**Page principale (StatefulWidget) :**
+- Liste des films avec `ListView.builder`
+- Appel à l'API au `initState()`
+- Mise à jour de l'UI via `setState()`
 
-# Lancer l'application
-flutter run
-```
+**Page de détail :**
+- Affichage complet des informations du film
+- Navigation entre les écrans
 
-# Configuration de l'API
+### Phase 4 : Polissage et tests (1h)
 
-1. Inscrivez-vous sur [The Movie Database (TMDb)](https://www.themoviedb.org/)
-2. Rendez-vous dans la section API de votre compte pour générer votre clé API
-3. Créez un fichier `.env` dans le répertoire racine avec votre clé :
+- Ajout d'indicateurs de chargement
+- Gestion des erreurs réseau
+- Tests sur différents appareils (émulateur, physique)
 
-```env
-API_KEY=your_api_key_here
-```
+---
 
-# Aperçu de l'application
+## Acteurs et interactions
 
-L'application affiche une liste des films à venir avec leurs affiches et informations. En cliquant sur un film, l'utilisateur accède à une page de détails avec plus d'informations.
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Moi (développeur)** | Conception et développement | Projet individuel |
+| **Enseignant Flutter** | Cadrage et évaluation | Consignes, feedback |
+| **API TMDb** | Source de données | Appels REST |
 
-![Détail d'un film|clean](https://raw.githubusercontent.com/alexyvanot/flutter_movie_manip/main/assets/images/MovieDetail.png)
+---
+
+## Résultats obtenus
+
+### Fonctionnalités livrées
+
+- ✅ Récupération des films à venir depuis TMDb
+- ✅ Affichage en liste avec affiches et descriptions
+- ✅ Navigation vers les détails d'un film
+- ✅ Gestion sécurisée de la clé API
+
+### Pour moi
+
+- **Maîtrise des fondamentaux Flutter** : widgets, état, navigation
+- **Compréhension des appels HTTP** en Dart
+- **Bonnes pratiques** : architecture et sécurité
+
+---
+
+## Lendemains du projet
+
+### Aujourd'hui
+
+Le projet est disponible sur GitHub et sert de référence pour mes futurs développements Flutter.
+
+### Améliorations envisagées
+
+- Ajout d'une barre de recherche
+- Système de favoris avec persistance locale
+- Amélioration du design avec des animations
+
+### Ce que j'ai réinvesti
+
+Les compétences acquises sur ce projet m'ont servi pour développer des applications Flutter plus complexes comme [Georges le Chat](/projects/georges-le-chat) et la [Todo List](/projects/flutter-todo-list).
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
+::button[Créativité]{link=/skills/creativity icon=i-carbon-idea}
+:::

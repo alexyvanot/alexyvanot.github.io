@@ -1,5 +1,5 @@
 ---
-name: TP VPO CIFAR-10
+name: CIFAR-10 - Classification d'images par Deep Learning
 slug: tpvpocifar
 category: technique
 type: Deep Learning & Computer Vision
@@ -22,42 +22,45 @@ skills:
 attachments:
   - label: Courbes d'entraînement
     src: https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/Figure_1.png
-  - label: Consigne du TP
-    src: https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/consigne.png
-  - label: Image test 1
-    src: https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/img/img.png
-  - label: Image test 2
-    src: https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/img/img2.png
-  - label: Image custom 32x32
-    src: https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/img/customc32.png
+team:
+  - name: Alexy VANOT
+    role: Développeur unique
 ---
 
-# TPVPOCIFAR - Pipeline de Vision par Ordinateur avec CIFAR-10
+::toc
 
-Ce projet démontre un pipeline complet de vision par ordinateur utilisant le dataset **CIFAR-10**. Il couvre l'ensemble du processus de machine learning, de l'exploration des données à l'inférence en temps réel.
+## Mon regard critique
+
+> Ce projet m'a permis de comprendre le **pipeline complet du machine learning** : de l'exploration des données à l'inférence en production. Ma valeur ajoutée ? Avoir créé non seulement un modèle fonctionnel, mais aussi une API Flask et une interface Streamlit pour le rendre utilisable par n'importe qui.
+
+**Mes apports principaux :**
+- Architecture CNN optimisée pour CIFAR-10 (2 couches convolutives + denses)
+- API REST pour l'inférence en temps réel
+- Interface utilisateur permettant de tester ses propres images
+
+**Ce que j'en retire :** J'ai appris que l'entraînement d'un modèle n'est que la moitié du travail — le déploiement et l'interfaçage sont tout aussi importants. Ce projet m'a aussi montré l'importance de la visualisation pour comprendre le comportement d'un réseau de neurones.
+
+---
+
+## Présentation du projet
+
+**TPVPOCIFAR** est un projet de vision par ordinateur qui implémente un pipeline complet de classification d'images sur le dataset **CIFAR-10**. Il couvre l'ensemble du processus : exploration des données, prétraitement, entraînement d'un CNN, évaluation et déploiement via API.
+
+Le projet inclut une interface Streamlit permettant à n'importe qui de tester le modèle avec ses propres images.
 
 ![Courbes d'entraînement|clean](https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/Figure_1.png)
 
-# Fonctionnalités
+---
 
-- 📊 Chargement et exploration des données
-- 🔧 Prétraitement du dataset
-- 🧠 Construction de modèle avec **CNN** (Convolutional Neural Networks)
-- 📈 Entraînement et évaluation du modèle
-- 📉 Visualisation des performances
-- 💾 Sauvegarde du modèle pour l'inférence
-- 🌐 Prédiction en direct via **API Flask** et **interface Streamlit**
+## Objectifs, Contexte et Enjeux
 
-# Comment ça fonctionne
+### Contexte académique
 
-1. Le modèle est entraîné sur **10 catégories** d'images RGB de 32x32 pixels
-2. Un CNN avec **2 couches de convolution + couches denses** effectue la classification
-3. L'utilisateur peut uploader sa propre image (doit être 32x32x3) pour obtenir une prédiction
-4. L'app Streamlit envoie l'image à l'API Flask qui retourne la classe prédite
+Ce projet a été réalisé dans le cadre d'un TP de **Vision Par Ordinateur** (VPO). L'objectif pédagogique était de mettre en pratique les concepts de deep learning sur un dataset classique et bien documenté.
 
-# Dataset CIFAR-10
+### Le dataset CIFAR-10
 
-CIFAR-10 contient **60 000 images** couleur 32x32 réparties en 10 classes :
+CIFAR-10 est un benchmark standard en computer vision contenant **60 000 images** couleur 32×32 pixels réparties en 10 classes :
 
 | Classe | Description |
 |--------|-------------|
@@ -72,46 +75,146 @@ CIFAR-10 contient **60 000 images** couleur 32x32 réparties en 10 classes :
 | 8 | Bateau |
 | 9 | Camion |
 
-Plus d'infos : [https://www.cs.toronto.edu/~kriz/cifar.html](https://www.cs.toronto.edu/~kriz/cifar.html)
+### Objectifs techniques
 
-# Architecture du projet
+| Objectif | Réalisation |
+|----------|-------------|
+| Explorer et prétraiter les données | Notebook Jupyter |
+| Entraîner un CNN | TensorFlow/Keras |
+| Évaluer les performances | Métriques et visualisations |
+| Déployer le modèle | API Flask + Interface Streamlit |
 
+### Enjeux et défis
+
+**Enjeux :**
+- **Apprentissage** : comprendre le fonctionnement des CNN en pratique
+- **Généralisation** : éviter l'overfitting sur un petit dataset
+- **Déploiement** : rendre le modèle accessible
+
+**Défis techniques :**
+- Images de faible résolution (32×32) limitant la complexité des features
+- Équilibre entre complexité du modèle et temps d'entraînement
+- Gestion des images utilisateur (format, dimensions)
+
+---
+
+## Étapes de réalisation
+
+### Phase 1 : Exploration des données (1 jour)
+
+- Chargement du dataset via `tensorflow.keras.datasets`
+- Visualisation d'exemples de chaque classe
+- Analyse de la distribution des données
+- Normalisation des valeurs de pixels (0-1)
+
+### Phase 2 : Construction du modèle CNN (1 jour)
+
+**Architecture choisie :**
 ```
-tpvpocifar/
-├── training_notebook.py    # Script d'entraînement
-├── flask_api.py            # API Flask pour les prédictions
-├── streamlit_interface.py  # Interface utilisateur Streamlit
-├── cifar10_model.h5        # Modèle entraîné sauvegardé
-├── cifar.ipynb             # Notebook Jupyter d'expérimentation
-└── img/                    # Images de test
+Input (32×32×3)
+    ↓
+Conv2D (32 filtres, 3×3) + ReLU
+    ↓
+MaxPooling2D (2×2)
+    ↓
+Conv2D (64 filtres, 3×3) + ReLU
+    ↓
+MaxPooling2D (2×2)
+    ↓
+Flatten
+    ↓
+Dense (64) + ReLU
+    ↓
+Dense (10) + Softmax → Output
 ```
 
-# Installation et utilisation
+**Choix techniques :**
+- 2 couches de convolution : suffisant pour des images 32×32
+- MaxPooling pour réduire la dimensionnalité
+- Dropout pour limiter l'overfitting
 
-```bash
-# Cloner et installer
-git clone https://github.com/alexyvanot/tpvpocifar.git && cd tpvpocifar
-python -m venv venv
-venv\Scripts\activate  # Sur Unix: source venv/bin/activate
-pip install -r requirements.txt
+### Phase 3 : Entraînement et évaluation (1 jour)
 
-# Entraîner le modèle
-python training_notebook.py
+- Entraînement sur 50 epochs avec early stopping
+- Validation sur 20% des données d'entraînement
+- Visualisation des courbes loss/accuracy
+- Matrice de confusion pour analyser les erreurs
 
-# Lancer l'API Flask
-python flask_api.py
+### Phase 4 : Déploiement (1 jour)
 
-# Dans un autre terminal, lancer Streamlit
-streamlit run streamlit_interface.py
-```
+**API Flask :**
+- Endpoint POST `/predict` acceptant une image
+- Prétraitement automatique (redimensionnement 32×32)
+- Retour JSON avec classe prédite et confiance
 
-# Technologies utilisées
+**Interface Streamlit :**
+- Upload d'image par l'utilisateur
+- Appel à l'API Flask
+- Affichage du résultat avec probabilités par classe
 
-| Technologie | Utilisation |
-|-------------|-------------|
-| **TensorFlow/Keras** | Construction et entraînement du CNN |
-| **NumPy** | Manipulation des données |
-| **Matplotlib** | Visualisation des résultats |
-| **Flask** | API REST pour les prédictions |
-| **Streamlit** | Interface web interactive |
-| **Pillow** | Traitement des images uploadées |
+---
+
+## Acteurs et interactions
+
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Moi (développeur)** | Conception et développement complet | Projet individuel |
+| **Enseignant VPO** | Cadrage et évaluation | Consignes, feedback |
+| **Dataset CIFAR-10** | Source de données | Toronto University |
+
+---
+
+## Résultats obtenus
+
+### Performance du modèle
+
+| Métrique | Valeur |
+|----------|--------|
+| Accuracy (test set) | ~78% |
+| Loss finale | ~0.65 |
+| Temps d'entraînement | ~10 min (GPU) |
+
+### Fonctionnalités livrées
+
+- ✅ Notebook d'exploration et entraînement
+- ✅ Modèle sauvegardé (`.h5`)
+- ✅ API Flask pour l'inférence
+- ✅ Interface Streamlit
+- ✅ Documentation complète
+
+### Pour moi
+
+- **Maîtrise de TensorFlow/Keras** pour les CNN
+- **Compréhension du pipeline ML** end-to-end
+- **Compétences en déploiement** (Flask, Streamlit)
+
+---
+
+## Lendemains du projet
+
+### Aujourd'hui
+
+Le projet est disponible sur GitHub et peut servir de base pour d'autres expérimentations en classification d'images.
+
+### Améliorations envisagées
+
+- Data augmentation pour améliorer la généralisation
+- Architectures plus profondes (ResNet, VGG)
+- Transfer learning depuis des modèles pré-entraînés
+- Déploiement cloud (Heroku, AWS Lambda)
+
+### Apprentissages à réinvestir
+
+Ce projet m'a donné les bases pour aborder des problèmes de computer vision plus complexes : détection d'objets, segmentation, etc.
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Python]{link=/skills/python icon=i-logos-python}
+::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
+::button[Créativité]{link=/skills/creativity icon=i-carbon-idea}
+:::

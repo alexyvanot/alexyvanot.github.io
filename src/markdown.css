@@ -274,7 +274,7 @@
 }
 
 /* Liens stylisés */
-.markdown-container a {
+.markdown-container a:not(.md-btn) {
 	color: hsl(var(--primary));
 	text-decoration: none;
 	font-weight: 500;
@@ -282,7 +282,7 @@
 	transition: all 0.2s ease;
 }
 
-.markdown-container a::after {
+.markdown-container a:not(.md-btn)::after {
 	content: '';
 	position: absolute;
 	bottom: -2px;
@@ -294,11 +294,11 @@
 	border-radius: 1px;
 }
 
-.markdown-container a:hover {
+.markdown-container a:not(.md-btn):hover {
 	color: hsl(var(--primary) / 0.8);
 }
 
-.markdown-container a:hover::after {
+.markdown-container a:not(.md-btn):hover::after {
 	width: 100%;
 }
 
@@ -381,6 +381,8 @@ markdown a :is(code):not(pre code) {
 		hsl(var(--border)),
 		transparent
 	);
+	position: relative;
+	z-index: 1;
 }
 
 /* Images */

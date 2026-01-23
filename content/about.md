@@ -12,61 +12,73 @@ attachments:
 ::handwritten[Bonjour, je suis Alexy]{fontSize=32 duration=2500 height=120}
 :::
 
-Je suis **développeur full-stack** passionné par la technologie et l'innovation. Actuellement en alternance au **Synchrotron SOLEIL** et en formation à l'**ESIEA** pour un Master en ingénierie informatique.
+**Développeur full-stack** en alternance au **Synchrotron SOLEIL**, actuellement en Master ingénierie informatique à l'**ESIEA**. Passionné par la création de solutions logicielles robustes et l'exploration de nouvelles technologies.
 
 ---
 
-## 🚀 Mon parcours
+## 🎯 Mon projet professionnel
 
-Mon aventure dans le développement a commencé par curiosité, et s'est transformée en véritable passion. Du **développement web** aux **applications full-stack**, en passant par le **DevOps** et les **systèmes distribués**, j'aime explorer tous les aspects de l'informatique.
+L'objectif à moyen terme : devenir **ingénieur logiciel** spécialisé dans les **systèmes distribués** et le **DevOps**. Le monde du développement évolue constamment, et la capacité à concevoir des architectures scalables et maintenables représente un enjeu majeur pour les entreprises.
 
-### Formation
+L'alternance au Synchrotron SOLEIL permet de travailler sur des **projets d'envergure** : automatisation de processus, développement d'applications internes, mise en place de pipelines CI/CD. Ces expériences forgent une vision complète du cycle de vie logiciel, de la conception au déploiement.
 
-- 🎓 **ESIEA** (2024-2026) - Master en ingénierie informatique
-- 💻 **InTech** (2021-2023) - Bachelor en développement logiciel
-- 📚 **Lycée Pierre Mendès France** (2017-2020) - Baccalauréat général
-
-### Expérience
-
-- ☀️ **Synchrotron SOLEIL** (depuis 2023) - Développeur Full-Stack en alternance
-- 🏗️ **AGH Bâtiment** (2022) - Stage développement web
+À plus long terme, l'ambition est de contribuer à des **projets open source** et potentiellement de créer une **startup tech** dans le domaine de l'automatisation ou des outils pour développeurs.
 
 ---
 
-## 💻 Compétences techniques
+## 💡 Mes valeurs
 
-### Langages & Frameworks
-- **Frontend** : React, Svelte, TypeScript, HTML/CSS
-- **Backend** : Java, Node.js, Python
-- **Base de données** : PostgreSQL, MongoDB, SQLite
+:::values-grid{cols=2}
+::value[Excellence technique]{icon=⚡ color=blue}
+La qualité du code n'est pas négociable. Un code propre, testé et documenté facilite la maintenance et la collaboration. Cette exigence s'applique aussi bien aux projets professionnels qu'aux projets personnels.
+::
 
-### Outils & DevOps
-- Git, Docker, CI/CD (GitLab CI)
-- Linux (Debian, Red Hat)
-- Tests automatisés (JUnit, Cypress)
+::value[Partage des connaissances]{icon=🤝 color=green}
+Le développement informatique avance grâce à la communauté. Contribuer à des projets open source, rédiger des articles techniques, aider des collègues : ces actions enrichissent l'écosystème.
+::
 
----
+::value[Curiosité et apprentissage]{icon=🔍 color=purple}
+Les technologies évoluent rapidement. Rester à jour nécessite une veille constante et une volonté d'expérimenter. Chaque nouveau framework représente une opportunité d'apprentissage.
+::
 
-## 🎵 Au-delà du code
-
-Je ne suis pas qu'un développeur ! La **musique** occupe une place importante dans ma vie. Je joue du piano et j'aime explorer différents genres musicaux. Cette passion nourrit ma créativité et m'aide à aborder les problèmes techniques avec une perspective unique.
-
-### Mes centres d'intérêt
-
-- 🎹 **Musique** - Piano et production musicale
-- 📖 **Lecture** - Science-fiction et développement personnel
-- 🎮 **Gaming** - Jeux de stratégie et indie games
-- 🌍 **Voyages** - Découverte de nouvelles cultures
+::value[Pragmatisme]{icon=🎯 color=orange}
+La meilleure solution technique n'est pas toujours la plus sophistiquée. Savoir choisir l'outil adapté au contexte et livrer de la valeur concrète aux utilisateurs reste la priorité.
+::
+:::
 
 ---
 
-## 📫 Me contacter
+## 🤝 Qualités humaines
 
-N'hésitez pas à me contacter pour discuter d'un projet, d'une opportunité ou simplement pour échanger !
+:::tags{layout=grid}
+::tag[Autonomie]{icon=🚀 desc=Initiative full="Face à un bug critique en production un vendredi soir, je préfère creuser la doc, tester des hypothèses et trouver la solution plutôt que d'attendre lundi. Cette approche m'a permis de résoudre des incidents majeurs au Synchrotron SOLEIL en dehors des heures de bureau."}
+::tag[Rigueur]{icon=✅ desc=Méthodologie full="Au Synchrotron, une erreur dans le code peut bloquer des expériences scientifiques. J'ai appris à systématiser les tests unitaires, documenter chaque fonction et faire relire mon code. Résultat : zéro régression en 2 ans sur mes projets."}
+::tag[Communication]{icon=💬 desc=Collaboration full="Expliquer à un chercheur en physique pourquoi son script Python plante sans utiliser de jargon technique, c'est un exercice quotidien. J'ai aussi rédigé des guides utilisateurs et animé des formations internes sur nos outils."}
+::tag[Adaptabilité]{icon=🔄 desc=Flexibilité full="En 3 ans, je suis passé de Python/Django à Flutter, puis TypeScript/SvelteKit, tout en jonglant avec du legacy Java. Chaque nouveau projet est une occasion d'apprendre une techno, pas un obstacle."}
+:::
 
-- 📧 **Email** : contact@alexyvanot.fr
-- 💼 **LinkedIn** : [linkedin.com/in/vanot](https://linkedin.com/in/vanot)
-- 🐙 **GitHub** : [github.com/alexyvanot](https://github.com/alexyvanot)
+---
+
+## 🎵 Centres d'intérêt
+
+:::tags{layout=grid}
+::tag[Piano]{icon=🎹 desc=Musique full="10 ans de pratique, du classique au jazz. Déchiffrer une partition, c'est comme lire du code : il faut comprendre la structure avant de l'exécuter. La persévérance pour maîtriser un morceau difficile, c'est la même que pour debugger un algo récalcitrant."}
+::tag[Science-fiction]{icon=📖 desc=Lecture full="Asimov, Philip K. Dick, Liu Cixin... La SF pose des questions sur la technologie et son impact sur l'humanité. Ça nourrit ma réflexion sur l'éthique du code et l'IA. Côté productivité : Deep Work de Cal Newport a transformé ma façon de travailler."}
+::tag[Stratégie]{icon=🎮 desc=Gaming full="Factorio m'a appris l'optimisation de flux et la dette technique (oui, même dans un jeu). Civilization enseigne la planification long terme. Ces jeux développent une pensée systémique directement applicable à l'architecture logicielle."}
+::tag[Voyages]{icon=🌍 desc=Découverte full="Japon, Islande, Portugal... Chaque pays a sa façon d'intégrer la tech au quotidien. Observer comment Tokyo gère ses transports ou comment l'Estonie a digitalisé son administration donne des idées pour nos propres projets."}
+:::
+
+---
+
+## 📫 Contact
+
+Pour discuter d'un projet, d'une opportunité professionnelle ou simplement échanger sur des sujets techniques :
+
+:::buttons{align=center}
+::button[Email]{href=mailto:contact@alexyvanot.fr icon=📧 style=default}
+::button[LinkedIn]{href=https://linkedin.com/in/vanot icon=💼 style=default newTab=true}
+::button[GitHub]{href=https://github.com/alexyvanot icon=🐙 style=outline newTab=true}
+:::
 
 ---
 

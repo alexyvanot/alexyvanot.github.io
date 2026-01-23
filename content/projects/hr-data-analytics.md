@@ -1,5 +1,5 @@
 ---
-name: HR Data Analytics
+name: HR Data Analytics - Prédiction de contrats par ML
 slug: hr-data-analytics
 category: technique
 type: Data Science & Machine Learning
@@ -21,78 +21,168 @@ skills:
   - matplotlib
   - scikitlearn
   - jupyter
+team:
+  - name: Alexy VANOT
+    role: Data Scientist
 ---
 
-# 📊 HR Data Analytics – Prédiction du Type de Contrat
+::toc
 
-Projet de **Machine Learning** réalisé dans le cadre du module académique **DataCrafting & Data Mining**.
+## Mon regard critique
 
-Ce projet se concentre sur l'analyse d'un dataset RH synthétique afin de :
+> Ce projet m'a appris une leçon fondamentale en data science : **la qualité des données prime sur la complexité des algorithmes**. Ma valeur ajoutée ? Avoir documenté honnêtement les limites du modèle et analysé pourquoi les performances étaient limitées, plutôt que de maquiller les résultats.
 
-- 🧹 Nettoyer et prétraiter les informations des employés
-- 🔍 Détecter les anomalies et valeurs manquantes
-- 🤖 Construire un modèle prédictif pour déterminer le type de contrat (Stage, Alternance, CDD, CDI)
+**Mes apports principaux :**
+- Pipeline de nettoyage de données robuste (doublons, anomalies, valeurs manquantes)
+- Feature engineering pertinent (création de la variable "Ancienneté")
+- Analyse critique des résultats avec identification des causes d'échec
 
-# Pipeline de traitement des données
+**Ce que j'en retire :** J'ai compris que le machine learning n'est pas magique — un modèle ne peut pas prédire ce que les données ne permettent pas de distinguer. Ce projet m'a aussi appris l'importance du feature engineering et de l'analyse exploratoire.
 
-## 1. Nettoyage des données
+---
 
+## Présentation du projet
+
+**HR Data Analytics** est un projet de Machine Learning visant à prédire le **type de contrat** (Stage, Alternance, CDD, CDI) d'un employé à partir de ses caractéristiques RH. Le projet couvre l'ensemble du pipeline : nettoyage des données, feature engineering, entraînement et évaluation.
+
+Le projet a été réalisé sur un dataset RH synthétique dans le cadre du module **DataCrafting & Data Mining**.
+
+---
+
+## Objectifs, Contexte et Enjeux
+
+### Contexte académique
+
+Ce projet a été réalisé dans le cadre d'un **module de Data Science** portant sur le nettoyage de données et le machine learning. L'objectif pédagogique était de pratiquer l'ensemble du pipeline ML sur un cas concret.
+
+### Objectifs du projet
+
+| Objectif | Livrable |
+|----------|----------|
+| Nettoyer un dataset réaliste | Script de prétraitement documenté |
+| Détecter et traiter les anomalies | Rapport d'analyse exploratoire |
+| Construire un modèle prédictif | RandomForestClassifier optimisé |
+| Évaluer et critiquer les résultats | Rapport de classification + analyse |
+
+### Enjeux et défis
+
+**Enjeux :**
+- **Qualité des données** : le dataset contenait de nombreuses anomalies
+- **Prédiction multi-classe** : 4 types de contrats à distinguer
+- **Interprétabilité** : comprendre pourquoi le modèle fonctionne (ou non)
+
+**Défis rencontrés :**
+- Données synthétiques avec peu de features discriminantes
+- Déséquilibre des classes (plus de CDI que de stages)
+- Similarité des profils entre stages et alternances
+
+---
+
+## Étapes de réalisation
+
+### Phase 1 : Exploration et nettoyage (3h)
+
+**Analyse exploratoire :**
+- Distribution des variables numériques et catégorielles
+- Détection des valeurs aberrantes (âges négatifs, salaires incohérents)
+- Identification des valeurs manquantes
+
+**Nettoyage effectué :**
 - Suppression des doublons
-- Correction des âges incohérents et salaires anormaux
-- Gestion des valeurs manquantes (imputation ou suppression)
-- Standardisation des champs catégoriels (genre, éducation, type de contrat...)
+- Correction des âges incohérents (< 16 ou > 70)
+- Imputation des valeurs manquantes
+- Standardisation des champs catégoriels (genre, éducation)
 
-## 2. Feature Engineering
+### Phase 2 : Feature Engineering (2h)
 
-- Encodage des variables catégorielles
-- Normalisation des features numériques
-- Création d'une nouvelle feature : `Ancienneté` (seniority de l'employé)
+**Transformations appliquées :**
+- Encodage one-hot des variables catégorielles
+- Normalisation des features numériques (salaire, âge)
+- Création de la feature "Ancienneté" à partir des dates
 
-## 3. Machine Learning
+### Phase 3 : Modélisation (3h)
 
-- Classification supervisée avec `RandomForestClassifier`
-- Optimisation des hyperparamètres avec `GridSearchCV`
-- Évaluation via rapport de classification et matrice de confusion
+**Choix du modèle :**
+- RandomForestClassifier pour sa robustesse et interprétabilité
+- GridSearchCV pour l'optimisation des hyperparamètres
 
-# Résultats du modèle
+**Paramètres optimisés :**
+- Nombre d'arbres
+- Profondeur maximale
+- Critère de split
 
-Le modèle montre une capacité partielle à distinguer les contrats CDI et CDD, mais a des difficultés à différencier les stages et alternances en raison de l'absence d'indicateurs RH spécifiques.
+### Phase 4 : Évaluation et analyse (2h)
+
+- Rapport de classification (précision, recall, F1-score)
+- Matrice de confusion
+- Analyse des erreurs et identification des limites
+
+---
+
+## Acteurs et interactions
+
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Moi (data scientist)** | Analyse et modélisation | Projet individuel |
+| **Enseignant Data Mining** | Cadrage et évaluation | Consignes, dataset, feedback |
+
+---
+
+## Résultats obtenus
+
+### Performance du modèle
 
 | Métrique | Valeur |
 |----------|--------|
-| **Précision obtenue** | ~22–45% selon le split du dataset |
+| **Précision globale** | ~22-45% selon le split |
+| **Meilleure classe (CDI)** | ~60% recall |
+| **Pire classe (Stage)** | ~10% recall |
 
-> Note : Les performances limitées sont dues à la nature synthétique du dataset et au manque de features discriminantes pour les contrats courts.
+### Analyse des résultats
 
-# Technologies utilisées
+**Pourquoi les performances sont limitées ?**
+- Le dataset synthétique manque de features RH spécifiques (expérience, diplôme détaillé)
+- Les profils Stage et Alternance sont très similaires dans les données
+- Déséquilibre des classes impactant l'apprentissage
 
-| Technologie | Utilisation |
-|-------------|-------------|
-| **Python 3** | Langage principal |
-| **Pandas** | Manipulation et nettoyage des données |
-| **NumPy** | Calculs numériques |
-| **Matplotlib/Seaborn** | Visualisation des données |
-| **Scikit-learn** | Modèles de ML et évaluation |
-| **Jupyter Notebook** | Environnement d'analyse |
+**Ce qui fonctionne :**
+- Le modèle distingue relativement bien CDI vs autres contrats
+- Le pipeline de prétraitement est robuste et réutilisable
 
-# Installation et exécution
+### Pour moi
 
-```bash
-# Cloner le projet
-git clone https://github.com/alexyvanot/hr-data-analytics.git
-cd hr-data-analytics
+- **Compétences en data cleaning** : gestion des cas limites
+- **Maîtrise de scikit-learn** : pipeline complet
+- **Esprit critique** : savoir reconnaître les limites d'un modèle
 
-# Installer les dépendances
-pip install -r requirements.txt
+---
 
-# Ouvrir le notebook
-jupyter notebook ProjetFinal_DataCrafting_Mining.ipynb
-```
+## Lendemains du projet
 
-# Structure du projet
+### Aujourd'hui
 
-```
-hr-data-analytics/
+Le notebook est disponible sur GitHub et documente l'ensemble du processus, y compris les échecs et leurs analyses.
+
+### Améliorations envisagées
+
+- Enrichissement avec des données réelles (si disponibles)
+- Test d'autres algorithmes (XGBoost, SVM)
+- Techniques de rééquilibrage des classes (SMOTE)
+
+### Leçons apprises
+
+Ce projet m'a appris que **documenter les échecs est aussi important que célébrer les succès**. Un modèle à 45% de précision sur un problème mal posé apprend plus qu'un 95% sur un dataset trivial.
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Python]{link=/skills/python icon=i-logos-python}
+::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
+:::
 ├── ProjetFinal_DataCrafting_Mining.ipynb  # Notebook principal
 ├── dataset_rh.csv                          # Dataset RH synthétique
 ├── requirements.txt                        # Dépendances Python

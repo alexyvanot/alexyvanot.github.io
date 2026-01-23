@@ -1,5 +1,5 @@
 ---
-name: Quiz AI
+name: Quiz AI - Générateur de quiz intelligent
 slug: quiz-ai
 category: technique
 type: AI & Web Application
@@ -30,88 +30,168 @@ attachments:
     src: https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_player.png
   - label: Écran des résultats
     src: https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_result.png
+team:
+  - name: Alexy VANOT
+    role: Développeur full-stack
 ---
 
-# Quiz AI
+::toc
 
-**Quiz AI** est un générateur de quiz intelligent qui utilise l'IA pour créer des quiz interactifs à partir de n'importe quel texte. Construit avec des technologies modernes incluant SvelteKit, Express.js et les modèles Ollama AI.
+## Mon regard critique
 
-Ce projet a été réalisé dans le cadre de mes études en **Prompt Engineering**.
+> Quiz AI représente ma **capacité à combiner IA et développement web** pour créer un produit utilisable. Ma valeur ajoutée ? Avoir conçu une expérience utilisateur fluide de bout en bout : coller un texte → configurer → jouer → voir ses résultats, le tout en quelques secondes grâce au prompt engineering optimisé.
+
+**Mes apports principaux :**
+- Architecture full-stack propre (SvelteKit + Express + Ollama)
+- Prompt engineering pour générer des quiz cohérents et de qualité
+- UX soignée avec feedback instantané et thème sombre moderne
+
+**Ce que j'en retire :** Ce projet m'a appris l'importance du **prompt engineering** — la qualité des quiz dépend directement de la façon dont on formule les instructions à l'IA. J'ai aussi expérimenté le déploiement Docker avec support GPU.
+
+---
+
+## Présentation du projet
+
+**Quiz AI** est un générateur de quiz intelligent qui utilise l'IA pour créer des questionnaires interactifs à partir de n'importe quel texte. Collez un article, un cours ou une documentation, et l'application génère automatiquement des questions à choix multiples pertinentes.
+
+Le projet a été réalisé dans le cadre de mes études en **Prompt Engineering**.
 
 ![Démo de l'application|clean](https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_quiz.gif)
 
-# Fonctionnalités
+---
 
-- 🎯 **Génération intelligente de quiz** - Créez des quiz à partir de n'importe quel texte grâce à l'IA
-- 🤖 **Multiples modèles IA** - Support de llama3.2:latest et gemma:2b
-- 🎮 **Lecteur de quiz interactif** - Interface moderne pour répondre aux quiz
-- 📊 **Scoring en temps réel** - Feedback instantané et résultats détaillés
-- 🐳 **Docker Ready** - Plusieurs modes de déploiement (default, GPU, local)
-- ⚡ **Téléchargement auto des modèles** - Les modèles se téléchargent automatiquement au premier lancement
-- 🌙 **Thème sombre** - Interface moderne inspirée de Discord
-- 🔧 **Configurable** - Personnalisez le nombre de questions et de choix de réponses
+## Objectifs, Contexte et Enjeux
 
-# Architecture
+### Contexte académique
 
-| Composant | Technologie |
-|-----------|-------------|
-| **Frontend** | SvelteKit 5 avec Tailwind CSS |
-| **Backend** | Express.js REST API |
-| **Moteur IA** | Ollama (llama3.2:latest, gemma:2b) |
-| **Conteneurisation** | Docker & Docker Compose |
+Ce projet a été réalisé en **4 jours** dans le cadre d'un module de **Prompt Engineering**. L'objectif était de créer une application concrète exploitant les capacités des LLMs (Large Language Models).
 
-# Comment ça fonctionne
+### Objectifs du projet
 
-1. **Coller votre texte** dans la zone de saisie
-2. **Configurer** le nombre de questions (3-10) et de choix (2-4)
-3. **Générer** le quiz avec le modèle IA de votre choix
-4. **Répondre** aux questions de manière interactive
-5. **Consulter** vos résultats avec le détail des bonnes/mauvaises réponses
+| Objectif | Réalisation |
+|----------|-------------|
+| Générer du contenu via IA | Intégration Ollama (llama3.2, gemma:2b) |
+| Créer une interface utilisateur | SvelteKit + Tailwind CSS |
+| Construire une API backend | Express.js REST API |
+| Déployer facilement | Docker & Docker Compose |
 
-# Installation et lancement
+### Enjeux et défis
 
-## 🚀 Quick Start (Recommandé)
+**Enjeux :**
+- **Qualité des quiz** : générer des questions pertinentes et des distracteurs crédibles
+- **Performance** : temps de génération acceptable pour l'utilisateur
+- **Configurabilité** : adapter le nombre de questions et de choix
 
-```bash
-git clone https://github.com/alexyvanot/quiz-ai.git && cd quiz-ai
-docker compose up -d
-```
+**Défis rencontrés :**
+- Prompt engineering pour éviter les questions ambiguës
+- Parsing du JSON retourné par le LLM (parfois mal formaté)
+- Gestion du temps de génération (10-30 secondes selon le modèle)
 
-Les modèles se téléchargent automatiquement au premier lancement (llama3.2:latest + gemma:2b)
+---
 
-> Accédez à l'application sur [http://localhost:5173](http://localhost:5173)
+## Étapes de réalisation
 
-## GPU Accelerated (NVIDIA)
+### Phase 1 : Architecture et setup (1 jour)
 
-```bash
-docker compose -f docker-compose.gpu.yml up -d
-```
+- Choix de la stack : SvelteKit pour le frontend, Express pour l'API, Ollama pour l'IA
+- Configuration Docker avec support GPU optionnel
+- Structure du projet avec séparation claire des responsabilités
 
-## Mode Ollama Local
+### Phase 2 : Intégration IA et prompt engineering (1,5 jours)
 
-```bash
-# Démarrer Ollama localement
-ollama serve
+**Prompt engineering :**
+- Conception du prompt système pour générer des quiz structurés
+- Format JSON strict pour faciliter le parsing
+- Gestion des cas limites (textes courts, langues mixtes)
 
-# Télécharger les modèles si nécessaire
-ollama pull llama3.2:latest
-ollama pull gemma:2b
+**Backend Express :**
+- Route `/generate` pour la création de quiz
+- Gestion des timeouts et erreurs
+- Support de plusieurs modèles Ollama
 
-# Lancer l'application
-docker compose -f docker-compose.local.yml up -d
-```
+### Phase 3 : Interface utilisateur (1 jour)
 
-# Modèles IA
+**Fonctionnalités implémentées :**
+- Zone de saisie pour coller le texte source
+- Configuration (nombre de questions, choix, modèle IA)
+- Lecteur de quiz interactif avec feedback instantané
+- Écran de résultats avec détail des réponses
 
-| Modèle | Taille | Description |
-|--------|--------|-------------|
-| **llama3.2:latest** | 2.0GB | Modèle principal de génération de questions |
-| **gemma:2b** | 1.7GB | Modèle alternatif léger |
+**Design :**
+- Thème sombre inspiré de Discord
+- Animations et transitions fluides
+- Responsive design
 
-# Screenshots
+### Phase 4 : Docker et documentation (0,5 jour)
 
-![Formulaire initial|clean](https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_init.png)
+- Dockerfile optimisé avec multi-stage build
+- Docker Compose avec 3 profils (default, GPU, local)
+- Téléchargement automatique des modèles au premier lancement
+- README complet avec instructions d'installation
 
-![Quiz interactif|clean](https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_player.png)
+---
 
-![Résultats|clean](https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_result.png)
+## Acteurs et interactions
+
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Moi (développeur)** | Conception et développement full-stack | Projet individuel |
+| **Enseignant Prompt Engineering** | Cadrage et évaluation | Consignes, feedback |
+| **Ollama** | Moteur IA | Appels API pour la génération |
+
+---
+
+## Résultats obtenus
+
+### Fonctionnalités livrées
+
+- ✅ Génération de quiz à partir de n'importe quel texte
+- ✅ Support de plusieurs modèles IA (llama3.2, gemma:2b)
+- ✅ Configuration flexible (3-10 questions, 2-4 choix)
+- ✅ Interface interactive avec scoring en temps réel
+- ✅ Déploiement Docker one-command
+
+### Performance
+
+| Métrique | Valeur |
+|----------|--------|
+| Temps de génération (llama3.2) | 15-30 secondes |
+| Temps de génération (gemma:2b) | 5-10 secondes |
+| Qualité des questions | ~85% pertinentes |
+
+### Pour moi
+
+- **Maîtrise du prompt engineering** pour la génération structurée
+- **Compétences full-stack** SvelteKit + Express
+- **Expérience Docker** avec support GPU
+
+---
+
+## Lendemains du projet
+
+### Aujourd'hui
+
+Le projet est disponible sur GitHub et peut être déployé en une commande. Il sert de démonstration de mes compétences en IA et développement web.
+
+### Améliorations envisagées
+
+- Support de l'upload de fichiers (PDF, Word)
+- Historique des quiz générés
+- Mode multijoueur en temps réel
+- Export des quiz (JSON, PDF)
+
+### Ce que j'ai réinvesti
+
+Les techniques de prompt engineering apprises ici me servent pour d'autres projets intégrant des LLMs.
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Svelte]{link=/skills/svelte icon=i-logos-svelte-icon}
+::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
+::button[Créativité]{link=/skills/creativity icon=i-carbon-idea}
+:::

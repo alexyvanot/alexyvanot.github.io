@@ -1,11 +1,10 @@
 ---
-name: Snake Game AI
+name: Snake Game AI - Apprentissage par algorithmes génétiques
 slug: snake-game-ai
 published: true
 pinned: true
 category: technique
 type: Machine Learning
-shortDescription: Un jeu Snake classique où l'IA apprend à jouer en utilisant des algorithmes génétiques et des réseaux de neurones.
 color: "#3776AB"
 logo: https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/assets/animfull.gif
 period:
@@ -21,50 +20,159 @@ links:
 attachments:
   - label: Démo du jeu
     src: https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/assets/animfull.gif
-  - label: Modèle Vertical (txt)
-    src: https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/vertical_model.txt
-  - label: Modèle Horizontal (txt)
-    src: https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/horizontal_model.txt
+team:
+  - name: Alexy VANOT
+    role: Développeur ML
 ---
 
-<img src="https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/assets/animfull.gif" alt="Snake Game AI clean" width="350" />
+::toc
 
-## À propos
+## Mon regard critique
 
-**Snake Game AI** est un projet de Machine Learning qui utilise des **algorithmes génétiques** et des **réseaux de neurones** pour entraîner une intelligence artificielle à jouer au jeu classique Snake.
+> Ce projet m'a fait comprendre la puissance et les limites de l'**apprentissage par renforcement** via algorithmes génétiques. Ma valeur ajoutée ? Avoir optimisé les paramètres d'entraînement pour atteindre **98% de performance** sur le modèle horizontal, et avoir documenté l'ensemble du processus d'expérimentation.
 
-L'IA apprend à jouer en évoluant sur plusieurs générations, améliorant ses performances grâce à des scores de fitness. Ce projet a été développé dans le cadre d'un module académique de Machine Learning.
+**Mes apports principaux :**
+- Optimisation des hyperparamètres (taux de mutation, taille de population)
+- Visualisation de l'apprentissage en temps réel
+- Analyse comparative des modèles vertical et horizontal
 
-## Fonctionnement
+**Ce que j'en retire :** J'ai compris que l'apprentissage par algorithmes génétiques est fascinant mais coûteux en temps de calcul. La convergence peut prendre des milliers de générations. Ce projet m'a aussi appris à être patient et à laisser l'entraînement tourner pendant des heures.
 
-- 🧬 **Algorithmes génétiques** — L'IA évolue par sélection naturelle, croisant les meilleurs individus
-- 🧠 **Réseaux de neurones** — Chaque snake possède un réseau neuronal qui prend des décisions
-- 📈 **Fitness scoring** — Les performances sont évaluées et les meilleurs gènes sont transmis
-- 🔄 **Apprentissage itératif** — L'IA s'améliore génération après génération
+---
 
-## Résultats des modèles
+## Présentation du projet
+
+**Snake Game AI** est un projet de Machine Learning qui entraîne une intelligence artificielle à jouer au jeu classique Snake. L'IA utilise des **algorithmes génétiques** combinés à des **réseaux de neurones** pour apprendre à jouer sans aucune programmation explicite des règles.
+
+Le snake apprend en évoluant sur plusieurs générations : les meilleurs individus sont sélectionnés et leurs "gènes" (poids du réseau neuronal) sont transmis à la génération suivante.
+
+<img src="https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/assets/animfull.gif" alt="Snake Game AI" width="350" />
+
+---
+
+## Objectifs, Contexte et Enjeux
+
+### Contexte académique
+
+Ce projet a été réalisé dans le cadre d'un module **Machine Learning** à l'ESIEA. Il s'appuie sur un codebase fourni par l'enseignant, que j'ai amélioré et optimisé.
+
+### Objectifs du projet
+
+| Objectif | Réalisation |
+|----------|-------------|
+| Comprendre les algorithmes génétiques | Implémentation complète |
+| Entraîner un réseau neuronal | Sans TensorFlow (NumPy only) |
+| Optimiser les performances | 98% de score maximal |
+| Visualiser l'apprentissage | Pygame pour le rendu |
+
+### Enjeux et défis
+
+**Enjeux :**
+- **Convergence** : trouver les bons hyperparamètres pour que l'IA apprenne
+- **Performance** : temps d'entraînement raisonnable
+- **Généralisation** : IA capable de jouer dans différentes configurations
+
+**Défis rencontrés :**
+- Équilibre exploration/exploitation dans l'algorithme génétique
+- Éviter les minima locaux (snake qui tourne en rond)
+- Optimisation du temps de calcul
+
+---
+
+## Étapes de réalisation
+
+### Phase 1 : Compréhension et setup (3 jours)
+
+- Analyse du codebase fourni
+- Compréhension de l'architecture du réseau neuronal
+- Configuration de l'environnement (Python 3.13, NumPy, Pygame)
+
+### Phase 2 : Expérimentation des hyperparamètres (1 semaine)
+
+**Paramètres testés :**
+- Taille de la population (50, 100, 200)
+- Taux de mutation (0.01, 0.05, 0.1)
+- Nombre de générations (500, 1000, 2000)
+- Architecture du réseau (nombre de couches, neurones)
+
+**Méthode :**
+- Tests systématiques avec logging des résultats
+- Comparaison des scores moyens et maximaux
+
+### Phase 3 : Entraînement des modèles finaux (2 jours)
+
+**Modèle Vertical :**
+- 573 itérations d'entraînement
+- Score maximal : 96%
+
+**Modèle Horizontal :**
+- 1000 itérations d'entraînement
+- Score maximal : 98%
+
+### Phase 4 : Documentation et analyse (2 jours)
+
+- Sauvegarde des modèles entraînés (.txt)
+- Création des GIFs de démonstration
+- Rédaction de la documentation
+
+---
+
+## Acteurs et interactions
+
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Moi (développeur ML)** | Optimisation et entraînement | Projet individuel |
+| **Enseignant ML** | Fourniture du codebase initial | Consignes, évaluation |
+
+---
+
+## Résultats obtenus
+
+### Performance des modèles
 
 | Modèle | Itérations | Meilleur score |
 |--------|------------|----------------|
-| Vertical | 573/1000 | **96.00%** |
-| Horizontal | 1000/1000 | **98.00%** |
+| **Vertical** | 573/1000 | 96.00% |
+| **Horizontal** | 1000/1000 | 98.00% |
 
-## Stack technique
+### Observations
 
-| Technologie | Utilisation |
-|-------------|-------------|
-| Python 3.13 | Langage principal |
-| NumPy | Calculs matriciels et opérations sur les réseaux de neurones |
-| Pygame | Interface graphique et rendu du jeu |
+- Le modèle horizontal converge mieux (espace de recherche plus adapté ?)
+- Les premières générations sont chaotiques, puis l'apprentissage s'accélère
+- Les modèles évitent généralement les murs mais peuvent se coincer
 
-## Configuration
+### Pour moi
 
-Les paramètres d'entraînement de l'IA sont personnalisables via le fichier `.env` :
-- Taille de la population
-- Nombre de générations
-- Taux de mutation
-- Architecture du réseau neuronal
+- **Compréhension profonde** des algorithmes génétiques
+- **Expérience en optimisation** d'hyperparamètres
+- **Patience** : l'entraînement peut prendre des heures
 
-## Contexte académique
+---
 
-Projet réalisé dans le cadre du module **Machine Learning** à l'ESIEA. Basé sur un codebase fourni par l'enseignant, avec des améliorations et modifications personnelles significatives.
+## Lendemains du projet
+
+### Aujourd'hui
+
+Les modèles entraînés sont disponibles sur GitHub. Le projet peut servir de base pour d'autres expérimentations en apprentissage par renforcement.
+
+### Améliorations envisagées
+
+- Migration vers PyTorch pour plus de flexibilité
+- Ajout du Q-Learning pour comparaison
+- Entraînement sur GPU pour accélérer la convergence
+- Visualisation des poids du réseau neuronal
+
+### Ce que j'ai réinvesti
+
+Ce projet m'a donné une bonne base pour comprendre l'apprentissage par renforcement, que j'ai pu approfondir dans d'autres contextes.
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Python]{link=/skills/python icon=i-logos-python}
+::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
+:::

@@ -1,5 +1,5 @@
 ---
-name: Comet Learning - Formation Minecraft
+name: Comet Learning - Plateforme de formation gamifiée
 slug: comet-learning
 category: humain
 type: Formation & Éducation
@@ -15,93 +15,174 @@ skills:
   - papermc
 team:
   - name: Brimal MARTIN
-    role: Co-formateur
+    role: Co-formateur, expert serveur
   - name: Alexy VANOT
-    role: Co-formateur
+    role: Co-formateur, développement
+  - name: Participants
+    role: Apprenants (20+ personnes)
 ---
 
-# Comet Learning - Formation Minecraft
+::toc
 
-**Comet Learning** est un projet de formation tout public que j'ai co-animé avec **Brimal MARTIN**. L'objectif ? Apprendre à créer son propre serveur Minecraft et découvrir les bases du développement de plugins !
+## Mon regard critique
 
-# 🎯 Concept du projet
+> Comet Learning m'a révélé une passion que je ne soupçonnais pas : **la transmission de connaissances**. Voir des participants qui n'avaient jamais codé réussir leur premier script a été une des expériences les plus gratifiantes de mon parcours. Ma valeur ajoutée ? Avoir su vulgariser des concepts techniques complexes pour les rendre accessibles à un public de 10 à 77 ans.
 
-Minecraft est bien plus qu'un jeu : c'est une plateforme d'apprentissage incroyable. Nous avons exploité cet engouement pour initier les participants aux concepts de :
-- Administration de serveurs
-- Développement et programmation
-- Travail collaboratif
+**Mes apports principaux :**
+- Conception du programme pédagogique progressif (du simple au complexe)
+- Accompagnement personnalisé des participants en difficulté
+- Création de supports de cours visuels et interactifs
 
-# 📚 Programme de formation
+**Ce que j'en retire :** J'ai compris que "le meilleur moyen d'apprendre, c'est d'enseigner". Expliquer un concept m'oblige à le comprendre en profondeur. Ce projet a aussi développé ma patience et mon adaptabilité : chaque apprenant avance à son rythme.
 
-## Module 1 : Création d'un serveur Minecraft
+---
 
-- 🖥️ **Installation de Java** et configuration de l'environnement
-- 📦 **Installation de PaperMC** - Un serveur Minecraft performant et extensible
-- ⚙️ **Configuration du serveur** - Paramètres, permissions, whitelist
-- 🌐 **Mise en réseau** - Comment rendre son serveur accessible aux amis
-- 🔧 **Administration** - Gestion des joueurs, commandes de base
+## Présentation du projet
 
-## Module 2 : Introduction au développement avec Skript
+**Comet Learning** est un projet de formation tout public que j'ai co-animé avec **Brimal MARTIN**. L'objectif : apprendre à créer son propre serveur Minecraft et découvrir les bases du développement de plugins, le tout dans une ambiance ludique et bienveillante.
 
-- ✨ **Découverte de Skript** - Un langage simple pour créer des fonctionnalités
-- 📝 **Premiers scripts** - Commandes personnalisées, messages automatiques
-- 🎮 **Mini-jeux basiques** - Création de petits systèmes ludiques
-- 🔄 **Événements et déclencheurs** - Réagir aux actions des joueurs
+Minecraft n'est pas qu'un jeu : c'est une plateforme d'apprentissage où le code produit des effets visibles immédiatement, ce qui motive les débutants.
 
-## Module 3 : Aller plus loin
+---
 
-- 🧩 **Installation de plugins** - Découverte de l'écosystème
-- 🎨 **Personnalisation** - Créer une identité unique pour son serveur
-- 👥 **Gestion de communauté** - Modération, règles, animation
+## Objectifs, Contexte et Enjeux
 
-# 🎓 Approche pédagogique
+### Contexte du projet
 
-Notre méthode était basée sur :
+Ce projet est né d'un constat : beaucoup de personnes veulent apprendre à coder mais sont intimidées par les tutoriels traditionnels. Minecraft offre un contexte familier où l'erreur n'est pas grave — on peut toujours recommencer.
 
-| Principe | Application |
-|----------|-------------|
-| **Learning by doing** | Chaque participant créait son propre serveur |
-| **Accompagnement personnalisé** | Aide individuelle selon le niveau |
-| **Progression douce** | Du plus simple au plus complexe |
-| **Fun first** | L'apprentissage par le jeu avant tout |
+**Public cible :**
+- Débutants complets sans aucune connaissance technique
+- Joueurs Minecraft curieux de comprendre "l'envers du décor"
+- Personnes de tout âge souhaitant une première approche du code
 
-# 👥 Public ciblé
+### Objectifs pédagogiques
 
-- 🧒 **Débutants complets** - Aucune connaissance requise
-- 🎮 **Joueurs Minecraft** - Qui veulent comprendre l'envers du décor
-- 💻 **Curieux de la programmation** - Première approche du code
-- 👨‍👩‍👧‍👦 **Tout âge** - De 10 à 77 ans !
+| Objectif | Contenu |
+|----------|---------|
+| Administrer un serveur | Installation, configuration, gestion des joueurs |
+| Découvrir la programmation | Variables, conditions, boucles via Skript |
+| Développer l'autonomie | Chaque participant repart avec son propre serveur |
+| Créer une communauté | Entraide et partage entre apprenants |
 
-# 💫 Résultats
+### Enjeux et défis
 
-| Métrique | Valeur |
-|----------|--------|
+**Enjeux :**
+- **Accessibilité** : rendre la programmation accessible à tous, sans jargon
+- **Motivation** : maintenir l'engagement sur plusieurs semaines
+- **Résultats concrets** : chaque participant doit repartir avec quelque chose de fonctionnel
+
+**Défis anticipés :**
+- Hétérogénéité des niveaux (certains n'avaient jamais ouvert un terminal)
+- Problèmes techniques variés (Windows, Mac, configurations différentes)
+- Maintien de l'attention sur des sessions de 2-3 heures
+
+---
+
+## Étapes de réalisation
+
+### Phase 1 : Conception du programme (2 semaines)
+
+- Définition des objectifs pédagogiques avec Brimal
+- Découpage en 3 modules progressifs
+- Création des supports de cours et exercices pratiques
+- Test du programme sur quelques volontaires
+
+### Phase 2 : Module 1 — Création d'un serveur (4 sessions)
+
+- Installation de Java et configuration de l'environnement
+- Installation de PaperMC (serveur Minecraft performant)
+- Configuration : paramètres, permissions, whitelist
+- Mise en réseau : rendre son serveur accessible aux amis
+
+**Point clé :** Chaque participant avait son propre serveur fonctionnel à la fin de ce module.
+
+### Phase 3 : Module 2 — Introduction au développement avec Skript (6 sessions)
+
+- Découverte de Skript : un langage simplifié pour Minecraft
+- Premiers scripts : commandes personnalisées, messages automatiques
+- Mini-jeux basiques : systèmes de points, téléportation
+- Événements et déclencheurs : réagir aux actions des joueurs
+
+**Approche :** Learning by doing — chaque concept était immédiatement mis en pratique.
+
+### Phase 4 : Module 3 — Aller plus loin (2 sessions)
+
+- Installation et configuration de plugins communautaires
+- Personnalisation avancée : créer une identité unique
+- Gestion de communauté : modération, règles, animation
+
+### Phase 5 : Clôture et suivi
+
+- Session finale de présentation des projets personnels
+- Création d'un groupe Discord pour l'entraide post-formation
+- Recueil des feedbacks pour améliorer les prochaines sessions
+
+---
+
+## Acteurs et interactions
+
+| Acteur | Rôle | Interactions |
+|--------|------|--------------|
+| **Brimal MARTIN** | Co-formateur, expert serveur | Coordination, sessions sur l'administration |
+| **Moi (Alexy)** | Co-formateur, développement | Conception pédagogique, sessions sur Skript |
+| **Participants (20+)** | Apprenants | Questions, feedback, projets personnels |
+
+### Dynamique de groupe
+
+- **Entraide entre participants** : les plus avancés aidaient les débutants
+- **Ambiance bienveillante** : pas de jugement sur les erreurs
+- **Flexibilité** : adaptation du rythme selon les besoins du groupe
+
+---
+
+## Résultats obtenus
+
+### Métriques du projet
+
+| Indicateur | Résultat |
+|------------|----------|
 | **Participants formés** | 20+ personnes |
-| **Serveurs créés** | Chaque participant est reparti avec le sien |
-| **Scripts développés** | Dizaines de mini-projets |
-| **Sourires générés** | Incalculable 😄 |
+| **Serveurs créés** | Chaque participant reparti avec le sien |
+| **Scripts développés** | Dizaines de mini-projets personnels |
+| **Taux de complétion** | ~85% ont suivi jusqu'au bout |
 
-# 🤝 L'équipe
+### Pour les participants
 
-- **Brimal MARTIN** - Co-formateur, expert Minecraft et administration serveur
-- **Alexy VANOT** - Co-formateur, développement et pédagogie
+- Première expérience de programmation réussie
+- Serveur Minecraft personnel fonctionnel
+- Communauté d'entraide créée
 
-# 💡 Pourquoi Minecraft pour apprendre ?
+### Pour moi
 
-Minecraft offre un contexte idéal pour l'apprentissage :
+- Confirmation de ma passion pour la pédagogie
+- Développement de compétences en vulgarisation technique
+- Expérience d'animation de groupe
 
-- **Motivation intrinsèque** - Les participants sont déjà fans du jeu
-- **Résultats visibles** - Le code produit des effets immédiats dans le jeu
-- **Environnement ludique** - L'erreur n'est pas grave, on peut toujours recommencer
-- **Créativité** - Pas de limite à ce qu'on peut imaginer
+---
 
-# 🔮 Ce que j'ai appris
+## Lendemains du projet
 
-Ce projet m'a confirmé ma passion pour la transmission de connaissances :
+### Immédiatement après
 
-- **Vulgarisation** - Rendre des concepts techniques accessibles
-- **Patience** - Chaque apprenant avance à son rythme
-- **Adaptabilité** - Ajuster le contenu en temps réel
-- **Satisfaction** - Voir quelqu'un réussir son premier script, ça n'a pas de prix !
+Un groupe Discord a été créé pour maintenir le contact. Plusieurs participants ont continué à développer leurs serveurs et à s'entraider.
 
-> *"Le meilleur moyen d'apprendre, c'est d'enseigner."*
+### Aujourd'hui
+
+Certains participants sont allés plus loin : apprentissage de Java "pur", création de vrais plugins, voire orientation vers des études en informatique. Le projet a planté des graines.
+
+### Et demain ?
+
+J'aimerais reproduire ce format sur d'autres sujets : initiation à Python, création de sites web, voire introduction à l'IA. Le principe reste le même : apprendre par le plaisir.
+
+---
+
+## Compétences mobilisées
+
+Ce projet m'a permis de mobiliser et développer les compétences suivantes :
+
+:::buttons
+::button[Java]{link=/skills/java icon=i-logos-java}
+::button[Travail d'équipe]{link=/skills/teamwork icon=i-carbon-group}
+::button[Créativité]{link=/skills/creativity icon=i-carbon-idea}
+:::

@@ -82,6 +82,7 @@
 	 * - ::handwritten[texte]{options} - Texte animé simple
 	 * - :::profile-card - Début d'une carte profil (photo + texte côte à côte)
 	 * - ::toc - Génère automatiquement un sommaire cliquable
+	 * - :::values-grid - Grille de vignettes pour afficher des valeurs/qualités
 	 * - ::: - Fin du bloc
 	 */
 	function preprocessContent(md: string): string {
@@ -287,14 +288,171 @@
 	async function renderContent() {
 		if (!isInitialized || !container || !sanitizer) return;
 
-		// Prétraiter le contenu
-		const preprocessed = preprocessContent(content);
-		const parsed = await marked.parse(preprocessed);
+		// Prétraiter le contenu - extraire les blocs HTML custom et les remplacer par des placeholders
+		const htmlBlocks: string[] = [];
+		let preprocessed = content;
 		
-		// Sanitize en autorisant les attributs data-* et les classes
+		// Extraire les blocs :::values-grid avant marked
+		preprocessed = preprocessed.replace(
+			/:::values-grid(?:\{([^}]*)\})?\s*\n([\s\S]*?)\n:::/g,
+			(match, gridOptionsStr, innerContent) => {
+				const gridOptions: Record<string, string> = {};
+				if (gridOptionsStr) {
+					gridOptionsStr.split(/\s+/).forEach((opt: string) => {
+						const [key, value] = opt.split('=');
+						if (key && value) gridOptions[key] = value;
+					});
+				}
+				const cols = gridOptions.cols || '2';
+				
+				const valuePattern = /::value\[([^\]]+)\](?:\{([^}]*)\})?\s*\n([\s\S]*?)(?=::value|\n::$|$)/g;
+				let valuesHtml = '';
+				let valueMatch;
+				
+				while ((valueMatch = valuePattern.exec(innerContent)) !== null) {
+					const title = valueMatch[1];
+					const optionsStr = valueMatch[2] || '';
+					let description = valueMatch[3].trim().replace(/\n::$/, '').trim();
+					
+					const options: Record<string, string> = {};
+					if (optionsStr) {
+						optionsStr.split(/\s+/).forEach((opt: string) => {
+							const [key, value] = opt.split('=');
+							if (key && value) options[key] = value;
+						});
+					}
+					
+					const icon = options.icon || '✨';
+					const color = options.color || 'primary';
+					
+					description = description
+						.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+						.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+					
+					valuesHtml += `<div class="value-card value-card-${color}"><div class="value-card-icon">${icon}</div><div class="value-card-content"><h4 class="value-card-title">${title}</h4><p class="value-card-description">${description}</p></div></div>`;
+				}
+				
+				const html = `<div class="values-grid values-grid-cols-${cols}">${valuesHtml}</div>`;
+				htmlBlocks.push(html);
+				return `<!--HTMLBLOCK${htmlBlocks.length - 1}-->`;
+			}
+		);
+		
+		// Extraire les blocs :::buttons avant marked
+		preprocessed = preprocessed.replace(
+			/:::buttons(?:\{([^}]*)\})?\s*\n([\s\S]*?)\n:::/g,
+			(match, gridOptionsStr, innerContent) => {
+				const gridOptions: Record<string, string> = {};
+				if (gridOptionsStr) {
+					gridOptionsStr.split(/\s+/).forEach((opt: string) => {
+						const [key, value] = opt.split('=');
+						if (key && value) gridOptions[key] = value;
+					});
+				}
+				const align = gridOptions.align || 'center';
+				
+				// Parser chaque ::button[Label]{href=url icon=emoji style=solid|outline|soft color=blue}
+				const buttonPattern = /::button\[([^\]]+)\](?:\{([^}]*)\})?/g;
+				let buttonsHtml = '';
+				let buttonMatch;
+				
+				while ((buttonMatch = buttonPattern.exec(innerContent)) !== null) {
+					const label = buttonMatch[1];
+					const optionsStr = buttonMatch[2] || '';
+					
+					const options: Record<string, string> = {};
+					if (optionsStr) {
+						optionsStr.split(/\s+/).forEach((opt: string) => {
+							const [key, value] = opt.split('=');
+							if (key && value) options[key] = value;
+						});
+					}
+					
+					const href = options.href || '#';
+					const icon = options.icon || '';
+					const style = options.style || 'ghost'; // ghost, default, outline, secondary
+					const newTab = options.newTab === 'true';
+					
+					const targetAttr = newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+					const iconHtml = icon ? `<span class="btn-icon">${icon}</span>` : '';
+					
+					buttonsHtml += `<a href="${href}" class="md-btn md-btn-${style}"${targetAttr}>${iconHtml}<span class="btn-label">${label}</span></a>`;
+				}
+				
+				const html = `<div class="md-buttons md-buttons-${align}">${buttonsHtml}</div>`;
+				htmlBlocks.push(html);
+				return `<!--HTMLBLOCK${htmlBlocks.length - 1}-->`;
+			}
+		);
+
+		// Extraire les blocs :::tags avant marked (affichage en badges/chips)
+		preprocessed = preprocessed.replace(
+			/:::tags(?:\{([^}]*)\})?\s*\n([\s\S]*?)\n:::/g,
+			(match, optionsStr, innerContent) => {
+				const options: Record<string, string> = {};
+				if (optionsStr) {
+					optionsStr.split(/\s+/).forEach((opt: string) => {
+						const [key, value] = opt.split('=');
+						if (key && value) options[key] = value;
+					});
+				}
+				const layout = options.layout || 'wrap'; // wrap, grid
+				
+				// Parser chaque ::tag[Label]{icon=emoji desc=description}
+				const tagPattern = /::tag\[([^\]]+)\](?:\{([^}]*)\})?/g;
+				let tagsHtml = '';
+				let tagMatch;
+				
+				while ((tagMatch = tagPattern.exec(innerContent)) !== null) {
+					const label = tagMatch[1];
+					const tagOptionsStr = tagMatch[2] || '';
+					
+					const tagOptions: Record<string, string> = {};
+					if (tagOptionsStr) {
+						// Parser les options avec support des guillemets pour les longues descriptions
+						const optRegex = /(\w+)=(?:"([^"]*)"|(\S+))/g;
+						let optMatch;
+						while ((optMatch = optRegex.exec(tagOptionsStr)) !== null) {
+							const key = optMatch[1];
+							const value = optMatch[2] !== undefined ? optMatch[2] : optMatch[3];
+							tagOptions[key] = value;
+						}
+					}
+					
+					const icon = tagOptions.icon || '';
+					const desc = tagOptions.desc ? tagOptions.desc.replace(/_/g, ' ') : '';
+					const full = tagOptions.full ? tagOptions.full.replace(/_/g, ' ') : '';
+					
+					const iconHtml = icon ? `<span class="tag-icon">${icon}</span>` : '';
+					const descHtml = desc ? `<span class="tag-desc">${desc}</span>` : '';
+					const fullHtml = full ? `<div class="tag-full">${full}</div>` : '';
+					
+					tagsHtml += `<div class="md-tag"><div class="tag-header">${iconHtml}<span class="tag-label">${label}</span>${descHtml}</div>${fullHtml}</div>`;
+				}
+				
+				const html = `<div class="md-tags md-tags-${layout}">${tagsHtml}</div>`;
+				htmlBlocks.push(html);
+				return `<!--HTMLBLOCK${htmlBlocks.length - 1}-->`;
+			}
+		);
+		
+		// Prétraiter le reste (profile-card, handwritten, toc)
+		preprocessed = preprocessContent(preprocessed);
+		
+		// Parser avec marked
+		let parsed = await marked.parse(preprocessed);
+		
+		// Restaurer les blocs HTML
+		htmlBlocks.forEach((html, index) => {
+			parsed = parsed.replace(`<!--HTMLBLOCK${index}-->`, html);
+		});
+		
+		// Sanitize en autorisant les attributs data-* et les classes pour les composants custom
 		container.innerHTML = sanitizer.sanitize(parsed, {
-			ADD_ATTR: ['data-handwritten', 'data-fontsize', 'data-duration', 'data-strokewidth', 'data-height'],
-			ADD_TAGS: ['div']
+			ADD_ATTR: ['data-handwritten', 'data-fontsize', 'data-duration', 'data-strokewidth', 'data-height', 'aria-label'],
+			ADD_TAGS: ['nav'],
+			ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'ul', 'ol', 'li', 'strong', 'em', 'code', 'pre', 'blockquote', 'img', 'div', 'span', 'br', 'hr', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'nav', 'details', 'summary'],
+			ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'style', 'target', 'rel', 'data-handwritten', 'data-fontsize', 'data-duration', 'data-strokewidth', 'data-height', 'aria-label']
 		});
 		
 		Prism.highlightAllUnder(container);
@@ -457,5 +615,353 @@
 
 	:global(.markdown-container .toc-level-3) {
 		font-size: 0.9rem;
+	}
+
+	/* ===== VALUES GRID - Grille de vignettes ===== */
+	:global(.markdown-container .values-grid) {
+		display: grid;
+		gap: 0.75rem;
+		margin: 1rem 0;
+	}
+
+	:global(.markdown-container .values-grid-cols-1) {
+		grid-template-columns: 1fr;
+	}
+
+	:global(.markdown-container .values-grid-cols-2) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	:global(.markdown-container .values-grid-cols-3) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	:global(.markdown-container .values-grid-cols-4) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@media (max-width: 768px) {
+		:global(.markdown-container .values-grid-cols-2),
+		:global(.markdown-container .values-grid-cols-3),
+		:global(.markdown-container .values-grid-cols-4) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (min-width: 769px) and (max-width: 1024px) {
+		:global(.markdown-container .values-grid-cols-3),
+		:global(.markdown-container .values-grid-cols-4) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	:global(.markdown-container .value-card) {
+		position: relative;
+		display: flex;
+		gap: 0.75rem;
+		padding: 0.875rem;
+		background: hsl(var(--card) / 0.6);
+		border: 1px solid hsl(var(--border) / 0.5);
+		border-radius: 0.75rem;
+		backdrop-filter: blur(8px);
+		transition: all 0.3s ease;
+		overflow: hidden;
+	}
+
+	:global(.markdown-container .value-card::before) {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 3px;
+		height: 100%;
+		border-radius: 3px 0 0 3px;
+		transition: all 0.3s ease;
+	}
+
+	:global(.markdown-container .value-card:hover) {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px -3px rgba(0, 0, 0, 0.1);
+		border-color: hsl(var(--border));
+	}
+
+	/* Couleurs des cartes */
+	:global(.markdown-container .value-card-primary::before) {
+		background: hsl(var(--primary));
+	}
+
+	:global(.markdown-container .value-card-blue::before) {
+		background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+	}
+
+	:global(.markdown-container .value-card-green::before) {
+		background: linear-gradient(180deg, #22c55e, #16a34a);
+	}
+
+	:global(.markdown-container .value-card-purple::before) {
+		background: linear-gradient(180deg, #a855f7, #7c3aed);
+	}
+
+	:global(.markdown-container .value-card-orange::before) {
+		background: linear-gradient(180deg, #f97316, #ea580c);
+	}
+
+	:global(.markdown-container .value-card-red::before) {
+		background: linear-gradient(180deg, #ef4444, #dc2626);
+	}
+
+	:global(.markdown-container .value-card-yellow::before) {
+		background: linear-gradient(180deg, #eab308, #ca8a04);
+	}
+
+	:global(.markdown-container .value-card-cyan::before) {
+		background: linear-gradient(180deg, #06b6d4, #0891b2);
+	}
+
+	:global(.markdown-container .value-card-icon) {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		font-size: 1.25rem;
+		background: hsl(var(--muted) / 0.5);
+		border-radius: 0.5rem;
+	}
+
+	:global(.markdown-container .value-card-content) {
+		flex: 1;
+		min-width: 0;
+	}
+
+	:global(.markdown-container .value-card-title) {
+		margin: 0 0 0.25rem 0;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: hsl(var(--foreground));
+		line-height: 1.2;
+	}
+
+	:global(.markdown-container .value-card-description) {
+		margin: 0;
+		font-size: 0.8rem;
+		color: hsl(var(--muted-foreground));
+		line-height: 1.5;
+	}
+
+	:global(.markdown-container .value-card-description strong) {
+		color: hsl(var(--foreground));
+		font-weight: 600;
+	}
+
+	/* ===== BUTTONS - Boutons stylés (flat, noir/blanc) ===== */
+	:global(.markdown-container .md-buttons) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 1.5rem 0;
+		padding: 4px;
+		margin-bottom: 0.5rem;
+	}
+
+	:global(.markdown-container .md-buttons-left) {
+		justify-content: flex-start;
+	}
+
+	:global(.markdown-container .md-buttons-center) {
+		justify-content: center;
+	}
+
+	:global(.markdown-container .md-buttons-right) {
+		justify-content: flex-end;
+	}
+
+	:global(.markdown-container .md-btn) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.625rem 1.25rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		text-decoration: none !important;
+		border-radius: 0.5rem;
+		transition: background 0.15s ease, border-color 0.15s ease;
+		cursor: pointer;
+		white-space: nowrap;
+		border: 1.5px solid transparent;
+	}
+
+	:global(.markdown-container .md-btn:hover) {
+		text-decoration: none !important;
+	}
+
+	:global(.markdown-container .md-btn::after),
+	:global(.markdown-container .md-btn:hover::after),
+	:global(.markdown-container .md-btn::before),
+	:global(.markdown-container .md-btn:hover::before) {
+		display: none !important;
+		content: none !important;
+		width: 0 !important;
+		height: 0 !important;
+	}
+
+	:global(.prose .md-btn),
+	:global(.prose .md-btn:hover),
+	:global(article .md-btn),
+	:global(article .md-btn:hover) {
+		text-decoration: none !important;
+		border-bottom: none !important;
+	}
+
+	:global(.prose .md-btn::after),
+	:global(.prose .md-btn:hover::after),
+	:global(article .md-btn::after),
+	:global(article .md-btn:hover::after) {
+		display: none !important;
+		content: none !important;
+	}
+
+	:global(.markdown-container .md-btn .btn-icon) {
+		font-size: 1rem;
+	}
+
+	:global(.markdown-container .md-btn .btn-label) {
+		color: inherit !important;
+	}
+
+	/* Style Default - Bouton noir plein, texte blanc */
+	:global(.markdown-container .md-btn-default) {
+		background: #1a1a1a;
+		color: #ffffff !important;
+		border-color: #1a1a1a;
+	}
+	:global(.markdown-container .md-btn-default:hover) {
+		background: #333333;
+		border-color: #333333;
+	}
+	:global(.markdown-container .md-btn-default .btn-label),
+	:global(.markdown-container .md-btn-default .btn-icon) {
+		color: #ffffff !important;
+	}
+
+	/* Style Outline - Bouton bordé, fond transparent */
+	:global(.markdown-container .md-btn-outline) {
+		background: hsl(var(--background));
+		color: hsl(var(--foreground)) !important;
+		border: none;
+		box-shadow: inset 0 0 0 1.5px hsl(var(--foreground) / 0.3);
+	}
+	:global(.markdown-container .md-btn-outline:hover) {
+		background: hsl(var(--foreground) / 0.05);
+		box-shadow: inset 0 0 0 1.5px hsl(var(--foreground) / 0.5);
+	}
+
+	/* Style Ghost - Bouton léger avec fond gris */
+	:global(.markdown-container .md-btn-ghost) {
+		background: hsl(var(--muted));
+		color: hsl(var(--foreground)) !important;
+		border-color: hsl(var(--border));
+	}
+	:global(.markdown-container .md-btn-ghost:hover) {
+		background: hsl(var(--muted) / 0.7);
+		border-color: hsl(var(--foreground) / 0.2);
+	}
+
+	/* ===== TAGS - Affichage en badges modernes avec expand ===== */
+	:global(.markdown-container .md-tags) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 1rem 0;
+		position: relative;
+		z-index: 10;
+	}
+
+	:global(.markdown-container .md-tags-grid) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.5rem;
+		position: relative;
+		z-index: 10;
+	}
+
+	@media (max-width: 640px) {
+		:global(.markdown-container .md-tags-grid) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	:global(.markdown-container .md-tag) {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0;
+		padding: 0.5rem 0.875rem;
+		background: hsl(var(--muted) / 0.5);
+		border-radius: 0.5rem;
+		font-size: 0.8125rem;
+		cursor: default;
+		position: relative;
+		z-index: 1;
+	}
+
+	:global(.markdown-container .md-tag:hover) {
+		z-index: 100;
+	}
+
+	:global(.markdown-container .md-tag .tag-header) {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+	}
+
+	:global(.markdown-container .md-tag .tag-icon) {
+		font-size: 0.9rem;
+	}
+
+	:global(.markdown-container .md-tag .tag-label) {
+		font-weight: 600;
+		color: hsl(var(--foreground));
+	}
+
+	:global(.markdown-container .md-tag .tag-desc) {
+		font-size: 0.75rem;
+		color: hsl(var(--muted-foreground));
+		margin-left: 1.25rem;
+	}
+
+	/* Texte complet en overlay */
+	:global(.markdown-container .md-tag .tag-full) {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: hsl(var(--card));
+		border: 1px solid hsl(var(--border) / 0.5);
+		border-top: none;
+		border-radius: 0 0 0.5rem 0.5rem;
+		padding: 0.625rem 0.875rem;
+		font-size: 0.8rem;
+		line-height: 1.5;
+		color: hsl(var(--foreground) / 0.85);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.2s ease, visibility 0.2s ease;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+		z-index: 200;
+	}
+
+	/* Au hover, affiche le texte en overlay */
+	:global(.markdown-container .md-tag:hover) {
+		background: hsl(var(--card));
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		border-radius: 0.5rem 0.5rem 0 0;
+	}
+
+	:global(.markdown-container .md-tag:hover .tag-full) {
+		opacity: 1;
+		visibility: visible;
 	}
 </style>
