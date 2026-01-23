@@ -16,6 +16,8 @@ readingTime: 18
 color: "#FF8C00"
 ---
 
+::toc
+
 # SUN Auto : Automatisation de la gestion des applications en fin de vie au Synchrotron SOLEIL
 
 Au Synchrotron SOLEIL, comme dans toute grande infrastructure de recherche scientifique, des dizaines d'applications internes coexistent, chacune répondant à un besoin spécifique. Avec le temps, certaines deviennent obsolètes, d'autres ne sont plus maintenues, d'autres encore continuent de tourner alors que personne ne les utilise. Le projet SUN Auto vise à automatiser la gestion de ces applications en fin de vie, un enjeu crucial pour la sécurité, la performance et la maintenabilité du système d'information.

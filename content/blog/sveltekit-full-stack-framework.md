@@ -24,6 +24,8 @@ links:
     newTab: true
 ---
 
+::toc
+
 # SvelteKit : Le framework full-stack pour Svelte
 
 SvelteKit est le framework officiel pour construire des applications web avec Svelte. Il offre tout ce dont vous avez besoin pour créer des applications rapides et modernes.

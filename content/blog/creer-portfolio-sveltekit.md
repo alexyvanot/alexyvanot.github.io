@@ -17,6 +17,8 @@ color: "#FF3E00"
 pinned: true
 ---
 
+::toc
+
 # Créer son portfolio avec SvelteKit : Pourquoi et comment
 
 Vous êtes sur ce portfolio. Il représente plusieurs semaines de travail intensif, de nombreuses itérations, et quelques nuits blanches. Ce n'est pas qu'une vitrine professionnelle : c'est un projet technique à part entière qui m'a permis d'explorer SvelteKit en profondeur. Voici l'histoire complète de sa création.

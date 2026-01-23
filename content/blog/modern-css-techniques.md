@@ -22,6 +22,8 @@ links:
     newTab: true
 ---
 
+::toc
+
 # Techniques CSS modernes : Grid, Flexbox et plus
 
 Le CSS moderne offre des outils puissants pour créer des layouts sophistiqués. Explorons les techniques essentielles.

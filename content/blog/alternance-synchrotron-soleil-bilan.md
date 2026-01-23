@@ -16,6 +16,8 @@ readingTime: 18
 color: "#1E3A5F"
 ---
 
+::toc
+
 # Travailler en alternance au Synchrotron SOLEIL : Bilan et perspectives
 
 Deux années d'alternance dans un synchrotron. Dit comme ça, cela semble inhabituel pour un étudiant en informatique. Quand on pense développeur junior, on imagine plutôt une startup, une ESN, ou une grande entreprise du numérique. Et pourtant, cette expérience dans un centre de recherche scientifique a été déterminante dans mon parcours professionnel.

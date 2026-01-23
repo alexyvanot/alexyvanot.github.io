@@ -16,6 +16,8 @@ readingTime: 16
 color: "#02569B"
 ---
 
+::toc
+
 # Développement mobile avec Flutter : Retour sur mes premiers projets
 
 Flutter m'a été présenté comme le framework miracle qui permet de développer pour iOS et Android avec une seule base de code, sans compromis sur les performances ni sur l'expérience utilisateur. Sceptique face à ces promesses marketing, j'ai voulu vérifier par moi-même en développant deux applications complètes : une to-do list et une application de découverte de films.

@@ -17,6 +17,8 @@ color: "#EE4C2C"
 pinned: true
 ---
 
+::toc
+
 # Deep Learning et classification d'images : Mon expérience avec CIFAR-10
 
 CIFAR-10 est un classique incontournable de l'apprentissage automatique. Avec ses 60 000 images couleur de 32x32 pixels réparties en 10 classes, c'est le terrain d'entraînement idéal pour comprendre les réseaux de neurones convolutifs avant de s'attaquer à des problèmes plus complexes.

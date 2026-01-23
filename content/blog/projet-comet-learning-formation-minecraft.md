@@ -15,6 +15,8 @@ readingTime: 14
 color: "#62B47A"
 ---
 
+::toc
+
 # Comet Learning : Enseigner la programmation par le jeu Minecraft
 
 Le projet Comet Learning, mené avec Brimal MARTIN, partait d'une intuition contre-intuitive : Minecraft, un jeu vidéo souvent perçu comme une simple distraction, peut être un formidable outil pédagogique pour enseigner la programmation et l'administration système. Nous avons voulu vérifier cette hypothèse en organisant des formations tout public, et les résultats ont dépassé nos attentes.

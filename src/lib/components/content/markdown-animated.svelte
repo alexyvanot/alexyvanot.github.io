@@ -81,15 +81,73 @@
 	 * Parse la syntaxe custom:
 	 * - ::handwritten[texte]{options} - Texte animé simple
 	 * - :::profile-card - Début d'une carte profil (photo + texte côte à côte)
+	 * - ::toc - Génère automatiquement un sommaire cliquable
 	 * - ::: - Fin du bloc
 	 */
 	function preprocessContent(md: string): string {
+		// Générer le sommaire (Table of Contents) à partir des headings
+		// Pattern: ::toc ou ::toc{maxLevel=3}
+		const tocPattern = /::toc(?:\{([^}]*)\})?/g;
+		
+		let result = md.replace(tocPattern, (match, optionsStr) => {
+			const options: Record<string, string> = {};
+			if (optionsStr) {
+				optionsStr.split(/\s+/).forEach((opt: string) => {
+					const [key, value] = opt.split('=');
+					if (key && value) options[key] = value;
+				});
+			}
+			
+			const maxLevel = parseInt(options.maxLevel || '3', 10);
+			const title = options.title || 'Sommaire';
+			
+			// Extraire tous les headings du markdown
+			const headingPattern = /^(#{1,6})\s+(.+)$/gm;
+			const headings: Array<{ level: number; text: string; id: string }> = [];
+			let headingMatch;
+			
+			while ((headingMatch = headingPattern.exec(md)) !== null) {
+				const level = headingMatch[1].length;
+				if (level <= maxLevel) {
+					const text = headingMatch[2].trim();
+					// Générer un ID slug pour le heading (compatible avec marked-gfm-heading-id)
+					const id = text
+						.toLowerCase()
+						.replace(/[^\w\s-]/g, '')
+						.replace(/\s+/g, '-')
+						.replace(/-+/g, '-')
+						.trim();
+					headings.push({ level, text, id });
+				}
+			}
+			
+			if (headings.length === 0) {
+				return '';
+			}
+			
+			// Générer le HTML du sommaire
+			let tocHtml = `<nav class="toc-container" aria-label="Sommaire">`;
+			tocHtml += `<div class="toc-title">${title}</div>`;
+			tocHtml += `<ul class="toc-list">`;
+			
+			for (const heading of headings) {
+				const indent = heading.level - 1;
+				tocHtml += `<li class="toc-item toc-level-${heading.level}" style="padding-left: ${indent * 1}rem;">`;
+				tocHtml += `<a href="#${heading.id}" class="toc-link">${heading.text}</a>`;
+				tocHtml += `</li>`;
+			}
+			
+			tocHtml += `</ul></nav>`;
+			
+			return tocHtml;
+		});
+
 		// Pattern pour les blocs profile-card
 		// :::profile-card
 		// ![alt](url)
 		// ::handwritten[texte]{options}
 		// :::
-		let result = md.replace(
+		result = result.replace(
 			/:::profile-card\s*\n([\s\S]*?)\n:::/g,
 			(match, innerContent) => {
 				// Parser les images markdown dans le bloc
@@ -328,5 +386,76 @@
 		display: flex;
 		justify-content: center;
 		padding-left: 8px; /* Éviter que le texte soit coupé à gauche */
+	}
+
+	/* Styles pour le sommaire (Table of Contents) */
+	:global(.markdown-container .toc-container) {
+		background: hsl(var(--muted) / 0.3);
+		border: 1px solid hsl(var(--border));
+		border-radius: 0.75rem;
+		padding: 1.25rem 1.5rem;
+		margin: 1.5rem 0 2rem 0;
+		backdrop-filter: blur(8px);
+	}
+
+	:global(.markdown-container .toc-title) {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: hsl(var(--foreground));
+		margin-bottom: 0.75rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid hsl(var(--border) / 0.5);
+	}
+
+	:global(.markdown-container .toc-list) {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	:global(.markdown-container .toc-item) {
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	:global(.markdown-container .toc-link) {
+		color: hsl(var(--muted-foreground));
+		text-decoration: none;
+		font-size: 0.95rem;
+		transition: all 0.2s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	:global(.markdown-container .toc-link::before) {
+		content: '›';
+		color: hsl(var(--primary) / 0.5);
+		font-weight: bold;
+		transition: all 0.2s ease;
+	}
+
+	:global(.markdown-container .toc-link:hover) {
+		color: hsl(var(--primary));
+	}
+
+	:global(.markdown-container .toc-link:hover::before) {
+		color: hsl(var(--primary));
+		transform: translateX(3px);
+	}
+
+	:global(.markdown-container .toc-level-1) {
+		font-weight: 600;
+	}
+
+	:global(.markdown-container .toc-level-2) {
+		font-weight: 500;
+	}
+
+	:global(.markdown-container .toc-level-3) {
+		font-size: 0.9rem;
 	}
 </style>

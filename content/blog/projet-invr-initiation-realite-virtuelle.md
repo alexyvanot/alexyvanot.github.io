@@ -16,6 +16,8 @@ color: "#6366F1"
 pinned: true
 ---
 
+::toc
+
 # Projet InVR : Organiser une initiation à la réalité virtuelle sur un campus
 
 En 2023, avec Pierre GERVAIS, nous avons lancé le projet InVR : une série de sessions d'initiation à la réalité virtuelle sur notre campus universitaire. Ce qui a commencé comme une idée simple, presque naïve, s'est transformé en une aventure humaine riche d'enseignements qui a durablement marqué ma vision du rôle d'un ingénieur dans la société.

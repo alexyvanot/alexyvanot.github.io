@@ -22,6 +22,8 @@ links:
     newTab: true
 ---
 
+::toc
+
 # Meilleures pratiques TypeScript en 2024
 
 TypeScript est devenu indispensable dans l'écosystème JavaScript moderne. Voici les meilleures pratiques pour tirer parti de sa puissance.

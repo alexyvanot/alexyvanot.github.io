@@ -25,6 +25,8 @@ links:
     newTab: true
 ---
 
+::toc
+
 # Commencer avec Svelte
 
 Svelte est un framework JavaScript moderne qui révolutionne la façon dont nous construisons des interfaces utilisateur. Contrairement à d'autres frameworks comme React ou Vue, Svelte compile vos composants en JavaScript vanilla hautement optimisé au moment de la construction.

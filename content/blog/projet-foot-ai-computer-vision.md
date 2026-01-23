@@ -16,6 +16,8 @@ readingTime: 16
 color: "#FF6F00"
 ---
 
+::toc
+
 # Analyse d'images et Computer Vision : Retour sur le projet Foot AI
 
 Le projet Foot AI est né d'une question apparemment simple : peut-on entraîner un modèle de deep learning à détecter et segmenter des pieds dans une image ? Ce qui semblait trivial au premier abord s'est révélé être un excellent exercice d'apprentissage, couvrant l'intégralité du pipeline d'un projet de Computer Vision moderne.

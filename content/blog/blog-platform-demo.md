@@ -24,6 +24,8 @@ links:
     newTab: true
 ---
 
+::toc
+
 # Démonstration de la plateforme de blog
 
 Bienvenue sur notre nouvelle plateforme de blog ! Cet article présente toutes les fonctionnalités et capacités de notre système de publication.

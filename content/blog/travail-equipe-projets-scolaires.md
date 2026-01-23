@@ -15,6 +15,8 @@ readingTime: 15
 color: "#0052CC"
 ---
 
+::toc
+
 # Ce que les projets de groupe m'ont appris sur le travail en équipe
 
 Au cours de mes études en informatique, j'ai participé à des dizaines de projets de groupe. Des projets de quelques semaines à d'autres s'étalant sur un semestre entier. Des équipes de deux à des groupes de huit personnes. Des réussites éclatantes et des échecs instructifs.

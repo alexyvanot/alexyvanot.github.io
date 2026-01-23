@@ -18,6 +18,8 @@ color: "#00B8A9"
 pinned: true
 ---
 
+::toc
+
 # TAP : Construire une plateforme de tests automatisés avec génération de rapports Allure
 
 La qualité logicielle passe par les tests. Cette affirmation, devenue un lieu commun, se heurte souvent à la réalité du terrain : tests éparpillés, résultats difficiles à consulter, absence de traçabilité, pratiques hétérogènes entre équipes. Au Synchrotron SOLEIL, j'ai eu l'opportunité de travailler sur TAP (Test Automation Platform), une plateforme visant à centraliser et professionnaliser les pratiques de test automatisé de l'organisation.

@@ -24,6 +24,8 @@ links:
     newTab: true
 ---
 
+::toc
+
 # 🐾 **Georges, le Chat de Nico**  
 > *"Personne ne sait vraiment ce qu'il veut. Même pas lui."*  
 
