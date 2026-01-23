@@ -149,6 +149,10 @@ const deviconMap: Record<string, string> = {
 	'selenium': 'selenium',
 	'cypress': 'cypressio',
 	'pytest': 'pytest',
+	'playwright': 'playwright',
+	
+	// Streaming & Data Apps
+	'streamlit': 'streamlit',
 	
 	// Mobile
 	'android': 'android',
@@ -527,6 +531,20 @@ const Assets = {
 	Spring: asset('spring-original.svg'),
 	TensorFlow: asset('tensorflow-original.svg'),
 	Unity: asset('unity-original.svg'),
+	// Nouvelles icônes (janvier 2026)
+	Apache: asset('apache-original.svg'),
+	Apache2: asset('apache-original.svg'),
+	Playwright: asset('playwright-original.svg'),
+	Streamlit: asset('streamlit-original.svg'),
+	RedisDB: asset('redis-original.svg'),
+	// Minecraft Server Tools (icônes custom à télécharger)
+	PaperMC: asset('papermc.svg'),
+	Velocity: asset('velocity.svg'),
+	BungeeCord: asset('bungeecord.svg'),
+	Spigot: asset('spigot.svg'),
+	Skript: asset('skript.svg'),
+	// VR/AR
+	OpenXR: asset('openxr.svg'),
 	// Soft skills (pas d'icône)
 	Teamwork: asset('no-img.svg'),
 	Autonomy: asset('no-img.svg'),
