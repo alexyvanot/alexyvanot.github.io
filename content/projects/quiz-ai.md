@@ -6,6 +6,9 @@ type: AI & Web Application
 color: "#7C3AED"
 published: true
 logo: https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_init.png
+period:
+  from: 2025-09-26
+  to: 2025-09-29
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/quiz-ai

@@ -6,6 +6,9 @@ type: Deep Learning & Computer Vision
 color: "#673AB7"
 published: true
 logo: https://raw.githubusercontent.com/alexyvanot/tpvpocifar/main/Figure_1.png
+period:
+  from: 2025-05-23
+  to: 2025-05-23
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/tpvpocifar

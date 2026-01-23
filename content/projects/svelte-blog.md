@@ -6,6 +6,9 @@ type: Web Development
 color: "#FF3E00"
 published: true
 logo: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg
+period:
+  from: 2025-07-03
+  to: 2025-07-15
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/testing-blog

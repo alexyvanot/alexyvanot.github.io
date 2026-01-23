@@ -6,6 +6,9 @@ type: Computer Vision & Machine Learning
 color: "#4CAF50"
 published: true
 logo: https://raw.githubusercontent.com/alexyvanot/foot-ai/main/tactical%20map.jpg
+period:
+  from: 2025-07-12
+  to: 2025-07-12
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/foot-ai

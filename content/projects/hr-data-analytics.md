@@ -6,6 +6,9 @@ type: Data Science & Machine Learning
 color: "#E91E63"
 published: true
 logo: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg
+period:
+  from: 2025-12-04
+  to: 2025-12-04
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/hr-data-analytics

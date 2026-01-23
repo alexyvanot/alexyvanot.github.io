@@ -6,6 +6,9 @@ type: Mobile Development
 color: "#02569B"
 published: true
 logo: https://raw.githubusercontent.com/alexyvanot/flutter_todo_list/main/assets/images/README/appshow.png
+period:
+  from: 2024-10-04
+  to: 2024-10-17
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/flutter_todo_list

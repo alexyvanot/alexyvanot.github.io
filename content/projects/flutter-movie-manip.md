@@ -6,6 +6,9 @@ type: Mobile Development
 color: "#02569B"
 published: true
 logo: https://raw.githubusercontent.com/alexyvanot/flutter_movie_manip/main/assets/images/HomePage.png
+period:
+  from: 2024-10-18
+  to: 2024-10-18
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/flutter_movie_manip

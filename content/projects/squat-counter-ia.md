@@ -6,6 +6,9 @@ type: Computer Vision & Pose Estimation
 color: "#FF5722"
 published: true
 logo: https://raw.githubusercontent.com/alexyvanot/squat-counter-ia/main/resources/images/demo.png
+period:
+  from: 2025-06-27
+  to: 2025-06-27
 links:
   - label: GitHub
     url: https://github.com/alexyvanot/squat-counter-ia
