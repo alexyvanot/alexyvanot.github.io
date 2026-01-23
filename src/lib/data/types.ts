@@ -111,6 +111,7 @@ export interface Project<S extends string = string> extends Item<S> {
 	type: string;
 	skills: Array<Skill<S>>;
 	category?: ProjectCategory;
+	pinned?: boolean;
 }
 
 export interface Experience<S extends string = string> extends Project<S> {

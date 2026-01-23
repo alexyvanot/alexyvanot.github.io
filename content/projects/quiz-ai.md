@@ -5,6 +5,7 @@ category: technique
 type: AI & Web Application
 color: "#7C3AED"
 published: true
+pinned: true
 logo: https://raw.githubusercontent.com/alexyvanot/quiz-ai/main/src/lib/assets/demo_init.png
 period:
   from: 2025-09-26

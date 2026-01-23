@@ -5,6 +5,7 @@ category: technique
 type: DevOps & Automation
 color: "#1E3A5F"
 published: true
+pinned: true
 logo: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg
 period:
   from: 2024-01-01

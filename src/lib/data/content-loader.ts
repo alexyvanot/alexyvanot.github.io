@@ -559,6 +559,7 @@ interface ProjectMeta {
 	screenshots?: any[];
 	attachments?: any[];
 	published?: boolean;
+	pinned?: boolean;
 }
 
 function loadAllProjects(): Project[] {
@@ -587,12 +588,17 @@ function loadAllProjects(): Project[] {
 			skills: getSkills(...(meta.skills || [])),
 			links: parseLinks(meta.links),
 			screenshots: parseScreenshots(meta.screenshots),
-			attachments: parseAttachments(meta.attachments)
+			attachments: parseAttachments(meta.attachments),
+			pinned: meta.pinned || false
 		});
 	}
 	
-	// Trier par date (plus récent en premier)
-	return projects.sort((a, b) => b.period.from.getTime() - a.period.from.getTime());
+	// Trier par date (plus récent en premier), puis par nom alphabétique pour stabilité
+	return projects.sort((a, b) => {
+		const dateCompare = b.period.from.getTime() - a.period.from.getTime();
+		if (dateCompare !== 0) return dateCompare;
+		return a.name.localeCompare(b.name);
+	});
 }
 
 // Catégories de projets

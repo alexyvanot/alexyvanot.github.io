@@ -5,6 +5,7 @@ category: technique
 type: Quality Assurance & DevOps
 color: "#00B8A9"
 published: true
+pinned: true
 logo: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg
 period:
   from: 2024-03-01
