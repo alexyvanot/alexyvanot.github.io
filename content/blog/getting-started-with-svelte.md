@@ -1,7 +1,7 @@
 ---
 title: "Commencer avec Svelte : Un guide pour débutants"
 slug: getting-started-with-svelte
-published: true
+published: false
 excerpt: "Découvrez les bases de Svelte, le framework JavaScript révolutionnaire qui compile vos composants."
 author: Alexy VANOT
 publishedAt: 2024-01-15
@@ -15,7 +15,7 @@ logo: Svelte
 coverImage: Svelte
 readingTime: 8
 color: orange
-pinned: true
+pinned: false
 links:
   - label: Site officiel Svelte
     to: https://svelte.dev/

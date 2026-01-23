@@ -1,7 +1,7 @@
 ---
 title: "SvelteKit : Le framework full-stack pour Svelte"
 slug: sveltekit-full-stack-framework
-published: true
+published: false
 excerpt: "Découvrez SvelteKit, le framework full-stack officiel qui révolutionne le développement web avec Svelte."
 author: Alexy VANOT
 publishedAt: 2025-07-06
@@ -14,7 +14,7 @@ tags:
 logo: Svelte
 readingTime: 18
 color: orange
-pinned: true
+pinned: false
 links:
   - label: Site officiel SvelteKit
     to: https://kit.svelte.dev/

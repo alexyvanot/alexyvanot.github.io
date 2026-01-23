@@ -1,7 +1,7 @@
 ---
 title: "Petit Georges vs Gros Georges 🐾"
 slug: georges-le-chat
-published: true
+published: false
 excerpt: "Georges, le chat de Nico, oscille entre moine zen et chaos incarné. Petit Georges ou Gros Georges, choisis ton camp."
 author: Anonymous
 publishedAt: 2025-07-15
@@ -17,7 +17,7 @@ logo: Unknown
 coverImage: Unknown
 readingTime: 3
 color: lightpink
-pinned: true
+pinned: false
 links:
   - label: Mon site personnel
     to: https://www.alexyvanot.com

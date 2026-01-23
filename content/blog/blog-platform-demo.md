@@ -1,7 +1,7 @@
 ---
 title: "Démonstration de la plateforme de blog"
 slug: blog-platform-demo
-published: true
+published: false
 excerpt: "Découvrez toutes les fonctionnalités de notre plateforme de blog moderne : recherche, navigation, épinglage, et bien plus encore."
 author: Alexy VANOT
 publishedAt: 2025-07-08
@@ -14,7 +14,7 @@ tags:
 logo: Svelte
 readingTime: 6
 color: purple
-pinned: true
+pinned: false
 links:
   - label: SvelteKit
     to: https://kit.svelte.dev/

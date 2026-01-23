@@ -1,7 +1,7 @@
 ---
 title: "Techniques CSS modernes : Grid, Flexbox et plus"
 slug: modern-css-techniques
-published: true
+published: false
 excerpt: "Maîtrisez les techniques CSS modernes pour créer des layouts flexibles et responsives."
 author: Alexy VANOT
 publishedAt: 2024-03-05

@@ -93,7 +93,7 @@
 	{#snippet headerBadges()}
 		{#if currentItem?.links && currentItem.links.length > 0}
 			<div class="detail-badges">
-				{#each currentItem.links as link (link.to)}
+				{#each currentItem.links as link, index (`link-${index}-${link.to}`)}
 					<a href={link.to} target="_blank" class="detail-badge">
 						{#if link.icon}
 							<div class={`${link.icon} text-sm`}></div>
@@ -107,7 +107,7 @@
 		{/if}
 		{#if currentItem?.skills && currentItem.skills.length > 0}
 			<div class="detail-badges">
-				{#each currentItem.skills as skill (skill.slug)}
+				{#each currentItem.skills as skill, index (`skill-${index}-${skill.slug}`)}
 					<a href={href(`/skills/${skill.slug}`)} class="detail-badge">
 						<img class="h-4 w-4 rounded" src={$mode === 'dark' ? skill.logo.dark : skill.logo.light} alt={skill.name} />
 						<span class="text-muted-foreground">{skill.name}</span>
