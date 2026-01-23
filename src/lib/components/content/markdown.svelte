@@ -5,6 +5,7 @@
 	import createSanitizer from 'dompurify';
 	import { marked } from 'marked';
 	import { browser } from '$app/environment';
+	import { href as hrefUtil } from '$lib/utils';
 	// Importer tous les langages nécessaires pour la coloration syntaxique
 	import 'prismjs/components/prism-markup';
 	import 'prismjs/components/prism-css';
@@ -155,15 +156,100 @@
 		await renderContent();
 	});
 
+	/**
+	 * Parse les blocs :::buttons avec boutons ::button[Label]{options}
+	 * Supporte: href=, link=, icon= (emoji ou classe UnoCSS), style=, newTab=
+	 */
+	function parseButtons(md: string): { content: string; htmlBlocks: string[] } {
+		const htmlBlocks: string[] = [];
+		
+		const processed = md.replace(
+			/:::buttons(?:\{([^}]*)\})?\s*\n([\s\S]*?)\n:::/g,
+			(match, gridOptionsStr, innerContent) => {
+				const gridOptions: Record<string, string> = {};
+				if (gridOptionsStr) {
+					gridOptionsStr.split(/\s+/).forEach((opt: string) => {
+						const [key, value] = opt.split('=');
+						if (key && value) gridOptions[key] = value;
+					});
+				}
+				const align = gridOptions.align || 'left';
+				
+				// Parser chaque ::button[Label]{href=url icon=emoji style=solid|outline|soft}
+				const buttonPattern = /::button\[([^\]]+)\](?:\{([^}]*)\})?/g;
+				let buttonsHtml = '';
+				let buttonMatch;
+				
+				while ((buttonMatch = buttonPattern.exec(innerContent)) !== null) {
+					const label = buttonMatch[1];
+					const optionsStr = buttonMatch[2] || '';
+					
+					const options: Record<string, string> = {};
+					if (optionsStr) {
+						optionsStr.split(/\s+/).forEach((opt: string) => {
+							const [key, value] = opt.split('=');
+							if (key && value) options[key] = value;
+						});
+					}
+					
+					// Support 'link=' comme alias de 'href='
+					let buttonHref = options.href || options.link || '#';
+					// Utiliser hrefUtil pour les liens internes (commençant par /)
+					if (buttonHref.startsWith('/')) {
+						buttonHref = hrefUtil(buttonHref);
+					}
+					const icon = options.icon || '';
+					const style = options.style || 'ghost'; // ghost, default, outline
+					const newTab = options.newTab === 'true';
+					
+					const targetAttr = newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+					
+					// Déterminer si l'icône est une classe UnoCSS (commence par i-) ou un emoji
+					let iconHtml = '';
+					if (icon) {
+						if (icon.startsWith('i-')) {
+							// Classe UnoCSS/icône
+							iconHtml = `<span class="btn-icon ${icon}"></span>`;
+						} else {
+							// Emoji ou texte
+							iconHtml = `<span class="btn-icon">${icon}</span>`;
+						}
+					}
+					
+					buttonsHtml += `<a href="${buttonHref}" class="md-btn md-btn-${style}"${targetAttr}>${iconHtml}<span class="btn-label">${label}</span></a>`;
+				}
+				
+				const html = `<div class="md-buttons md-buttons-${align}">${buttonsHtml}</div>`;
+				htmlBlocks.push(html);
+				return `<!--BTNBLOCK${htmlBlocks.length - 1}-->`;
+			}
+		);
+		
+		return { content: processed, htmlBlocks };
+	}
+
 	async function renderContent() {
 		if (!isInitialized || !container || !sanitizer) return;
 
 		// Extraire les options du TOC
 		const tocOptions = extractTocOptions(content);
 		
-		// Parser le markdown (sans le ::toc)
-		const parsed = await marked.parse(tocOptions.content);
-		let finalHtml = sanitizer.sanitize(parsed);
+		// Parser les boutons AVANT marked
+		const { content: contentWithoutButtons, htmlBlocks } = parseButtons(tocOptions.content);
+		
+		// Parser le markdown (sans le ::toc et sans les :::buttons)
+		let parsed = await marked.parse(contentWithoutButtons);
+		
+		// Restaurer les blocs de boutons
+		htmlBlocks.forEach((html, index) => {
+			parsed = parsed.replace(`<!--BTNBLOCK${index}-->`, html);
+		});
+		
+		let finalHtml = sanitizer.sanitize(parsed, {
+			ADD_TAGS: ['nav', 'details', 'summary'],
+			ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'ul', 'ol', 'li', 'strong', 'em', 'code', 'pre', 'blockquote', 'img', 'div', 'span', 'br', 'hr', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'nav', 'details', 'summary'],
+			ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'style', 'target', 'rel']
+		});
 		
 		// Si on a un TOC, le générer et l'insérer au début
 		if (tocOptions.hasToc) {
@@ -393,5 +479,106 @@
 	.markdown-container :global(h6:target *) {
 		color: #1a1a1a !important;
 		-webkit-text-fill-color: #1a1a1a !important;
+	}
+
+	/* ===== BUTTONS - Boutons stylés ===== */
+	.markdown-container :global(.md-buttons) {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 1.5rem 0;
+		padding: 4px;
+		margin-bottom: 0.5rem;
+	}
+
+	.markdown-container :global(.md-buttons-left) {
+		justify-content: flex-start;
+	}
+
+	.markdown-container :global(.md-buttons-center) {
+		justify-content: center;
+	}
+
+	.markdown-container :global(.md-buttons-right) {
+		justify-content: flex-end;
+	}
+
+	.markdown-container :global(.md-btn) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.625rem 1.25rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		text-decoration: none !important;
+		border-radius: 0.5rem;
+		transition: background 0.15s ease, border-color 0.15s ease;
+		cursor: pointer;
+		white-space: nowrap;
+		border: 1.5px solid transparent;
+	}
+
+	.markdown-container :global(.md-btn:hover) {
+		text-decoration: none !important;
+	}
+
+	.markdown-container :global(.md-btn::after),
+	.markdown-container :global(.md-btn:hover::after),
+	.markdown-container :global(.md-btn::before),
+	.markdown-container :global(.md-btn:hover::before) {
+		display: none !important;
+		content: none !important;
+		width: 0 !important;
+		height: 0 !important;
+	}
+
+	.markdown-container :global(.md-btn .btn-icon) {
+		font-size: 1rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.markdown-container :global(.md-btn .btn-label) {
+		color: inherit !important;
+	}
+
+	/* Style Default - Bouton noir plein, texte blanc */
+	.markdown-container :global(.md-btn-default) {
+		background: #1a1a1a;
+		color: #ffffff !important;
+		border-color: #1a1a1a;
+	}
+	.markdown-container :global(.md-btn-default:hover) {
+		background: #333333;
+		border-color: #333333;
+	}
+	.markdown-container :global(.md-btn-default .btn-label),
+	.markdown-container :global(.md-btn-default .btn-icon) {
+		color: #ffffff !important;
+	}
+
+	/* Style Outline - Bouton bordé, fond transparent */
+	.markdown-container :global(.md-btn-outline) {
+		background: hsl(var(--background));
+		color: hsl(var(--foreground)) !important;
+		border: none;
+		box-shadow: inset 0 0 0 1.5px hsl(var(--foreground) / 0.3);
+	}
+	.markdown-container :global(.md-btn-outline:hover) {
+		background: hsl(var(--foreground) / 0.05);
+		box-shadow: inset 0 0 0 1.5px hsl(var(--foreground) / 0.5);
+	}
+
+	/* Style Ghost - Bouton léger avec fond gris */
+	.markdown-container :global(.md-btn-ghost) {
+		background: hsl(var(--muted));
+		color: hsl(var(--foreground)) !important;
+		border-color: hsl(var(--border));
+	}
+	.markdown-container :global(.md-btn-ghost:hover) {
+		background: hsl(var(--muted) / 0.7);
+		border-color: hsl(var(--foreground) / 0.2);
 	}
 </style>

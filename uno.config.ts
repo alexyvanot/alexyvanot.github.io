@@ -1,7 +1,7 @@
 import { defineConfig, presetIcons, presetWebFonts } from 'unocss';
 
 export default defineConfig({
-	// Safelist pour les icônes chargées dynamiquement depuis YAML
+	// Safelist pour les icônes chargées dynamiquement depuis YAML et Markdown
 	safelist: [
 		// Social links
 		'i-carbon-logo-github',
@@ -19,7 +19,15 @@ export default defineConfig({
 		'i-carbon-link',
 		'i-carbon-attachment',
 		'i-carbon-download',
-		'i-carbon-launch'
+		'i-carbon-launch',
+		// Icônes pour boutons markdown (compétences soft skills)
+		'i-carbon-user-certification', // Autonomie
+		'i-carbon-idea', // Créativité
+		'i-carbon-group', // Travail d'équipe
+		// Icônes pour boutons markdown (compétences techniques)
+		'i-logos-python',
+		'i-logos-java',
+		'i-logos-svelte-icon'
 	],
 	content: {
 		pipeline: {
@@ -28,7 +36,9 @@ export default defineConfig({
 				// include js/ts files
 				'src/**/*.{js,ts}',
 				// include yaml files for dynamic icons
-				'content/**/*.yaml'
+				'content/**/*.yaml',
+				// include markdown files for dynamic icons in buttons
+				'content/**/*.md'
 			]
 		}
 	},
