@@ -1,12 +1,12 @@
 ---
-name: Stagiaire – Rénovation administrative
+name: Développeur Web
 slug: stagiaire-aghb
 published: true
-shortDescription: "Stage d'un mois dédié à la transformation digitale d'une entreprise du BTP."
+shortDescription: Stage d'un mois dédié à la transformation digitale d'une entreprise du BTP.
 company: AGH Bâtiment
 type: Développement Web
-contract: Internship
-location: France
+contract: Stage
+location: Île-de-France, France
 color: teal
 logo: AGH
 period:
@@ -19,33 +19,57 @@ skills:
 links: []
 ---
 
-## 🛠️ Développeur Web – AGH Bâtiment (Stage)
+## Mon poste
 
-**📍 Lieu :** France  
-**📅 Période :** Août 2022  
-**📝 Contrat :** Internship (Stage de 1 mois)
+**Développeur Web** en stage au sein d'une entreprise de rénovation du bâtiment.
 
----
-
-### 🧱 À propos d'AGH Bâtiment
-
-**AGH Bâtiment** est une entreprise spécialisée dans les travaux de rénovation et de construction. Elle souhaitait moderniser son organisation interne et sa présence en ligne, en automatisant certaines tâches administratives et en mettant en valeur ses services via un site web.
-
----
-
-### 💻 Mes missions
-
-Pendant ce stage, j'ai contribué à la transformation digitale de l'entreprise en développant plusieurs outils personnalisés :
-
-- 🧩 **Création d'interfaces de gestion** internes simples et fonctionnelles
-- 🌐 **Conception du site web vitrine** de l'entreprise (HTML/CSS/JavaScript)
-- 🎨 **Conception du logo vectoriel** en SVG (scalable et responsive)
-- 🗂️ Participation à l'organisation des documents numériques
+| Information | Détail |
+|-------------|--------|
+| **Période** | Août 2022 (1 mois) |
+| **Statut** | Stagiaire |
+| **Responsabilité** | Développement web et identité visuelle |
+| **Localisation** | Île-de-France |
 
 ---
 
-### 🔧 Stack principale
+## L'entreprise
 
-- HTML, CSS, JavaScript
-- SVG pour le logo vectoriel
-- Notions d'UX/UI design appliquées à un contexte réel
+**AGH Bâtiment** est une entreprise spécialisée dans les **travaux de rénovation et de construction** en Île-de-France. Entreprise à taille humaine, elle souhaitait moderniser son organisation interne et développer sa présence en ligne.
+
+**Ma vision :** Ce stage m'a permis de découvrir le monde de l'entreprise et de comprendre comment le **numérique peut transformer une PME traditionnelle**. J'ai pu voir l'impact concret de mes développements sur le quotidien de l'équipe.
+
+---
+
+## Mon positionnement
+
+En tant que seul développeur, j'ai eu une **responsabilité complète** sur les projets confiés. J'ai travaillé en autonomie tout en échangeant régulièrement avec le dirigeant pour valider les orientations.
+
+---
+
+## Mes missions principales
+
+### 🌐 Création du site web vitrine
+
+- Conception et développement d'un **site web responsive**
+- Mise en valeur des services et réalisations de l'entreprise
+- Stack : **HTML, CSS, JavaScript**
+
+### 🎨 Création de l'identité visuelle
+
+- Conception du **logo vectoriel** de l'entreprise (SVG)
+- Design adapté à tous les supports (web, print, véhicules)
+
+### 🗂️ Outils de gestion interne
+
+- Création d'**interfaces simples** pour la gestion administrative
+- Organisation des documents numériques
+
+---
+
+## Compétences développées
+
+| Domaine | Compétences |
+|---------|-------------|
+| **Frontend** | HTML, CSS, JavaScript |
+| **Design** | Création de logo, UX/UI basique |
+| **Transversal** | Autonomie, relation client, gestion de projet |
