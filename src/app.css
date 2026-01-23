@@ -6,10 +6,35 @@
 .hash-target-highlight {
 	background: #fef08a !important;
 	color: #1a1a1a !important;
+	-webkit-text-fill-color: #1a1a1a !important;
+	-webkit-background-clip: unset !important;
+	background-clip: unset !important;
 	padding: 0.25rem 0.5rem !important;
 	margin-left: -0.5rem !important;
 	border-radius: 0.25rem !important;
 	scroll-margin-top: 120px !important;
+}
+
+/* Forcer la couleur sur tous les éléments enfants */
+.hash-target-highlight *,
+.heading-highlight * {
+	color: #1a1a1a !important;
+	-webkit-text-fill-color: #1a1a1a !important;
+}
+
+/* Style de sélection de texte personnalisé */
+::selection {
+	background: hsl(243 80% 60%);
+	color: white;
+}
+
+/* Sélection spécifique pour les éléments avec fond jaune */
+.hash-target-highlight::selection,
+.hash-target-highlight *::selection,
+.heading-highlight::selection,
+.heading-highlight *::selection {
+	background: hsl(243 80% 40%);
+	color: white;
 }
 
 /* Offset pour tous les headings quand ciblés par hash */

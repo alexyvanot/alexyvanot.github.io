@@ -182,6 +182,18 @@
 					const linkHref = link.getAttribute('href');
 					if (linkHref) {
 						const targetId = linkHref.slice(1);
+						
+						// Retirer la surbrillance des titres précédents
+						document.querySelectorAll('.hash-target-highlight').forEach((el) => {
+							el.classList.remove('hash-target-highlight');
+						});
+						
+						// Ajouter la surbrillance au nouveau titre
+						const targetElement = document.getElementById(targetId);
+						if (targetElement) {
+							targetElement.classList.add('hash-target-highlight');
+						}
+						
 						// Mettre à jour l'URL avec le hash
 						window.location.hash = targetId;
 						// Scroll vers l'élément avec offset
@@ -360,10 +372,26 @@
 	.markdown-container :global(h4:target),
 	.markdown-container :global(h5:target),
 	.markdown-container :global(h6:target) {
-		background: #fef08a;
+		background: #fef08a !important;
 		color: #1a1a1a !important;
+		-webkit-text-fill-color: #1a1a1a !important;
+		-webkit-background-clip: unset !important;
+		background-clip: unset !important;
 		padding: 0.25rem 0.5rem;
 		margin-left: -0.5rem;
 		border-radius: 0.25rem;
+	}
+
+	/* Forcer la couleur sur tous les éléments enfants des titres surlignés */
+	.markdown-container :global(.heading-highlight *),
+	.markdown-container :global(.hash-target-highlight *),
+	.markdown-container :global(h1:target *),
+	.markdown-container :global(h2:target *),
+	.markdown-container :global(h3:target *),
+	.markdown-container :global(h4:target *),
+	.markdown-container :global(h5:target *),
+	.markdown-container :global(h6:target *) {
+		color: #1a1a1a !important;
+		-webkit-text-fill-color: #1a1a1a !important;
 	}
 </style>
