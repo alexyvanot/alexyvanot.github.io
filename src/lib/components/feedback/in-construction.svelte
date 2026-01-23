@@ -3,9 +3,12 @@
 	
 	// Extraire la configuration du bandeau "en construction"
 	const { enabled: isVisible, title, message } = SiteConfigData.inConstruction;
+	
+	// État local pour masquer le bandeau (l'utilisateur peut le fermer)
+	let isDismissed = $state(false);
 </script>
 
-{#if isVisible}
+{#if isVisible && !isDismissed}
 	<div class="in-construction-banner">
 		<div class="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 border-t-4 border-black">
 			<!-- Motif rayé jaune et noir -->
@@ -21,7 +24,7 @@
 			></div>
 			
 			<!-- Contenu du bandeau -->
-			<div class="px-4 py-1 text-center bg-yellow-400">
+			<div class="px-4 py-1 text-center bg-yellow-400 relative">
 				<div class="flex items-center justify-center gap-4">
 					<!-- Icône de construction gauche -->
 					<svg 
@@ -50,6 +53,18 @@
 						<path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
 					</svg>
 				</div>
+				
+				<!-- Bouton de fermeture -->
+				<button
+					onclick={() => isDismissed = true}
+					class="close-button"
+					aria-label="Fermer le bandeau"
+					title="Fermer"
+				>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
 			</div>
 			
 			<!-- Motif rayé du bas -->
@@ -76,6 +91,27 @@
 		width: 100%;
 		z-index: 9999;
 		box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+	}
+
+	.close-button {
+		position: absolute;
+		right: 8px;
+		top: 50%;
+		transform: translateY(-50%);
+		padding: 4px;
+		border-radius: 50%;
+		background-color: rgba(0, 0, 0, 0.1);
+		color: black;
+		cursor: pointer;
+		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background-color 0.2s ease;
+	}
+
+	.close-button:hover {
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 
 	/* Animation pour les rayures vers la droite */
