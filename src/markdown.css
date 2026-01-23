@@ -397,6 +397,26 @@ markdown a :is(code):not(pre code) {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Images sans bordure/contour (ajouter class="no-border" ou data-no-border) */
+.markdown-container img.no-border,
+.markdown-container img[data-no-border],
+.markdown-container img[alt*="no-border"],
+.markdown-container img[alt*="noborder"],
+.markdown-container img[alt*="clean"] {
+	box-shadow: none;
+	border: none;
+	border-radius: 0.5rem;
+}
+
+.markdown-container img.no-border:hover,
+.markdown-container img[data-no-border]:hover,
+.markdown-container img[alt*="no-border"]:hover,
+.markdown-container img[alt*="noborder"]:hover,
+.markdown-container img[alt*="clean"]:hover {
+	box-shadow: none;
+	transform: none;
+}
+
 .markdown-container img:hover {
 	transform: scale(1.02);
 	box-shadow: 

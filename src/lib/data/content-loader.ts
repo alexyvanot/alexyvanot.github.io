@@ -78,6 +78,15 @@ function resolveAsset(name: string | undefined): Asset {
 		return Assets.Unknown;
 	}
 	
+	// Si c'est une URL externe (http/https), créer un asset direct
+	if (name.startsWith('http://') || name.startsWith('https://')) {
+		return {
+			light: name,
+			dark: name,
+			fallback: Assets.Unknown.light
+		};
+	}
+	
 	// Essayer la correspondance exacte d'abord
 	let asset = (Assets as Record<string, Asset>)[name];
 	if (asset && !isPlaceholderAsset(asset)) {

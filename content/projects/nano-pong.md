@@ -4,7 +4,7 @@ slug: nano-pong
 published: true
 type: Embedded System
 color: "#00979D"
-logo: Arduino
+logo: https://raw.githubusercontent.com/alexyvanot/nano-pong/main/resources/images/breadboard/t_main3.png
 period:
   from: 2022-01-01
   to: 2022-06-01
@@ -31,6 +31,8 @@ attachments:
   - label: Potentiomètres
     src: https://raw.githubusercontent.com/alexyvanot/nano-pong/main/resources/images/breadboard/potentiometers.jpg
 ---
+
+<img src="https://raw.githubusercontent.com/alexyvanot/nano-pong/main/resources/images/breadboard/t_main3.png" alt="Circuit Nano Pong clean" width="400" />
 
 ## À propos
 
