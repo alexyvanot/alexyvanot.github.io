@@ -243,3 +243,50 @@
 		{/if}
 	</div>
 </SearchPage>
+
+<style>
+	/* Styles pour le carrousel des projets épinglés - identiques au blog */
+	:global(.carousel-card.card) {
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+	
+	:global(.carousel-card.card:hover) {
+		background: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		transform: none !important;
+		border-color: transparent !important;
+		transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) !important;
+	}
+	
+	:global(.carousel-card .card-color) {
+		background: transparent !important;
+		transform: none !important;
+	}
+	
+	:global(.carousel-card .card-color:hover) {
+		background: 
+			radial-gradient(
+				circle at var(--drop-x) var(--drop-y),
+				var(--drop-color) 0%,
+				transparent 60%
+			) !important;
+		background-color: var(--hover-backdrop) !important;
+		transform: none !important;
+	}
+	
+	:global(.carousel-card-content) {
+		border: 1px solid hsl(var(--border));
+		border-radius: 0.5rem;
+		box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+		background: hsl(var(--card) / 0.5);
+		backdrop-filter: blur(8px);
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	:global(.carousel-card:hover .carousel-card-content) {
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	}
+</style>
