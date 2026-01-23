@@ -118,6 +118,17 @@
 			isTouched = false;
 		}, 1500);
 	}
+
+	// Gestion du focus de la barre de recherche pour animer les filtres
+	let isSearchFocused = $state(false);
+
+	function handleSearchFocus() {
+		isSearchFocused = true;
+	}
+
+	function handleSearchBlur() {
+		isSearchFocused = false;
+	}
 </script>
 
 <svelte:head>
@@ -125,9 +136,12 @@
 	<meta name="description" content="Découvrez mes projets personnels et professionnels en développement web, mobile, IA et data science." />
 </svelte:head>
 
-<SearchPage title={ProjectsData.title} {onSearch}>
+<SearchPage title={ProjectsData.title} {onSearch} onFocus={handleSearchFocus} onBlur={handleSearchBlur}>
 	<div class="flex flex-1 flex-col gap-8">
-		<div class="flex flex-row flex-wrap gap-2">
+		<div 
+			class="filters-container flex flex-row flex-wrap gap-2"
+			class:filters-hidden={isSearchFocused}
+		>
 			{#each filters as it (it.slug)}
 				<Toggle
 					pressed={it.isSelected}
@@ -289,5 +303,22 @@
 	
 	:global(.carousel-card:hover .carousel-card-content) {
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	}
+
+	/* Animation smooth pour les filtres */
+	.filters-container {
+		max-height: 500px;
+		opacity: 1;
+		overflow: hidden;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		transform: translateY(0);
+	}
+
+	.filters-hidden {
+		max-height: 0;
+		opacity: 0;
+		margin-bottom: -1rem;
+		transform: translateY(-10px);
+		pointer-events: none;
 	}
 </style>

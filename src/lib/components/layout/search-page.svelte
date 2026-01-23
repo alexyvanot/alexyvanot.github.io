@@ -7,8 +7,16 @@
 	let {
 		title = 'Untitled',
 		onSearch,
+		onFocus,
+		onBlur,
 		children
-	}: { title: string; onSearch: (value: string) => void; children: Snippet } = $props();
+	}: { 
+		title: string; 
+		onSearch: (value: string) => void; 
+		onFocus?: () => void;
+		onBlur?: () => void;
+		children: Snippet 
+	} = $props();
 
 	let query = $state('');
 	let mounted = $state(false);
@@ -36,9 +44,17 @@
 		query = searchParams.get('q') ?? '';
 		mounted = true;
 	});
+
+	function handleFocus() {
+		onFocus?.();
+	}
+
+	function handleBlur() {
+		onBlur?.();
+	}
 </script>
 
 <TitledPage {title}>
-	<Input placeholder="Search..." bind:value={query} />
+	<Input placeholder="Search..." bind:value={query} on:focus={handleFocus} on:blur={handleBlur} />
 	{@render children()}
 </TitledPage>
