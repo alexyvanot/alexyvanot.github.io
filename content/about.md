@@ -64,10 +64,11 @@ Je ne suis pas qu'un développeur ! La **musique** occupe une place importante d
 
 N'hésitez pas à me contacter pour discuter d'un projet, d'une opportunité ou simplement pour échanger !
 
-- 📧 **Email** : [contact@alexyvanot.fr](mailto:contact@alexyvanot.fr)
+- 📧 **Email** : contact@alexyvanot.fr
 - 💼 **LinkedIn** : [linkedin.com/in/vanot](https://linkedin.com/in/vanot)
 - 🐙 **GitHub** : [github.com/alexyvanot](https://github.com/alexyvanot)
 
 ---
 
-> *"Le code, c'est de la poésie qui compile."*
+> *"Stay hungry, stay foolish."*
+> — **Steve Jobs**, Stanford, 2005
