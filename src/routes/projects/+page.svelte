@@ -126,85 +126,6 @@
 </svelte:head>
 
 <SearchPage title={ProjectsData.title} {onSearch}>
-	{#if !isSearching && pinnedProjects.length > 0}
-		<div class="mb-10">
-			<div class="flex justify-center items-center mt-6 mb-4">
-				<H2>Projets à la une</H2>
-			</div>
-			<Carousel.Root 
-				bind:api 
-				opts={{ align: "center", loop: true }} 
-				class="w-full max-w-4xl mx-auto carousel-root"
-				on:mouseenter={handleMouseEnter}
-				on:mouseleave={handleMouseLeave}
-				on:touchstart={handleTouchStart}
-				on:touchend={handleTouchEnd}
-			>
-				<Carousel.Content>
-					{#each pinnedProjects as project (project.slug)}
-						<Carousel.Item class="basis-full">
-							<div class="px-4">
-								<FancyCard color={project.color} href={href(`/projects/${project.slug}`)} class="relative carousel-card" tilt={1}>
-									<div class="absolute top-2 left-2 z-10">
-										<Badge variant="secondary" class="text-xs bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">
-											📌
-										</Badge>
-									</div>
-									<div class="carousel-card-content flex flex-col md:flex-row gap-6 p-6">
-										<!-- Logo et infos -->
-										<div class="flex items-center gap-3 md:flex-col md:items-center md:min-w-0">
-											<Avatar class="w-16 h-16">
-												<AvatarFallback>
-													<img src={Assets.Unknown.light} alt={project.name} class="w-full h-full object-cover" />
-												</AvatarFallback>
-												<AvatarImage src={$mode === 'dark' ? project.logo.dark : project.logo.light} class="w-full h-full object-cover" />
-											</Avatar>
-											<div class="flex flex-col gap-1 md:text-center">
-												<Muted class="text-xs">{formatPeriod(project.period.from, project.period.to)}</Muted>
-												<Badge variant="outline" class="text-xs">{project.type}</Badge>
-											</div>
-										</div>
-										
-										<!-- Contenu principal -->
-										<div class="flex-1 flex flex-col">
-											<div class="flex-1">
-												<CardTitle class="text-xl mb-3">{project.name}</CardTitle>
-												<CardDescription class="text-base mb-4">{project.shortDescription}</CardDescription>
-												
-												<!-- Skills -->
-												<div class="flex flex-wrap gap-2 mb-4">
-													{#each project.skills.slice(0, 4) as skill}
-														<Badge variant="secondary" class="text-xs">
-															{skill.name}
-														</Badge>
-													{/each}
-													{#if project.skills.length > 4}
-														<Badge variant="outline" class="text-xs">
-															+{project.skills.length - 4}
-														</Badge>
-													{/if}
-												</div>
-											</div>
-											
-											<!-- Footer avec catégorie -->
-											{#if project.category}
-												<div class="border-t pt-3 mt-auto">
-													<Muted class="text-xs">{project.category.name}</Muted>
-												</div>
-											{/if}
-										</div>
-									</div>
-								</FancyCard>
-							</div>
-						</Carousel.Item>
-					{/each}
-				</Carousel.Content>
-				<Carousel.Previous class="-left-9" />
-				<Carousel.Next class="-right-9" />
-			</Carousel.Root>
-		</div>
-	{/if}
-
 	<div class="flex flex-1 flex-col gap-8">
 		<div class="flex flex-row flex-wrap gap-2">
 			{#each filters as it (it.slug)}
@@ -221,6 +142,86 @@
 				>
 			{/each}
 		</div>
+
+		{#if !isSearching && pinnedProjects.length > 0}
+			<div class="mb-4">
+				<div class="flex justify-center items-center mb-4">
+					<H2>Projets à la une</H2>
+				</div>
+				<Carousel.Root 
+					bind:api 
+					opts={{ align: "center", loop: true }} 
+					class="w-full max-w-4xl mx-auto carousel-root"
+					on:mouseenter={handleMouseEnter}
+					on:mouseleave={handleMouseLeave}
+					on:touchstart={handleTouchStart}
+					on:touchend={handleTouchEnd}
+				>
+					<Carousel.Content>
+						{#each pinnedProjects as project (project.slug)}
+							<Carousel.Item class="basis-full">
+								<div class="px-4">
+									<FancyCard color={project.color} href={href(`/projects/${project.slug}`)} class="relative carousel-card" tilt={1}>
+										<div class="absolute top-2 left-2 z-10">
+											<Badge variant="secondary" class="text-xs bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200">
+												📌
+											</Badge>
+										</div>
+										<div class="carousel-card-content flex flex-col md:flex-row gap-6 p-6">
+											<!-- Logo et infos -->
+											<div class="flex items-center gap-3 md:flex-col md:items-center md:min-w-0">
+												<Avatar class="w-16 h-16">
+													<AvatarFallback>
+														<img src={Assets.Unknown.light} alt={project.name} class="w-full h-full object-cover" />
+													</AvatarFallback>
+													<AvatarImage src={$mode === 'dark' ? project.logo.dark : project.logo.light} class="w-full h-full object-cover" />
+												</Avatar>
+												<div class="flex flex-col gap-1 md:text-center">
+													<Muted class="text-xs">{formatPeriod(project.period.from, project.period.to)}</Muted>
+													<Badge variant="outline" class="text-xs">{project.type}</Badge>
+												</div>
+											</div>
+											
+											<!-- Contenu principal -->
+											<div class="flex-1 flex flex-col">
+												<div class="flex-1">
+													<CardTitle class="text-xl mb-3">{project.name}</CardTitle>
+													<CardDescription class="text-base mb-4">{project.shortDescription}</CardDescription>
+													
+													<!-- Skills -->
+													<div class="flex flex-wrap gap-2 mb-4">
+														{#each project.skills.slice(0, 4) as skill}
+															<Badge variant="secondary" class="text-xs">
+																{skill.name}
+															</Badge>
+														{/each}
+														{#if project.skills.length > 4}
+															<Badge variant="outline" class="text-xs">
+																+{project.skills.length - 4}
+															</Badge>
+														{/if}
+													</div>
+												</div>
+												
+												<!-- Footer avec catégorie -->
+												{#if project.category}
+													<div class="border-t pt-3 mt-auto">
+														<Muted class="text-xs">{project.category.name}</Muted>
+													</div>
+												{/if}
+											</div>
+										</div>
+									</FancyCard>
+								</div>
+							</Carousel.Item>
+						{/each}
+					</Carousel.Content>
+					<Carousel.Previous class="-left-9" />
+					<Carousel.Next class="-right-9" />
+				</Carousel.Root>
+			</div>
+		{/if}
+
 		{#if groups.length === 0}
 			<EmptyResult />
 		{:else}
