@@ -9,10 +9,53 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { afterNavigate } from '$app/navigation';
 
 	let { children } = $props();
 	let showLoader = $state(true);
 	let appReady = $state(false);
+
+	// Scroll en haut après chaque navigation interne (pas au rechargement)
+	afterNavigate((navigation) => {
+		const { from, to } = navigation;
+		
+		// Protection totale contre les valeurs null/undefined
+		if (!to?.url?.pathname) return;
+		
+		// Rechargement de page (F5) ou accès direct avec un hash = scroll vers l'élément
+		if (!from && to.url.hash) {
+			const targetId = decodeURIComponent(to.url.hash.slice(1));
+			
+			// Fonction pour scroller vers l'élément avec retry
+			const scrollToTarget = (attempts = 0) => {
+				const targetElement = document.getElementById(targetId);
+				
+				if (targetElement) {
+					targetElement.classList.add('hash-target-highlight');
+					targetElement.scrollIntoView({ behavior: 'instant', block: 'start' });
+				} else if (attempts < 20) {
+					setTimeout(() => scrollToTarget(attempts + 1), 100);
+				}
+			};
+			
+			// Commencer après un petit délai initial
+			setTimeout(() => scrollToTarget(), 200);
+			return;
+		}
+		
+		// Si pas de from, on ne fait rien de plus
+		if (!from?.url?.pathname) return;
+		
+		// Navigation vers une page différente = scroll en haut
+		if (from.url.pathname !== to.url.pathname) {
+			if (!to.url.hash) {
+				const scrollContainer = document.querySelector('.app-container > div');
+				if (scrollContainer) {
+					scrollContainer.scrollTop = 0;
+				}
+			}
+		}
+	});
 
 	/**
 	 * Détecte si le visiteur est un bot, crawler ou navigateur headless.
@@ -93,6 +136,25 @@
 			// Attendre que le loader commence à disparaître avant de montrer l'app
 			setTimeout(() => {
 				appReady = true;
+				
+				// Scroll vers le hash si présent dans l'URL (après chargement complet)
+				if (window.location.hash) {
+					const targetId = decodeURIComponent(window.location.hash.slice(1));
+					
+					const scrollToTarget = (attempts = 0) => {
+						const targetElement = document.getElementById(targetId);
+						
+						if (targetElement) {
+							targetElement.classList.add('hash-target-highlight');
+							targetElement.scrollIntoView({ behavior: 'instant', block: 'start' });
+						} else if (attempts < 30) {
+							setTimeout(() => scrollToTarget(attempts + 1), 100);
+						}
+					};
+					
+					// Attendre plus longtemps que le markdown soit rendu
+					setTimeout(() => scrollToTarget(), 500);
+				}
 			}, 20);
 		}, 100); // Réduit de 300ms à 100ms
 		

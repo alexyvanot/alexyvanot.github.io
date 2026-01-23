@@ -13,7 +13,6 @@
 	import { mode } from 'mode-watcher';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context.js';
 	import { onMount } from 'svelte';
-
 	let search = $state('');
 
 	// Helper pour obtenir un timestamp safe
