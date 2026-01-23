@@ -1,7 +1,7 @@
 ---
 name: Spring Boot
 slug: springboot
-published: true
+published: false
 category: framework
 color: green
 logo: Spring

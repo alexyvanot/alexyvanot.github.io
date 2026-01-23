@@ -1,7 +1,7 @@
 ---
 name: Template Project
 slug: template-project
-published: true
+published: false
 type: Template
 color: "#5e95e3"
 logo: Unknown

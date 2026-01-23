@@ -466,7 +466,7 @@ const Assets = {
 	VueJs: asset('vuejs-original.svg'),
 	ReactJs: asset('react.svg'),
 	Dart: asset('dart.png'),
-	Kotlin: asset('kotlin.png'),
+	Kotlin: asset('kotlin-original.svg'),
 	Python: asset('python.png'),
 	NodeJs: asset('nodejs-original.svg'),
 	Deno: asset('deno.svg'),
@@ -562,8 +562,6 @@ const Assets = {
 	// Atlassian
 	Jira: asset('jira-original.svg'),
 	Confluence: asset('confluence-original.svg'),
-	// Langages
-	Kotlin: asset('kotlin-original.svg'),
 	// Soft skills (pas d'icône)
 	Teamwork: asset('no-img.svg'),
 	Autonomy: asset('no-img.svg'),
