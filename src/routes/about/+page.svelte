@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { TitledPage } from '$lib/components/layout';
-	import { MarkdownAnimated, ScreenshotCard, AttachmentCard } from '$lib/components/content';
+	import { MarkdownAnimated, ImageCard, AttachmentCard } from '$lib/components/content';
 	import { AboutPageData } from '$lib/data/content-loader';
 	import { AttachmentType } from '$lib/data/types';
 
@@ -25,7 +25,7 @@
 					<div class="attachments-grid">
 						{#each attachments as attachment, index (index)}
 							{#if attachment.type === AttachmentType.Image}
-								<ScreenshotCard item={{ src: attachment.src, label: attachment.label }} />
+								<ImageCard item={{ src: attachment.src, label: attachment.label }} />
 							{:else}
 								<AttachmentCard {attachment} />
 							{/if}

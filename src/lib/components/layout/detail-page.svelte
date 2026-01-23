@@ -2,7 +2,7 @@
 	import '$lib/styles/detail-page.css';
 	import BasePage from './base-page.svelte';
 	import { EmptyResult } from '$lib/components/feedback';
-	import { EmptyMarkdown, Markdown, ScreenshotCard, AttachmentCard } from '$lib/components/content';
+	import { EmptyMarkdown, Markdown, ImageCard, AttachmentCard } from '$lib/components/content';
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
 	import { fade, fly } from 'svelte/transition';
@@ -311,7 +311,7 @@
 					</h3>
 					<div class="detail-screenshots">
 						{#each screenshots as img, index (index)}
-							<ScreenshotCard item={img} />
+							<ImageCard item={img} />
 						{/each}
 					</div>
 				</div>
@@ -328,7 +328,7 @@
 						{#each attachments as attachment, index (index)}
 							{#if attachment.type === AttachmentType.Image}
 								<!-- Image: rendue directement -->
-								<ScreenshotCard item={{ src: attachment.src, label: attachment.label }} />
+								<ImageCard item={{ src: attachment.src, label: attachment.label }} />
 							{:else}
 								<!-- Autre: affiché comme carte/lien -->
 								<AttachmentCard {attachment} />

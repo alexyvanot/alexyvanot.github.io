@@ -24,10 +24,13 @@ export enum ContractType {
 
 export type Asset = { light: string; dark: string; fallback?: string };
 
-export type Screenshot = {
+export type ImageItem = {
 	src: string;
 	label: string;
 };
+
+// Alias pour rétrocompatibilité
+export type Screenshot = ImageItem;
 
 /**
  * Types de pièces jointes supportés

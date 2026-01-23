@@ -57,24 +57,27 @@
 				</CardFooter>
 			</Card>
 		</DialogTrigger>
-		<DialogContent class="flex min-h-[70%] min-w-[70%] flex-col">
+		<DialogContent class="flex min-h-[70%] min-w-[70%] max-h-[90vh] flex-col">
 			<DialogTitle>{itemLabel}</DialogTitle>
 			{#if itemDescription}
 				<Muted>{itemDescription}</Muted>
 			{/if}
-			<div
-				class="flex-1 bg-contain bg-center bg-no-repeat"
-				style={`background-image: url("${itemSrc}")`}
-			></div>
+			<div class="flex-1 flex items-center justify-center overflow-hidden p-4">
+				<img 
+					src={itemSrc} 
+					alt={itemLabel}
+					class="max-w-full max-h-full object-contain rounded-md"
+				/>
+			</div>
 			<DialogFooter>
-				<a href={itemSrc} target="_blank" download>
+				<a href={itemSrc} target="_blank" rel="noopener noreferrer" download={itemLabel}>
 					<Button variant="outline">
 						<Icon icon="i-carbon-download" className="mr-2" />
 						Télécharger
 					</Button>
 				</a>
 				<DialogClose>
-					<Button>Fermer</Button>
+					<Button>Close</Button>
 				</DialogClose>
 			</DialogFooter>
 		</DialogContent>

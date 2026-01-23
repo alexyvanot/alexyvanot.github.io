@@ -3,9 +3,9 @@
 		Button, Card, CardFooter, Separator, Icon,
 		Dialog, DialogClose, DialogContent, DialogFooter, DialogTitle, DialogTrigger
 	} from '$lib/components/ui';
-	import type { Screenshot } from '$lib/data/types';
+	import type { ImageItem } from '$lib/data/types';
 
-	const { item }: { item: Screenshot } = $props();
+	const { item }: { item: ImageItem } = $props();
 </script>
 
 <Dialog>
