@@ -55,7 +55,7 @@
 						>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent>
-						{#each project.links.slice(1) as link (link.to)}
+						{#each project.links.slice(1) as link, i (i + '-' + link.to)}
 							<a href={link.to} target={'_blank'}>
 								<DropdownMenuItem>
 									{link.label}
@@ -65,7 +65,7 @@
 					</DropdownMenuContent>
 				</DropdownMenu>
 			{:else}
-				{#each project.links as link (link.to)}
+				{#each project.links as link, i (i + '-' + link.to)}
 					<ButtonLink {link} />
 				{/each}
 			{/if}

@@ -140,6 +140,8 @@ function stripMarkdown(md: string): string {
 	if (!md) return '';
 	
 	return md
+		// Supprimer les balises HTML
+		.replace(/<[^>]*>/g, '')
 		// Supprimer les headers
 		.replace(/^#{1,6}\s+/gm, '')
 		// Supprimer les emojis (optionnel, garde-les si tu veux)
@@ -546,9 +548,11 @@ function loadAllBlogPosts(): BlogPost[] {
 interface ProjectMeta {
 	name?: string;
 	slug?: string;
+	shortDescription?: string;
 	type?: string;
 	color?: string;
 	logo?: string;
+	category?: string;
 	period?: { from?: Date | string; to?: Date | string };
 	skills?: string[];
 	links?: any[];
@@ -571,10 +575,11 @@ function loadAllProjects(): Project[] {
 			slug: meta.slug || slug,
 			name: meta.name || slug,
 			logo: resolveAsset(meta.logo),
-			shortDescription: stripMarkdown(content).substring(0, 200),
+			shortDescription: meta.shortDescription || stripMarkdown(content).substring(0, 200),
 			description: content,
 			color: meta.color || 'gray',
 			type: meta.type || 'Project',
+			category: meta.category ? parseProjectCategory(meta.category) : undefined,
 			period: {
 				from: parseDate(meta.period?.from),
 				to: parseDateOptional(meta.period?.to)
@@ -588,6 +593,60 @@ function loadAllProjects(): Project[] {
 	
 	// Trier par date (plus récent en premier)
 	return projects.sort((a, b) => b.period.from.getTime() - a.period.from.getTime());
+}
+
+// Catégories de projets
+const projectCategories = [
+	{ slug: 'technique', name: '💻 Projets Techniques' },
+	{ slug: 'humain', name: '🤝 Projets Humains' }
+];
+
+function parseProjectCategory(category: string): { name: string; slug: string } | undefined {
+	const found = projectCategories.find(c => c.slug === category.toLowerCase());
+	return found || { name: category, slug: category.toLowerCase() };
+}
+
+export function groupProjectsByCategory(query: string = '', filters: string[] = []): Array<{ category: { name: string; slug: string }; items: Project[] }> {
+	const all = loadAllProjects();
+	const out: Array<{ category: { name: string; slug: string }; items: Project[] }> = [];
+	const others: Project[] = [];
+
+	all.forEach((item) => {
+		// Filtre par recherche
+		if (query.trim() && !item.name.toLowerCase().includes(query.trim().toLowerCase())) return;
+		
+		// Filtre par skills
+		if (filters.length > 0 && !item.skills.some(skill => filters.includes(skill.slug))) return;
+
+		if (!item.category) {
+			others.push(item);
+			return;
+		}
+
+		let category = out.find((it) => it.category.slug === item.category?.slug);
+
+		if (!category) {
+			category = { items: [], category: item.category };
+			out.push(category);
+		}
+
+		category.items.push(item);
+	});
+
+	if (others.length !== 0) {
+		out.push({ category: { name: '📁 Autres', slug: 'others' }, items: others });
+	}
+
+	// Trier les catégories selon l'ordre défini
+	out.sort((a, b) => {
+		const indexA = projectCategories.findIndex(cat => cat.slug === a.category.slug);
+		const indexB = projectCategories.findIndex(cat => cat.slug === b.category.slug);
+		if (indexA === -1) return 1;
+		if (indexB === -1) return -1;
+		return indexA - indexB;
+	});
+
+	return out;
 }
 
 // ============================================================================

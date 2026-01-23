@@ -4,6 +4,7 @@ slug: snake-game-ai
 published: true
 category: technique
 type: Machine Learning
+shortDescription: Un jeu Snake classique où l'IA apprend à jouer en utilisant des algorithmes génétiques et des réseaux de neurones.
 color: "#3776AB"
 logo: https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/assets/animfull.gif
 period:

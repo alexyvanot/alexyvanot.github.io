@@ -28,7 +28,8 @@ export {
 	ResumePageData,
 	ContactPageData,
 	getSkills,
-	groupByCategory
+	groupByCategory,
+	groupProjectsByCategory
 } from './content-loader';
 
 // Assets (logos, images)
