@@ -140,7 +140,7 @@
 	<div class="flex flex-1 flex-col gap-8">
 		<div 
 			class="filters-container flex flex-row flex-wrap gap-2"
-			class:filters-hidden={isSearchFocused}
+			class:filters-visible={isSearchFocused}
 		>
 			{#each filters as it (it.slug)}
 				<Toggle
@@ -305,20 +305,22 @@
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	}
 
-	/* Animation smooth pour les filtres */
+	/* Animation smooth pour les filtres - cachés par défaut, visibles quand focus */
 	.filters-container {
-		max-height: 500px;
-		opacity: 1;
-		overflow: hidden;
-		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-		transform: translateY(0);
-	}
-
-	.filters-hidden {
 		max-height: 0;
 		opacity: 0;
-		margin-bottom: -1rem;
+		overflow: hidden;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 		transform: translateY(-10px);
 		pointer-events: none;
+		margin-bottom: -1rem;
+	}
+
+	.filters-visible {
+		max-height: 500px;
+		opacity: 1;
+		transform: translateY(0);
+		pointer-events: auto;
+		margin-bottom: 0;
 	}
 </style>
