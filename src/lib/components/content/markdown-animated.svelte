@@ -26,10 +26,38 @@
 	import 'prismjs/components/prism-rust';
 	import 'prismjs/components/prism-jsx';
 	import 'prismjs/components/prism-tsx';
+	import 'prismjs/components/prism-markdown';
+	import 'prismjs/components/prism-shell-session';
 	import 'prismjs/themes/prism-tomorrow.css';
 	import { onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
 	import { mode } from 'mode-watcher';
+
+	// Configurer les alias pour les langages non reconnus
+	if (typeof Prism !== 'undefined' && Prism.languages) {
+		// Svelte utilise la syntaxe HTML/markup avec du JS intégré
+		if (Prism.languages.markup) {
+			Prism.languages.svelte = Prism.languages.markup;
+		}
+		// Alias ts pour typescript
+		if (Prism.languages.typescript) {
+			Prism.languages.ts = Prism.languages.typescript;
+		}
+		// Alias js pour javascript
+		if (Prism.languages.javascript) {
+			Prism.languages.js = Prism.languages.javascript;
+		}
+		// env utilise la syntaxe bash/shell
+		if (Prism.languages.bash) {
+			Prism.languages.env = Prism.languages.bash;
+			Prism.languages.shell = Prism.languages.bash;
+			Prism.languages.sh = Prism.languages.bash;
+		}
+		// Alias pour markdown
+		if (Prism.languages.markdown) {
+			Prism.languages.md = Prism.languages.markdown;
+		}
+	}
 
 	declare global {
 		interface Window {
