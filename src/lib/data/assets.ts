@@ -545,6 +545,25 @@ const Assets = {
 	Skript: asset('skript.svg'),
 	// VR/AR
 	OpenXR: asset('openxr.svg'),
+	// Suite JetBrains
+	IntelliJ: asset('intellij-original.svg'),
+	PyCharm: asset('pycharm-original.svg'),
+	WebStorm: asset('webstorm-original.svg'),
+	CLion: asset('clion-original.svg'),
+	Rider: asset('rider-original.svg'),
+	DataGrip: asset('datagrip-original.svg'),
+	AndroidStudio: asset('androidstudio-original.svg'),
+	// IDE & Éditeurs
+	VSCode: asset('vscode-original.svg'),
+	// Microsoft Office
+	Excel: asset('excel.svg'),
+	PowerPoint: asset('powerpoint.svg'),
+	Word: asset('word.svg'),
+	// Atlassian
+	Jira: asset('jira-original.svg'),
+	Confluence: asset('confluence-original.svg'),
+	// Langages
+	Kotlin: asset('kotlin-original.svg'),
 	// Soft skills (pas d'icône)
 	Teamwork: asset('no-img.svg'),
 	Autonomy: asset('no-img.svg'),

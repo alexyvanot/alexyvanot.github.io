@@ -1,0 +1,10 @@
+---
+name: PyCharm
+slug: pycharm
+published: true
+category: devtools
+color: green
+logo: PyCharm
+---
+
+IDE JetBrains dédié au développement Python. Support Django, Flask, data science et debugging avancé.
