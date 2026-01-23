@@ -1,6 +1,7 @@
 ---
 name: HR Data Analytics
 slug: hr-data-analytics
+category: technique
 type: Data Science & Machine Learning
 color: "#E91E63"
 published: true

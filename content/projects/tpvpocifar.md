@@ -1,6 +1,7 @@
 ---
 name: TP VPO CIFAR-10
 slug: tpvpocifar
+category: technique
 type: Deep Learning & Computer Vision
 color: "#673AB7"
 published: true

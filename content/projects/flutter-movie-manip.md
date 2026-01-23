@@ -1,6 +1,7 @@
 ---
 name: Flutter Movie App
 slug: flutter-movie-manip
+category: technique
 type: Mobile Development
 color: "#02569B"
 published: true

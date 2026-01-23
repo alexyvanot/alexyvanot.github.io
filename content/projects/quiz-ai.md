@@ -1,6 +1,7 @@
 ---
 name: Quiz AI
 slug: quiz-ai
+category: technique
 type: AI & Web Application
 color: "#7C3AED"
 published: true

@@ -1,6 +1,7 @@
 ---
 name: Squat Counter IA
 slug: squat-counter-ia
+category: technique
 type: Computer Vision & Pose Estimation
 color: "#FF5722"
 published: true

@@ -2,6 +2,7 @@
 name: Nano Pong
 slug: nano-pong
 published: true
+category: technique
 type: Embedded System
 color: "#00979D"
 logo: https://raw.githubusercontent.com/alexyvanot/nano-pong/main/resources/images/breadboard/t_main3.png

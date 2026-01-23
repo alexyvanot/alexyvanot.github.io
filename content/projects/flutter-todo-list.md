@@ -1,6 +1,7 @@
 ---
 name: Flutter Todo List
 slug: flutter-todo-list
+category: technique
 type: Mobile Development
 color: "#02569B"
 published: true

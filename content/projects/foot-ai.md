@@ -1,6 +1,7 @@
 ---
 name: Foot AI
 slug: foot-ai
+category: technique
 type: Computer Vision & Machine Learning
 color: "#4CAF50"
 published: true

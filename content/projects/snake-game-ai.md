@@ -2,6 +2,7 @@
 name: Snake Game AI
 slug: snake-game-ai
 published: true
+category: technique
 type: Machine Learning
 color: "#3776AB"
 logo: https://raw.githubusercontent.com/alexyvanot/Snake-Game-AI/main/assets/animfull.gif
