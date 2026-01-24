@@ -26,7 +26,7 @@ L'alternance au Synchrotron SOLEIL permet de travailler sur des **projets d'enve
 
 ---
 
-## :i[idea] Mes valeurs
+## :i[lightbulb] Mes valeurs
 
 :::values-grid{cols=2}
 ::value[Excellence technique]{icon=i-carbon-flash color=blue}
@@ -48,7 +48,7 @@ La meilleure solution technique n'est pas toujours la plus sophistiquée. Savoir
 
 ---
 
-## :i[group] Qualités humaines
+## :i[partnership] Qualités humaines
 
 :::tags{layout=grid}
 ::tag[Autonomie]{icon=i-carbon-rocket desc=Initiative full="Face à un bug critique en production un vendredi soir, je préfère creuser la doc, tester des hypothèses et trouver la solution plutôt que d'attendre lundi. Cette approche m'a permis de résoudre des incidents majeurs au Synchrotron SOLEIL en dehors des heures de bureau."}

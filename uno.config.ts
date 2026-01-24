@@ -24,6 +24,23 @@ export default defineConfig({
 		'i-carbon-user-certification', // Autonomie
 		'i-carbon-idea', // Créativité
 		'i-carbon-group', // Travail d'équipe
+		// Icônes pour about.md et pages de contenu
+		'i-carbon-lightbulb', // Idée/valeurs
+		'i-carbon-partnership', // Qualités humaines
+		'i-carbon-rocket', // Initiative
+		'i-carbon-checkmark-filled', // Rigueur
+		'i-carbon-chat', // Communication
+		'i-carbon-renew', // Adaptabilité
+		'i-carbon-book', // Lecture
+		'i-carbon-game-console', // Gaming
+		'i-carbon-earth', // Voyages
+		'i-carbon-send-alt', // Contact
+		'i-carbon-flash', // Excellence
+		'i-carbon-collaborate', // Partage
+		'i-carbon-search', // Curiosité
+		'i-carbon-target', // Pragmatisme
+		'i-carbon-star', // Étoile vide
+		'i-carbon-star-filled', // Étoile pleine
 		// Icônes pour boutons markdown (compétences techniques)
 		'i-logos-python',
 		'i-logos-java',
