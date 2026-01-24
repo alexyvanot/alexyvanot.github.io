@@ -41,7 +41,7 @@ Le développement informatique avance grâce à la communauté. Contribuer à de
 Les technologies évoluent rapidement. Rester à jour nécessite une veille constante et une volonté d'expérimenter. Chaque nouveau framework représente une opportunité d'apprentissage.
 ::
 
-::value[Pragmatisme]{icon=i-carbon-target color=orange}
+::value[Pragmatisme]{icon=i-carbon-task-complete color=orange}
 La meilleure solution technique n'est pas toujours la plus sophistiquée. Savoir choisir l'outil adapté au contexte et livrer de la valeur concrète aux utilisateurs reste la priorité.
 ::
 :::

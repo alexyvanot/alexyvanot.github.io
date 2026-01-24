@@ -45,6 +45,7 @@ export default defineConfig({
 		'i-carbon-thumbs-up', // Conclusion
 		'i-carbon-favorite', // Favoris/cœur
 		'i-carbon-magic-wand', // Sparkle alternative
+		'i-carbon-task-complete', // Pragmatisme
 		// Icônes pour boutons markdown (compétences techniques)
 		'i-logos-python',
 		'i-logos-java',
