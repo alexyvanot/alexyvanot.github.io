@@ -140,10 +140,11 @@ function stripMarkdown(md: string): string {
 	if (!md) return '';
 	
 	return md
-		// Supprimer les directives custom (::toc, :::buttons, ::button[...]{...}, etc.)
+		// Supprimer les directives custom (::toc, :::buttons, ::button[...]{...}, :i[icon], etc.)
 		.replace(/^::toc\s*$/gm, '')
 		.replace(/^:::[\w-]+\s*$/gm, '')
 		.replace(/::button\[[^\]]*\]\{[^}]*\}/g, '')
+		.replace(/:i(?:con)?\[[^\]]+\]/g, '') // Supprimer les icônes inline
 		.replace(/::[\w-]+(?:\[[^\]]*\])?(?:\{[^}]*\})?/g, '')
 		// Supprimer les balises HTML
 		.replace(/<[^>]*>/g, '')

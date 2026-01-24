@@ -11,7 +11,7 @@ logo: Java
 
 # Java : le socle de mes développements backend
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Java** est un langage de programmation orienté objet créé par Sun Microsystems en 1995, aujourd'hui maintenu par Oracle. Sa philosophie *"Write Once, Run Anywhere"* (WORA) et sa robustesse en font le langage de prédilection pour les **applications d'entreprise critiques**.
 
@@ -26,7 +26,7 @@ Avec la sortie de **Java 21 LTS** en septembre 2023 et l'arrivée des **Virtual 
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### SUN Auto : orchestration du cycle de vie applicatif
 
@@ -75,7 +75,7 @@ Cette expérience autodidacte, bien que non professionnelle, a posé les bases s
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -123,7 +123,7 @@ Mes recommandations :
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Mon objectif à moyen terme
 

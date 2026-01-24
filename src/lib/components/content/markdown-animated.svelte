@@ -78,19 +78,38 @@
 	let handwrittenColor = $derived($mode === 'dark' ? '#ffffff' : '#1a1a1a');
 
 	/**
+	 * Parse les icônes inline :i[nom-icône] ou :icon[nom-icône]
+	 * Exemple: :i[i-carbon-star] ou :icon[i-carbon-home] ou :i[star]
+	 */
+	function parseIcons(md: string): string {
+		// Pattern: :i[icon-name] ou :icon[icon-name]
+		return md.replace(/:i(?:con)?\[([^\]]+)\]/g, (match, iconName) => {
+			// Nettoyer le nom de l'icône
+			const cleanIcon = iconName.trim();
+			// Si l'icône ne commence pas par 'i-', ajouter le préfixe i-carbon-
+			const finalIcon = cleanIcon.startsWith('i-') ? cleanIcon : `i-carbon-${cleanIcon}`;
+			return `<span class="md-icon ${finalIcon}" aria-hidden="true"></span>`;
+		});
+	}
+
+	/**
 	 * Parse la syntaxe custom:
 	 * - ::handwritten[texte]{options} - Texte animé simple
 	 * - :::profile-card - Début d'une carte profil (photo + texte côte à côte)
 	 * - ::toc - Génère automatiquement un sommaire cliquable
 	 * - :::values-grid - Grille de vignettes pour afficher des valeurs/qualités
+	 * - :i[icon] ou :icon[icon] - Icône inline
 	 * - ::: - Fin du bloc
 	 */
 	function preprocessContent(md: string): string {
+		// Parser les icônes en premier
+		let result = parseIcons(md);
+		
 		// Générer le sommaire (Table of Contents) à partir des headings
 		// Pattern: ::toc ou ::toc{maxLevel=3}
 		const tocPattern = /::toc(?:\{([^}]*)\})?/g;
 		
-		let result = md.replace(tocPattern, (match, optionsStr) => {
+		result = result.replace(tocPattern, (match, optionsStr) => {
 			const options: Record<string, string> = {};
 			if (optionsStr) {
 				optionsStr.split(/\s+/).forEach((opt: string) => {
@@ -963,5 +982,14 @@
 	:global(.markdown-container .md-tag:hover .tag-full) {
 		opacity: 1;
 		visibility: visible;
+	}
+
+	/* Icônes inline :i[nom] ou :icon[nom] */
+	:global(.markdown-container .md-icon) {
+		display: inline-block;
+		width: 1.2em;
+		height: 1.2em;
+		vertical-align: -0.15em;
+		flex-shrink: 0;
 	}
 </style>

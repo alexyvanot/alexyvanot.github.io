@@ -18,12 +18,12 @@ links:
     newTab: true
 ---
 
-## 🎓 ESIEA – Master en ingénierie informatique
+## :i[education] ESIEA – Master en ingénierie informatique
 
-**📍 Localisation :** Paris / Ivry-sur-Seine, France  
-**📅 Période :** 2024 – 2026  
-**🎓 Niveau :** Bac+5 – RNCP Niveau 7 (31678)  
-**🌐 Site :** [https://www.esiea.fr](https://www.esiea.fr)
+**:i[location] Localisation :** Paris / Ivry-sur-Seine, France  
+**:i[calendar] Période :** 2024 – 2026  
+**:i[certificate] Niveau :** Bac+5 – RNCP Niveau 7 (31678)  
+**:i[link] Site :** [https://www.esiea.fr](https://www.esiea.fr)
 
 L'ESIEA est une école d'ingénieurs reconnue, spécialisée dans les technologies numériques. J'y poursuis actuellement un Master en ingénierie informatique, en alternance.
 

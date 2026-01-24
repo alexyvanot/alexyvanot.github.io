@@ -11,7 +11,7 @@ logo: Flutter
 
 # Flutter : le développement mobile cross-platform
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Flutter** est un framework UI open-source de Google permettant de créer des applications **natives pour mobile, web et desktop** à partir d'une **codebase unique** en Dart. Lancé en 2018, il est devenu le framework cross-platform le plus populaire.
 
@@ -27,7 +27,7 @@ De grandes entreprises comme **Google, BMW, Alibaba, eBay** utilisent Flutter en
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Flutter Movie App : gestion de films
 
@@ -57,7 +57,7 @@ Un autre **TP universitaire** m'a permis de créer une application de gestion de
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -90,7 +90,7 @@ Flutter est ma **compétence mobile principale**. Bien que je privilégie le web
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

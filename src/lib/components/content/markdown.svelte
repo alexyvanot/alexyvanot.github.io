@@ -157,6 +157,21 @@
 	});
 
 	/**
+	 * Parse les icônes inline :i[nom-icône] ou :icon[nom-icône]
+	 * Exemple: :i[i-carbon-star] ou :icon[i-carbon-home]
+	 */
+	function parseIcons(md: string): string {
+		// Pattern: :i[icon-name] ou :icon[icon-name]
+		return md.replace(/:i(?:con)?\[([^\]]+)\]/g, (match, iconName) => {
+			// Nettoyer le nom de l'icône
+			const cleanIcon = iconName.trim();
+			// Si l'icône ne commence pas par 'i-', ajouter le préfixe i-carbon-
+			const finalIcon = cleanIcon.startsWith('i-') ? cleanIcon : `i-carbon-${cleanIcon}`;
+			return `<span class="md-icon ${finalIcon}" aria-hidden="true"></span>`;
+		});
+	}
+
+	/**
 	 * Parse les blocs :::buttons avec boutons ::button[Label]{options}
 	 * Supporte: href=, link=, icon= (emoji ou classe UnoCSS), style=, newTab=
 	 */
@@ -234,8 +249,11 @@
 		// Extraire les options du TOC
 		const tocOptions = extractTocOptions(content);
 		
+		// Parser les icônes AVANT tout le reste
+		const contentWithIcons = parseIcons(tocOptions.content);
+		
 		// Parser les boutons AVANT marked
-		const { content: contentWithoutButtons, htmlBlocks } = parseButtons(tocOptions.content);
+		const { content: contentWithoutButtons, htmlBlocks } = parseButtons(contentWithIcons);
 		
 		// Parser le markdown (sans le ::toc et sans les :::buttons)
 		let parsed = await marked.parse(contentWithoutButtons);
@@ -580,5 +598,14 @@
 	.markdown-container :global(.md-btn-ghost:hover) {
 		background: hsl(var(--muted) / 0.7);
 		border-color: hsl(var(--foreground) / 0.2);
+	}
+
+	/* Icônes inline :i[nom] ou :icon[nom] */
+	.markdown-container :global(.md-icon) {
+		display: inline-block;
+		width: 1.2em;
+		height: 1.2em;
+		vertical-align: -0.15em;
+		flex-shrink: 0;
 	}
 </style>

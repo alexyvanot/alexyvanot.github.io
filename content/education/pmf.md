@@ -20,12 +20,12 @@ links:
     newTab: true
 ---
 
-## 🧬 Lycée Pierre Mendès France – Baccalauréat général
+## :i[chemistry] Lycée Pierre Mendès France – Baccalauréat général
 
-**📍 Localisation :** Savigny-le-Temple, France  
-**📅 Période :** 2017 – 2020  
-**🎓 Spécialités :** Sciences de la Vie et de la Terre (SVT), Sciences Économiques et Sociales (SES)  
-**🌐 Site :** [https://www.lyceepmf-savigny77.fr](https://www.lyceepmf-savigny77.fr)
+**:i[location] Localisation :** Savigny-le-Temple, France  
+**:i[calendar] Période :** 2017 – 2020  
+**:i[certificate] Spécialités :** Sciences de la Vie et de la Terre (SVT), Sciences Économiques et Sociales (SES)  
+**:i[link] Site :** [https://www.lyceepmf-savigny77.fr](https://www.lyceepmf-savigny77.fr)
 
 Obtention du baccalauréat général avec un profil pluridisciplinaire mêlant sciences naturelles, économie et méthodologie. Ce socle m'a donné de la rigueur, une bonne culture scientifique, et l'envie de créer.
 
