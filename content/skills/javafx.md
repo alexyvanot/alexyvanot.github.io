@@ -11,7 +11,7 @@ logo: Java
 
 # JavaFX : les interfaces graphiques Java modernes
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **JavaFX** est le framework officiel de Java pour créer des **interfaces graphiques (GUI)** modernes. Successeur de Swing, il offre une approche plus moderne avec support du **CSS**, des **animations** et du **FXML** (XML déclaratif pour l'UI).
 
@@ -26,7 +26,7 @@ Bien que les applications web dominent aujourd'hui, JavaFX reste pertinent pour 
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Projets académiques IN'TECH
 
@@ -47,7 +47,7 @@ Durant ma formation à **IN'TECH**, j'ai développé plusieurs applications Java
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -79,7 +79,7 @@ JavaFX est une compétence **secondaire** dans mon profil. Je privilégie le web
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

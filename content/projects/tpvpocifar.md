@@ -176,11 +176,11 @@ Dense (10) + Softmax → Output
 
 ### Fonctionnalités livrées
 
-- ✅ Notebook d'exploration et entraînement
-- ✅ Modèle sauvegardé (`.h5`)
-- ✅ API Flask pour l'inférence
-- ✅ Interface Streamlit
-- ✅ Documentation complète
+- :i[checkmark-filled] Notebook d'exploration et entraînement
+- :i[checkmark-filled] Modèle sauvegardé (`.h5`)
+- :i[checkmark-filled] API Flask pour l'inférence
+- :i[checkmark-filled] Interface Streamlit
+- :i[checkmark-filled] Documentation complète
 
 ### Pour moi
 

@@ -11,7 +11,7 @@ logo: TypeScript
 
 # TypeScript : JavaScript typé pour les projets sérieux
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **TypeScript** est un superset de JavaScript développé par Microsoft qui ajoute le **typage statique**. Tout code JavaScript valide est du TypeScript valide, mais TypeScript permet de détecter les erreurs à la compilation plutôt qu'à l'exécution.
 
@@ -27,7 +27,7 @@ Selon l'enquête State of JS 2024, **TypeScript a un taux de satisfaction de 93%
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Ce portfolio : 100% TypeScript
 
@@ -52,7 +52,7 @@ Dans le projet **TAP**, j'ai contribué au frontend TypeScript.
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -88,7 +88,7 @@ TypeScript est mon **langage principal pour le frontend**. Je ne fais plus de Ja
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

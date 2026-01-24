@@ -68,10 +68,10 @@ Le projet [INVR](/projects/invr) m'a permis d'explorer la créativité dans un d
 
 | Critère | Évaluation | Commentaire |
 |---------|------------|-------------|
-| Design d'interface | ⭐⭐⭐⭐ | Bon sens esthétique, je m'améliore en UX |
-| Résolution créative de problèmes | ⭐⭐⭐⭐⭐ | Je trouve souvent des angles inattendus |
-| Conception produit | ⭐⭐⭐⭐ | Je pense "utilisateur" naturellement |
-| Prise de risque créatif | ⭐⭐⭐ | Parfois trop prudent sur les idées audacieuses |
+| Design d'interface | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Bon sens esthétique, je m'améliore en UX |
+| Résolution créative de problèmes | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Je trouve souvent des angles inattendus |
+| Conception produit | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Je pense "utilisateur" naturellement |
+| Prise de risque créatif | :i[star-filled]:i[star-filled]:i[star-filled] | Parfois trop prudent sur les idées audacieuses |
 
 ### Marge de progression
 

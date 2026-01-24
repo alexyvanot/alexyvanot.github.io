@@ -11,7 +11,7 @@ logo: Nginx
 
 # Nginx : le serveur web haute performance
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Nginx** (prononcé "engine-x") est un serveur web **haute performance** créé en 2004, devenu le serveur web le plus utilisé au monde devant Apache. Il excelle dans trois rôles clés :
 
@@ -25,7 +25,7 @@ Au **Synchrotron SOLEIL**, Nginx sert de **reverse proxy** devant les applicatio
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### TAP : reverse proxy et load balancing
 
@@ -53,7 +53,7 @@ Ce portfolio utilise Nginx pour servir le **build statique SvelteKit** avec une 
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -85,7 +85,7 @@ Nginx est un **outil essentiel** de ma stack DevOps. Je l'utilise systématiquem
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

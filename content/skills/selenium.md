@@ -11,7 +11,7 @@ logo: Selenium
 
 # Selenium : l'automatisation de tests historique
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Selenium** est un framework d'automatisation de tests pour navigateurs web, créé en 2004. Pendant près de 20 ans, il a été **le standard de facto** pour les tests end-to-end, utilisé par des milliers d'entreprises.
 
@@ -27,7 +27,7 @@ Aujourd'hui, Selenium est progressivement remplacé par des outils plus modernes
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### TAP : support des tests Selenium existants
 
@@ -49,7 +49,7 @@ J'ai appris les tests E2E avec Selenium avant de découvrir Playwright. Cette ex
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -78,7 +78,7 @@ Selenium est une compétence **historique** que je conserve pour la maintenance 
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

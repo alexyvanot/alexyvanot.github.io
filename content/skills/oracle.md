@@ -11,7 +11,7 @@ logo: Oracle
 
 # Oracle Database : la base de données enterprise
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Oracle Database** est un système de gestion de bases de données relationnelles (SGBDR) développé par Oracle Corporation depuis 1979. C'est le **leader historique** des bases de données d'entreprise.
 
@@ -27,7 +27,7 @@ Oracle reste incontournable dans les **grandes entreprises** avec des besoins cr
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Synchrotron SOLEIL : bases de données legacy
 
@@ -47,7 +47,7 @@ Durant ma formation, j'ai appris les bases d'Oracle Database :
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -76,7 +76,7 @@ Oracle est une compétence **complémentaire** dans mon profil. Je peux travaill
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

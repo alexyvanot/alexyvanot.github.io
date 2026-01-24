@@ -11,7 +11,7 @@ logo: C
 
 # C : les fondations de la programmation système
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **C** est un langage de programmation **bas niveau** créé en 1972 par Dennis Ritchie. Souvent considéré comme le "père des langages modernes", C reste **incontournable** pour la programmation système, l'embarqué et les performances critiques.
 
@@ -27,7 +27,7 @@ Dans un contexte où les langages haut niveau dominent, C reste essentiel pour c
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Nano Pong : jeu embarqué sur Arduino
 
@@ -55,7 +55,7 @@ Ces projets m'ont permis de comprendre les **mécanismes internes** des système
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -87,7 +87,7 @@ C est une **compétence fondamentale** qui m'aide à comprendre les langages de 
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

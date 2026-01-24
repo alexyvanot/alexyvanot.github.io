@@ -11,7 +11,7 @@ logo: Playwright
 
 # Playwright : l'automatisation de tests nouvelle génération
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Playwright** est un framework d'automatisation de tests **end-to-end** développé par Microsoft, conçu pour tester les applications web modernes. Lancé en 2020, il s'est rapidement imposé comme le **successeur de Selenium** pour les tests automatisés.
 
@@ -27,7 +27,7 @@ Playwright représente l'état de l'art du **testing E2E**, remplacant Selenium 
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### TAP : intégration dans la plateforme de tests
 
@@ -49,7 +49,7 @@ Ce portfolio utilise Playwright pour les tests E2E, vérifiant que toutes les pa
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -85,7 +85,7 @@ Playwright est mon **outil principal** pour les tests E2E. Il complète parfaite
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

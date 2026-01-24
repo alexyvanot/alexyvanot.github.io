@@ -145,11 +145,11 @@ Ce projet a été réalisé en **4 jours** dans le cadre d'un module de **Prompt
 
 ### Fonctionnalités livrées
 
-- ✅ Génération de quiz à partir de n'importe quel texte
-- ✅ Support de plusieurs modèles IA (llama3.2, gemma:2b)
-- ✅ Configuration flexible (3-10 questions, 2-4 choix)
-- ✅ Interface interactive avec scoring en temps réel
-- ✅ Déploiement Docker one-command
+- :i[checkmark-filled] Génération de quiz à partir de n'importe quel texte
+- :i[checkmark-filled] Support de plusieurs modèles IA (llama3.2, gemma:2b)
+- :i[checkmark-filled] Configuration flexible (3-10 questions, 2-4 choix)
+- :i[checkmark-filled] Interface interactive avec scoring en temps réel
+- :i[checkmark-filled] Déploiement Docker one-command
 
 ### Performance
 

@@ -11,7 +11,7 @@ logo: MariaDB
 
 # MariaDB : l'alternative open-source à MySQL
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **MariaDB** est un système de gestion de bases de données relationnelles **open-source**, créé en 2009 comme fork de MySQL par ses fondateurs originaux. Suite au rachat de MySQL par Oracle, MariaDB garantit une **licence véritablement libre** et une **gouvernance communautaire**.
 
@@ -26,7 +26,7 @@ De nombreuses distributions Linux (Debian, Red Hat) ont remplacé MySQL par Mari
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Comet Learning : base de données du serveur Minecraft
 
@@ -44,7 +44,7 @@ Pour le projet **Comet Learning**, j'ai utilisé MariaDB pour stocker toutes les
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -70,7 +70,7 @@ MariaDB est **interchangeable avec MySQL** dans mon profil. Je la préfère pour
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

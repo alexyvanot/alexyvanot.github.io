@@ -11,7 +11,7 @@ logo: PostgreSQL
 
 # PostgreSQL : la base de données relationnelle de référence
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **PostgreSQL** (souvent abrégé "Postgres") est un système de gestion de bases de données relationnelles **open-source** reconnu pour sa **robustesse**, son **respect des standards SQL** et ses fonctionnalités avancées. Créé en 1986, il est aujourd'hui utilisé par des géants comme Apple, Instagram, Spotify et la NASA.
 
@@ -26,7 +26,7 @@ Au **Synchrotron SOLEIL**, PostgreSQL est la base de données **standard pour to
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### SUN Auto : gestion du cycle de vie applicatif
 
@@ -59,7 +59,7 @@ La plateforme **TAP** utilise PostgreSQL pour stocker l'historique de toutes les
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -91,7 +91,7 @@ PostgreSQL est **ma base de données par défaut** pour tout projet backend. Je 
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

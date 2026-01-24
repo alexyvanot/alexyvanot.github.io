@@ -11,7 +11,7 @@ logo: Jira
 
 # Jira : la gestion de projet Agile
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Jira** est un outil de gestion de projet développé par Atlassian, conçu pour les équipes de développement logiciel. Il est devenu le **standard de l'industrie** pour la gestion Agile (Scrum, Kanban).
 
@@ -27,7 +27,7 @@ Jira est souvent critiqué pour sa **complexité**, mais reste incontournable da
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Synchrotron SOLEIL : gestion quotidienne
 
@@ -54,7 +54,7 @@ Le projet **SUN Auto** a été géré entièrement dans Jira avec un workflow cu
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -86,7 +86,7 @@ Jira est une **compétence transversale** essentielle. Tout développeur profess
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

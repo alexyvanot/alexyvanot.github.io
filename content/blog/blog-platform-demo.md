@@ -42,7 +42,7 @@ Notre plateforme offre une navigation intuitive avec :
 ### 2. Articles épinglés
 
 Les articles importants peuvent être épinglés et apparaissent dans un carrousel en vedette :
-- 📌 Badge spécial pour les articles épinglés
+- :i[pin] Badge spécial pour les articles épinglés
 - Carrousel interactif avec navigation par flèches
 - Mise en avant visuelle avec effets de glow
 
@@ -96,9 +96,9 @@ interface BlogPost {
 
 | Framework | Performance | Taille bundle | Courbe d'apprentissage |
 |-----------|-------------|---------------|------------------------|
-| Svelte    | ⭐⭐⭐⭐⭐   | ⭐⭐⭐⭐⭐     | ⭐⭐⭐⭐              |
-| React     | ⭐⭐⭐⭐     | ⭐⭐⭐         | ⭐⭐⭐                |
-| Vue       | ⭐⭐⭐⭐     | ⭐⭐⭐⭐       | ⭐⭐⭐⭐              |
+| Svelte    | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]   | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]     | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]              |
+| React     | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]     | :i[star-filled]:i[star-filled]:i[star-filled]         | :i[star-filled]:i[star-filled]:i[star-filled]                |
+| Vue       | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]     | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]       | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]              |
 
 ## Design et UX
 

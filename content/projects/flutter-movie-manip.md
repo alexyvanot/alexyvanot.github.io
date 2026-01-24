@@ -131,10 +131,10 @@ Ce projet a été réalisé dans le cadre d'un **cours de développement mobile 
 
 ### Fonctionnalités livrées
 
-- ✅ Récupération des films à venir depuis TMDb
-- ✅ Affichage en liste avec affiches et descriptions
-- ✅ Navigation vers les détails d'un film
-- ✅ Gestion sécurisée de la clé API
+- :i[checkmark-filled] Récupération des films à venir depuis TMDb
+- :i[checkmark-filled] Affichage en liste avec affiches et descriptions
+- :i[checkmark-filled] Navigation vers les détails d'un film
+- :i[checkmark-filled] Gestion sécurisée de la clé API
 
 ### Pour moi
 

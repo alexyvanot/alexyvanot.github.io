@@ -11,7 +11,7 @@ logo: PHP
 
 # PHP : le langage du web dynamique
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **PHP** (Hypertext Preprocessor) est un langage de script côté serveur créé en 1995, spécifiquement conçu pour le **développement web**. Malgré les critiques, PHP reste le langage le plus utilisé pour le web : **~77% des sites** l'utilisent, notamment via WordPress, Drupal et Laravel.
 
@@ -27,7 +27,7 @@ PHP a longtemps souffert d'une mauvaise réputation, mais les versions modernes 
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Formation IN'TECH : applications web dynamiques
 
@@ -48,7 +48,7 @@ Durant ma formation à **IN'TECH**, PHP était le langage principal pour apprend
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -80,7 +80,7 @@ PHP est une compétence **historique** dans mon parcours. Je l'ai appris en form
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

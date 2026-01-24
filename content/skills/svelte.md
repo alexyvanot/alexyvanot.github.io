@@ -11,7 +11,7 @@ logo: Svelte
 
 # Svelte & SvelteKit : le renouveau du développement frontend
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Svelte** est un framework frontend créé par Rich Harris en 2016, qui se distingue radicalement de ses concurrents (React, Vue, Angular) par son approche **"compile-time"**. Là où React manipule un Virtual DOM à l'exécution, Svelte compile les composants en JavaScript vanilla optimisé lors du build. Résultat : des bundles plus légers et des performances supérieures.
 
@@ -30,7 +30,7 @@ Pour mes projets personnels et ce portfolio, Svelte est devenu mon **framework f
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Ce portfolio : vitrine de mes compétences
 
@@ -89,7 +89,7 @@ Mon **premier projet Svelte**, un générateur de blog statique minimaliste.
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -149,7 +149,7 @@ Mes recommandations :
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Mon objectif à moyen terme
 

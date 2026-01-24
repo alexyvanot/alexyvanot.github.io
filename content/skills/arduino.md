@@ -11,7 +11,7 @@ logo: Arduino
 
 # Arduino : l'électronique accessible
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Arduino** est une plateforme open-source de **prototypage électronique** combinant des cartes microcontrôleurs et un environnement de développement (IDE). Créée en 2005, elle a démocratisé l'accès à l'embarqué et à l'IoT.
 
@@ -27,7 +27,7 @@ Même dans un contexte professionnel, Arduino reste pertinent pour le **prototyp
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Nano Pong : jeu rétro sur Arduino Nano
 
@@ -53,7 +53,7 @@ Plusieurs projets personnels m'ont permis d'explorer l'écosystème Arduino :
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -84,7 +84,7 @@ Arduino représente ma **porte d'entrée vers l'embarqué**. C'est une compéten
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

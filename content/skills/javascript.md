@@ -11,7 +11,7 @@ logo: JavaScript
 
 # JavaScript : le langage universel du web
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **JavaScript** est le langage de programmation du web, exécutable dans tous les navigateurs. Créé en 1995, il est devenu **incontournable** : c'est le seul langage natif du navigateur et, avec Node.js, il s'étend au backend.
 
@@ -27,7 +27,7 @@ JavaScript est régulièrement classé **#1 des langages les plus utilisés** da
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Ce portfolio : SvelteKit full JavaScript
 
@@ -54,7 +54,7 @@ J'utilise régulièrement JavaScript/Node.js pour des **scripts d'automatisation
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -86,7 +86,7 @@ JavaScript est une **compétence fondamentale** de mon profil. Couplé à TypeSc
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

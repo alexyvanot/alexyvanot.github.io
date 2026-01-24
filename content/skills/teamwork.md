@@ -75,10 +75,10 @@ Mon alternance au Synchrotron SOLEIL m'a appris à **m'intégrer dans une équip
 
 | Critère | Évaluation | Commentaire |
 |---------|------------|-------------|
-| Communication claire | ⭐⭐⭐⭐ | Je sais adapter mon discours à l'interlocuteur |
-| Écoute active | ⭐⭐⭐⭐ | Je reformule pour vérifier ma compréhension |
-| Gestion des conflits | ⭐⭐⭐ | Je préfère parfois éviter que confronter |
-| Partage de connaissances | ⭐⭐⭐⭐⭐ | J'aime transmettre et documenter |
+| Communication claire | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Je sais adapter mon discours à l'interlocuteur |
+| Écoute active | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Je reformule pour vérifier ma compréhension |
+| Gestion des conflits | :i[star-filled]:i[star-filled]:i[star-filled] | Je préfère parfois éviter que confronter |
+| Partage de connaissances | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | J'aime transmettre et documenter |
 
 ### Marge de progression
 

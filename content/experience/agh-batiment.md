@@ -48,18 +48,18 @@ En tant que seul développeur, j'ai eu une **responsabilité complète** sur les
 
 ## Mes missions principales
 
-### 🌐 Création du site web vitrine
+### :i[globe] Création du site web vitrine
 
 - Conception et développement d'un **site web responsive**
 - Mise en valeur des services et réalisations de l'entreprise
 - Stack : **HTML, CSS, JavaScript**
 
-### 🎨 Création de l'identité visuelle
+### :i[color-palette] Création de l'identité visuelle
 
 - Conception du **logo vectoriel** de l'entreprise (SVG)
 - Design adapté à tous les supports (web, print, véhicules)
 
-### 🗂️ Outils de gestion interne
+### :i[folder] Outils de gestion interne
 
 - Création d'**interfaces simples** pour la gestion administrative
 - Organisation des documents numériques

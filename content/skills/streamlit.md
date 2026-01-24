@@ -11,7 +11,7 @@ logo: Streamlit
 
 # Streamlit : le prototypage web Python ultra-rapide
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Streamlit** est un framework Python open-source permettant de créer des **applications web interactives** en quelques lignes de code. Lancé en 2019 et acquis par Snowflake en 2022, il a révolutionné le prototypage en data science.
 
@@ -27,7 +27,7 @@ Streamlit est devenu l'outil de choix pour les **data scientists** qui veulent p
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Squat Counter IA : interface computer vision
 
@@ -51,7 +51,7 @@ Le projet **Quiz AI** utilise également Streamlit pour présenter les questions
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -87,7 +87,7 @@ Streamlit est mon **outil de prototypage Python**. Quand j'ai besoin de créer r
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

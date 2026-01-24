@@ -11,7 +11,7 @@ logo: TensorFlow
 
 # TensorFlow : le deep learning à grande échelle
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **TensorFlow** est une bibliothèque open-source de **machine learning et deep learning** développée par Google Brain. Lancée en 2015, elle est devenue l'un des frameworks les plus utilisés pour l'IA.
 
@@ -27,7 +27,7 @@ Bien que PyTorch gagne en popularité dans la recherche, TensorFlow reste très 
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### CIFAR-10 : classification d'images par deep learning
 
@@ -56,7 +56,7 @@ Le projet **Snake Game AI** utilise des réseaux de neurones (inspirés de Tenso
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -89,7 +89,7 @@ TensorFlow représente ma **porte d'entrée vers le ML/DL**. C'est une compéten
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

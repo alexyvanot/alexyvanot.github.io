@@ -59,7 +59,7 @@ Premier projet Svelte, réalisé en **autoformation** pour découvrir le framewo
 
 | Objectif | Réalisation |
 |----------|-------------|
-| Découvrir Svelte et SvelteKit | Mission accomplie ✅ |
+| Découvrir Svelte et SvelteKit | Mission accomplie :i[checkmark-filled] |
 | Créer un blog statique | Générateur fonctionnel |
 | Implémenter un pipeline CI/CD | GitHub Actions |
 | Maîtriser le déploiement statique | GitHub Pages |

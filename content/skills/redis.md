@@ -11,7 +11,7 @@ logo: Redis
 
 # Redis : le cache haute performance
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Redis** (Remote Dictionary Server) est une base de données **in-memory** open-source, utilisée principalement comme **cache**, **broker de messages** et **store de sessions**. Sa rapidité exceptionnelle (opérations en microsecondes) en fait un composant critique des architectures modernes.
 
@@ -27,7 +27,7 @@ Au **Synchrotron SOLEIL**, Redis est utilisé pour **optimiser les performances*
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### TAP : cache des résultats de tests
 
@@ -46,7 +46,7 @@ Dans la plateforme **TAP**, j'ai implémenté un **système de cache Redis** pou
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -77,7 +77,7 @@ Redis est un **outil complémentaire** que j'utilise systématiquement pour opti
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

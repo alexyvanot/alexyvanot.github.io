@@ -11,7 +11,7 @@ logo: Unity
 
 # Unity : le moteur de jeu universel
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Unity** est un moteur de jeu **multiplateforme** créé en 2005, devenu l'un des plus utilisés au monde. Au-delà du gaming, Unity s'étend à la **VR/AR**, l'**architecture**, l'**automobile** et la **simulation**.
 
@@ -27,7 +27,7 @@ Selon Unity, **plus de 50% des jeux mobiles** sont créés avec leur moteur.
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### InVR : expérience VR d'initiation
 
@@ -46,7 +46,7 @@ Le projet **InVR** a été entièrement développé avec Unity et le XR Interact
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -79,7 +79,7 @@ Unity est ma **compétence principale en développement 3D/VR**. Bien que mon pr
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

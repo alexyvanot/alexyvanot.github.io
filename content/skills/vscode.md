@@ -11,7 +11,7 @@ logo: VSCode
 
 # VS Code : l'éditeur de code moderne
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Visual Studio Code** (VS Code) est un éditeur de code **open-source** développé par Microsoft, lancé en 2015. Il est devenu l'éditeur le plus utilisé au monde, avec plus de **70% de part de marché** parmi les développeurs.
 
@@ -29,7 +29,7 @@ VS Code a révolutionné le développement en offrant une expérience **proche d
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Mon environnement quotidien
 
@@ -50,7 +50,7 @@ VS Code est mon **éditeur principal** depuis 2019. Je l'utilise pour tous mes p
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -87,7 +87,7 @@ J'ai migré vers VS Code depuis Atom et Sublime Text. L'adaptation a été **imm
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

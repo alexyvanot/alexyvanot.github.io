@@ -11,7 +11,7 @@ logo: OpenXR
 
 # OpenXR : le standard ouvert de la VR/AR
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **OpenXR** est un standard ouvert défini par le **Khronos Group** (créateurs d'OpenGL et Vulkan) pour le développement d'applications de **réalité virtuelle (VR)** et **réalité augmentée (AR)**. Il offre une API unifiée compatible avec tous les casques VR majeurs.
 
@@ -27,7 +27,7 @@ La VR/AR est en pleine expansion avec des applications dans le **gaming**, la **
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### InVR : expérience VR d'initiation
 
@@ -45,7 +45,7 @@ Le projet **InVR** utilise OpenXR via Unity pour créer une expérience VR acces
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -77,7 +77,7 @@ OpenXR est une compétence **émergente** dans mon profil, découverte via le pr
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

@@ -96,9 +96,9 @@ Ce projet a été réalisé sur **2 semaines** dans le cadre d'un cours de déve
 
 **Fonctionnalités implémentées :**
 - ➕ Ajout de nouvelles tâches avec validation
-- ✅ Toggle de complétion avec feedback visuel
+- :i[checkmark-filled] Toggle de complétion avec feedback visuel
 - 🗑️ Suppression par swipe avec confirmation
-- 🔍 Filtrage dynamique des tâches
+- :i[search] Filtrage dynamique des tâches
 
 ### Phase 4 : Polissage (3 jours)
 
@@ -121,11 +121,11 @@ Ce projet a été réalisé sur **2 semaines** dans le cadre d'un cours de déve
 
 ### Fonctionnalités livrées
 
-- ✅ Ajout, modification, suppression de tâches
-- ✅ Persistance locale automatique
-- ✅ Filtrage par état (toutes/complètes/incomplètes)
-- ✅ Interface Cupertino responsive
-- ✅ Swipe-to-delete avec confirmation
+- :i[checkmark-filled] Ajout, modification, suppression de tâches
+- :i[checkmark-filled] Persistance locale automatique
+- :i[checkmark-filled] Filtrage par état (toutes/complètes/incomplètes)
+- :i[checkmark-filled] Interface Cupertino responsive
+- :i[checkmark-filled] Swipe-to-delete avec confirmation
 
 ### Pour moi
 

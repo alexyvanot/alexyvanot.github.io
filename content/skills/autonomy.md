@@ -64,10 +64,10 @@ J'avais observé que les scientifiques découvraient souvent les erreurs de conf
 
 | Critère | Évaluation | Commentaire |
 |---------|------------|-------------|
-| Prise d'initiative | ⭐⭐⭐⭐⭐ | Je propose régulièrement des améliorations |
-| Auto-formation | ⭐⭐⭐⭐⭐ | Capable d'apprendre un nouveau framework en quelques semaines |
-| Organisation personnelle | ⭐⭐⭐⭐ | Bonnes pratiques mais perfectible sous pression |
-| Savoir demander de l'aide | ⭐⭐⭐ | Parfois je m'obstine trop longtemps seul |
+| Prise d'initiative | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Je propose régulièrement des améliorations |
+| Auto-formation | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Capable d'apprendre un nouveau framework en quelques semaines |
+| Organisation personnelle | :i[star-filled]:i[star-filled]:i[star-filled]:i[star-filled] | Bonnes pratiques mais perfectible sous pression |
+| Savoir demander de l'aide | :i[star-filled]:i[star-filled]:i[star-filled] | Parfois je m'obstine trop longtemps seul |
 
 ### Marge de progression
 

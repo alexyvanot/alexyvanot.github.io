@@ -11,7 +11,7 @@ logo: Docker
 
 # Docker : la conteneurisation au cœur du DevOps
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Docker** est une plateforme de **conteneurisation** qui permet d'empaqueter une application avec toutes ses dépendances dans un **conteneur** portable. Lancé en 2013, Docker a révolutionné le déploiement logiciel en résolvant le fameux problème *"ça marche sur ma machine"*.
 
@@ -27,7 +27,7 @@ Au **Synchrotron SOLEIL**, Docker est utilisé pour **standardiser les environne
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### SUN Auto : containerisation complète
 
@@ -60,7 +60,7 @@ Ce portfolio dispose d'un **Dockerfile** et d'un **docker-compose.yml** pour un 
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -97,7 +97,7 @@ J'ai appris Docker **rapidement** grâce à son adoption massive et à l'abondan
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

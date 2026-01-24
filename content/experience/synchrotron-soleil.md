@@ -68,7 +68,7 @@ Au sein du SIE, je suis rattaché à l'équipe **développement logiciel**. Je t
 
 ## Mes missions principales
 
-### 🚀 Développement d'applications métier
+### :i[rocket] Développement d'applications métier
 
 - Conception et développement de **SUN Auto** (SOLEIL Unified Notification Auto), un système de gestion du cycle de vie applicatif
 - Création de **TAP** (Test Automation Platform), une plateforme de centralisation des tests automatisés

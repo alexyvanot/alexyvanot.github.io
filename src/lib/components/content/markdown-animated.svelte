@@ -78,17 +78,32 @@
 	let handwrittenColor = $derived($mode === 'dark' ? '#ffffff' : '#1a1a1a');
 
 	/**
+	 * Convertit un nom d'icône en élément HTML avec classe UnoCSS
+	 * Gère les icônes commençant par i- ou les noms courts (ajoute i-carbon-)
+	 */
+	function iconToHtml(icon: string, className = 'md-icon'): string {
+		if (!icon) return '';
+		const cleanIcon = icon.trim();
+		// Si l'icône commence par i-, c'est une classe UnoCSS
+		if (cleanIcon.startsWith('i-')) {
+			return `<span class="${className} ${cleanIcon}" aria-hidden="true"></span>`;
+		}
+		// Si c'est un nom court, ajouter le préfixe i-carbon-
+		if (/^[a-z0-9-]+$/i.test(cleanIcon)) {
+			return `<span class="${className} i-carbon-${cleanIcon}" aria-hidden="true"></span>`;
+		}
+		// Sinon c'est probablement un emoji, le retourner tel quel
+		return `<span class="${className}">${cleanIcon}</span>`;
+	}
+
+	/**
 	 * Parse les icônes inline :i[nom-icône] ou :icon[nom-icône]
 	 * Exemple: :i[i-carbon-star] ou :icon[i-carbon-home] ou :i[star]
 	 */
 	function parseIcons(md: string): string {
 		// Pattern: :i[icon-name] ou :icon[icon-name]
 		return md.replace(/:i(?:con)?\[([^\]]+)\]/g, (match, iconName) => {
-			// Nettoyer le nom de l'icône
-			const cleanIcon = iconName.trim();
-			// Si l'icône ne commence pas par 'i-', ajouter le préfixe i-carbon-
-			const finalIcon = cleanIcon.startsWith('i-') ? cleanIcon : `i-carbon-${cleanIcon}`;
-			return `<span class="md-icon ${finalIcon}" aria-hidden="true"></span>`;
+			return iconToHtml(iconName, 'md-icon');
 		});
 	}
 
@@ -341,14 +356,15 @@
 						});
 					}
 					
-					const icon = options.icon || '✨';
+					const icon = options.icon || 'sparkles';
 					const color = options.color || 'primary';
+					const iconHtml = iconToHtml(icon, 'value-icon');
 					
 					description = description
 						.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
 						.replace(/\*([^*]+)\*/g, '<em>$1</em>');
 					
-					valuesHtml += `<div class="value-card value-card-${color}"><div class="value-card-icon">${icon}</div><div class="value-card-content"><h4 class="value-card-title">${title}</h4><p class="value-card-description">${description}</p></div></div>`;
+					valuesHtml += `<div class="value-card value-card-${color}"><div class="value-card-icon">${iconHtml}</div><div class="value-card-content"><h4 class="value-card-title">${title}</h4><p class="value-card-description">${description}</p></div></div>`;
 				}
 				
 				const html = `<div class="values-grid values-grid-cols-${cols}">${valuesHtml}</div>`;
@@ -393,7 +409,7 @@
 					const newTab = options.newTab === 'true';
 					
 					const targetAttr = newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
-					const iconHtml = icon ? `<span class="btn-icon">${icon}</span>` : '';
+					const iconHtml = icon ? iconToHtml(icon, 'btn-icon') : '';
 					
 					buttonsHtml += `<a href="${href}" class="md-btn md-btn-${style}"${targetAttr}>${iconHtml}<span class="btn-label">${label}</span></a>`;
 				}
@@ -442,7 +458,7 @@
 					const desc = tagOptions.desc ? tagOptions.desc.replace(/_/g, ' ') : '';
 					const full = tagOptions.full ? tagOptions.full.replace(/_/g, ' ') : '';
 					
-					const iconHtml = icon ? `<span class="tag-icon">${icon}</span>` : '';
+					const iconHtml = icon ? iconToHtml(icon, 'tag-icon') : '';
 					const descHtml = desc ? `<span class="tag-desc">${desc}</span>` : '';
 					const fullHtml = full ? `<div class="tag-full">${full}</div>` : '';
 					
@@ -749,6 +765,12 @@
 		border-radius: 0.5rem;
 	}
 
+	:global(.markdown-container .value-card-icon .value-icon) {
+		display: block;
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
 	:global(.markdown-container .value-card-content) {
 		flex: 1;
 		min-width: 0;
@@ -844,6 +866,11 @@
 
 	:global(.markdown-container .md-btn .btn-icon) {
 		font-size: 1rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.1rem;
+		height: 1.1rem;
 	}
 
 	:global(.markdown-container .md-btn .btn-label) {
@@ -938,6 +965,11 @@
 
 	:global(.markdown-container .md-tag .tag-icon) {
 		font-size: 0.9rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.1rem;
+		height: 1.1rem;
 	}
 
 	:global(.markdown-container .md-tag .tag-label) {

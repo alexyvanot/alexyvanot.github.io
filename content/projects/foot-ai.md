@@ -143,11 +143,11 @@ Ce projet a été réalisé dans le cadre de mes études en **Computer Vision**.
 
 ### Fonctionnalités livrées
 
-- ✅ Upload et traitement de vidéos de football
-- ✅ Détection des positions des joueurs
-- ✅ Génération de cartes tactiques en temps réel
-- ✅ Interface web interactive (Streamlit)
-- ✅ Notebook Jupyter pour l'analyse
+- :i[checkmark-filled] Upload et traitement de vidéos de football
+- :i[checkmark-filled] Détection des positions des joueurs
+- :i[checkmark-filled] Génération de cartes tactiques en temps réel
+- :i[checkmark-filled] Interface web interactive (Streamlit)
+- :i[checkmark-filled] Notebook Jupyter pour l'analyse
 
 ### Performance
 

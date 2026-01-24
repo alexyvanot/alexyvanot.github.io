@@ -11,7 +11,7 @@ logo: Spring
 
 # Spring : le framework Java enterprise
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Spring** est un framework Java complet pour le développement d'applications enterprise. Créé en 2003 comme alternative aux EJB, il est devenu le **standard de facto** pour le développement Java backend.
 
@@ -27,7 +27,7 @@ Selon les enquêtes, **Spring Boot est utilisé par +60% des développeurs Java*
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### SUN Auto : backend Spring Boot complet
 
@@ -58,7 +58,7 @@ Le backend de **TAP** utilise également Spring Boot.
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -95,7 +95,7 @@ Mon apprentissage de Spring s'est fait **progressivement** en alternance. Les ba
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

@@ -1,8 +1,8 @@
-# 📝 Gestion du Contenu
+# :i[document] Gestion du Contenu
 
 Ce dossier contient **TOUT** le contenu du site. Pour modifier le site, il suffit d'éditer ces fichiers - **aucune connaissance en programmation n'est requise** !
 
-## � Activer / Désactiver un contenu
+## :i[checkmark-filled] Activer / Désactiver un contenu
 
 Chaque fichier peut être **activé ou désactivé** avec le champ `published` :
 
@@ -18,7 +18,7 @@ published: true   # ✅ Visible sur le site (valeur par défaut)
 
 ---
 
-## �📁 Structure
+## :i[folder] Structure
 
 ```
 content/
@@ -32,7 +32,7 @@ content/
 
 ---
 
-## 📝 Ajouter un article de blog
+## :i[document] Ajouter un article de blog
 
 1. Créer un fichier `mon-article.md` dans `content/blog/`
 2. Copier ce template :
@@ -65,7 +65,7 @@ Votre contenu en Markdown ici...
 
 ---
 
-## 🚀 Ajouter un projet
+## :i[rocket] Ajouter un projet
 
 1. Créer un fichier `mon-projet.md` dans `content/projects/`
 2. Copier ce template :
@@ -162,7 +162,7 @@ Description de l'expérience en Markdown...
 
 ---
 
-## 🎓 Ajouter une formation
+## :i[education] Ajouter une formation
 
 1. Créer un fichier `ma-formation.md` dans `content/education/`
 2. Copier ce template :
@@ -194,7 +194,7 @@ Description de la formation en Markdown...
 
 ---
 
-## 🎨 Logos disponibles
+## :i[color-palette] Logos disponibles
 
 Les logos suivants peuvent être utilisés dans le champ `logo` :
 
@@ -206,7 +206,7 @@ Les logos suivants peuvent être utilisés dans le champ `logo` :
 
 ---
 
-## 🎨 Couleurs
+## :i[color-palette] Couleurs
 
 Les couleurs peuvent être :
 - Un nom CSS : `orange`, `blue`, `red`, `purple`, `green`, `gray`, `pink`, `cyan`, `teal`
@@ -214,6 +214,6 @@ Les couleurs peuvent être :
 
 ---
 
-## ✨ C'est tout !
+## :i[sparkle] C'est tout !
 
 Une fois le fichier créé/modifié, le site se mettra à jour automatiquement au prochain build.

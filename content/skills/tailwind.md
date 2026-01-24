@@ -11,7 +11,7 @@ logo: TailwindCSS
 
 # Tailwind CSS : le CSS utility-first
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Tailwind CSS** est un framework CSS **utility-first** qui fournit des classes prédéfinies pour styliser directement dans le HTML. Lancé en 2017, il a révolutionné l'approche du styling en front-end.
 
@@ -28,7 +28,7 @@ Tailwind est devenu le **framework CSS le plus populaire**, dépassant Bootstrap
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Ce portfolio : 100% Tailwind (via UnoCSS)
 
@@ -49,7 +49,7 @@ Mon **Svelte Static Blog** m'a permis de découvrir Tailwind dans un contexte r�
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -85,7 +85,7 @@ Tailwind est mon **approche CSS par défaut**. Je l'utilise sur tous mes projets
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Objectif à moyen terme
 

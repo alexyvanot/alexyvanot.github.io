@@ -11,7 +11,7 @@ logo: Python
 
 # Python : ma boîte à outils pour l'IA et le prototypage
 
-## 📌 Définition et contexte professionnel
+## :i[pin] Définition et contexte professionnel
 
 **Python** est un langage de programmation interprété, créé par Guido van Rossum en 1991. Sa philosophie *"There should be one— and preferably only one —obvious way to do it"* et sa syntaxe épurée en font le langage le plus accessible pour débuter, tout en restant suffisamment puissant pour des applications complexes.
 
@@ -29,7 +29,7 @@ L'écosystème Python connaît une croissance explosive avec l'essor de l'IA gé
 
 ---
 
-## 🔍 Mes réalisations concrètes
+## :i[search] Mes réalisations concrètes
 
 ### Foot AI : analyse tactique de matchs de football
 
@@ -84,7 +84,7 @@ Application de comptage de squats utilisant la webcam et l'estimation de pose hu
 
 ---
 
-## 🎯 Autocritique et positionnement
+## :i[target] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
@@ -140,7 +140,7 @@ Mes recommandations :
 
 ---
 
-## 📈 Évolution et perspectives
+## :i[growth] Évolution et perspectives
 
 ### Mon objectif à moyen terme
 
