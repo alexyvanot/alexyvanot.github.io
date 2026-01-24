@@ -64,6 +64,14 @@ Ce portfolio dispose d'un **Dockerfile** et d'un **docker-compose.yml** pour un 
 
 ### Niveau de maîtrise
 
+:::chart{type=radar title="Maîtrise Docker" size=280}
+Dockerfile: 100
+Docker Compose: 100
+Volumes/Réseaux: 80
+Docker Swarm: 60
+Sécurité: 60
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Dockerfile / images | ::stars[5/5] Expert |

@@ -151,6 +151,11 @@ Au Synchrotron SOLEIL, les équipes scientifiques et techniques maintiennent de 
 | Comparaison historique | Impossible | Intégrée |
 | Adoption par les équipes | Variable | Généralisée |
 
+:::chart{type=bar title="Temps d'analyse des échecs de tests"}
+Avant TAP: 100
+Après TAP: 30
+:::
+
 **Impact concret :** Réduction du temps d'analyse des échecs de tests de **70%** grâce aux rapports Allure détaillés et à la navigation intuitive.
 
 ### Pour moi

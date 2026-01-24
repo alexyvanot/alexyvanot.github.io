@@ -95,6 +95,16 @@ Mon **premier projet Svelte**, un générateur de blog statique minimaliste.
 
 Je situe ma compétence Svelte/SvelteKit à un **niveau avancé** :
 
+:::chart{type=radar title="Maîtrise Svelte" size=280}
+Composants: 100
+SvelteKit: 80
+Runes: 80
+Stores: 80
+Animations: 80
+API routes: 60
+Tests: 60
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Composants et réactivité | ::stars[5/5] Expert |

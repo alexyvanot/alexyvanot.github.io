@@ -144,6 +144,13 @@ Ces activités "annexes" sont formatrices car elles confrontent à la réalité 
 
 ## Ce que l'alternance m'a apporté
 
+:::chart{type=pie title="Compétences développées" size=200}
+Java/Spring: 35
+DevOps/CI-CD: 25
+Bases de données: 20
+Architecture: 20
+:::
+
 ### Compétences techniques approfondies
 
 **Java et l'écosystème Spring**

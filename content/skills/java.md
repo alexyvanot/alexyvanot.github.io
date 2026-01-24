@@ -81,6 +81,14 @@ Cette expérience autodidacte, bien que non professionnelle, a posé les bases s
 
 Je situe ma compétence Java à un **niveau avancé**, sans prétendre à l'expertise. Je maîtrise :
 
+:::chart{type=radar title="Maîtrise Java" size=280}
+Syntaxe OOP: 100
+Spring Boot: 80
+Tests: 80
+Performance JVM: 60
+Architectures: 60
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Syntaxe et concepts OOP | ::stars[5/5] Expert |

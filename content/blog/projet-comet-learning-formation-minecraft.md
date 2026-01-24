@@ -41,6 +41,13 @@ Pourquoi ne pas structurer cet apprentissage informel ? Pourquoi ne pas l'enrich
 
 ## Le programme de formation
 
+:::chart{type=bar title="Durée des modules (heures)"}
+Module 1 - Fondamentaux: 2
+Module 2 - Installation: 3
+Module 3 - Plugins: 4
+Module 4 - Projet final: 3
+:::
+
 ### Module 1 : Fondamentaux système
 
 **Durée : 2 heures**

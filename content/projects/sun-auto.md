@@ -143,6 +143,11 @@ Avant SUN Auto, la gestion des applications en fin de vie était **manuelle et i
 | Notifications d'alerte | Manuelles, oubliées | Automatiques, traçables |
 | Archivage des applications EOL | Ad hoc | Processus structuré |
 
+:::chart{type=progress title="Couverture de détection"}
+Avant SUN Auto: 60
+Après SUN Auto: 100
+:::
+
 ### Pour moi
 
 - **Montée en compétence Java/Spring Boot** sur un projet de grande envergure

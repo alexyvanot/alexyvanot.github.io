@@ -101,6 +101,12 @@ Honnêteté sur les forces et faiblesses
 Plan de progression concret
 ```
 
+:::chart{type=donut title="Répartition du contenu" size=200}
+Compétences techniques: 22
+Projets: 14
+Expériences: 2
+:::
+
 ---
 
 ## 14 projets entièrement réécrits

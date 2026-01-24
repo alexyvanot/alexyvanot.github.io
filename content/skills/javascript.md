@@ -58,6 +58,14 @@ J'utilise régulièrement JavaScript/Node.js pour des **scripts d'automatisation
 
 ### Niveau de maîtrise
 
+:::chart{type=radar title="Maîtrise JavaScript" size=280}
+ES6+: 100
+Async/Promises: 100
+DOM: 80
+Node.js: 60
+Testing: 60
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | ES6+ (arrow, destructuring, spread) | ::stars[5/5] Expert |

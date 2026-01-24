@@ -63,6 +63,14 @@ La plateforme **TAP** utilise PostgreSQL pour stocker l'historique de toutes les
 
 ### Niveau de maîtrise
 
+:::chart{type=radar title="Maîtrise PostgreSQL" size=260}
+Modélisation: 80
+Requêtes SQL: 100
+Optimisation: 80
+Administration: 60
+Extensions: 40
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Modélisation relationnelle | ::stars[4/5] Avancé |

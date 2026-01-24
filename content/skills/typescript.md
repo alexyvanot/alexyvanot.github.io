@@ -56,6 +56,14 @@ Dans le projet **TAP**, j'ai contribué au frontend TypeScript.
 
 ### Niveau de maîtrise
 
+:::chart{type=radar title="Maîtrise TypeScript" size=280}
+Types de base: 100
+Interfaces: 100
+Generics: 80
+Types utilitaires: 80
+Types conditionnels: 60
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Types de base (string, number, etc.) | ::stars[5/5] Expert |

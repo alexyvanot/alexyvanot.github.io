@@ -90,6 +90,15 @@ Application de comptage de squats utilisant la webcam et l'estimation de pose hu
 
 Je situe ma compétence Python à un **niveau avancé**, particulièrement dans les domaines de la data et du ML :
 
+:::chart{type=radar title="Maîtrise Python" size=280}
+Syntaxe: 100
+Pandas/NumPy: 80
+Computer Vision: 80
+Deep Learning: 60
+Web backend: 60
+MLOps: 40
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Syntaxe et idiomes Python | ::stars[5/5] Expert |

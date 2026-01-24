@@ -50,6 +50,12 @@ Le **Synchrotron SOLEIL** est un **Très Grand Équipement (TGE)** scientifique 
 - **~6 000 utilisateurs** scientifiques par an
 - Domaines : chimie, biologie, matériaux, patrimoine, environnement, santé
 
+:::chart{type=bar title="Le Synchrotron en chiffres"}
+Collaborateurs: 500
+Lignes de lumière: 29
+Utilisateurs/an (×100): 60
+:::
+
 **Ma vision :** Travailler au Synchrotron SOLEIL, c'est évoluer dans un environnement où **la rigueur scientifique rencontre l'innovation informatique**. Le service informatique développe et maintient des applications critiques pour la gestion des expériences, des utilisateurs et des données. C'est un contexte exigeant mais passionnant.
 
 ---

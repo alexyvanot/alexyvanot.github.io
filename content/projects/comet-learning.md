@@ -58,6 +58,12 @@ Ce projet est né d'un constat : beaucoup de personnes veulent apprendre à code
 
 ### Objectifs pédagogiques
 
+:::chart{type=pie title="Répartition des modules" size=180}
+Administration serveur: 30
+Programmation Skript: 45
+Projet personnel: 25
+:::
+
 | Objectif | Contenu |
 |----------|---------|
 | Administrer un serveur | Installation, configuration, gestion des joueurs |

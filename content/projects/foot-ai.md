@@ -157,6 +157,12 @@ Ce projet a été réalisé dans le cadre de mes études en **Computer Vision**.
 | Précision détection | ~85% dans de bonnes conditions |
 | Temps de génération carte | < 2 secondes par frame |
 
+:::chart{type=progress title="Performances du système"}
+Précision détection: 85
+FPS (sur 30): 50
+Temps génération (score): 90
+:::
+
 ### Pour moi
 
 - **Maîtrise d'OpenCV** et du traitement vidéo

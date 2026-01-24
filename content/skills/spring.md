@@ -62,6 +62,14 @@ Le backend de **TAP** utilise également Spring Boot.
 
 ### Niveau de maîtrise
 
+:::chart{type=radar title="Maîtrise Spring" size=280}
+Spring Boot: 100
+Spring Web: 100
+Spring Data: 80
+Spring Security: 60
+Spring Cloud: 40
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | Spring Boot (Core) | ::stars[5/5] Expert |

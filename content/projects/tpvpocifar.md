@@ -174,6 +174,11 @@ Dense (10) + Softmax → Output
 | Loss finale | ~0.65 |
 | Temps d'entraînement | ~10 min (GPU) |
 
+:::chart{type=donut title="Précision du modèle" size=180}
+Prédictions correctes: 78
+Erreurs: 22
+:::
+
 ### Fonctionnalités livrées
 
 - :i[checkmark-filled] Notebook d'exploration et entraînement

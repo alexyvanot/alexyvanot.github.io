@@ -53,6 +53,14 @@ Ce portfolio utilise Playwright pour les tests E2E, vérifiant que toutes les pa
 
 ### Niveau de maîtrise
 
+:::chart{type=radar title="Maîtrise Playwright" size=260}
+API de base: 100
+Configuration: 80
+Page Object Model: 80
+Debugging: 80
+Tests API: 60
+:::
+
 | Domaine | Niveau |
 |---------|--------|
 | API de base (locators, actions) | ::stars[5/5] Expert |
