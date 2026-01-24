@@ -51,7 +51,7 @@ Le projet **Quiz AI** utilise également Streamlit pour présenter les questions
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

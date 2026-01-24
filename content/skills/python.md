@@ -84,7 +84,7 @@ Application de comptage de squats utilisant la webcam et l'estimation de pose hu
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

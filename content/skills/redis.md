@@ -46,7 +46,7 @@ Dans la plateforme **TAP**, j'ai implémenté un **système de cache Redis** pou
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

@@ -49,7 +49,7 @@ Ce portfolio utilise Playwright pour les tests E2E, vérifiant que toutes les pa
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

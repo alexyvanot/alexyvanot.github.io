@@ -50,7 +50,7 @@ VS Code est mon **éditeur principal** depuis 2019. Je l'utilise pour tous mes p
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

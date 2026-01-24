@@ -214,6 +214,6 @@ Les couleurs peuvent être :
 
 ---
 
-## :i[sparkle] C'est tout !
+## :i[magic-wand] C'est tout !
 
 Une fois le fichier créé/modifié, le site se mettra à jour automatiquement au prochain build.

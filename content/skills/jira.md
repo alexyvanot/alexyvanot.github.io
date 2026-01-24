@@ -54,7 +54,7 @@ Le projet **SUN Auto** a été géré entièrement dans Jira avec un workflow cu
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

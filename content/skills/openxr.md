@@ -45,7 +45,7 @@ Le projet **InVR** utilise OpenXR via Unity pour créer une expérience VR acces
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

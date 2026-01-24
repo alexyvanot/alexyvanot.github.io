@@ -48,7 +48,7 @@ Durant ma formation à **IN'TECH**, PHP était le langage principal pour apprend
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

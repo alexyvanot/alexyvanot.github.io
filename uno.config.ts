@@ -41,6 +41,10 @@ export default defineConfig({
 		'i-carbon-roadmap', // Projet professionnel
 		'i-carbon-star', // Étoile vide
 		'i-carbon-star-filled', // Étoile pleine
+		'i-carbon-meter', // Autocritique/positionnement (skills)
+		'i-carbon-thumbs-up', // Conclusion
+		'i-carbon-favorite', // Favoris/cœur
+		'i-carbon-magic-wand', // Sparkle alternative
 		// Icônes pour boutons markdown (compétences techniques)
 		'i-logos-python',
 		'i-logos-java',

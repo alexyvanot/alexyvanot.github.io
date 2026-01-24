@@ -53,7 +53,7 @@ Ce portfolio utilise Nginx pour servir le **build statique SvelteKit** avec une 
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

@@ -57,7 +57,7 @@ Un autre **TP universitaire** m'a permis de créer une application de gestion de
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

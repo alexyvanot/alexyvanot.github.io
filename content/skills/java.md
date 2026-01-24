@@ -75,7 +75,7 @@ Cette expérience autodidacte, bien que non professionnelle, a posé les bases s
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

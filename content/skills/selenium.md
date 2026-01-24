@@ -49,7 +49,7 @@ J'ai appris les tests E2E avec Selenium avant de découvrir Playwright. Cette ex
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

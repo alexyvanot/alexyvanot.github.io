@@ -47,7 +47,7 @@ Durant ma formation, j'ai appris les bases d'Oracle Database :
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

@@ -26,7 +26,7 @@ links:
 
 ::toc
 
-# :i[paw-print] **Georges, le Chat de Nico**  
+# :i[favorite] **Georges, le Chat de Nico**  
 > *"Personne ne sait vraiment ce qu'il veut. Même pas lui."*  
 
 ---
@@ -113,7 +113,7 @@ Ne jamais :
 
 ---
 
-## :i[celebrate] En conclusion
+## :i[thumbs-up] En conclusion
 
 Georges c'est pas un chat. C'est une **expérience métaphysique** en poils.  
 Tu peux le trouver adorable ou terrifiant. Mais tu **ne peux pas l'ignorer**.

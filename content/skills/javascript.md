@@ -54,7 +54,7 @@ J'utilise régulièrement JavaScript/Node.js pour des **scripts d'automatisation
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

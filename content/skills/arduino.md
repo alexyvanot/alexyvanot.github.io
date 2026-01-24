@@ -53,7 +53,7 @@ Plusieurs projets personnels m'ont permis d'explorer l'écosystème Arduino :
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

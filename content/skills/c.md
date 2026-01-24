@@ -55,7 +55,7 @@ Ces projets m'ont permis de comprendre les **mécanismes internes** des système
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

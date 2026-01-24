@@ -89,7 +89,7 @@ Mon **premier projet Svelte**, un générateur de blog statique minimaliste.
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

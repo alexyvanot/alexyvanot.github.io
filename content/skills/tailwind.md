@@ -49,7 +49,7 @@ Mon **Svelte Static Blog** m'a permis de découvrir Tailwind dans un contexte r�
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

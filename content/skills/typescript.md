@@ -52,7 +52,7 @@ Dans le projet **TAP**, j'ai contribué au frontend TypeScript.
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

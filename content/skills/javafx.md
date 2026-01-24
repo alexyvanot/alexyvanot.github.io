@@ -47,7 +47,7 @@ Durant ma formation à **IN'TECH**, j'ai développé plusieurs applications Java
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

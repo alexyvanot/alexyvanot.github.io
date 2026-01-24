@@ -44,7 +44,7 @@ Pour le projet **Comet Learning**, j'ai utilisé MariaDB pour stocker toutes les
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

@@ -59,7 +59,7 @@ La plateforme **TAP** utilise PostgreSQL pour stocker l'historique de toutes les
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

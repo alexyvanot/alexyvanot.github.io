@@ -46,7 +46,7 @@ Le projet **InVR** a été entièrement développé avec Unity et le XR Interact
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

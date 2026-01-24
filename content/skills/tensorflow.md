@@ -56,7 +56,7 @@ Le projet **Snake Game AI** utilise des réseaux de neurones (inspirés de Tenso
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

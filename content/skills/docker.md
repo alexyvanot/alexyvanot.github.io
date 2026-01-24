@@ -60,7 +60,7 @@ Ce portfolio dispose d'un **Dockerfile** et d'un **docker-compose.yml** pour un 
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 

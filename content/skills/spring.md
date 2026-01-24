@@ -58,7 +58,7 @@ Le backend de **TAP** utilise également Spring Boot.
 
 ---
 
-## :i[target] Autocritique et positionnement
+## :i[meter] Autocritique et positionnement
 
 ### Niveau de maîtrise
 
