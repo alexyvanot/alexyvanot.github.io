@@ -2,7 +2,7 @@
 name: Android Studio
 slug: android-studio
 published: true
-category: devtools
+category: ide
 color: green
 logo: AndroidStudio
 ---

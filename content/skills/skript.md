@@ -2,7 +2,7 @@
 name: Skript
 slug: skript
 published: true
-category: devtools
+category: other
 color: orange
 logo: Skript
 ---

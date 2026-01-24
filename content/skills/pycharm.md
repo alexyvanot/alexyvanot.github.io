@@ -2,7 +2,7 @@
 name: PyCharm
 slug: pycharm
 published: true
-category: devtools
+category: ide
 color: green
 logo: PyCharm
 ---

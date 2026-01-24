@@ -2,7 +2,7 @@
 name: Velocity
 slug: velocity
 published: true
-category: devtools
+category: other
 color: cyan
 logo: Velocity
 ---

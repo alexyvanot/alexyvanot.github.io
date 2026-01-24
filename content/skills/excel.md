@@ -2,7 +2,7 @@
 name: Microsoft Excel
 slug: excel
 published: true
-category: devtools
+category: office
 color: green
 logo: Excel
 ---

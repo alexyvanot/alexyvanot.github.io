@@ -2,7 +2,7 @@
 name: VS Code
 slug: vscode
 published: true
-category: devtools
+category: ide
 color: blue
 logo: VSCode
 ---

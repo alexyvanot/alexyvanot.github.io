@@ -2,7 +2,7 @@
 name: BungeeCord / Waterfall
 slug: bungeecord
 published: true
-category: devtools
+category: other
 color: yellow
 logo: BungeeCord
 ---

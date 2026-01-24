@@ -2,7 +2,7 @@
 name: Microsoft Word
 slug: word
 published: true
-category: devtools
+category: office
 color: blue
 logo: Word
 ---

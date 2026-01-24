@@ -2,7 +2,7 @@
 name: Jira
 slug: jira
 published: true
-category: devtools
+category: collaboration
 color: blue
 logo: Jira
 ---

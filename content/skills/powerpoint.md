@@ -2,7 +2,7 @@
 name: Microsoft PowerPoint
 slug: powerpoint
 published: true
-category: devtools
+category: office
 color: orange
 logo: PowerPoint
 ---

@@ -2,7 +2,7 @@
 name: WebStorm
 slug: webstorm
 published: true
-category: devtools
+category: ide
 color: cyan
 logo: WebStorm
 ---

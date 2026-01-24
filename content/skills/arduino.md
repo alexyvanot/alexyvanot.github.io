@@ -2,7 +2,7 @@
 name: Arduino
 slug: arduino
 published: true
-category: devtools
+category: hardware
 color: teal
 logo: Arduino
 ---

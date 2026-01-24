@@ -351,16 +351,16 @@ function levenshteinDistance(a: string, b: string): number {
 const nonTechTerms = new Set([
 	// Valeurs vides / par défaut
 	'unknown', 'none', 'null', 'undefined', '', 'n/a', 'na', 'no-img', 'placeholder',
-	// Soft skills
+	// Soft skills - qualités humaines
 	'autonomy', 'autonomie',
 	'creativity', 'créativité', 'creativite',
 	'teamwork', 'travail d\'équipe', 'travail equipe',
 	'communication',
 	'leadership',
-	'problem-solving', 'problem solving', 'résolution de problèmes',
+	'problem-solving', 'problem solving', 'résolution de problèmes', 'problemsolving',
 	'adaptability', 'adaptabilité', 'adaptabilite',
-	'time-management', 'time management', 'gestion du temps',
-	'critical-thinking', 'critical thinking', 'pensée critique',
+	'time-management', 'time management', 'gestion du temps', 'timemanagement',
+	'critical-thinking', 'critical thinking', 'pensée critique', 'criticalthinking',
 	'collaboration',
 	'motivation',
 	'organization', 'organisation',
@@ -372,6 +372,15 @@ const nonTechTerms = new Set([
 	'initiative',
 	'perseverance', 'persévérance', 'perseverance',
 	'soft skill', 'soft skills',
+	// Soft skills - qualités développeur/ingénieur
+	'agile', 'scrum', 'méthodologie agile', 'methodologie agile',
+	'attention-to-detail', 'attention to detail', 'attention aux détails', 'attentiontodetail',
+	'continuous-learning', 'continuous learning', 'apprentissage continu', 'continuouslearning',
+	'debugging', 'débogage', 'debogage',
+	'code-review', 'code review', 'revue de code', 'codereview',
+	'documentation',
+	// Design tools (non-dev)
+	'davinci', 'davinci resolve',
 ]);
 
 /**
@@ -456,7 +465,7 @@ const Assets = {
 	RabbitMQ: asset('rabbitmq.svg'),
 	Rust: asset('rust.svg'),
 	Scrapy: asset('scrapy.png'),
-	Selenium: asset('selenium.svg'),
+	Selenium: asset('selenium.png'),
 	Docker: asset('docker.svg'),
 	Kubernetes: asset('kubernetes.svg'),
 	Csharp: asset('csharp.svg'),
@@ -569,6 +578,59 @@ const Assets = {
 	Rigor: asset('rigor.svg'),
 	Communication: asset('communication.svg'),
 	Adaptability: asset('adaptability.svg'),
+	// Soft skills (qualités développeur/ingénieur)
+	Agile: asset('agile.svg'),
+	ProblemSolving: asset('problem-solving.svg'),
+	CriticalThinking: asset('critical-thinking.svg'),
+	Curiosity: asset('curiosity.svg'),
+	AttentionToDetail: asset('attention-detail.svg'),
+	TimeManagement: asset('time-management.svg'),
+	ContinuousLearning: asset('continuous-learning.svg'),
+	Debugging: asset('debugging.svg'),
+	CodeReview: asset('code-review.svg'),
+	Documentation: asset('documentation.svg'),
+	Scrum: asset('scrum.svg'),
+	// OS
+	Windows: asset('windows-original.svg'),
+	RedHat: asset('redhat-original.svg'),
+	Debian: asset('debian-original.svg'),
+	Ubuntu: asset('ubuntu-original.svg'),
+	CentOS: asset('centos-original.svg'),
+	// IDE & Tools supplémentaires
+	Eclipse: asset('eclipse-original.svg'),
+	Insomnia: asset('insomnia-original.svg'),
+	SceneBuilder: asset('scenebuilder.svg'),
+	Swagger: asset('swagger-original.svg'),
+	VisualStudio: asset('visualstudio-original.svg'),
+	// Test frameworks
+	Mockito: asset('mockito.svg'),
+	Cucumber: asset('cucumber-original.svg'),
+	// Langages/scripts
+	Bash: asset('bash.svg'),
+	// Design & Video
+	Illustrator: asset('illustrator-original.svg'),
+	DaVinci: asset('davinci.svg'),
+	Figma: asset('figma-original.svg'),
+	Affinity: asset('affinity.svg'),
+	// Collaboration
+	Trello: asset('trello-original.svg'),
+	// Office
+	Teams: asset('teams.svg'),
+	Outlook: asset('outlook.svg'),
+	// Database
+	H2: asset('h2.svg'),
+	// Library
+	Matplotlib: asset('matplotlib-original.svg'),
+	// Spoken Languages
+	French: asset('french.svg'),
+	English: asset('english.svg'),
+	Spanish: asset('spanish.svg'),
+	// DevTools
+	DockerDesktop: asset('docker-desktop.svg'),
+	GitHub: asset('github-original.svg'),
+	GitLab: asset('gitlab-original.svg'),
+	// Soft skills
+	Pedagogy: asset('pedagogy.svg'),
 	MiniArticle: asset('mini-article.png'),
 };
 

@@ -2,7 +2,7 @@
 name: PaperMC
 slug: papermc
 published: true
-category: devtools
+category: other
 color: gray
 logo: PaperMC
 ---

@@ -2,7 +2,7 @@
 name: Rider
 slug: rider
 published: true
-category: devtools
+category: ide
 color: red
 logo: Rider
 ---

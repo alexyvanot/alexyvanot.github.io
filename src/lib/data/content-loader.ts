@@ -471,7 +471,14 @@ const categories: SkillCategory[] = [
 	{ name: 'Dev Tools', slug: 'devtools' },
 	{ name: 'Markup & Style', slug: 'markup-style' },
 	{ name: 'Design', slug: 'design' },
-	{ name: 'Soft Skills', slug: 'soft' }
+	{ name: 'Soft Skills', slug: 'soft' },
+	{ name: 'IDE', slug: 'ide' },
+	{ name: 'Operating Systems', slug: 'os' },
+	{ name: 'Office', slug: 'office' },
+	{ name: 'Collaboration', slug: 'collaboration' },
+	{ name: 'Game Engine', slug: 'game-engine' },
+	{ name: 'Hardware', slug: 'hardware' },
+	{ name: 'Spoken Languages', slug: 'spoken-lang' }
 ];
 
 function findCategory(slug: string | undefined): SkillCategory | undefined {

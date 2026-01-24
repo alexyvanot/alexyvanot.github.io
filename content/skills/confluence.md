@@ -2,7 +2,7 @@
 name: Confluence
 slug: confluence
 published: true
-category: devtools
+category: collaboration
 color: blue
 logo: Confluence
 ---

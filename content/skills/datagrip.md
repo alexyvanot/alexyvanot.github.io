@@ -2,7 +2,7 @@
 name: DataGrip
 slug: datagrip
 published: true
-category: devtools
+category: ide
 color: purple
 logo: DataGrip
 ---

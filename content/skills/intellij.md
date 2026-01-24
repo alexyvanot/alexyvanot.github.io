@@ -2,7 +2,7 @@
 name: IntelliJ IDEA
 slug: intellij
 published: true
-category: devtools
+category: ide
 color: pink
 logo: IntelliJ
 ---

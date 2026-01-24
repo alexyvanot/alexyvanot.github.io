@@ -2,7 +2,7 @@
 name: Unity
 slug: unity
 published: true
-category: devtools
+category: game-engine
 color: gray
 logo: Unity
 ---

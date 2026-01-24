@@ -2,7 +2,7 @@
 name: Spigot
 slug: spigot
 published: true
-category: devtools
+category: other
 color: orange
 logo: Spigot
 ---

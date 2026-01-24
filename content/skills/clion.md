@@ -2,7 +2,7 @@
 name: CLion
 slug: clion
 published: true
-category: devtools
+category: ide
 color: green
 logo: CLion
 ---
