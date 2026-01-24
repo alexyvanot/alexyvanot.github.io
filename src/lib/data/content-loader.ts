@@ -181,15 +181,111 @@ function stripMarkdown(md: string): string {
 }
 
 /**
+ * Détecte automatiquement l'icône d'un lien basé sur son URL
+ */
+function detectLinkIcon(url: string, label: string): string | undefined {
+	const lowerUrl = url.toLowerCase();
+	const lowerLabel = label.toLowerCase();
+	
+	// GitHub
+	if (lowerUrl.includes('github.com') || lowerLabel.includes('github')) {
+		return 'i-carbon-logo-github';
+	}
+	
+	// GitLab
+	if (lowerUrl.includes('gitlab.com') || lowerLabel.includes('gitlab')) {
+		return 'i-carbon-logo-gitlab';
+	}
+	
+	// YouTube
+	if (lowerUrl.includes('youtube.com') || lowerUrl.includes('youtu.be') || lowerLabel.includes('youtube')) {
+		return 'i-carbon-logo-youtube';
+	}
+	
+	// LinkedIn
+	if (lowerUrl.includes('linkedin.com') || lowerLabel.includes('linkedin')) {
+		return 'i-carbon-logo-linkedin';
+	}
+	
+	// Twitter/X
+	if (lowerUrl.includes('twitter.com') || lowerUrl.includes('x.com') || lowerLabel.includes('twitter')) {
+		return 'i-carbon-logo-x';
+	}
+	
+	// Discord
+	if (lowerUrl.includes('discord.com') || lowerUrl.includes('discord.gg') || lowerLabel.includes('discord')) {
+		return 'i-carbon-logo-discord';
+	}
+	
+	// Slack
+	if (lowerUrl.includes('slack.com') || lowerLabel.includes('slack')) {
+		return 'i-carbon-logo-slack';
+	}
+	
+	// Medium
+	if (lowerUrl.includes('medium.com') || lowerLabel.includes('medium')) {
+		return 'i-carbon-logo-medium';
+	}
+	
+	// Figma
+	if (lowerUrl.includes('figma.com') || lowerLabel.includes('figma')) {
+		return 'i-carbon-logo-figma';
+	}
+	
+	// npm
+	if (lowerUrl.includes('npmjs.com') || lowerLabel.includes('npm')) {
+		return 'i-carbon-logo-npm';
+	}
+	
+	// Documentation / Wiki
+	if (lowerLabel.includes('doc') || lowerLabel.includes('wiki') || lowerLabel.includes('readme')) {
+		return 'i-carbon-document';
+	}
+	
+	// Notebook / Jupyter
+	if (lowerUrl.includes('.ipynb') || lowerLabel.includes('notebook') || lowerLabel.includes('jupyter')) {
+		return 'i-carbon-notebook';
+	}
+	
+	// Demo / Live
+	if (lowerLabel.includes('demo') || lowerLabel.includes('live') || lowerLabel.includes('preview')) {
+		return 'i-carbon-view';
+	}
+	
+	// Download
+	if (lowerLabel.includes('download') || lowerLabel.includes('télécharger')) {
+		return 'i-carbon-download';
+	}
+	
+	// Video
+	if (lowerLabel.includes('video') || lowerLabel.includes('vidéo')) {
+		return 'i-carbon-video';
+	}
+	
+	// API
+	if (lowerLabel.includes('api')) {
+		return 'i-carbon-api';
+	}
+	
+	// Pas d'icône détectée - retourne undefined pour utiliser l'icône par défaut
+	return undefined;
+}
+
+/**
  * Parse les liens depuis le frontmatter
  */
 function parseLinks(links: unknown): Link[] {
 	if (!Array.isArray(links)) return [];
-	return links.map((l: any) => ({
-		to: l.to || '',
-		label: l.label || '',
-		newTab: l.newTab ?? true
-	}));
+	return links.map((l: any) => {
+		const to = l.to || '';
+		const label = l.label || '';
+		return {
+			to,
+			label,
+			newTab: l.newTab ?? true,
+			icon: l.icon || detectLinkIcon(to, label)
+		};
+	});
 }
 
 /**

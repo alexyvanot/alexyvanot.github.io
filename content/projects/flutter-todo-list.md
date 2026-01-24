@@ -11,7 +11,7 @@ period:
   to: 2024-10-17
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/flutter_todo_list
+    to: https://github.com/alexyvanot/flutter_todo_list
 skills:
   - flutter
   - dart

@@ -11,7 +11,7 @@ period:
   to: 2025-07-12
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/foot-ai
+    to: https://github.com/alexyvanot/foot-ai
 skills:
   - python
   - opencv

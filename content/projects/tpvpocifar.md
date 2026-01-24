@@ -11,7 +11,7 @@ period:
   to: 2025-05-23
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/tpvpocifar
+    to: https://github.com/alexyvanot/tpvpocifar
 skills:
   - python
   - tensorflow

@@ -12,7 +12,7 @@ period:
   to: 2025-09-29
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/quiz-ai
+    to: https://github.com/alexyvanot/quiz-ai
 skills:
   - svelte
   - typescript

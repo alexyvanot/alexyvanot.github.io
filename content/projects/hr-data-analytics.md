@@ -11,9 +11,9 @@ period:
   to: 2025-12-04
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/hr-data-analytics
+    to: https://github.com/alexyvanot/hr-data-analytics
   - label: Notebook
-    url: https://github.com/alexyvanot/hr-data-analytics/blob/main/ProjetFinal_DataCrafting_Mining.ipynb
+    to: https://github.com/alexyvanot/hr-data-analytics/blob/main/ProjetFinal_DataCrafting_Mining.ipynb
 skills:
   - python
   - pandas

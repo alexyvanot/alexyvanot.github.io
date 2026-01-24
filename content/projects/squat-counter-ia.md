@@ -11,7 +11,7 @@ period:
   to: 2025-06-27
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/squat-counter-ia
+    to: https://github.com/alexyvanot/squat-counter-ia
 skills:
   - python
   - opencv

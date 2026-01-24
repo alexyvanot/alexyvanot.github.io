@@ -11,9 +11,9 @@ period:
   to: 2025-07-15
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/testing-blog
+    to: https://github.com/alexyvanot/testing-blog
   - label: Demo
-    url: https://alexyvanot.github.io/testing-blog/
+    to: https://alexyvanot.github.io/testing-blog/
 skills:
   - svelte
   - typescript

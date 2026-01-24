@@ -11,7 +11,7 @@ period:
   to: 2024-10-18
 links:
   - label: GitHub
-    url: https://github.com/alexyvanot/flutter_movie_manip
+    to: https://github.com/alexyvanot/flutter_movie_manip
 skills:
   - flutter
   - dart
