@@ -452,7 +452,7 @@ const Assets = {
 	Neo4j: asset('neo4j.svg'),
 	Nginx: asset('nginx.svg'),
 	Numpy: asset('numpy.svg'),
-	Pandas: asset('pandas.svg'),
+	Pandas: asset('pandas-light.svg', 'pandas.svg'),
 	RabbitMQ: asset('rabbitmq.svg'),
 	Rust: asset('rust.svg'),
 	Scrapy: asset('scrapy.png'),
@@ -562,10 +562,13 @@ const Assets = {
 	// Atlassian
 	Jira: asset('jira-original.svg'),
 	Confluence: asset('confluence-original.svg'),
-	// Soft skills (pas d'icône)
-	Teamwork: asset('no-img.svg'),
-	Autonomy: asset('no-img.svg'),
-	Creativity: asset('no-img.svg'),
+	// Soft skills (qualités humaines)
+	Teamwork: asset('teamwork.svg'),
+	Autonomy: asset('autonomy.svg'),
+	Creativity: asset('creativity.svg'),
+	Rigor: asset('rigor.svg'),
+	Communication: asset('communication.svg'),
+	Adaptability: asset('adaptability.svg'),
 	MiniArticle: asset('mini-article.png'),
 };
 
