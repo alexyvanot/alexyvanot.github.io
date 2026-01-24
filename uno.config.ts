@@ -3,50 +3,75 @@ import { defineConfig, presetIcons, presetWebFonts } from 'unocss';
 export default defineConfig({
 	// Safelist pour les icônes chargées dynamiquement depuis YAML et Markdown
 	safelist: [
-		// Social links
+		// === TOUTES LES ICÔNES UTILISÉES DANS CONTENT/ ===
+		// Générées automatiquement - ne pas supprimer
+		'i-carbon-add',
+		'i-carbon-analytics',
+		'i-carbon-book',
+		'i-carbon-calendar',
+		'i-carbon-camera',
+		'i-carbon-certificate',
+		'i-carbon-chat',
+		'i-carbon-checkmark-filled',
+		'i-carbon-chemistry',
+		'i-carbon-collaborate',
+		'i-carbon-color-palette',
+		'i-carbon-document',
+		'i-carbon-earth',
+		'i-carbon-education',
+		'i-carbon-email',
+		'i-carbon-face-satisfied',
+		'i-carbon-favorite',
+		'i-carbon-fire',
+		'i-carbon-flash',
+		'i-carbon-folder',
+		'i-carbon-game-console',
+		'i-carbon-globe',
+		'i-carbon-group',
+		'i-carbon-growth',
+		'i-carbon-idea',
+		'i-carbon-image',
+		'i-carbon-image-copy',
+		'i-carbon-laptop',
+		'i-carbon-lightning',
+		'i-carbon-link',
+		'i-carbon-location',
 		'i-carbon-logo-github',
 		'i-carbon-logo-linkedin',
+		'i-carbon-magic-wand',
+		'i-carbon-meter',
+		'i-carbon-moon',
+		'i-carbon-music',
+		'i-carbon-partnership',
+		'i-carbon-pin',
+		'i-carbon-portfolio',
+		'i-carbon-quotes',
+		'i-carbon-renew',
+		'i-carbon-roadmap',
+		'i-carbon-rocket',
+		'i-carbon-scales',
+		'i-carbon-search',
+		'i-carbon-send-alt',
+		'i-carbon-star',
+		'i-carbon-star-filled',
+		'i-carbon-task-complete',
+		'i-carbon-terminal',
+		'i-carbon-thumbs-up',
+		'i-carbon-trash-can',
+		'i-carbon-trophy',
+		'i-carbon-user-certification',
+		'i-carbon-warning-alt',
+		// === AUTRES ICÔNES (attachments, etc.) ===
 		'i-carbon-at',
 		'i-carbon-blog',
-		// Attachment types icons
-		'i-carbon-image',
 		'i-carbon-document-pdf',
-		'i-carbon-document',
 		'i-carbon-zip',
 		'i-carbon-video',
-		'i-carbon-music',
 		'i-carbon-code',
-		'i-carbon-link',
 		'i-carbon-attachment',
 		'i-carbon-download',
 		'i-carbon-launch',
-		// Icônes pour boutons markdown (compétences soft skills)
-		'i-carbon-user-certification', // Autonomie
-		'i-carbon-idea', // Créativité
-		'i-carbon-group', // Travail d'équipe
-		// Icônes pour about.md et pages de contenu
-		'i-carbon-idea', // Idée/valeurs (ampoule)
-		'i-carbon-partnership', // Qualités humaines
-		'i-carbon-rocket', // Initiative
-		'i-carbon-checkmark-filled', // Rigueur
-		'i-carbon-chat', // Communication
-		'i-carbon-renew', // Adaptabilité
-		'i-carbon-book', // Lecture
-		'i-carbon-game-console', // Gaming
-		'i-carbon-earth', // Voyages
-		'i-carbon-send-alt', // Contact
-		'i-carbon-flash', // Excellence
-		'i-carbon-collaborate', // Partage
-		'i-carbon-search', // Curiosité
-		'i-carbon-roadmap', // Projet professionnel
-		'i-carbon-star', // Étoile vide
-		'i-carbon-star-filled', // Étoile pleine
-		'i-carbon-meter', // Autocritique/positionnement (skills)
-		'i-carbon-thumbs-up', // Conclusion
-		'i-carbon-favorite', // Favoris/cœur
-		'i-carbon-magic-wand', // Sparkle alternative
-		'i-carbon-task-complete', // Pragmatisme
-		// Icônes pour boutons markdown (compétences techniques)
+		// === LOGOS EXTERNES ===
 		'i-logos-python',
 		'i-logos-java',
 		'i-logos-svelte-icon'
