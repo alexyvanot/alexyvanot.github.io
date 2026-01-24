@@ -97,7 +97,7 @@ Description du projet en Markdown...
 
 ---
 
-## 💼 Ajouter une compétence
+## :i[portfolio] Ajouter une compétence
 
 1. Créer un fichier `ma-skill.md` dans `content/skills/`
 2. Copier ce template :
@@ -127,7 +127,7 @@ Description de la compétence...
 
 ---
 
-## 💼 Ajouter une expérience
+## :i[portfolio] Ajouter une expérience
 
 1. Créer un fichier `mon-experience.md` dans `content/experience/`
 2. Copier ce template :

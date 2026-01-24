@@ -61,11 +61,11 @@ Ces projets m'ont permis de comprendre les **mécanismes internes** des système
 
 | Domaine | Niveau |
 |---------|--------|
-| Syntaxe et structures de base | ★★★★☆ Avancé |
-| Pointeurs et mémoire | ★★★☆☆ Intermédiaire |
-| Programmation système (POSIX) | ★★★☆☆ Intermédiaire |
-| Embarqué / Arduino | ★★★★☆ Avancé |
-| Optimisation bas niveau | ★★☆☆☆ Débutant |
+| Syntaxe et structures de base | 4/5 Avancé |
+| Pointeurs et mémoire | 3/5 Intermédiaire |
+| Programmation système (POSIX) | 3/5 Intermédiaire |
+| Embarqué / Arduino | 4/5 Avancé |
+| Optimisation bas niveau | 2/5 Débutant |
 
 ### Marge de progression
 

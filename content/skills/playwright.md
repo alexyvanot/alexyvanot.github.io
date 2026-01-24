@@ -55,11 +55,11 @@ Ce portfolio utilise Playwright pour les tests E2E, vérifiant que toutes les pa
 
 | Domaine | Niveau |
 |---------|--------|
-| API de base (locators, actions) | ★★★★★ Expert |
-| Configuration et setup | ★★★★☆ Avancé |
-| Page Object Model | ★★★★☆ Avancé |
-| Debugging (traces, screenshots) | ★★★★☆ Avancé |
-| Tests API | ★★★☆☆ Intermédiaire |
+| API de base (locators, actions) | 5/5 Expert |
+| Configuration et setup | 4/5 Avancé |
+| Page Object Model | 4/5 Avancé |
+| Debugging (traces, screenshots) | 4/5 Avancé |
+| Tests API | 3/5 Intermédiaire |
 
 ### Marge de progression
 

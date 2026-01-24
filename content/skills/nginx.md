@@ -59,11 +59,11 @@ Ce portfolio utilise Nginx pour servir le **build statique SvelteKit** avec une 
 
 | Domaine | Niveau |
 |---------|--------|
-| Serveur web / fichiers statiques | ★★★★★ Expert |
-| Reverse proxy | ★★★★☆ Avancé |
-| SSL/TLS / Let's Encrypt | ★★★★☆ Avancé |
-| Load balancing avancé | ★★★☆☆ Intermédiaire |
-| Modules Lua / OpenResty | ★★☆☆☆ Débutant |
+| Serveur web / fichiers statiques | 5/5 Expert |
+| Reverse proxy | 4/5 Avancé |
+| SSL/TLS / Let's Encrypt | 4/5 Avancé |
+| Load balancing avancé | 3/5 Intermédiaire |
+| Modules Lua / OpenResty | 2/5 Débutant |
 
 ### Marge de progression
 

@@ -74,13 +74,13 @@ Au sein du SIE, je suis rattaché à l'équipe **développement logiciel**. Je t
 - Création de **TAP** (Test Automation Platform), une plateforme de centralisation des tests automatisés
 - Stack : **Java 17+, Spring Boot 3, React.js, PostgreSQL**
 
-### 🧪 Automatisation et qualité
+### :i[chemistry] Automatisation et qualité
 
 - Mise en place de **tests automatisés** (JUnit, Playwright, Selenium)
 - Amélioration des **pipelines CI/CD** GitLab
 - Intégration de **rapports Allure** pour la visualisation des résultats
 
-### 🐧 Administration système
+### :i[terminal] Administration système
 
 - Gestion de **serveurs Linux** (Debian, Red Hat)
 - **Conteneurisation** avec Docker et Docker Compose

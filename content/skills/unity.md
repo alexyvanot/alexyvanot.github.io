@@ -52,11 +52,11 @@ Le projet **InVR** a été entièrement développé avec Unity et le XR Interact
 
 | Domaine | Niveau |
 |---------|--------|
-| Interface Unity / Scene | ★★★★☆ Avancé |
-| Scripting C# | ★★★★☆ Avancé |
-| VR / XR Interaction Toolkit | ★★★☆☆ Intermédiaire |
-| Shaders / Rendering | ★★☆☆☆ Débutant |
-| Optimisation | ★★★☆☆ Intermédiaire |
+| Interface Unity / Scene | 4/5 Avancé |
+| Scripting C# | 4/5 Avancé |
+| VR / XR Interaction Toolkit | 3/5 Intermédiaire |
+| Shaders / Rendering | 2/5 Débutant |
+| Optimisation | 3/5 Intermédiaire |
 
 ### Marge de progression
 

@@ -1,5 +1,5 @@
 ---
-title: "Petit Georges vs Gros Georges 🐾"
+title: "Petit Georges vs Gros Georges"
 slug: georges-le-chat
 published: false
 excerpt: "Georges, le chat de Nico, oscille entre moine zen et chaos incarné. Petit Georges ou Gros Georges, choisis ton camp."
@@ -26,16 +26,16 @@ links:
 
 ::toc
 
-# 🐾 **Georges, le Chat de Nico**  
+# :i[paw-print] **Georges, le Chat de Nico**  
 > *"Personne ne sait vraiment ce qu'il veut. Même pas lui."*  
 
 ---
 
-## 📸 Présentation rapide
+## :i[camera] Présentation rapide
 **Nom** : Georges  
 **Surnoms** :  
-- Petit Georges 💤  
-- Gros Georges 💥  
+- Petit Georges :i[moon]  
+- Gros Georges :i[lightning]  
 - Le Sphinx du Salon  
 - Le Furoncle de l'Ombre  
 
@@ -44,9 +44,9 @@ links:
 
 ---
 
-## ⚖️ Double personnalité
+## :i[scales] Double personnalité
 
-### 🧘 Petit Georges
+### :i[face-satisfied] Petit Georges
 - Contemple les murs pendant 45 minutes.
 - S'endort dans l'évier.
 - Se laisse caresser comme si t'étais un nuage.
@@ -56,7 +56,7 @@ links:
 
 ---
 
-### 🔥 Gros Georges
+### :i[fire] Gros Georges
 - Course-poursuite avec un sac plastique imaginaire.
 - Grimpe aux rideaux comme si c'était l'ascension du K2.
 - Fixe un coin de mur et gronde.
@@ -66,7 +66,7 @@ links:
 
 ---
 
-## 🧠 Une journée type
+## :i[analytics] Une journée type
 
 | Heure      | Comportement           |
 |------------|------------------------|
@@ -78,7 +78,7 @@ links:
 
 ---
 
-## 🥇 Le DÉBAT : Tu préfères qui ?
+## :i[trophy] Le DÉBAT : Tu préfères qui ?
 
 > "_Tu préfères **Petit Georges** ou **Gros Georges** ?_"
 
@@ -91,7 +91,7 @@ Les réponses possibles :
 
 ---
 
-## 🐾 Citations célèbres
+## :i[quotes] Citations célèbres
 
 - "_Il est monté sur la table, m'a regardé dans les yeux et a renversé mon bol. Sans raison._" – Nico  
 - "_Il a miaulé dans mon verre d'eau. Et ensuite il l'a bu._" – Jules  
@@ -99,13 +99,13 @@ Les réponses possibles :
 
 ---
 
-## 📷 Galerie d'horreurs (et de douceurs)
+## :i[image] Galerie d'horreurs (et de douceurs)
 
-🖼️ *(Insérez ici des photos floues de Georges qui traverse à toute vitesse ou qui médite face au grille-pain)*
+:i[image-copy] *(Insérez ici des photos floues de Georges qui traverse à toute vitesse ou qui médite face au grille-pain)*
 
 ---
 
-## ⚠️ Attention
+## :i[warning-alt] Attention
 Ne jamais :
 - Le fixer dans les yeux entre 16h03 et 16h06.
 - Lui dire "t'es mignon" quand il est en Gros Georges.
@@ -113,7 +113,7 @@ Ne jamais :
 
 ---
 
-## 🎉 En conclusion
+## :i[celebrate] En conclusion
 
 Georges c'est pas un chat. C'est une **expérience métaphysique** en poils.  
 Tu peux le trouver adorable ou terrifiant. Mais tu **ne peux pas l'ignorer**.

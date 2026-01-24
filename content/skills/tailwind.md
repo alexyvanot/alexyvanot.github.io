@@ -55,11 +55,11 @@ Mon **Svelte Static Blog** m'a permis de découvrir Tailwind dans un contexte r�
 
 | Domaine | Niveau |
 |---------|--------|
-| Classes utilitaires | ★★★★★ Expert |
-| Responsive design | ★★★★★ Expert |
-| Dark mode | ★★★★☆ Avancé |
-| Configuration (tailwind.config) | ★★★★☆ Avancé |
-| Plugins et extensions | ★★★☆☆ Intermédiaire |
+| Classes utilitaires | 5/5 Expert |
+| Responsive design | 5/5 Expert |
+| Dark mode | 4/5 Avancé |
+| Configuration (tailwind.config) | 4/5 Avancé |
+| Plugins et extensions | 3/5 Intermédiaire |
 
 ### Marge de progression
 

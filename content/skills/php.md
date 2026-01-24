@@ -54,11 +54,11 @@ Durant ma formation à **IN'TECH**, PHP était le langage principal pour apprend
 
 | Domaine | Niveau |
 |---------|--------|
-| Syntaxe et OOP | ★★★★☆ Avancé |
-| Laravel | ★★★☆☆ Intermédiaire |
-| Sécurité (XSS, CSRF, SQL injection) | ★★★★☆ Avancé |
-| Composer / Packagist | ★★★☆☆ Intermédiaire |
-| PHP 8.x (features modernes) | ★★☆☆☆ Débutant |
+| Syntaxe et OOP | 4/5 Avancé |
+| Laravel | 3/5 Intermédiaire |
+| Sécurité (XSS, CSRF, SQL injection) | 4/5 Avancé |
+| Composer / Packagist | 3/5 Intermédiaire |
+| PHP 8.x (features modernes) | 2/5 Débutant |
 
 ### Marge de progression
 

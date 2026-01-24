@@ -95,9 +95,9 @@ Ce projet a été réalisé sur **2 semaines** dans le cadre d'un cours de déve
 ### Phase 3 : Interface utilisateur (5 jours)
 
 **Fonctionnalités implémentées :**
-- ➕ Ajout de nouvelles tâches avec validation
+- :i[add] Ajout de nouvelles tâches avec validation
 - :i[checkmark-filled] Toggle de complétion avec feedback visuel
-- 🗑️ Suppression par swipe avec confirmation
+- :i[trash-can] Suppression par swipe avec confirmation
 - :i[search] Filtrage dynamique des tâches
 
 ### Phase 4 : Polissage (3 jours)

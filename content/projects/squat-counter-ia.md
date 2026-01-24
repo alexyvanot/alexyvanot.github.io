@@ -103,7 +103,7 @@ Ce projet a été réalisé dans le cadre d'un **TP universitaire** donné par I
 ### Phase 3 : Interface Streamlit (2h)
 
 - Affichage de la vidéo avec overlay du squelette
-- Jauge visuelle dynamique (vert → rouge selon la position)
+- Jauge visuelle dynamique (vert vers rouge selon la position)
 - Compteur de squats en temps réel
 - Configuration des seuils ajustable
 

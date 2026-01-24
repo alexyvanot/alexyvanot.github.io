@@ -57,11 +57,11 @@ Le projet **Quiz AI** utilise également Streamlit pour présenter les questions
 
 | Domaine | Niveau |
 |---------|--------|
-| Widgets de base | ★★★★★ Expert |
-| Layout et colonnes | ★★★★☆ Avancé |
-| Graphiques (Plotly, Altair) | ★★★☆☆ Intermédiaire |
-| Caching et performance | ★★★☆☆ Intermédiaire |
-| Components custom | ★★☆☆☆ Débutant |
+| Widgets de base | 5/5 Expert |
+| Layout et colonnes | 4/5 Avancé |
+| Graphiques (Plotly, Altair) | 3/5 Intermédiaire |
+| Caching et performance | 3/5 Intermédiaire |
+| Components custom | 2/5 Débutant |
 
 ### Marge de progression
 

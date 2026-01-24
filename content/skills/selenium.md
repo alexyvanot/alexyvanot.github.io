@@ -55,10 +55,10 @@ J'ai appris les tests E2E avec Selenium avant de découvrir Playwright. Cette ex
 
 | Domaine | Niveau |
 |---------|--------|
-| WebDriver API | ★★★★☆ Avancé |
-| Locators (CSS, XPath) | ★★★★☆ Avancé |
-| Selenium Grid | ★★★☆☆ Intermédiaire |
-| Waits explicites | ★★★★☆ Avancé |
+| WebDriver API | 4/5 Avancé |
+| Locators (CSS, XPath) | 4/5 Avancé |
+| Selenium Grid | 3/5 Intermédiaire |
+| Waits explicites | 4/5 Avancé |
 
 ### Contextualisation
 

@@ -92,12 +92,12 @@ Je situe ma compétence Python à un **niveau avancé**, particulièrement dans 
 
 | Domaine | Niveau |
 |---------|--------|
-| Syntaxe et idiomes Python | ★★★★★ Expert |
-| Data manipulation (pandas, NumPy) | ★★★★☆ Avancé |
-| Computer Vision (OpenCV, MediaPipe) | ★★★★☆ Avancé |
-| Deep Learning (TensorFlow) | ★★★☆☆ Intermédiaire |
-| Web backend (Flask, FastAPI) | ★★★☆☆ Intermédiaire |
-| MLOps (déploiement modèles) | ★★☆☆☆ Débutant |
+| Syntaxe et idiomes Python | 5/5 Expert |
+| Data manipulation (pandas, NumPy) | 4/5 Avancé |
+| Computer Vision (OpenCV, MediaPipe) | 4/5 Avancé |
+| Deep Learning (TensorFlow) | 3/5 Intermédiaire |
+| Web backend (Flask, FastAPI) | 3/5 Intermédiaire |
+| MLOps (déploiement modèles) | 2/5 Débutant |
 
 ### Marge de progression
 

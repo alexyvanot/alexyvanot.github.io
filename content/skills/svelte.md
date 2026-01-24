@@ -97,13 +97,13 @@ Je situe ma compétence Svelte/SvelteKit à un **niveau avancé** :
 
 | Domaine | Niveau |
 |---------|--------|
-| Composants et réactivité | ★★★★★ Expert |
-| SvelteKit (routing, SSR, SSG) | ★★★★☆ Avancé |
-| Svelte 5 Runes | ★★★★☆ Avancé |
-| Stores et gestion d'état | ★★★★☆ Avancé |
-| Animations et transitions | ★★★★☆ Avancé |
-| SvelteKit API routes | ★★★☆☆ Intermédiaire |
-| Tests (Playwright, Vitest) | ★★★☆☆ Intermédiaire |
+| Composants et réactivité | 5/5 Expert |
+| SvelteKit (routing, SSR, SSG) | 4/5 Avancé |
+| Svelte 5 Runes | 4/5 Avancé |
+| Stores et gestion d'état | 4/5 Avancé |
+| Animations et transitions | 4/5 Avancé |
+| SvelteKit API routes | 3/5 Intermédiaire |
+| Tests (Playwright, Vitest) | 3/5 Intermédiaire |
 
 ### Marge de progression
 

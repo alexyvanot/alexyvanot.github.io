@@ -60,11 +60,11 @@ Le projet **SUN Auto** a été géré entièrement dans Jira avec un workflow cu
 
 | Domaine | Niveau |
 |---------|--------|
-| Utilisation quotidienne | ★★★★★ Expert |
-| JQL (Jira Query Language) | ★★★★☆ Avancé |
-| Workflows et boards | ★★★☆☆ Intermédiaire |
-| Administration | ★★☆☆☆ Débutant |
-| Automatisations | ★★☆☆☆ Débutant |
+| Utilisation quotidienne | 5/5 Expert |
+| JQL (Jira Query Language) | 4/5 Avancé |
+| Workflows et boards | 3/5 Intermédiaire |
+| Administration | 2/5 Débutant |
+| Automatisations | 2/5 Débutant |
 
 ### Marge de progression
 

@@ -56,11 +56,11 @@ VS Code est mon **éditeur principal** depuis 2019. Je l'utilise pour tous mes p
 
 | Domaine | Niveau |
 |---------|--------|
-| Navigation et édition | ★★★★★ Expert |
-| Extensions et config | ★★★★★ Expert |
-| Debugging multi-langages | ★★★★☆ Avancé |
-| Remote Development | ★★★★☆ Avancé |
-| Développement d'extensions | ★★☆☆☆ Débutant |
+| Navigation et édition | 5/5 Expert |
+| Extensions et config | 5/5 Expert |
+| Debugging multi-langages | 4/5 Avancé |
+| Remote Development | 4/5 Avancé |
+| Développement d'extensions | 2/5 Débutant |
 
 ### Marge de progression
 

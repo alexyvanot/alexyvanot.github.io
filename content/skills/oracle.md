@@ -53,10 +53,10 @@ Durant ma formation, j'ai appris les bases d'Oracle Database :
 
 | Domaine | Niveau |
 |---------|--------|
-| SQL standard | ★★★★★ Expert |
-| Spécificités Oracle (PL/SQL) | ★★★☆☆ Intermédiaire |
-| Administration Oracle | ★★☆☆☆ Débutant |
-| RAC / Data Guard | ★☆☆☆☆ Découverte |
+| SQL standard | 5/5 Expert |
+| Spécificités Oracle (PL/SQL) | 3/5 Intermédiaire |
+| Administration Oracle | 2/5 Débutant |
+| RAC / Data Guard | 1/5 Découverte |
 
 ### Contextualisation
 

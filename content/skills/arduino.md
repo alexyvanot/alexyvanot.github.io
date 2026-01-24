@@ -59,10 +59,10 @@ Plusieurs projets personnels m'ont permis d'explorer l'écosystème Arduino :
 
 | Domaine | Niveau |
 |---------|--------|
-| Programmation Arduino (C) | ★★★★☆ Avancé |
-| Capteurs et actionneurs | ★★★★☆ Avancé |
-| Protocoles (I2C, SPI, UART) | ★★★☆☆ Intermédiaire |
-| Électronique (soudure, PCB) | ★★☆☆☆ Débutant |
+| Programmation Arduino (C) | 4/5 Avancé |
+| Capteurs et actionneurs | 4/5 Avancé |
+| Protocoles (I2C, SPI, UART) | 3/5 Intermédiaire |
+| Électronique (soudure, PCB) | 2/5 Débutant |
 
 ### Marge de progression
 
