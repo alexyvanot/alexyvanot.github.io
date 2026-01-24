@@ -16,7 +16,7 @@ attachments:
 
 ---
 
-## :i[target] Mon projet professionnel
+## :i[roadmap] Mon projet professionnel
 
 L'objectif à moyen terme : devenir **ingénieur logiciel** spécialisé dans les **systèmes distribués** et le **DevOps**. Le monde du développement évolue constamment, et la capacité à concevoir des architectures scalables et maintenables représente un enjeu majeur pour les entreprises.
 
@@ -26,7 +26,7 @@ L'alternance au Synchrotron SOLEIL permet de travailler sur des **projets d'enve
 
 ---
 
-## :i[lightbulb] Mes valeurs
+## :i[idea] Mes valeurs
 
 :::values-grid{cols=2}
 ::value[Excellence technique]{icon=i-carbon-flash color=blue}

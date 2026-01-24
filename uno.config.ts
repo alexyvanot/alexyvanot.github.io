@@ -25,7 +25,7 @@ export default defineConfig({
 		'i-carbon-idea', // Créativité
 		'i-carbon-group', // Travail d'équipe
 		// Icônes pour about.md et pages de contenu
-		'i-carbon-lightbulb', // Idée/valeurs
+		'i-carbon-idea', // Idée/valeurs (ampoule)
 		'i-carbon-partnership', // Qualités humaines
 		'i-carbon-rocket', // Initiative
 		'i-carbon-checkmark-filled', // Rigueur
@@ -38,7 +38,7 @@ export default defineConfig({
 		'i-carbon-flash', // Excellence
 		'i-carbon-collaborate', // Partage
 		'i-carbon-search', // Curiosité
-		'i-carbon-target', // Pragmatisme
+		'i-carbon-roadmap', // Projet professionnel
 		'i-carbon-star', // Étoile vide
 		'i-carbon-star-filled', // Étoile pleine
 		// Icônes pour boutons markdown (compétences techniques)
