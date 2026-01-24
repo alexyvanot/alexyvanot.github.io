@@ -51,10 +51,10 @@ Le projet **InVR** utilise OpenXR via Unity pour créer une expérience VR acces
 
 | Domaine | Niveau |
 |---------|--------|
-| OpenXR via Unity | 3/5 Intermédiaire |
-| Interactions XR (grab, teleport) | 3/5 Intermédiaire |
-| Optimisation VR | 2/5 Débutant |
-| OpenXR natif (C/C++) | 1/5 Découverte |
+| OpenXR via Unity | ::stars[3/5] Intermédiaire |
+| Interactions XR (grab, teleport) | ::stars[3/5] Intermédiaire |
+| Optimisation VR | ::stars[2/5] Débutant |
+| OpenXR natif (C/C++) | ::stars[1/5] Découverte |
 
 ### Marge de progression
 

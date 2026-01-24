@@ -65,11 +65,11 @@ La plateforme **TAP** utilise PostgreSQL pour stocker l'historique de toutes les
 
 | Domaine | Niveau |
 |---------|--------|
-| Modélisation relationnelle | 4/5 Avancé |
-| Requêtes SQL (SELECT, JOIN) | 5/5 Expert |
-| Optimisation / EXPLAIN | 4/5 Avancé |
-| Administration (backup, réplication) | 3/5 Intermédiaire |
-| Extensions (PostGIS, etc.) | 2/5 Débutant |
+| Modélisation relationnelle | ::stars[4/5] Avancé |
+| Requêtes SQL (SELECT, JOIN) | ::stars[5/5] Expert |
+| Optimisation / EXPLAIN | ::stars[4/5] Avancé |
+| Administration (backup, réplication) | ::stars[3/5] Intermédiaire |
+| Extensions (PostGIS, etc.) | ::stars[2/5] Débutant |
 
 ### Marge de progression
 

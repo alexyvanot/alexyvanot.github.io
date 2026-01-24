@@ -83,11 +83,11 @@ Je situe ma compétence Java à un **niveau avancé**, sans prétendre à l'expe
 
 | Domaine | Niveau |
 |---------|--------|
-| Syntaxe et concepts OOP | 5/5 Expert |
-| Spring Boot / Spring Data | 4/5 Avancé |
-| Tests (JUnit, Mockito) | 4/5 Avancé |
-| Performance / JVM tuning | 3/5 Intermédiaire |
-| Architectures distribuées | 3/5 Intermédiaire |
+| Syntaxe et concepts OOP | ::stars[5/5] Expert |
+| Spring Boot / Spring Data | ::stars[4/5] Avancé |
+| Tests (JUnit, Mockito) | ::stars[4/5] Avancé |
+| Performance / JVM tuning | ::stars[3/5] Intermédiaire |
+| Architectures distribuées | ::stars[3/5] Intermédiaire |
 
 ### Marge de progression
 

@@ -52,10 +52,10 @@ Dans la plateforme **TAP**, j'ai implémenté un **système de cache Redis** pou
 
 | Domaine | Niveau |
 |---------|--------|
-| Caching basique | 4/5 Avancé |
-| Structures de données | 3/5 Intermédiaire |
-| Pub/Sub | 3/5 Intermédiaire |
-| Cluster / Sentinel | 2/5 Débutant |
+| Caching basique | ::stars[4/5] Avancé |
+| Structures de données | ::stars[3/5] Intermédiaire |
+| Pub/Sub | ::stars[3/5] Intermédiaire |
+| Cluster / Sentinel | ::stars[2/5] Débutant |
 
 ### Marge de progression
 

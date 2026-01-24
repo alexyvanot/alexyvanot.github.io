@@ -172,6 +172,34 @@
 	}
 
 	/**
+	 * Parse les notations étoiles ::stars[x/y] 
+	 * Exemple: ::stars[4/5] => 4 étoiles pleines + 1 étoile vide
+	 */
+	function parseStars(md: string): string {
+		// Pattern: ::stars[x/y] ou ::rating[x/y]
+		return md.replace(/::(?:stars|rating)\[(\d+)\/(\d+)\]/g, (match, filled, total) => {
+			const filledCount = parseInt(filled, 10);
+			const totalCount = parseInt(total, 10);
+			const emptyCount = totalCount - filledCount;
+			
+			let starsHtml = '<span class="stars-rating" aria-label="' + filledCount + ' sur ' + totalCount + '">';
+			
+			// Étoiles pleines
+			for (let i = 0; i < filledCount; i++) {
+				starsHtml += '<span class="star star-filled i-carbon-star-filled" aria-hidden="true"></span>';
+			}
+			
+			// Étoiles vides
+			for (let i = 0; i < emptyCount; i++) {
+				starsHtml += '<span class="star star-empty i-carbon-star" aria-hidden="true"></span>';
+			}
+			
+			starsHtml += '</span>';
+			return starsHtml;
+		});
+	}
+
+	/**
 	 * Parse les blocs :::buttons avec boutons ::button[Label]{options}
 	 * Supporte: href=, link=, icon= (emoji ou classe UnoCSS), style=, newTab=
 	 */
@@ -252,8 +280,11 @@
 		// Parser les icônes AVANT tout le reste
 		const contentWithIcons = parseIcons(tocOptions.content);
 		
+		// Parser les étoiles de notation
+		const contentWithStars = parseStars(contentWithIcons);
+		
 		// Parser les boutons AVANT marked
-		const { content: contentWithoutButtons, htmlBlocks } = parseButtons(contentWithIcons);
+		const { content: contentWithoutButtons, htmlBlocks } = parseButtons(contentWithStars);
 		
 		// Parser le markdown (sans le ::toc et sans les :::buttons)
 		let parsed = await marked.parse(contentWithoutButtons);
@@ -607,5 +638,25 @@
 		height: 1.2em;
 		vertical-align: -0.15em;
 		flex-shrink: 0;
+	}
+
+	/* Notations étoiles ::stars[x/y] */
+	.markdown-container :global(.stars-rating) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.1em;
+		vertical-align: middle;
+	}
+	.markdown-container :global(.star) {
+		display: inline-block;
+		width: 1.1em;
+		height: 1.1em;
+		flex-shrink: 0;
+	}
+	.markdown-container :global(.star-filled) {
+		color: hsl(45, 93%, 47%); /* Couleur dorée */
+	}
+	.markdown-container :global(.star-empty) {
+		color: hsl(var(--muted-foreground) / 0.4);
 	}
 </style>

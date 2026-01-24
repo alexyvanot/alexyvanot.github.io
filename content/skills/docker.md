@@ -66,11 +66,11 @@ Ce portfolio dispose d'un **Dockerfile** et d'un **docker-compose.yml** pour un 
 
 | Domaine | Niveau |
 |---------|--------|
-| Dockerfile / images | 5/5 Expert |
-| Docker Compose | 5/5 Expert |
-| Volumes / réseaux | 4/5 Avancé |
-| Docker Swarm | 3/5 Intermédiaire |
-| Sécurité conteneurs | 3/5 Intermédiaire |
+| Dockerfile / images | ::stars[5/5] Expert |
+| Docker Compose | ::stars[5/5] Expert |
+| Volumes / réseaux | ::stars[4/5] Avancé |
+| Docker Swarm | ::stars[3/5] Intermédiaire |
+| Sécurité conteneurs | ::stars[3/5] Intermédiaire |
 
 ### Marge de progression
 

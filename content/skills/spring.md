@@ -64,11 +64,11 @@ Le backend de **TAP** utilise également Spring Boot.
 
 | Domaine | Niveau |
 |---------|--------|
-| Spring Boot (Core) | 5/5 Expert |
-| Spring Web (REST) | 5/5 Expert |
-| Spring Data JPA | 4/5 Avancé |
-| Spring Security | 3/5 Intermédiaire |
-| Spring Cloud | 2/5 Débutant |
+| Spring Boot (Core) | ::stars[5/5] Expert |
+| Spring Web (REST) | ::stars[5/5] Expert |
+| Spring Data JPA | ::stars[4/5] Avancé |
+| Spring Security | ::stars[3/5] Intermédiaire |
+| Spring Cloud | ::stars[2/5] Débutant |
 
 ### Marge de progression
 

@@ -50,10 +50,10 @@ Pour le projet **Comet Learning**, j'ai utilisé MariaDB pour stocker toutes les
 
 | Domaine | Niveau |
 |---------|--------|
-| SQL (SELECT, JOIN, etc.) | 5/5 Expert |
-| Modélisation relationnelle | 4/5 Avancé |
-| Optimisation de requêtes | 4/5 Avancé |
-| Administration | 3/5 Intermédiaire |
+| SQL (SELECT, JOIN, etc.) | ::stars[5/5] Expert |
+| Modélisation relationnelle | ::stars[4/5] Avancé |
+| Optimisation de requêtes | ::stars[4/5] Avancé |
+| Administration | ::stars[3/5] Intermédiaire |
 
 ### Marge de progression
 

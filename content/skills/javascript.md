@@ -60,11 +60,11 @@ J'utilise régulièrement JavaScript/Node.js pour des **scripts d'automatisation
 
 | Domaine | Niveau |
 |---------|--------|
-| ES6+ (arrow, destructuring, spread) | 5/5 Expert |
-| Async/await, Promises | 5/5 Expert |
-| DOM manipulation | 4/5 Avancé |
-| Node.js | 3/5 Intermédiaire |
-| Testing (Jest, Vitest) | 3/5 Intermédiaire |
+| ES6+ (arrow, destructuring, spread) | ::stars[5/5] Expert |
+| Async/await, Promises | ::stars[5/5] Expert |
+| DOM manipulation | ::stars[4/5] Avancé |
+| Node.js | ::stars[3/5] Intermédiaire |
+| Testing (Jest, Vitest) | ::stars[3/5] Intermédiaire |
 
 ### Marge de progression
 

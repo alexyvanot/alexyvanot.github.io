@@ -62,11 +62,11 @@ Le projet **Snake Game AI** utilise des réseaux de neurones (inspirés de Tenso
 
 | Domaine | Niveau |
 |---------|--------|
-| Keras API (Sequential, Functional) | 3/5 Intermédiaire |
-| CNN pour images | 3/5 Intermédiaire |
-| Transfer learning | 2/5 Débutant |
-| TensorBoard | 3/5 Intermédiaire |
-| Déploiement (TF Serving, TF Lite) | 1/5 Découverte |
+| Keras API (Sequential, Functional) | ::stars[3/5] Intermédiaire |
+| CNN pour images | ::stars[3/5] Intermédiaire |
+| Transfer learning | ::stars[2/5] Débutant |
+| TensorBoard | ::stars[3/5] Intermédiaire |
+| Déploiement (TF Serving, TF Lite) | ::stars[1/5] Découverte |
 
 ### Marge de progression
 

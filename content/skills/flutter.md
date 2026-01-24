@@ -63,11 +63,11 @@ Un autre **TP universitaire** m'a permis de créer une application de gestion de
 
 | Domaine | Niveau |
 |---------|--------|
-| Widgets et UI | 4/5 Avancé |
-| Gestion d'état (Provider) | 3/5 Intermédiaire |
-| Navigation et routing | 3/5 Intermédiaire |
-| Intégration API | 4/5 Avancé |
-| Tests (unit, widget) | 2/5 Débutant |
+| Widgets et UI | ::stars[4/5] Avancé |
+| Gestion d'état (Provider) | ::stars[3/5] Intermédiaire |
+| Navigation et routing | ::stars[3/5] Intermédiaire |
+| Intégration API | ::stars[4/5] Avancé |
+| Tests (unit, widget) | ::stars[2/5] Débutant |
 
 ### Marge de progression
 

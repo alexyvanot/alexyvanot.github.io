@@ -58,11 +58,11 @@ Dans le projet **TAP**, j'ai contribué au frontend TypeScript.
 
 | Domaine | Niveau |
 |---------|--------|
-| Types de base (string, number, etc.) | 5/5 Expert |
-| Interfaces et types | 5/5 Expert |
-| Generics | 4/5 Avancé |
-| Types utilitaires | 4/5 Avancé |
-| Types conditionnels / infer | 3/5 Intermédiaire |
+| Types de base (string, number, etc.) | ::stars[5/5] Expert |
+| Interfaces et types | ::stars[5/5] Expert |
+| Generics | ::stars[4/5] Avancé |
+| Types utilitaires | ::stars[4/5] Avancé |
+| Types conditionnels / infer | ::stars[3/5] Intermédiaire |
 
 ### Marge de progression
 

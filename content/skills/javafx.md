@@ -53,11 +53,11 @@ Durant ma formation à **IN'TECH**, j'ai développé plusieurs applications Java
 
 | Domaine | Niveau |
 |---------|--------|
-| Composants UI (Layouts, Controls) | 4/5 Avancé |
-| FXML et Scene Builder | 4/5 Avancé |
-| CSS JavaFX | 3/5 Intermédiaire |
-| Animations | 3/5 Intermédiaire |
-| Packaging (jlink, jpackage) | 2/5 Débutant |
+| Composants UI (Layouts, Controls) | ::stars[4/5] Avancé |
+| FXML et Scene Builder | ::stars[4/5] Avancé |
+| CSS JavaFX | ::stars[3/5] Intermédiaire |
+| Animations | ::stars[3/5] Intermédiaire |
+| Packaging (jlink, jpackage) | ::stars[2/5] Débutant |
 
 ### Marge de progression
 

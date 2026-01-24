@@ -108,17 +108,49 @@
 	}
 
 	/**
+	 * Parse les notations étoiles ::stars[x/y] 
+	 * Exemple: ::stars[4/5] => 4 étoiles pleines + 1 étoile vide
+	 */
+	function parseStars(md: string): string {
+		// Pattern: ::stars[x/y] ou ::rating[x/y]
+		return md.replace(/::(?:stars|rating)\[(\d+)\/(\d+)\]/g, (match, filled, total) => {
+			const filledCount = parseInt(filled, 10);
+			const totalCount = parseInt(total, 10);
+			const emptyCount = totalCount - filledCount;
+			
+			let starsHtml = '<span class="stars-rating" aria-label="' + filledCount + ' sur ' + totalCount + '">';
+			
+			// Étoiles pleines
+			for (let i = 0; i < filledCount; i++) {
+				starsHtml += '<span class="star star-filled i-carbon-star-filled" aria-hidden="true"></span>';
+			}
+			
+			// Étoiles vides
+			for (let i = 0; i < emptyCount; i++) {
+				starsHtml += '<span class="star star-empty i-carbon-star" aria-hidden="true"></span>';
+			}
+			
+			starsHtml += '</span>';
+			return starsHtml;
+		});
+	}
+
+	/**
 	 * Parse la syntaxe custom:
 	 * - ::handwritten[texte]{options} - Texte animé simple
 	 * - :::profile-card - Début d'une carte profil (photo + texte côte à côte)
 	 * - ::toc - Génère automatiquement un sommaire cliquable
 	 * - :::values-grid - Grille de vignettes pour afficher des valeurs/qualités
 	 * - :i[icon] ou :icon[icon] - Icône inline
+	 * - ::stars[x/y] - Notation étoiles
 	 * - ::: - Fin du bloc
 	 */
 	function preprocessContent(md: string): string {
 		// Parser les icônes en premier
 		let result = parseIcons(md);
+		
+		// Parser les étoiles de notation
+		result = parseStars(result);
 		
 		// Générer le sommaire (Table of Contents) à partir des headings
 		// Pattern: ::toc ou ::toc{maxLevel=3}
@@ -1023,5 +1055,25 @@
 		height: 1.2em;
 		vertical-align: -0.15em;
 		flex-shrink: 0;
+	}
+
+	/* Notations étoiles ::stars[x/y] */
+	:global(.markdown-container .stars-rating) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.1em;
+		vertical-align: middle;
+	}
+	:global(.markdown-container .star) {
+		display: inline-block;
+		width: 1.1em;
+		height: 1.1em;
+		flex-shrink: 0;
+	}
+	:global(.markdown-container .star-filled) {
+		color: hsl(45, 93%, 47%); /* Couleur dorée */
+	}
+	:global(.markdown-container .star-empty) {
+		color: hsl(var(--muted-foreground) / 0.4);
 	}
 </style>
