@@ -70,83 +70,64 @@
 	 * Génère le sommaire APRÈS le parsing du markdown pour utiliser les vrais IDs générés
 	 */
 	function generateTocFromHtml(html: string, maxLevel: number, title: string): string {
-		// Parser le HTML pour extraire les headings avec leurs IDs réels
-		const parser = new DOMParser();
-		const doc = parser.parseFromString(html, 'text/html');
-		const headings: Array<{ level: number; text: string; id: string }> = [];
-		
-		for (let i = 1; i <= maxLevel; i++) {
-			doc.querySelectorAll(`h${i}`).forEach((h) => {
-				const id = h.getAttribute('id');
-				const text = h.textContent?.trim();
-				if (id && text) {
-					headings.push({ level: i, text, id });
-				}
-			});
-		}
-		
-		// Trier par ordre d'apparition dans le document
-		const allHeadings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
-		const orderedHeadings: Array<{ level: number; text: string; id: string }> = [];
-		allHeadings.forEach((h) => {
-			const level = parseInt(h.tagName[1]);
-			if (level <= maxLevel) {
-				const id = h.getAttribute('id');
-				const text = h.textContent?.trim();
-				if (id && text) {
-					orderedHeadings.push({ level, text, id });
-				}
-			}
-		});
-		
-		if (orderedHeadings.length === 0) {
-			return '';
-		}
-		
-		// Générer le HTML du sommaire
-		let tocHtml = `<details class="toc-container">`;
-		tocHtml += `<summary class="toc-title">${title}</summary>`;
-		tocHtml += `<ul class="toc-list">`;
-		
-		for (const heading of orderedHeadings) {
-			const indent = heading.level - 1;
-			tocHtml += `<li class="toc-item toc-level-${heading.level}" style="margin-left: ${indent * 1}rem;">`;
-			tocHtml += `<a href="#${heading.id}" class="toc-link">${heading.text}</a>`;
-			tocHtml += `</li>`;
-		}
-		
-		tocHtml += `</ul></details>`;
-		
-		return tocHtml;
+		       // Parser le HTML pour extraire les headings avec leurs IDs réels, dans l'ordre d'apparition
+		       const parser = new DOMParser();
+		       const doc = parser.parseFromString(html, 'text/html');
+		       const headings: Array<{ level: number; text: string; id: string }> = [];
+		       const allHeadings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+		       allHeadings.forEach((h) => {
+			       const level = parseInt(h.tagName[1]);
+			       if (level <= maxLevel) {
+				       const id = h.getAttribute('id');
+				       const text = h.textContent?.trim();
+				       if (id && text) {
+					       headings.push({ level, text, id });
+				       }
+			       }
+		       });
+		       if (headings.length === 0) {
+			       return '';
+		       }
+		       // Générer le HTML du sommaire
+		       let tocHtml = `<details class="toc-container">`;
+		       tocHtml += `<summary class="toc-title">${title}</summary>`;
+		       tocHtml += `<ul class="toc-list">`;
+		       for (const heading of headings) {
+			       const indent = heading.level - 1;
+			       tocHtml += `<li class="toc-item toc-level-${heading.level}" style="margin-left: ${indent * 1}rem;">`;
+			       tocHtml += `<a href="#${heading.id}" class="toc-link">${heading.text}</a>`;
+			       tocHtml += `</li>`;
+		       }
+		       tocHtml += `</ul></details>`;
+		       return tocHtml;
 	}
 
 	/**
 	 * Prétraite le contenu markdown pour détecter ::toc et retourne les options
 	 */
-	function extractTocOptions(md: string): { hasToc: boolean; maxLevel: number; title: string; content: string } {
-		const tocPattern = /::toc(?:\{([^}]*)\})?/;
-		const match = md.match(tocPattern);
-		
-		if (!match) {
-			return { hasToc: false, maxLevel: 3, title: 'Sommaire', content: md };
-		}
-		
-		const options: Record<string, string> = {};
-		if (match[1]) {
-			match[1].split(/\s+/).forEach((opt: string) => {
-				const [key, value] = opt.split('=');
-				if (key && value) options[key] = value;
-			});
-		}
-		
-		return {
-			hasToc: true,
-			maxLevel: parseInt(options.maxLevel || '3', 10),
-			title: options.title || 'Sommaire',
-			// Supprimer complètement le ::toc du contenu
-			content: md.replace(tocPattern, '')
-		};
-	}
+	       function extractTocOptions(md: string): { hasToc: boolean; maxLevel: number; title: string; content: string } {
+		       const tocPattern = /::toc(?:\{([^}]*)\})?/;
+		       const match = md.match(tocPattern);
+		       if (!match) {
+			       return { hasToc: false, maxLevel: 3, title: 'Sommaire', content: md };
+		       }
+		       const options: Record<string, string> = {};
+		       if (match[1]) {
+			       // Parser les options avec support des guillemets
+			       const optionPattern = /(\w+)=(?:"([^"]*)"|(\S+))/g;
+			       let optMatch;
+			       while ((optMatch = optionPattern.exec(match[1])) !== null) {
+				       options[optMatch[1]] = optMatch[2] !== undefined ? optMatch[2] : optMatch[3];
+			       }
+		       }
+		       // Remplacer ::toc par un placeholder unique
+		       return {
+			       hasToc: true,
+			       maxLevel: parseInt(options.maxLevel || '3', 10),
+			       title: options.title || 'Sommaire',
+			       content: md.replace(tocPattern, '<div id="toc-placeholder"></div>')
+		       };
+	       }
 
 	onMount(async () => {
 		marked.use(gfmHeadingId());
@@ -730,7 +711,7 @@
 					if (i > 0) linePath += ` L ${p.x} ${p.y}`;
 				});
 			}
-			dataHtml += `<path d="${linePath}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+			dataHtml += `<path d="${linePath}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
 		}
 		
 		// Points
@@ -861,11 +842,12 @@
 			finalHtml = finalHtml.replace(regex, html);
 		});
 		
-		// Si on a un TOC, le générer et l'insérer au début
-		if (tocOptions.hasToc) {
-			const tocHtml = generateTocFromHtml(finalHtml, tocOptions.maxLevel, tocOptions.title);
-			finalHtml = tocHtml + finalHtml;
-		}
+		       // Si on a un TOC, remplacer le placeholder par le sommaire généré
+			       if (tocOptions.hasToc) {
+				       const tocHtml = generateTocFromHtml(finalHtml, tocOptions.maxLevel, tocOptions.title);
+				       // Remplacer le placeholder même s'il est entouré d'un <p>
+				       finalHtml = finalHtml.replace(/<p>\s*<div id="toc-placeholder"><\/div>\s*<\/p>|<div id="toc-placeholder"><\/div>/, tocHtml);
+			       }
 		
 		container.innerHTML = finalHtml;
 		Prism.highlightAllUnder(container);
@@ -959,14 +941,14 @@
 		background: hsl(var(--card) / 0.6);
 		border: 1px solid hsl(var(--border) / 0.5);
 		border-radius: 0.75rem;
-		padding: 0.6rem 1rem;
+		padding: 0.8rem 1.2rem;
 		margin-bottom: 1.5rem;
 		backdrop-filter: blur(8px);
 		box-shadow: 0 4px 16px hsl(var(--primary) / 0.05);
 	}
 
 	.markdown-container :global(.toc-title) {
-		font-size: 0.9rem;
+		font-size: 0.95rem;
 		font-weight: 600;
 		color: hsl(var(--foreground));
 		cursor: pointer;
@@ -975,6 +957,11 @@
 		gap: 0.5rem;
 		list-style: none;
 		user-select: none;
+		padding: 0;
+		margin: 0;
+		border: none;
+		background: none;
+		outline: none;
 	}
 
 	.markdown-container :global(.toc-title::-webkit-details-marker) {

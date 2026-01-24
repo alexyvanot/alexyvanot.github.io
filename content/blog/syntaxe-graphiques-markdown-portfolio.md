@@ -12,6 +12,8 @@ image: ""
 featured: true
 ---
 
+::toc{maxLevel=2 title="Sommaire"}
+
 ## Introduction
 
 J'ai développé une syntaxe Markdown personnalisée pour intégrer des graphiques SVG directement dans mes articles de blog et pages de contenu. Cette fonctionnalité permet de visualiser des données sans dépendre de bibliothèques externes comme Chart.js ou D3.js.

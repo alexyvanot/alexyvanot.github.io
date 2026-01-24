@@ -545,10 +545,12 @@
 		result = result.replace(tocPattern, (match, optionsStr) => {
 			const options: Record<string, string> = {};
 			if (optionsStr) {
-				optionsStr.split(/\s+/).forEach((opt: string) => {
-					const [key, value] = opt.split('=');
-					if (key && value) options[key] = value;
-				});
+				// Parser les options avec support des guillemets
+				const optionPattern = /(\w+)=(?:"([^"]*)"|(\S+))/g;
+				let optMatch;
+				while ((optMatch = optionPattern.exec(optionsStr)) !== null) {
+					options[optMatch[1]] = optMatch[2] !== undefined ? optMatch[2] : optMatch[3];
+				}
 			}
 			
 			const maxLevel = parseInt(options.maxLevel || '3', 10);

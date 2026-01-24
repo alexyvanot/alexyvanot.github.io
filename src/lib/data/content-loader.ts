@@ -440,16 +440,19 @@ function parseMarkdownFile<T = Record<string, unknown>>(raw: string, slug: strin
 		return { meta: { slug } as T, content: normalizedRaw };
 	}
 
-	const [, frontmatter, content] = match;
+	       const [, frontmatter, content] = match;
 
-	try {
-		const meta = yaml.load(frontmatter) as T;
-		console.log(`[parseMarkdownFile] Parsed ${slug}:`, JSON.stringify(meta));
-		return { meta: { ...meta, slug }, content: content.trim() };
-	} catch (e) {
-		console.error(`Error parsing frontmatter for ${slug}:`, e);
-		return { meta: { slug } as T, content: content?.trim() || normalizedRaw };
-	}
+	       try {
+		       const meta = yaml.load(frontmatter) as T;
+		       console.log(`[parseMarkdownFile] Parsed ${slug}:`, JSON.stringify(meta));
+		       // Ne pas faire trim() global, juste retirer le frontmatter
+		       // On retire seulement le \n de début si présent
+		       const cleanContent = content.startsWith('\n') ? content.slice(1) : content;
+		       return { meta: { ...meta, slug }, content: cleanContent };
+	       } catch (e) {
+		       console.error(`Error parsing frontmatter for ${slug}:`, e);
+		       return { meta: { slug } as T, content: content?.startsWith('\n') ? content.slice(1) : (content || normalizedRaw) };
+	       }
 }
 
 // ============================================================================
