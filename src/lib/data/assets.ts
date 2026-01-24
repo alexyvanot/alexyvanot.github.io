@@ -605,6 +605,11 @@ const Assets = {
 	// Test frameworks
 	Mockito: asset('mockito.svg'),
 	Cucumber: asset('cucumber-original.svg'),
+	Vitest: asset('vitest-original.svg'),
+	Jest: asset('jest-original.svg'),
+	JUnit: asset('junit-original.svg'),
+	Pytest: asset('pytest-original.svg'),
+	NUnit: asset('nunit.png'),
 	// Langages/scripts
 	Bash: asset('bash.svg'),
 	// Design & Video
@@ -621,6 +626,8 @@ const Assets = {
 	H2: asset('h2.svg'),
 	// Library
 	Matplotlib: asset('matplotlib-original.svg'),
+	ScikitLearn: asset('scikitlearn-original.svg'),
+	PyTorch: asset('pytorch-original.svg'),
 	// Spoken Languages
 	French: asset('french.svg'),
 	English: asset('english.svg'),
