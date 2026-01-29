@@ -7,7 +7,7 @@ categories:
   - "Documentation"
   - "Markdown"
   - "Guide"
-published: true
+published: false
 image: ""
 featured: true
 ---

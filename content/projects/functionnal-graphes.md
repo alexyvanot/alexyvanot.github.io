@@ -16,9 +16,10 @@ links:
     to: https://alexyvanot.fr/functionnal_graphes/
 skills:
   - ts
-  - vue
-  - vitest
+  - vuejs
   - vite
+  - vitest
+  - jest
 attachments:
   - label: Démo de l'application
     src: https://raw.githubusercontent.com/alexyvanot/functionnal_graphes/main/demo/Assets/Images/demo.gif

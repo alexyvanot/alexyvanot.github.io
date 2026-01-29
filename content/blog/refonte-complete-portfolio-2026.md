@@ -1,7 +1,7 @@
 ---
 title: "Refonte complète du portfolio : 36 articles rédigés en une session"
 slug: refonte-complete-portfolio-2026
-published: true
+published: false
 excerpt: "Retour sur une session de rédaction marathon : 22 articles de compétences, 14 projets réécrits, et de nouvelles fonctionnalités markdown. Comment j'ai structuré mon portfolio pour répondre aux critères d'évaluation académique."
 author: Alexy VANOT
 publishedAt: 2026-01-23
