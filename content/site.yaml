@@ -8,7 +8,7 @@ email: contact@alexyvanot.fr
 
 # Bandeau "En construction"
 inConstruction:
-  enabled: true  # Mettre à false pour désactiver le bandeau
+  enabled: false  # Mettre à false pour désactiver le bandeau
   title: "En cours de développement"
   message: "Les informations présentes sur ce site peuvent être incorrectes, merci de ne pas en prendre compte"
 
