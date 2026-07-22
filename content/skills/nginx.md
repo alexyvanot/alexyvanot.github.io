@@ -21,25 +21,9 @@ logo: Nginx
 
 Dans l'industrie, Nginx est **omniprésent** : Netflix, Cloudflare, WordPress.com et des millions de sites l'utilisent. Sa légèreté et son architecture événementielle lui permettent de gérer des **milliers de connexions simultanées** avec une empreinte mémoire minimale.
 
-Au **Synchrotron SOLEIL**, Nginx sert de **reverse proxy** devant les applications web, gérant le SSL/TLS, le routage et la mise en cache.
-
 ---
 
 ## :i[search] Mes réalisations concrètes
-
-### TAP : reverse proxy et load balancing
-
-Pour la plateforme **TAP**, j'ai configuré Nginx comme **point d'entrée unique** vers l'application.
-
-**Ma contribution** :
-- Configuration du **reverse proxy** vers le backend Spring Boot
-- Mise en place du **SSL/TLS** avec Let's Encrypt
-- **Load balancing** entre plusieurs instances de l'application
-- **Caching** des assets statiques et des rapports Allure
-
-**Résultat** : architecture robuste supportant les pics de charge lors des exécutions massives de tests.
-
-→ [Voir le projet TAP](/projects/tap)
 
 ### Ce portfolio : configuration production
 

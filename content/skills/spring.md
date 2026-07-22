@@ -29,32 +29,7 @@ Selon les enquêtes, **Spring Boot est utilisé par +60% des développeurs Java*
 
 ## :i[search] Mes réalisations concrètes
 
-### SUN Auto : backend Spring Boot complet
-
-Le projet **SUN Auto** au Synchrotron SOLEIL est entièrement construit avec Spring Boot.
-
-**Ma contribution** :
-- Architecture **Spring Boot 3** avec Java 17
-- **API REST** complète avec Spring Web
-- **Spring Data JPA** pour l'accès à PostgreSQL
-- **Spring Scheduler** pour les jobs planifiés (scan GitLab)
-- **Spring Cache** avec Redis pour les performances
-- **Tests** avec Spring Test et Testcontainers
-
-**Résultat** : application robuste en production depuis 2024.
-
-→ [Voir le projet SUN Auto](/projects/sun-auto)
-
-### TAP : plateforme de tests
-
-Le backend de **TAP** utilise également Spring Boot.
-
-**Ma contribution** :
-- **WebSocket** avec Spring pour le streaming temps réel
-- **Spring Security** pour l'authentification
-- **Spring Batch** pour le traitement de données
-
-→ [Voir le projet TAP](/projects/tap)
+Mon expérience Spring vient de ma formation et de projets personnels plutôt que de mon alternance au Synchrotron SOLEIL : mes deux missions principales là-bas, [SUN Auto](/projects/sun-auto) (tests Playwright/Cucumber en Node.js) et l'[étude de faisabilité SUNset](/projects/tap), n'ont pas mobilisé Spring.
 
 ---
 

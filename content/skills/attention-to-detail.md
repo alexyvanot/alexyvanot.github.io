@@ -38,11 +38,7 @@ Sur ce portfolio et mes autres projets, je porte une attention particulière aux
 
 ### 3. Tests — Edge cases
 
-Sur [TAP](/projects/tap) et [SUN Auto](/projects/sun-auto), j'ai développé une habitude de penser aux cas limites :
-- Que se passe-t-il avec une liste vide ?
-- Et si l'utilisateur entre des caractères spéciaux ?
-- Comportement avec des données très volumineuses ?
-- Gestion des timeouts réseau ?
+Sur [SUN Auto](/projects/sun-auto), la plupart des bugs que mes scénarios attrapent sont des détails qu'on ne remarque qu'en cherchant : un champ obligatoire requis mais dont l'erreur n'apparaît pas avant la soumission, une page qui ne finit jamais de charger, un bouton peu accessible. Ce sont des détails, mais ce sont eux qui font recommencer un utilisateur.
 
 ### 4. Documentation — Clarté et précision
 

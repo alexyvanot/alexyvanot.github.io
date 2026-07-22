@@ -128,8 +128,8 @@ Les articles de projets ont été repensés avec **7 sections obligatoires** :
 | Projet | Domaine | Technos principales |
 |--------|---------|---------------------|
 | Comet Learning | Formation | Java, Minecraft |
-| SUN Auto | Automatisation | Java, Spring |
-| TAP | Testing | Java, Playwright |
+| SUN Auto | Tests automatisés | Playwright, Cucumber, Node.js |
+| Étude de faisabilité SUNset | Architecture | React.js |
 | Foot AI | IA/Vision | Python, TensorFlow |
 | CIFAR-10 | Deep Learning | Python, CNN |
 | InVR | Réalité virtuelle | Unity, OpenXR |

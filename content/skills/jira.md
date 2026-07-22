@@ -40,15 +40,9 @@ Au **Synchrotron SOLEIL**, Jira est l'outil central de gestion de projet.
 - **Liens avec Confluence** : documentation liée aux tickets
 - **Filtres JQL** : requêtes personnalisées pour le reporting
 
-### SUN Auto : projet géré via Jira
+### SUN Auto : un ticket, une branche, un scénario
 
-Le projet **SUN Auto** a été géré entièrement dans Jira avec un workflow custom.
-
-**Ma contribution** :
-- Découpage en **épiques et user stories**
-- Estimation en **story points**
-- Suivi du **burndown** et ajustement des sprints
-- Documentation des **décisions techniques** dans les tickets
+Le projet **SUN Auto** est suivi dans Jira sous la clé **SUNAUTO** : chaque évolution de la suite de tests correspond à un ticket, et chaque branche Git référence son numéro (`SUNAUTO-169`, par exemple). Cette convention simple relie directement le code aux tickets, sans outillage supplémentaire.
 
 → [Voir le projet SUN Auto](/projects/sun-auto)
 

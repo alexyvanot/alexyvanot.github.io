@@ -19,17 +19,11 @@ En tant que développeur, maîtriser l'Agile signifie comprendre Scrum, Kanban, 
 
 ## Mes éléments de preuve
 
-### 1. SUN Auto — Sprints auto-organisés
+### 1. SUN Auto — Trouver le vrai besoin derrière la demande
 
-Sur le projet [SUN Auto](/projects/sun-auto), bien que travaillant souvent seul, j'ai appliqué les principes Agile pour structurer mon travail :
+Mon maître d'apprentissage, Idrissou CHADO, m'a fait découvrir le Agile Manifesto dès le début de mon alternance sur [SUN Auto](/projects/sun-auto). La méthode retenue au quotidien : subdiviser une grande demande en petites idées, jusqu'à faire émerger le vrai besoin derrière la demande initiale.
 
-**Pratiques mises en œuvre** :
-- Sprints de 2 semaines avec objectifs clairs
-- Backlog priorisé avec mon tuteur
-- Démonstrations régulières aux utilisateurs finaux (scientifiques)
-- Rétrospectives personnelles pour améliorer mes processus
-
-**Résultat** : Livraisons régulières et prévisibles, avec une capacité à intégrer rapidement les retours utilisateurs.
+**Ce que ça change concrètement** : plusieurs fois, la fonctionnalité qu'on me demandait n'était qu'un symptôme d'un besoin différent, qu'on ne trouvait qu'en la décomposant avec le demandeur.
 
 ### 2. Projets scolaires — Scrum en équipe
 
@@ -39,10 +33,6 @@ Durant mes projets à [IN'TECH](/education/intech) et [ESIEA](/education/esiea),
 - Planning poker pour l'estimation
 - Tableaux Kanban sur Trello/Notion
 - Sprint reviews avec les "clients" (professeurs)
-
-### 3. Plateforme TAP — Kanban pour le suivi
-
-Sur [TAP](/projects/tap), j'ai utilisé un tableau Kanban pour visualiser l'avancement des tests et des correctifs, permettant une meilleure visibilité de l'état du projet.
 
 ---
 

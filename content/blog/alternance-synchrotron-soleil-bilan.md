@@ -57,7 +57,7 @@ Cette mission de service public crée une culture particulière :
 
 ### L'informatique au service de la science
 
-Le service informatique où j'ai travaillé, rattaché à la Division Informatique, supporte l'ensemble des besoins numériques de l'installation :
+Le service informatique où j'ai travaillé, le groupe **ISG (Infrastructure des Systèmes de Gestion)**, supporte l'ensemble des besoins numériques de l'installation :
 
 **Contrôle-commande**
 Piloter les équipements du synchrotron : aimants, détecteurs, motorisations. Ces systèmes doivent être disponibles 24h/24 pendant les périodes de fonctionnement.
@@ -100,29 +100,28 @@ Avec le temps, la confiance s'est installée et j'ai pu prendre des responsabili
 
 ## Les projets marquants
 
-### SUN Auto : Gérer le cycle de vie des applications
+### SUN Auto : d'un échec assumé à une suite de tests fiable
 
-Mon premier projet d'envergure. SUN Auto (SOLEIL Unified Notification Auto) est un système qui surveille l'ensemble des applications de l'organisation, détecte celles qui arrivent en fin de vie (obsolètes, non maintenues, problèmes de sécurité), et orchestre leur traitement.
+Mon premier projet d'envergure, et pas le plus glorieux au départ. Ma première suite de tests, écrite en Selenium/Java pendant mon stage, reposait sur une base fragile. Un hackathon proposé par mon maître d'apprentissage nous a permis de repartir sur Playwright, Cucumber (BDD) et Allure pour fiabiliser SUNset, l'application de gestion des demandes de temps de faisceau.
 
 **Ce que j'ai appris :**
-- Penser cycle de vie, pas seulement développement. Une application ne s'arrête pas une fois déployée.
-- L'importance de l'automatisation. Les tâches répétitives doivent être mécanisées.
-- Concevoir des systèmes résilients. Le code doit gérer les cas d'erreur gracieusement.
+- Savoir jeter son propre code quand la fondation est mauvaise, plutôt que d'empiler du code par-dessus.
+- Écrire un test, c'est d'abord formaliser une règle métier qui n'était écrite nulle part.
+- Un rapport de test n'est pas un verdict binaire : sans les vidéos d'exécution, les faux positifs auraient sapé la confiance de l'équipe dans l'outil.
 
 Ce projet m'a donné une vision plus mature du développement logiciel.
 
-### TAP : Une plateforme de tests automatisés
+### Étude de faisabilité SUNset : chercher avant de construire
 
-Le projet le plus ambitieux de mon alternance. TAP (Test Automation Platform) centralise l'exécution des tests automatisés et génère des rapports Allure.
+Le projet le plus formateur sur le plan méthodologique. On m'a confié une question, pas un cahier des charges : SUNset doit-il évoluer techniquement, et vers quoi ?
 
-**Défis techniques relevés :**
-- Orchestration de tests parallèles
-- Streaming temps réel des résultats via WebSockets
-- Intégration avec divers frameworks (JUnit, pytest)
-- Génération et hébergement des rapports
+**Démarche suivie :**
+- Chercher d'abord si d'autres synchrotrons avaient déjà résolu le même problème, plutôt que d'envisager une réécriture
+- Déployer réellement une instance de test d'un candidat open source (DUO ESS) plutôt que de se limiter à sa documentation
+- Cartographier les fonctionnalités de SUNset et rejouer le workflow complet dans chaque solution candidate
 
 **Impact concret :**
-TAP a changé les pratiques de test de plusieurs équipes. Voir les collègues adopter un outil que j'ai développé et en tirer bénéfice est une satisfaction professionnelle profonde.
+L'étude n'a pas débouché sur un feu vert automatique pour tout reconstruire — et c'est précisément ce qui en fait, à mes yeux, un livrable utile plutôt qu'un exercice de style.
 
 ### Contributions diverses
 
@@ -144,29 +143,19 @@ Ces activités "annexes" sont formatrices car elles confrontent à la réalité 
 
 ## Ce que l'alternance m'a apporté
 
-:::chart{type=pie title="Compétences développées" size=200}
-Java/Spring: 35
-DevOps/CI-CD: 25
-Bases de données: 20
-Architecture: 20
-:::
-
 ### Compétences techniques approfondies
 
-**Java et l'écosystème Spring**
-J'ai dépassé le niveau académique pour atteindre une maîtrise pratique : Spring Boot, Spring Data, Spring Security, Spring Batch. Je sais maintenant structurer une application professionnelle.
+**Tests automatisés et BDD**
+Playwright, Cucumber (Gherkin), Allure. Je sais maintenant construire une suite de tests end-to-end lisible par des non-développeurs, pas seulement l'écrire pour moi-même.
 
-**Bases de données relationnelles**
-PostgreSQL principalement. Au-delà du SQL basique, j'ai appris l'optimisation des requêtes, la conception de schémas, l'analyse des plans d'exécution.
+**CI/CD**
+GitLab CI, intégration de la suite de tests dans un pipeline de livraison continue.
 
-**DevOps et CI/CD**
-GitLab CI, Docker, déploiement sur serveurs Linux. La chaîne complète du code au déploiement.
-
-**Architecture logicielle**
-Patterns de conception, architecture hexagonale, microservices vs monolithe. Je comprends maintenant les compromis et quand utiliser quoi.
+**Aide à la décision technique**
+Comparer des solutions sur des critères de long terme (pérennité, dépendance, coût total) plutôt que sur une préférence personnelle — c'est la compétence la plus inattendue que cette alternance m'ait apportée.
 
 **Qualité logicielle**
-Tests unitaires, tests d'intégration, analyse statique. La qualité n'est pas une option.
+Tests end-to-end, lecture critique des rapports d'exécution, distinction entre vrai bug et faux positif.
 
 ### Compétences transverses développées
 

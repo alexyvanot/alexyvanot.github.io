@@ -35,19 +35,18 @@ Mon parcours illustre une adaptabilité constante aux différentes technologies 
 - Cibler les ressources d'apprentissage les plus efficaces
 - Produire rapidement du code fonctionnel même en phase d'apprentissage
 
-### 2. SUN Auto — Pivot technique en cours de projet
+### 2. SUN Auto — Accepter de tout reprendre en cours de route
 
-Sur le projet [SUN Auto](/projects/sun-auto), j'ai dû m'adapter à un changement majeur de contexte en milieu de projet.
+Sur le projet [SUN Auto](/projects/sun-auto), ma première suite de tests automatisés, écrite en Selenium/Java pendant mon stage, reposait sur une base fragile.
 
-**Le défi** : Après 6 mois de développement d'une solution desktop en JavaFX, les utilisateurs ont exprimé un besoin de solution web accessible de n'importe où.
+**Le défi** : reconnaître que le problème n'était pas mon code mais le choix de fondation technique, et qu'aucun correctif ne le résoudrait.
 
 **Mon adaptation** :
-- Analyse rapide des options : migration complète vs. nouvelle architecture
-- Proposition d'une architecture hybride préservant le backend existant
-- Auto-formation accélérée sur les APIs REST et l'intégration frontend
-- Refactoring progressif sans interruption de service
+- Accepter l'idée de jeter un travail déjà produit plutôt que de le défendre par confort
+- Auto-formation accélérée sur Playwright, Cucumber (BDD) et Allure à l'occasion d'un hackathon d'équipe
+- Réécriture des scénarios de test dans un nouveau paradigme, sans interrompre les livraisons de SUNset
 
-**Résultat** : La transition s'est faite en 3 mois au lieu des 6 initialement estimés, car j'ai su adapter l'existant plutôt que tout reconstruire.
+**Résultat** : une suite de tests bien plus maintenable, et une leçon durable — un mauvais choix de fondation ne se corrige pas en ajoutant du code par-dessus, il faut savoir pivoter.
 
 ### 3. Travail hybride et remote — Adaptation aux nouveaux modes de travail
 
@@ -82,7 +81,7 @@ Au Synchrotron SOLEIL, j'ai travaillé avec des chercheurs de différentes natio
 | Nouveau langage (Flutter) | ~3 mois | App publiée |
 | Nouveau framework (SvelteKit) | ~1 mois | Portfolio complet |
 | Nouvelle équipe | ~2 semaines | Productif et intégré |
-| Changement de specs en cours de projet | ~1 semaine | Livraison maintenue |
+| Pivot technique (Selenium → Playwright) | ~1 mois | Suite de tests plus maintenable |
 
 ---
 

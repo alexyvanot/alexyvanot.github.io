@@ -39,17 +39,6 @@ Ce portfolio est entièrement écrit en **TypeScript** avec SvelteKit.
 - **Typage strict** (`strict: true`) pour une sécurité maximale
 - Types utilitaires : `Pick`, `Omit`, `Partial`, `Record`
 
-### TAP : API TypeScript
-
-Dans le projet **TAP**, j'ai contribué au frontend TypeScript.
-
-**Ma contribution** :
-- **Types pour l'API** : interfaces correspondant aux DTOs Java
-- Validation avec **Zod** pour les données externes
-- **Type guards** pour le narrowing de types
-
-→ [Voir le projet TAP](/projects/tap)
-
 ---
 
 ## :i[meter] Autocritique et positionnement

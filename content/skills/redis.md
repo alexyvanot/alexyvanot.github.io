@@ -23,26 +23,11 @@ Dans l'industrie, Redis est devenu **incontournable** pour :
 - **Pub/Sub** : communication temps réel entre services
 - **Files d'attente** : gestion de tâches asynchrones
 
-Au **Synchrotron SOLEIL**, Redis est utilisé pour **optimiser les performances** des applications web en cachant les données fréquemment accédées.
-
 ---
 
 ## :i[search] Mes réalisations concrètes
 
-### TAP : cache des résultats de tests
-
-Dans la plateforme **TAP**, j'ai implémenté un **système de cache Redis** pour accélérer l'affichage des tableaux de bord.
-
-**Le défi** : les agrégations de résultats de tests (taux de succès, tendances) nécessitaient des requêtes SQL coûteuses.
-
-**Ma contribution** :
-- Configuration de **Redis comme cache Spring** avec TTL configurable
-- Implémentation d'une **stratégie d'invalidation** intelligente (cache-aside pattern)
-- Mise en cache des **rapports Allure** générés
-
-**Résultat** : temps de chargement des dashboards réduit de **3 secondes à 200ms** en moyenne.
-
-→ [Voir le projet TAP](/projects/tap)
+Mon expérience Redis vient de projets personnels plutôt que de mon alternance au Synchrotron SOLEIL : mes deux missions principales là-bas, [SUN Auto](/projects/sun-auto) et l'[étude de faisabilité SUNset](/projects/tap), n'ont pas mobilisé de système de cache.
 
 ---
 

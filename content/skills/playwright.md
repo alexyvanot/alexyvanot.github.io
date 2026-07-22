@@ -29,19 +29,18 @@ Playwright représente l'état de l'art du **testing E2E**, remplacant Selenium 
 
 ## :i[search] Mes réalisations concrètes
 
-### TAP : intégration dans la plateforme de tests
+### SUN Auto : le pivot depuis Selenium
 
-Dans le cadre du projet **TAP** au Synchrotron SOLEIL, j'ai intégré Playwright comme moteur d'exécution de tests E2E.
+Dans le cadre du projet **SUN Auto** au Synchrotron SOLEIL, j'ai adopté Playwright comme moteur d'exécution de tests E2E, après un hackathon d'équipe qui nous a fait abandonner notre première suite en Selenium/Java.
 
 **Ma contribution** :
-- Intégration de **Playwright dans Docker** pour exécution headless
-- Configuration du **reporting vers Allure** pour la visualisation des résultats
-- Écriture de tests pour les applications web internes du synchrotron
-- Documentation des **bonnes pratiques** pour les équipes
+- Réécriture des scénarios de test de SUNset avec Playwright et Cucumber (BDD)
+- Configuration du **reporting vers Allure**, avec vidéo d'exécution pour justifier les faux positifs
+- Passage à l'échelle jusqu'à 66 scénarios couvrant les 5 parcours de SUNset
 
-**Résultat** : Playwright est devenu le standard recommandé pour les nouveaux tests E2E, remplaçant progressivement Selenium.
+**Résultat** : une suite de tests bien plus maintenable, capable d'attraper des bugs de performance et d'accessibilité (chargements infinis, champs bloquants) que la version précédente ne détectait pas de manière fiable.
 
-→ [Voir le projet TAP](/projects/tap)
+→ [Voir le projet SUN Auto](/projects/sun-auto)
 
 ### Tests de ce portfolio
 

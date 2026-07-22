@@ -19,31 +19,24 @@ Dans l'industrie tech, la rigueur est particulièrement valorisée car elle réd
 
 ## Mes éléments de preuve
 
-### 1. SUN Auto — Architecture pensée pour la maintenabilité
+### 1. SUN Auto — Documenter honnêtement les limites de son propre travail
 
-Sur le projet [SUN Auto](/projects/sun-auto), j'ai appliqué une rigueur particulière dans l'architecture du code, sachant que la plateforme devrait être maintenue après mon départ du Synchrotron SOLEIL.
+Sur le projet [SUN Auto](/projects/sun-auto), la rigueur ne s'est pas exprimée dans un score de couverture, mais dans la capacité à **documenter honnêtement les points faibles** de mon propre travail. Le bilan de preuve de concept que j'ai rédigé en avril 2024 listait explicitement ce qui ne fonctionnait pas encore (dépendance au texte des balises HTML, écart de langage avec l'application testée), plutôt que de présenter uniquement les points forts.
 
 **Mon approche rigoureuse** :
-- Respect strict des conventions de nommage et de structure Spring Boot
-- Couverture de tests unitaires supérieure à 80% sur les composants critiques
-- Documentation Javadoc exhaustive de chaque classe et méthode publique
-- Revue de code systématique de mon propre code avant chaque commit
-- Utilisation de SonarQube pour garantir la qualité du code
+- Écriture de scénarios de test structurés en BDD, suivant une convention stricte (Gherkin)
+- Distinction systématique entre un vrai bug et un faux positif, appuyée sur les vidéos d'exécution Allure
+- Respect d'une règle d'équipe simple mais non négociable : laisser le champ libre aux tests pendant leur exécution
 
-**Résultat** : Mon tuteur a souligné que le code était "d'une qualité rare pour un alternant" et qu'il pourrait être repris facilement par un autre développeur.
+### 2. Étude de faisabilité SUNset — Ne pas conclure trop vite
 
-### 2. Plateforme TAP — Processus de tests standardisés
-
-Le projet [TAP](/projects/tap) exigeait une rigueur absolue car il s'agissait d'une plateforme de tests automatisés — l'outil devait lui-même être irréprochable.
+L'[étude de faisabilité SUNset](/projects/tap) exigeait une rigueur méthodologique plutôt que technique : ne pas se contenter d'une impression sur une solution candidate.
 
 **Mes pratiques rigoureuses** :
-- Définition de templates de tests suivant des conventions strictes
-- Mise en place d'un processus de validation en plusieurs étapes
-- Création de checklists de déploiement détaillées
-- Versioning sémantique et changelogs exhaustifs
-- Tests de non-régression systématiques avant chaque release
-
-**Résultat** : La plateforme a permis de détecter 95% des bugs avant mise en production sur les projets où elle était utilisée.
+- Cartographie exhaustive des fonctionnalités de SUNset avant toute comparaison
+- Déploiement réel d'une instance de test plutôt qu'une évaluation sur documentation
+- Rejeu du workflow complet, fonction par fonction, pour chaque solution candidate
+- Restitution honnête des nuances trouvées, plutôt qu'une conclusion tranchée qui aurait simplifié le message
 
 ### 3. Portfolio — Clean Code et bonnes pratiques
 

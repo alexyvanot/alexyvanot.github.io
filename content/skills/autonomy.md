@@ -19,19 +19,16 @@ Dans le monde tech actuel, cette compétence est devenue indispensable. Avec l'�
 
 ## Mes éléments de preuve
 
-### 1. SUN Auto — Développement solo d'une plateforme complète
+### 1. SUN Auto — Reconstruire seul une suite de tests
 
-Lors de mon alternance au **Synchrotron SOLEIL**, j'ai développé seul la plateforme [SUN Auto](/projects/sun-auto) sur une période de 2 ans. Mon tuteur, responsable d'une équipe technique très occupée, ne pouvait me consacrer que quelques heures par semaine.
-
-**Le défi** : Créer un outil d'automatisation pour les scientifiques sans spécifications détaillées, en partant de besoins exprimés oralement lors de réunions sporadiques.
+Lors de mon alternance au **Synchrotron SOLEIL**, ma première suite de tests pour SUNset, écrite en Selenium/Java, reposait sur une base fragile. Après un hackathon proposé par mon maître d'apprentissage pour amorcer le pivot vers Playwright, la suite de la réécriture — les 66 scénarios couvrant les cinq parcours de SUNset — m'est revenue en autonomie.
 
 **Mon approche autonome** :
-- Organisation de mes propres sprints de 2 semaines avec des objectifs clairs
-- Veille technologique indépendante sur Java/Spring Boot, les APIs REST et l'intégration Python
-- Rédaction proactive de documentation technique pour les utilisateurs
-- Mise en place d'un système de tests automatisés sans qu'on me le demande
+- Auto-formation sur Playwright, Cucumber (BDD) et Allure
+- Rédaction proactive de scénarios lisibles par les équipes métier, sans qu'on me le demande
+- Points réguliers avec mon maître d'apprentissage, mais résolution des blocages techniques en autonomie
 
-**Résultat concret** : La plateforme est aujourd'hui utilisée quotidiennement par une dizaine de scientifiques, et mon tuteur m'a félicité pour ma capacité à "avancer sans qu'on ait besoin de me tenir la main".
+**Un axe de progrès honnête** : j'ai parfois mis plusieurs jours à débloquer seul des problèmes qu'une collègue, Yamna TAYEB, a résolus en une conversation de dix minutes — notamment sur la lecture de tableaux HTML complexes. L'autonomie, ça n'est pas s'obstiner seul, c'est aussi savoir quand solliciter de l'aide.
 
 ### 2. Auto-formation Flutter — Du zéro au projet fonctionnel
 
@@ -45,16 +42,9 @@ En 2023, j'ai décidé d'explorer le développement mobile alors que ce n'était
 
 **Résultat** : En 3 mois, j'ai livré une application complète avec assistant IA intégré, gestion de médias et interface fluide. Cette auto-formation a été plus efficace que beaucoup de cours magistraux que j'ai suivis.
 
-### 3. Plateforme TAP — Initiative technique non demandée
+### 3. Étude de faisabilité SUNset — Aller chercher la preuve plutôt que la documentation
 
-Sur le projet [TAP (Tests Automatisés avec Allure)](/projects/tap), j'ai pris l'initiative d'intégrer une fonctionnalité que personne n'avait demandée : un système de **notifications Slack automatiques** en cas d'échec de tests critiques.
-
-J'avais observé que les scientifiques découvraient souvent les erreurs de configuration plusieurs heures après, perdant un temps précieux. Sans attendre de validation, j'ai :
-- Développé le module d'intégration Slack
-- Testé avec un groupe pilote de 3 utilisateurs
-- Présenté les résultats lors d'une réunion d'équipe
-
-**Résultat** : La fonctionnalité a été adoptée et le temps de détection des erreurs est passé de plusieurs heures à quelques minutes.
+Sur l'[étude de faisabilité SUNset](/projects/tap), personne ne m'avait demandé de déployer réellement une instance de test. J'aurais pu me contenter de lire la documentation de DUO ESS et USO. J'ai pris l'initiative de déployer une instance de DUO ESS en interne pour la manipuler et rejouer le workflow complet de SUNset, fonction par fonction, plutôt que de comparer des solutions sur le papier.
 
 ---
 

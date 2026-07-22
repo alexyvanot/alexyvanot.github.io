@@ -1,186 +1,73 @@
 ---
-name: TAP - Plateforme de Tests Automatisés
+name: Étude de faisabilité SUNset - Chercher avant de construire
 slug: tap
 category: technique
-type: Quality Assurance & DevOps
+type: Architecture & Aide à la décision
 color: "#00B8A9"
 published: true
 pinned: true
-logo: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg
+logo: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactjs/reactjs-original.svg
 period:
-  from: 2024-03-01
-  to: 2025-01-01
+  from: 2024-01-01
 skills:
-  - java
-  - spring
-  - postgresql
-  - docker
-  - junit
+  - reactjs
+  - gitlab
 team:
   - name: Alexy VANOT
-    role: Développeur principal
-  - name: Tuteur entreprise
-    role: Responsable technique
-  - name: Équipes scientifiques
-    role: Utilisateurs finaux
+    role: Chargé de l'étude
+  - name: Idrissou CHADO
+    role: Maître d'apprentissage
 ---
 
 ::toc
 
 ## Mon regard critique
 
-> TAP est le projet **le plus complet** de mon alternance. Il combine backend robuste, communication temps réel, intégration avec des outils tiers et une vraie attention à l'UX. Ma plus grande fierté ? Avoir créé un outil que les équipes **utilisent vraiment** — un outil interne mal conçu finit toujours abandonné.
+> On m'a confié une question, pas un cahier des charges à coder : **faut-il faire évoluer SUNset, et vers quoi ?** Ma valeur ajoutée n'a pas été d'écrire une nouvelle application, mais de résister au réflexe le plus naturel de notre métier — celui de tout réécrire — pour chercher d'abord si quelqu'un d'autre avait déjà résolu ce problème.
 
 **Mes apports principaux :**
-- Architecture WebSocket avec batching intelligent pour le streaming temps réel
-- Choix d'Allure (standard ouvert) plutôt qu'un format propriétaire
-- UX soignée qui a favorisé l'adoption par les équipes
+- Une méthode : cartographier toutes les fonctionnalités de SUNset avant de comparer quoi que ce soit
+- Le déploiement réel d'une instance de test d'une solution candidate, plutôt qu'une simple lecture de documentation
+- Une conclusion honnête, nuancée, qui n'était pas un simple feu vert
 
-**Ce que j'en retire :** J'ai appris que **tester une plateforme de tests est méta mais nécessaire**. J'ai aussi compris l'importance du feedback utilisateur : les meilleures fonctionnalités sont venues des retours terrain, pas de mes suppositions initiales.
+**Ce que j'en retire :** Le livrable d'une étude de faisabilité n'est pas obligatoirement une recommandation de réécriture. Ne pas construire est aussi un livrable — souvent le plus économe, en temps comme en argent public.
 
 ---
 
 ## Présentation du projet
 
-**TAP** (Test Automation Platform) est une plateforme de centralisation et d'exécution des tests automatisés que j'ai développée au **Synchrotron SOLEIL**. Elle permet aux équipes de lancer des campagnes de tests, de suivre leur exécution en temps réel et de consulter des rapports Allure interactifs.
+**SUNset**, l'application de gestion des demandes de temps de faisceau au Synchrotron SOLEIL, existe en deux générations : une première version en **PHP**, aujourd'hui largement abandonnée mais dont certains scripts tournent encore, et une version en **Java**, celle qui porte le service aujourd'hui.
 
-Le projet répond à un besoin concret : avant TAP, les tests étaient dispersés, difficiles à consulter et sans historique exploitable.
-
----
-
-## Objectifs, Contexte et Enjeux
-
-### Contexte organisationnel
-
-Au Synchrotron SOLEIL, les équipes scientifiques et techniques maintiennent de nombreuses applications critiques. La qualité logicielle est essentielle : un bug dans un outil de pilotage peut compromettre des expériences scientifiques coûteuses.
-
-**Situation avant TAP :**
-- Tests dispersés : chaque équipe avait ses propres scripts et outils
-- Résultats dans les logs CI uniquement, difficiles à consulter
-- Pas de vision globale de la qualité ni d'historique
-
-### Objectifs du projet
-
-| Objectif | Indicateur de succès |
-|----------|----------------------|
-| Centraliser tous les tests | Interface unique multi-frameworks |
-| Visibilité temps réel | Streaming WebSocket fonctionnel |
-| Rapports exploitables | Intégration Allure avec historique |
-| Adoption par les équipes | Utilisation quotidienne effective |
-
-### Enjeux et risques
-
-**Enjeux :**
-- **Qualité logicielle** : détecter les régressions avant la production
-- **Productivité** : réduire le temps d'analyse des résultats de tests
-- **Standardisation** : uniformiser les pratiques de test
-
-**Risques identifiés :**
-- Performance : gestion de nombreuses exécutions simultanées
-- Adoption : résistance si l'outil est plus complexe que les scripts existants
-- Maintenance : dépendance à un framework de reporting (Allure)
+La question qu'on m'a confiée : cette technologie doit-elle évoluer, et si oui vers quoi ? Mon mandat n'était pas d'écrire du code, mais d'**objectiver une décision**.
 
 ---
 
-## Étapes de réalisation
+## Ma démarche : chercher avant de construire
 
-### Phase 1 : Étude et architecture (1,5 mois)
+Plutôt que de comparer des frameworks dans l'abstrait, je suis parti d'un constat simple : **tous les synchrotrons du monde ont le même besoin** — recevoir des demandes de temps de faisceau, les faire évaluer par des pairs, valider la sécurité, planifier. Est-ce que quelqu'un avait déjà résolu ce problème, et publié sa solution ?
 
-- Benchmark des solutions existantes (Jenkins, GitLab CI, outils spécialisés)
-- Recueil des besoins auprès des équipes utilisatrices
-- Conception de l'architecture : séparation frontend/backend, choix WebSocket pour le temps réel
-- Validation technique avec mon tuteur
+J'ai donc cherché du côté de l'**open source scientifique**, chez d'autres grands instruments de recherche confrontés au même besoin de gestion des utilisateurs et des propositions d'expérience.
 
-### Phase 2 : Développement du backend (4 mois)
+### Les deux candidats retenus
 
-**Orchestration des tests :**
-- API REST pour la configuration et le lancement des campagnes
-- Pool de threads avec queue de priorités pour la gestion de la concurrence
-- Support multi-frameworks (JUnit, pytest, TestNG)
+- **DUO ESS**, développé par l'European Spallation Source en Suède, en React.js
+- **USO** (User System Online), du synchrotron canadien
 
-**Streaming temps réel :**
-- Implémentation WebSocket avec protocole STOMP
-- Batching intelligent (envoi groupé toutes les 500ms) pour optimiser les performances
-- Gestion de la reconnexion automatique côté client
+Nous n'en sommes pas restés à la documentation : nous avons **déployé une instance de test de DUO ESS en interne** et l'avons réellement utilisée — gestion des propositions, des appels, des personnes, des instruments, des comités d'évaluation.
 
-### Phase 3 : Intégration Allure et frontend (3 mois)
+### La méthode
 
-**Rapports Allure :**
-- Génération automatique après chaque campagne
-- Catégorisation par features, stories et sévérité
-- Historique et tendances d'exécution
+J'ai cartographié l'ensemble des fonctionnalités de SUNset, puis rejoué le workflow complet dans chaque solution candidate, fonction par fonction, pour vérifier ce qui était directement reproductible.
 
-**Interface utilisateur :**
-- Dashboard de monitoring des campagnes
-- Visualisation en direct des résultats
-- Comparaison entre campagnes
-
-### Phase 4 : Tests, déploiement et formation (1,5 mois)
-
-- Tests de charge pour valider la tenue sous plusieurs exécutions simultanées
-- Déploiement Docker sur l'infrastructure SOLEIL
-- Rédaction de la documentation utilisateur
-- Sessions de formation pour les équipes
+Le résultat comportait des **nuances** : tout ne se transposait pas directement — nos parcours de demande, nos règles de sécurité et nos types spécifiques de proposition n'ont pas d'équivalent immédiat ailleurs. C'est vers **USO** que l'analyse s'est finalement orientée, avec mon maître d'apprentissage.
 
 ---
 
-## Acteurs et interactions
+## Ce que j'en retiens
 
-| Acteur | Rôle | Interactions |
-|--------|------|--------------|
-| **Moi (développeur)** | Conception, développement, documentation | Responsabilité technique complète |
-| **Tuteur entreprise** | Validation, orientation technique | Points réguliers, revue d'architecture |
-| **Équipes scientifiques** | Utilisateurs finaux | Recueil besoins, feedback, tests beta |
-| **Équipe infrastructure** | Support déploiement | Mise à disposition des ressources |
+Passer de « quelle technologie je préfère » à « quelle technologie sert le besoin dans quinze ans » est, je crois, le vrai saut entre un développeur et un ingénieur. Les critères que j'ai appris à intégrer dans cette réflexion : la **pérennité** d'une solution (sera-t-elle encore maintenue dans dix ans ?), la **dépendance** qu'elle crée (qui la contrôle ?), et le **coût total sur la durée de vie** plutôt que le seul coût de développement initial.
 
-### Interactions clés
-
-- **Feedback loop** avec les utilisateurs : j'ai organisé des sessions de démonstration régulières pour recueillir les retours et ajuster les fonctionnalités
-- **Collaboration avec l'équipe infra** : coordination pour l'intégration avec les runners de tests existants
-
----
-
-## Résultats obtenus
-
-### Pour l'entreprise
-
-| Aspect | Avant TAP | Avec TAP |
-|--------|-----------|----------|
-| Visibilité des tests | Logs CI uniquement | Dashboard centralisé |
-| Temps d'accès aux résultats | Minutes de recherche | Instantané |
-| Comparaison historique | Impossible | Intégrée |
-| Adoption par les équipes | Variable | Généralisée |
-
-:::chart{type=bar title="Temps d'analyse des échecs de tests"}
-Avant TAP: 100
-Après TAP: 30
-:::
-
-**Impact concret :** Réduction du temps d'analyse des échecs de tests de **70%** grâce aux rapports Allure détaillés et à la navigation intuitive.
-
-### Pour moi
-
-- **Maîtrise des WebSockets** et de la communication temps réel
-- **Compétences en UX** : comprendre que l'adoption dépend de la facilité d'utilisation
-- **Gestion de projet** : coordination entre développement et besoins utilisateurs
-
----
-
-## Lendemains du projet
-
-### Aujourd'hui
-
-TAP est **en production active** et utilisé quotidiennement par plusieurs équipes du Synchrotron. Le système a traité des milliers de campagnes de tests depuis son lancement.
-
-### Évolutions prévues
-
-- Intégration avec Slack pour les notifications d'échec
-- Support de nouveaux frameworks de tests (Robot Framework)
-- Tableaux de bord de métriques qualité pour la direction
-
-### Pérennité
-
-J'ai documenté l'architecture et les choix techniques pour faciliter la maintenance future. Un collègue a été formé pour reprendre le projet après mon départ.
+Et une humilité nécessaire : la décision finale ne m'appartenait pas. Mon rôle était de la rendre éclairée, pas de la prendre.
 
 ---
 
@@ -189,7 +76,6 @@ J'ai documenté l'architecture et les choix techniques pour faciliter la mainten
 Ce projet m'a permis de mobiliser et développer les compétences suivantes :
 
 :::buttons
-::button[Java]{link=/skills/java icon=i-logos-java}
-::button[Autonomie]{link=/skills/autonomy icon=i-carbon-user-certification}
-::button[Créativité]{link=/skills/creativity icon=i-carbon-idea}
+::button[React.js]{link=/skills/reactjs icon=i-logos-react}
+::button[GitLab]{link=/skills/gitlab icon=i-logos-gitlab}
 :::

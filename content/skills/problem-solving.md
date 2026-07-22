@@ -19,18 +19,17 @@ Ce n'est pas juste "trouver la réponse sur Stack Overflow", mais plutôt dével
 
 ## Mes éléments de preuve
 
-### 1. Débogage complexe — SUN Auto
+### 1. Chercher une solution simple plutôt que de s'acharner — SUN Auto
 
-Sur [SUN Auto](/projects/sun-auto), j'ai résolu un bug critique où les scripts Python se figeaient aléatoirement :
+Sur [SUN Auto](/projects/sun-auto), j'étais bloqué depuis plusieurs jours sur la lecture de tableaux HTML complexes, en particulier sur l'écran de planification de SUNset :
 
 **Mon approche** :
-1. **Observation** : Collecte de logs pour identifier le pattern
-2. **Hypothèse** : Suspicion de deadlock dans la gestion des threads
-3. **Isolation** : Reproduction du bug dans un environnement contrôlé
-4. **Solution** : Refactoring de la gestion des processus avec timeout et cleanup
-5. **Validation** : Tests de stress pour confirmer la correction
+1. **Observation** : je m'acharnais sur une logique de sélection de plus en plus compliquée
+2. **Remise en question** : demander de l'aide à ma collègue Yamna TAYEB plutôt que de continuer seul
+3. **Solution** : une approche de sélection bien plus simple que celle que j'essayais de faire fonctionner
+4. **Généralisation** : comprendre après coup que je cherchais une solution complexe à un problème qui en avait une simple
 
-**Résultat** : Bug résolu en 2 jours, zéro récurrence depuis.
+**Résultat** : le blocage a été résolu en une conversation de dix minutes, après plusieurs jours passés seul dessus.
 
 ### 2. Optimisation de performances — Portfolio
 

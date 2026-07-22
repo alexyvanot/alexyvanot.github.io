@@ -21,15 +21,14 @@ Dans le développement logiciel moderne, où les équipes sont souvent distribu�
 
 ### 1. Synchrotron SOLEIL — Pont entre scientifiques et technique
 
-Au Synchrotron SOLEIL, j'ai travaillé avec des physiciens et chercheurs dont le métier principal n'est pas l'informatique. Mon rôle sur [SUN Auto](/projects/sun-auto) nécessitait de **traduire leurs besoins métier** en spécifications techniques.
+Au Synchrotron SOLEIL, je travaille avec des gestionnaires du User Office et des scientifiques dont le métier principal n'est pas l'informatique. Écrire les scénarios de test de [SUN Auto](/projects/sun-auto) en **BDD (Gherkin)** m'a obligé à traduire des règles métier en langage presque naturel, relisible par des non-développeurs.
 
 **Situations de communication gérées** :
-- Réunions de recueil de besoins avec des scientifiques habitués à leur jargon technique propre
-- Présentations de démonstrations de la plateforme à des utilisateurs non-techniciens
-- Rédaction de guides utilisateur accessibles sans prérequis en programmation
-- Explication des contraintes techniques pour justifier certains choix d'interface
+- Formalisation de règles métier qui n'étaient écrites nulle part avant d'être transformées en scénarios de test
+- Discussions techniques avec mon maître d'apprentissage pour arbitrer entre plusieurs choix d'architecture
+- Explication de bugs de performance et d'accessibilité (chargement infini, champ bloquant) à des interlocuteurs non-techniques
 
-**Résultat** : Les scientifiques ont adopté l'outil rapidement car ils se sentaient écoutés et compris. Ma capacité à vulgariser a été explicitement mentionnée dans mon évaluation de fin d'alternance.
+**Ce que j'en retire** : un scénario Gherkin bien écrit se relit et se conteste par quelqu'un qui ne code pas — c'est un excellent test de la clarté de sa propre pensée.
 
 ### 2. Projets scolaires — Leadership par la communication
 
@@ -60,7 +59,7 @@ Ce portfolio lui-même est un exercice de communication. Chaque article de blog,
 | Type | Contexte | Exemple |
 |------|----------|---------|
 | **Technique → Technique** | Code reviews, documentation API | Commentaires détaillés sur GitHub |
-| **Technique → Non-technique** | Présentations aux clients | Démos SUN Auto aux scientifiques |
+| **Technique → Non-technique** | Scénarios de test lisibles | Gherkin sur SUN Auto |
 | **Écrite formelle** | Documentation, rapports | Guides utilisateur, README |
 | **Orale informelle** | Daily, discussions d'équipe | Stand-ups, brainstormings |
 | **Asynchrone** | Email, Slack, issues GitHub | Collaboration internationale |

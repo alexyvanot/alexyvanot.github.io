@@ -19,20 +19,13 @@ Une bonne documentation est celle qu'on **n'a pas besoin de chercher** : elle es
 
 ## Mes éléments de preuve
 
-### 1. Documentation technique — SUN Auto
+### 1. La documentation exécutable — SUN Auto
 
-Pour [SUN Auto](/projects/sun-auto), j'ai produit plusieurs types de documentation :
+Pour [SUN Auto](/projects/sun-auto), la documentation la plus utile n'a pas pris la forme d'un README classique, mais des **scénarios Gherkin** eux-mêmes : écrits en BDD, ils décrivent le comportement attendu de SUNset dans un langage relisible par les équipes métier, sans prérequis technique.
 
-**Documentation développeur** :
-- README avec instructions d'installation et de build
-- Javadoc exhaustive sur les classes et méthodes publiques
-- Architecture Decision Records (ADR) pour les choix techniques
-- Diagrammes UML pour les flux complexes
-
-**Documentation utilisateur** :
-- Guide de démarrage rapide
-- FAQ des problèmes courants
-- Tutoriels pas-à-pas avec captures d'écran
+**Autres documents produits** :
+- Le bilan de preuve de concept d'avril 2024 (points forts / points faibles assumés)
+- Une cartographie des fonctionnalités de SUNset, réutilisée ensuite pour l'[étude de faisabilité](/projects/tap)
 
 ### 2. Ce portfolio — Documentation vivante
 

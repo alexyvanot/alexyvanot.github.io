@@ -19,19 +19,18 @@ Pour un développeur senior, le débogage représente souvent **30-50% du temps 
 
 ## Mes éléments de preuve
 
-### 1. Bug complexe — Deadlock dans SUN Auto
+### 1. Distinguer un vrai bug d'un faux positif — SUN Auto
 
-Sur [SUN Auto](/projects/sun-auto), un bug faisait que les scripts Python se figeaient aléatoirement après quelques heures d'utilisation :
+Sur [SUN Auto](/projects/sun-auto), un scénario échouait par intermittence sans raison apparente dans le code testé :
 
 **Mon processus de débogage** :
-1. **Reproduction** : Identifier les conditions déclenchantes
-2. **Logging** : Ajouter des logs stratégiques pour tracer l'exécution
-3. **Hypothèse** : Suspicion de race condition dans les threads
-4. **Isolation** : Test unitaire reproduisant le problème
-5. **Correction** : Refactoring de la gestion des processus
-6. **Validation** : Tests de stress pendant 72h
+1. **Reproduction** : identifier que l'échec survenait surtout quand une manipulation manuelle avait lieu en parallèle de l'exécution
+2. **Hypothèse** : l'environnement de test n'était pas totalement isolé de l'usage manuel
+3. **Vérification** : relecture de la vidéo Allure de l'exécution pour voir exactement ce qui s'était passé
+4. **Conclusion** : faux positif, pas un vrai bug — une manipulation manuelle avait modifié l'état d'une demande en cours de test
+5. **Correction du processus** : poser la règle que les tests doivent avoir le champ libre pendant leur exécution
 
-**Temps de résolution** : 2 jours pour un bug qui existait depuis des mois.
+**Ce que ça change** : sans la vidéo, ce type d'échec aurait été impossible à distinguer d'un vrai bug, et aurait fini par saper la confiance de l'équipe dans l'outil.
 
 ### 2. Débogage frontend — Ce portfolio
 

@@ -28,37 +28,18 @@ Avec la sortie de **Java 21 LTS** en septembre 2023 et l'arrivée des **Virtual 
 
 ## :i[search] Mes réalisations concrètes
 
-### SUN Auto : orchestration du cycle de vie applicatif
+### SUN Auto : le point de départ, puis le point de bascule
 
-Lors de mon alternance, j'ai développé **SUN Auto** (SOLEIL Unified Notification Auto), un système Java/Spring Boot qui automatise la gestion du cycle de vie des applications du synchrotron.
-
-**Le défi** : le parc applicatif comptait des dizaines d'applications sans suivi de leur état (maintenues, obsolètes, à décommissionner). Les équipes perdaient du temps à maintenir des applications que plus personne n'utilisait.
+Ma première version de la suite de tests [SUN Auto](/projects/sun-auto), écrite pendant mon stage, était en **Selenium/Java**. Elle fonctionnait, mais sur une base fragile : Selenium oblige à assembler soi-même beaucoup de briques (gestion des attentes, des captures d'écran, du cycle de vie du navigateur), ce qui rendait chaque nouveau scénario coûteux à écrire.
 
 **Ma contribution** :
-- Architecture d'un **backend Spring Boot** avec API REST complète
-- Implémentation d'un **système de workflows** pour les états des applications (découverte → analyse → notification → archivage)
-- Développement de **jobs schedulés** (Spring Scheduler) pour le scan automatique des dépôts GitLab
-- Intégration avec **PostgreSQL** via Spring Data JPA avec requêtes optimisées
+- Écriture des premiers scénarios de test en Java, sur SUNset
+- Diagnostic honnête de la limite : le problème n'était pas le code, c'était le choix de fondation technique
+- Participation à un hackathon d'équipe qui a mené au pivot vers Playwright/Cucumber/Node.js
 
-**Résultat** : identification automatique de **23 applications obsolètes** dès le premier mois de déploiement, économisant environ 40h/mois de maintenance inutile.
+**Résultat** : une décision assumée d'abandonner cette base Java au profit d'une architecture plus adaptée — la meilleure leçon de ce projet n'a pas été un bout de code, mais le fait de savoir jeter le sien.
 
 → [Voir le projet SUN Auto](/projects/sun-auto)
-
-### TAP : plateforme de tests automatisés
-
-**TAP** (Test Automation Platform) centralise l'exécution et le reporting des tests automatisés au Synchrotron SOLEIL.
-
-**Le défi** : les tests étaient dispersés dans chaque projet, sans vision globale de la qualité logicielle. Les résultats se perdaient dans les logs Jenkins.
-
-**Ma contribution** :
-- Conception d'une **architecture modulaire** en Java 17 avec injection de dépendances Spring
-- Développement d'un **streaming temps réel** des résultats de tests via WebSocket
-- Intégration du framework **Allure** pour la génération de rapports visuels
-- Mise en place de **tests d'intégration** avec JUnit 5 et Testcontainers
-
-**Résultat** : temps de diagnostic des échecs de tests réduit de **70%** grâce à la centralisation et aux rapports Allure. L'équipe QA a adopté la plateforme pour tous les nouveaux projets.
-
-→ [Voir le projet TAP](/projects/tap)
 
 ### Projets Minecraft : apprentissage par la passion
 

@@ -29,23 +29,18 @@ Aujourd'hui, Selenium est progressivement remplacé par des outils plus modernes
 
 ## :i[search] Mes réalisations concrètes
 
-### TAP : support des tests Selenium existants
+### SUN Auto : la première version, et sa limite
 
-La plateforme **TAP** au Synchrotron SOLEIL gère de nombreux tests Selenium existants.
+Pendant mon stage au Synchrotron SOLEIL, j'ai construit la toute première suite de tests de [SUN Auto](/projects/sun-auto) avec **Selenium** en Java.
 
-**Ma contribution** :
-- Intégration de **Selenium Grid** dans l'infrastructure TAP
-- Configuration des **drivers Chrome et Firefox** en mode headless
-- Conversion progressive de tests Selenium vers **Playwright**
-- Maintenance des tests legacy jusqu'à leur migration
+**Ce que j'en ai retenu** :
+- Selenium fonctionnait, mais obligeait à assembler soi-même beaucoup de briques (attentes, captures, cycle de vie du navigateur)
+- Chaque nouveau scénario coûtait cher à écrire, sur une base qui restait fragile
+- Un hackathon d'équipe nous a fait migrer vers Playwright, plus adapté à l'échelle qu'a fini par prendre la suite (66 scénarios)
 
-**Résultat** : continuité de service pour les tests existants tout en migrant vers des technologies plus modernes.
+Cette expérience m'a permis de comprendre concrètement les **difficultés** que les outils modernes comme Playwright cherchent à résoudre — pas en théorie, mais en ayant buté dessus.
 
-→ [Voir le projet TAP](/projects/tap)
-
-### Formation : apprentissage du testing E2E
-
-J'ai appris les tests E2E avec Selenium avant de découvrir Playwright. Cette expérience m'a permis de comprendre les **difficultés** que les outils modernes cherchent à résoudre.
+→ [Voir le projet SUN Auto](/projects/sun-auto)
 
 ---
 

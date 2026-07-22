@@ -22,40 +22,11 @@ Dans le contexte professionnel actuel, PostgreSQL s'impose comme **le choix par 
 - **Performance** : optimiseur de requêtes sophistiqué, indexation avancée (B-tree, GIN, GiST)
 - **Évolutivité** : réplication, partitionnement, support de téraoctets de données
 
-Au **Synchrotron SOLEIL**, PostgreSQL est la base de données **standard pour tous les nouveaux développements**. Cette standardisation facilite la maintenance et permet aux équipes de partager leur expertise.
-
 ---
 
 ## :i[search] Mes réalisations concrètes
 
-### SUN Auto : gestion du cycle de vie applicatif
-
-Pour le projet **SUN Auto**, j'ai conçu et implémenté le **schéma de base de données PostgreSQL** qui stocke toutes les informations sur les applications du synchrotron.
-
-**Le défi** : modéliser efficacement les relations complexes entre applications, responsables, technologies et états du workflow.
-
-**Ma contribution** :
-- Conception du **modèle de données relationnel** avec 12 tables interconnectées
-- Optimisation des requêtes via des **index stratégiques** et des vues matérialisées
-- Implémentation de **contraintes d'intégrité** (foreign keys, check constraints)
-- Migration de données depuis l'ancien système (scripts SQL + Spring Batch)
-
-**Résultat** : temps de réponse moyen de **< 50ms** sur les requêtes complexes impliquant plusieurs jointures.
-
-→ [Voir le projet SUN Auto](/projects/sun-auto)
-
-### TAP : stockage des résultats de tests
-
-La plateforme **TAP** utilise PostgreSQL pour stocker l'historique de toutes les exécutions de tests et leurs résultats détaillés.
-
-**Ma contribution** :
-- Modélisation du schéma pour les **séries temporelles de tests** (exécutions, résultats, métriques)
-- Utilisation du **type JSONB** pour stocker les données de configuration flexibles
-- Mise en place de la **rétention automatique** des données anciennes (partitionnement par date)
-
-**Résultat** : capacité de stocker **+100 000 exécutions de tests** avec des requêtes d'agrégation rapides pour les tableaux de bord.
-
-→ [Voir le projet TAP](/projects/tap)
+Mon expérience PostgreSQL vient principalement de projets personnels (voir [mes projets techniques](/projects)) plutôt que de mon alternance au Synchrotron SOLEIL, où mes deux missions principales — [SUN Auto](/projects/sun-auto) et l'[étude de faisabilité SUNset](/projects/tap) — n'ont pas mobilisé de base de données relationnelle.
 
 ---
 

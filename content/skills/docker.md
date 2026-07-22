@@ -29,31 +29,6 @@ Au **Synchrotron SOLEIL**, Docker est utilisé pour **standardiser les environne
 
 ## :i[search] Mes réalisations concrètes
 
-### SUN Auto : containerisation complète
-
-Le projet **SUN Auto** est entièrement conteneurisé avec Docker.
-
-**Ma contribution** :
-- Rédaction du **Dockerfile multi-stage** (build Maven + runtime JRE)
-- Configuration de **Docker Compose** pour l'environnement complet (app + PostgreSQL + Redis)
-- Optimisation de l'image (< 200 MB en production)
-- Intégration dans le **pipeline CI/CD** GitLab
-
-**Résultat** : déploiement reproductible en une commande `docker-compose up`.
-
-→ [Voir le projet SUN Auto](/projects/sun-auto)
-
-### TAP : environnement de test isolé
-
-Pour **TAP**, j'ai utilisé Docker pour créer des **environnements de test isolés**.
-
-**Ma contribution** :
-- **Testcontainers** : bases de données éphémères pour les tests d'intégration
-- Images custom pour les **agents de test** (Selenium, Playwright)
-- **Docker-in-Docker** pour les tests nécessitant Docker
-
-→ [Voir le projet TAP](/projects/tap)
-
 ### Ce portfolio : déploiement Docker
 
 Ce portfolio dispose d'un **Dockerfile** et d'un **docker-compose.yml** pour un déploiement simplifié.

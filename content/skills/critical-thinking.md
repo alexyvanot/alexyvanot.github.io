@@ -19,17 +19,17 @@ C'est ce qui distingue un développeur qui copie-colle de Stack Overflow d'un d�
 
 ## Mes éléments de preuve
 
-### 1. Choix technologiques — SUN Auto
+### 1. Remettre en question le réflexe de réécrire — Étude de faisabilité SUNset
 
-Sur [SUN Auto](/projects/sun-auto), j'ai dû choisir entre plusieurs architectures possibles :
+Sur l'[étude de faisabilité SUNset](/projects/tap), le réflexe le plus naturel de notre métier face à une techno vieillissante est de tout réécrire. Avant de m'y engager, j'ai questionné cette évidence :
 
 **Mon analyse critique** :
-- Évaluation de 3 approches (monolithique, microservices, hybride)
-- Critères : maintenabilité, performance, complexité, compétences disponibles
-- Avantages/inconvénients documentés pour chaque option
-- Choix argumenté de l'architecture hybride
+- Est-ce que le problème a déjà été résolu ailleurs, par d'autres synchrotrons ?
+- Cartographie exhaustive des fonctionnalités de SUNset avant toute comparaison
+- Déploiement réel d'un candidat (DUO ESS) plutôt qu'une lecture de documentation
+- Conclusion nuancée : pas de solution qui se transpose parfaitement, mais une recommandation argumentée vers USO
 
-**Résultat** : Architecture qui a tenu 2 ans sans refonte majeure.
+**Résultat** : une décision fondée sur des critères de long terme (pérennité, dépendance, coût total), pas sur une préférence technique.
 
 ### 2. Code reviews — Projets d'équipe
 
