@@ -26,6 +26,18 @@ Cette page a vocation à centraliser les informations relatives à ma soutenance
 
 ---
 
+## 🔗 Pages liées
+
+Ces ressources du portfolio sont directement en lien avec le sujet de cette soutenance :
+
+- [SUN Auto — Automatisation des tests de SUNset](/projects/sun-auto) *(projet)*
+- [SUN Auto : d'un échec sur Selenium à une suite de tests BDD pour SUNset](sun-auto-automatisation-synchrotron-soleil) *(article de blog)*
+- [Étude de faisabilité SUNset — Chercher avant de construire](/projects/tap) *(projet)*
+- [Travailler en alternance au Synchrotron SOLEIL : Bilan et perspectives](alternance-synchrotron-soleil-bilan) *(article de blog)*
+- [Alternance — Synchrotron SOLEIL](/experience/fullstack-synchrotron-soleil) *(expérience)*
+
+---
+
 ## 🚧 Contenu à venir
 
 Cette page sera complétée dans les prochains jours avec les annexes suivantes :
