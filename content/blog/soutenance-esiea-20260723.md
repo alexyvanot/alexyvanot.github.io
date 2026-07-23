@@ -24,6 +24,10 @@ Bienvenue sur cette page dédiée à ma soutenance de fin d'études à l'**ESIEA
 
 Cette page a vocation à centraliser les informations relatives à ma soutenance et à mon parcours académique et professionnel.
 
+:::buttons{align=left}
+::button[Télécharger le diaporama de la soutenance (.pptx)]{link=/files/SOUTENANCE_23-07-2026.pptx icon=i-carbon-download style=default newTab=true}
+:::
+
 ---
 
 ## 🔗 Pages liées
