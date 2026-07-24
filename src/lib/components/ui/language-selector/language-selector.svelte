@@ -1,3 +1,13 @@
+<script lang="ts" module>
+	// Une seule instance (la première montée, celle de la barre de navigation,
+	// toujours présente même masquée en CSS) pilote l'initialisation Google
+	// Translate et les redirections googtrans. Les instances secondaires
+	// (ex: celle du menu hamburger mobile, montée à chaque ouverture du Dialog)
+	// ne font que refléter la langue courante : sans ce garde-fou, leur montage
+	// relançait forceTranslationByUrl() et rechargeait la page, fermant le menu.
+	let translationOwned = false;
+</script>
+
 <script lang="ts">
 	import {
 		DropdownMenu,
@@ -10,7 +20,7 @@
 	import { Tooltip, TooltipTrigger } from '$lib/components/ui/tooltip';
 	import TooltipContent from '$lib/components/ui/tooltip/tooltip-content.svelte';
 	import FlagDisplay from './flag-display.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { replaceState } from '$app/navigation';
 	import type { LanguageSelectorConfig } from '$lib/types/language-selector';
 	import { createLanguageSelectorConfig } from '$lib/data/language-selector';
@@ -28,6 +38,7 @@
 		config;
 
 	let currentLang = $state(defaultLanguage);
+	let ownsTranslation = false; // true si cette instance a pris la main sur la traduction
 	let isTranslateReady = $state(false);
 	let updateTrigger = $state(0); // Variable pour forcer les mises à jour
 	let isManualChange = $state(false); // Empêcher la détection auto pendant les changements manuels
@@ -135,6 +146,27 @@
 	}
 
 	onMount(() => {
+		// Instance secondaire : la traduction est déjà gérée par une autre
+		// instance, on se contente de synchroniser l'icône de langue affichée.
+		if (translationOwned) {
+			const savedLang = persistence.enabled
+				? localStorage.getItem(persistence.storageKey)
+				: null;
+			if (
+				savedLang &&
+				supportedLanguages.find((lang: { code: string }) => lang.code === savedLang)
+			) {
+				currentLang = savedLang;
+			} else {
+				currentLang = pageLanguage;
+			}
+			updateTrigger++;
+			forceRerender++;
+			return;
+		}
+		translationOwned = true;
+		ownsTranslation = true;
+
 		// Vérifier d'abord si on a un paramètre de traduction dans l'URL
 		const urlParams = new URLSearchParams(window.location.search);
 		const googtrans = urlParams.get('googtrans');
@@ -519,10 +551,19 @@
 		return false;
 	}
 
+	onDestroy(() => {
+		// Libérer la main si l'instance propriétaire est démontée
+		if (ownsTranslation) {
+			translationOwned = false;
+		}
+	});
+
 	// Fonction pour forcer la traduction avec ou sans rechargement
 	function forceTranslationByReload(langCode: string) {
-		// D'abord essayer la traduction directe sans rechargement
-		if (isTranslateReady) {
+		// D'abord essayer la traduction directe sans rechargement.
+		// Google Translate peut avoir été initialisé par une autre instance :
+		// se fier au DOM plutôt qu'à l'état local isTranslateReady.
+		if (isTranslateReady || document.querySelector('.goog-te-combo')) {
 			applyTranslation(langCode);
 			
 			// Vérifier après un délai si la traduction a fonctionné
