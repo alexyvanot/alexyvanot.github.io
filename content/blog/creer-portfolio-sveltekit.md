@@ -14,7 +14,7 @@ tags:
 logo: Svelte
 readingTime: 20
 color: "#FF3E00"
-pinned: true
+pinned: false
 ---
 
 ::toc

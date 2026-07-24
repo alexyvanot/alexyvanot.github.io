@@ -14,7 +14,7 @@ tags:
 logo: React
 readingTime: 11
 color: "#00B8A9"
-pinned: true
+pinned: false
 ---
 
 ::toc
