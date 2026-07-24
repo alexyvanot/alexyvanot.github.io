@@ -21,7 +21,11 @@
 	const onSearch = (query: string) => (search = query);
 </script>
 
-<SearchPage title={EducationData.title} {onSearch}>
+<SearchPage
+	title={EducationData.title}
+	description="Formation d'Alexy VANOT : Master à l'ESIEA, Bachelor à InTech et parcours académique en ingénierie informatique."
+	{onSearch}
+>
 	{#if result.length === 0}
 		<EmptyResult />
 	{:else}

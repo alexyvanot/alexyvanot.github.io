@@ -4,7 +4,30 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
+
+		<!-- SEO : meta constantes (les meta variables par page sont dans title.svelte) -->
+		<meta name="author" content="Alexy VANOT" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="theme-color" content="#000000" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Alexy VANOT" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:image" content="https://avatars.githubusercontent.com/u/48055002" />
+		<meta property="og:image:alt" content="Alexy VANOT" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/48055002" />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Alexy VANOT",
+				"url": "https://alexyvanot.fr",
+				"jobTitle": "Full Stack Developer & Software Engineer",
+				"image": "https://avatars.githubusercontent.com/u/48055002",
+				"sameAs": ["https://github.com/alexyvanot", "https://linkedin.com/in/vanot"]
+			}
+		</script>
+
 		<!-- Preload Google Fonts pour éviter le FOUT -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

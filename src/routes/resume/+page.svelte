@@ -6,7 +6,10 @@
 	const { title, pdfPath, downloadLabel, fullscreenLabel } = ResumePageData;
 </script>
 
-<TitledPage {title}>
+<TitledPage
+	{title}
+	description="CV d'Alexy VANOT, développeur Full-Stack et ingénieur logiciel : expériences, formations, compétences techniques et projets."
+>
 	<div class="flex flex-col items-center gap-3 mb-4">
 		<a href={pdfPath} download>
 			<Button>

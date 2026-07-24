@@ -7,7 +7,10 @@
 	const { title, content, attachments } = AboutPageData;
 </script>
 
-<TitledPage {title}>
+<TitledPage
+	{title}
+	description="Qui est Alexy VANOT : parcours, valeurs et personnalité d'un développeur Full-Stack et ingénieur logiciel en alternance au Synchrotron SOLEIL."
+>
 	<div class="about-page">
 		<div class="container mx-auto max-w-4xl px-4">
 			<!-- Contenu Markdown -->

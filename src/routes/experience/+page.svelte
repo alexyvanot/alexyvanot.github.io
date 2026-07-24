@@ -19,7 +19,11 @@
 	const onSearch = (query: string) => (search = query);
 </script>
 
-<SearchPage title={ExperienceData.title} {onSearch}>
+<SearchPage
+	title={ExperienceData.title}
+	description="Expériences professionnelles d'Alexy VANOT : alternance au Synchrotron SOLEIL, stages et missions en développement Full-Stack."
+	{onSearch}
+>
 	{#if result.length === 0}
 		<EmptyResult />
 	{:else}

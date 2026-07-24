@@ -204,12 +204,11 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Blog - Alexy VANOT</title>
-	<meta name="description" content="Articles et tutoriels sur le développement web, JavaScript, TypeScript, Svelte et autres technologies." />
-</svelte:head>
-
-<SearchPage title={BlogData.title} {onSearch}>
+<SearchPage
+	title={BlogData.title}
+	description="Articles et retours d'expérience d'Alexy VANOT sur le développement web, l'intelligence artificielle, le DevOps et la tech."
+	{onSearch}
+>
 	{#if !isSearching && pinnedPosts.length > 0}
 		<div class="mb-10">
 			<div class="flex justify-center items-center mt-6 mb-4">

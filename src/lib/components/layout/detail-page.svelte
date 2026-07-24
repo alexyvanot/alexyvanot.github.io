@@ -195,13 +195,18 @@
 	// - Si backgroundImage est défini → utiliser backgroundImage
 	// - Sinon → utiliser le banner par défaut
 	let effectiveBackground = $derived(
-		backgroundImage === 'none' 
-			? null 
+		backgroundImage === 'none'
+			? null
 			: (backgroundImage || banner)
+	);
+
+	// Meta description SEO : contenu de l'item si disponible, sinon libelle derive
+	let metaDescription = $derived(
+		description.trim() ? description : `${itemTitle} — ${entityName} d'Alexy VANOT.`
 	);
 </script>
 
-<BasePage {title}>
+<BasePage {title} description={metaDescription}>
 	{#if !exists}
 		<EmptyResult />
 	{:else}

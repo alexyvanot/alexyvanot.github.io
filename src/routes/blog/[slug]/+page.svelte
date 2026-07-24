@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { DetailPage } from '$lib/components/layout';
 	import { Assets, BlogData } from '$lib/data';
+	import { SITE_URL, OG_IMAGE } from '$lib/seo';
 	import type { BlogPost } from '$lib/types';
 	import { mode } from 'mode-watcher';
 	import { goto } from '$app/navigation';
@@ -15,6 +16,28 @@
 
 	let currentSlug = $derived($page.params.slug);
 	let currentItem = $derived(BlogData.items.find(item => item.slug === currentSlug));
+
+	// Donnees structurees d'article (Schema.org BlogPosting) pour Google.
+	// Le titre / description / canonical / Open Graph generiques sont geres
+	// par le composant Title (via DetailPage) : on n'ajoute ici que ce qui
+	// est specifique a un article et ne fait pas doublon.
+	let blogJsonLd = $derived(
+		currentItem
+			? JSON.stringify({
+					'@context': 'https://schema.org',
+					'@type': 'BlogPosting',
+					headline: currentItem.title,
+					description: currentItem.excerpt,
+					author: { '@type': 'Person', name: currentItem.author, url: SITE_URL },
+					datePublished: currentItem.publishedAt?.toISOString?.(),
+					dateModified:
+						currentItem.updatedAt?.toISOString?.() ?? currentItem.publishedAt?.toISOString?.(),
+					keywords: Array.isArray(currentItem.tags) ? currentItem.tags.join(', ') : undefined,
+					mainEntityOfPage: `${SITE_URL}/blog/${currentItem.slug}`,
+					image: OG_IMAGE
+				})
+			: ''
+	);
 
 	async function handleShare(title: string, url: string) {
 		if (!browser) return;
@@ -98,23 +121,7 @@
 
 <svelte:head>
 	{#if currentItem}
-		<title>{currentItem.title} - Blog</title>
-		<meta name="description" content={currentItem.excerpt} />
-		<meta name="author" content={currentItem.author} />
-		<meta property="og:title" content={currentItem.title} />
-		<meta property="og:description" content={currentItem.excerpt} />
-		<meta property="og:type" content="article" />
-		<meta property="article:author" content={currentItem.author} />
-		<meta property="article:published_time" content={currentItem.publishedAt.toISOString()} />
-		{#if currentItem.updatedAt}
-			<meta property="article:modified_time" content={currentItem.updatedAt.toISOString()} />
-		{/if}
-		{#each currentItem.tags as tag}
-			<meta property="article:tag" content={tag} />
-		{/each}
-	{:else}
-		<title>Article non trouvé - Blog</title>
-		<meta name="description" content="L'article demandé n'existe pas." />
+		{@html `<script type="application/ld+json">${blogJsonLd}<\/script>`}
 	{/if}
 </svelte:head>
 

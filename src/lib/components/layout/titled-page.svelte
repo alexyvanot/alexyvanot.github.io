@@ -3,9 +3,10 @@
 	import BasePage from './base-page.svelte';
 
 	export let title = 'Title';
+	export let description = '';
 </script>
 
-<BasePage {title}>
+<BasePage {title} {description}>
 	<H1 className="text-center py-16">{title}</H1>
 	<div class="flex flex-1 flex-col gap-5 px-4">
 		<slot />

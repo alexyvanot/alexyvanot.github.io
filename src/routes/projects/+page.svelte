@@ -131,12 +131,13 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Projets - Alexy VANOT</title>
-	<meta name="description" content="Découvrez mes projets personnels et professionnels en développement web, mobile, IA et data science." />
-</svelte:head>
-
-<SearchPage title={ProjectsData.title} {onSearch} onFocus={handleSearchFocus} onBlur={handleSearchBlur}>
+<SearchPage
+	title={ProjectsData.title}
+	description="Projets d'Alexy VANOT : applications web, intelligence artificielle, DevOps et réalisations techniques et humaines."
+	{onSearch}
+	onFocus={handleSearchFocus}
+	onBlur={handleSearchBlur}
+>
 	<div class="flex flex-1 flex-col gap-8">
 		<div 
 			class="filters-container flex flex-row flex-wrap gap-2"

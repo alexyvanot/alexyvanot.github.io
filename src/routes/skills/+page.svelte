@@ -16,7 +16,11 @@
 	const groups = $derived(groupByCategory(query));
 </script>
 
-<SearchPage title={SkillsData.title} {onSearch}>
+<SearchPage
+	title={SkillsData.title}
+	description="Compétences techniques d'Alexy VANOT : langages, frameworks, bases de données, DevOps, tests et outils de développement."
+	{onSearch}
+>
 	{#if groups.length === 0}
 		<EmptyResult />
 	{:else}

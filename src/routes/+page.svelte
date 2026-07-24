@@ -112,7 +112,7 @@
 	}
 </script>
 
-<Title title={title} />
+<Title title={title} description={heroDescription} />
 <ResponsiveContainer className="flex flex-col justify-center flex-1 relative z-10">
 	<div
 		class="flex flex-1 flex-col items-center justify-center gap-8 px-14 md:flex-row md:justify-between backdrop-blur-sm rounded-lg p-8"

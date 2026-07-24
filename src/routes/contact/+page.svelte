@@ -296,7 +296,10 @@
 	}
 </script>
 
-<TitledPage title={ContactPageData.title}>
+<TitledPage
+	title={ContactPageData.title}
+	description="Contactez Alexy VANOT, développeur Full-Stack : formulaire de contact, email et liens vers mes réseaux professionnels."
+>
 	<div class="flex flex-col items-center justify-start w-full max-w-2xl mx-auto pt-4 pb-8">
 		<Card class="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
 			<CardHeader>

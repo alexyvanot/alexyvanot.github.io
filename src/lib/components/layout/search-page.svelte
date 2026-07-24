@@ -6,16 +6,18 @@
 
 	let {
 		title = 'Untitled',
+		description = '',
 		onSearch,
 		onFocus,
 		onBlur,
 		children
-	}: { 
-		title: string; 
-		onSearch: (value: string) => void; 
+	}: {
+		title: string;
+		description?: string;
+		onSearch: (value: string) => void;
 		onFocus?: () => void;
 		onBlur?: () => void;
-		children: Snippet 
+		children: Snippet
 	} = $props();
 
 	let query = $state('');
@@ -54,7 +56,7 @@
 	}
 </script>
 
-<TitledPage {title}>
+<TitledPage {title} {description}>
 	<Input placeholder="Search..." bind:value={query} on:focus={handleFocus} on:blur={handleBlur} />
 	{@render children()}
 </TitledPage>
