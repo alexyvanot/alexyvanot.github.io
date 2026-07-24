@@ -12,7 +12,8 @@
 		"lint": "prettier --check . && eslint .",
 		"postinstall": "svelte-kit sync",
 		"icons": "node scripts/download-icons.js",
-		"icons:all": "node scripts/download-icons.js --all"
+		"icons:all": "node scripts/download-icons.js --all",
+		"optimize:logos": "node scripts/optimize-logos.js"
 	},
 	"devDependencies": {
 		"@iconify-json/carbon": "^1.2.4",
@@ -42,6 +43,7 @@
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
 		"prismjs": "^1.29.0",
+		"sharp": "^0.35.3",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"svelte-sonner": "^0.3.28",
