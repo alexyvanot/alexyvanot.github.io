@@ -386,6 +386,7 @@
 			.goog-te-gadget { height: 28px !important; overflow: hidden; }
 			#goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
 			.goog-text-highlight { background: none !important; box-shadow: none !important; }
+			.goog-te-spinner-pos, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf, [class*="VIpgJd-ZVi9od-aZ2wEe"] { display: none !important; }
 			
 			#google_translate_element {
 				position: absolute !important;
@@ -769,6 +770,16 @@
 	:global(.goog-text-highlight) {
 		background: none !important;
 		box-shadow: none !important;
+	}
+
+	/* Badge/spinner de chargement Google Traduction (rond fixe en haut à
+	   gauche pendant la traduction, qui reste parfois affiché) */
+	:global(.goog-te-spinner-pos),
+	:global(.VIpgJd-ZVi9od-aZ2wEe-wOHMyf),
+	:global([class*='VIpgJd-ZVi9od-aZ2wEe']) {
+		display: none !important;
+		visibility: hidden !important;
+		opacity: 0 !important;
 	}
 
 	/* Exclure le sélecteur de langue de la traduction */
