@@ -202,10 +202,13 @@
 	border-radius: 0.25rem;
 }
 
-/* Section de navigation entre éléments */
+/* Section de navigation entre éléments.
+   nowrap : sur mobile les trois boutons (flèche / liste / flèche) doivent
+   rester alignés sur une seule ligne, la flèche ne doit jamais passer
+   à la ligne suivante. */
 .detail-navigation {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.75rem;
@@ -220,6 +223,8 @@
 .detail-nav-button {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
 	gap: 0.5rem;
 	padding: 0.625rem 1rem;
 	font-size: 0.8125rem;
@@ -287,10 +292,19 @@
 	font-weight: 500;
 }
 
-/* Bouton central (retour à la liste) */
+/* Bouton central (retour à la liste) : seul bouton autorisé à rétrécir,
+   son libellé passe en ellipse si la place manque sur mobile */
 .detail-nav-center {
 	background: hsl(var(--primary) / 0.08);
 	border-color: hsl(var(--primary) / 0.2);
+	flex-shrink: 1;
+	min-width: 0;
+}
+
+.detail-nav-center span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .detail-nav-center:hover {

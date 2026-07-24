@@ -268,9 +268,7 @@
 						</div>
 					{:else}
 						<span class="hidden sm:inline">{entityName} précédent(e)</span>
-					{/if}
-					<span class="sm:hidden">{previousItem ? '' : 'Précédent'}</span>
-				</button>
+					{/if}				</button>
 				
 				<!-- Retour à la liste -->
 				<button 
@@ -294,9 +292,7 @@
 						</div>
 					{:else}
 						<span class="hidden sm:inline">{entityName} suivant(e)</span>
-					{/if}
-					<span class="sm:hidden">{nextItem ? '' : 'Suivant'}</span>
-					<div class="i-carbon-chevron-right text-lg nav-icon nav-icon-right"></div>
+					{/if}					<div class="i-carbon-chevron-right text-lg nav-icon nav-icon-right"></div>
 				</button>
 			</nav>
 			
@@ -366,9 +362,7 @@
 							</div>
 						{:else}
 							<span class="hidden sm:inline">{entityName} précédent(e)</span>
-						{/if}
-						<span class="sm:hidden">{previousItem ? '' : 'Précédent'}</span>
-					</button>
+						{/if}					</button>
 					
 					<button 
 						onclick={onNavigateToList}
@@ -390,9 +384,7 @@
 							</div>
 						{:else}
 							<span class="hidden sm:inline">{entityName} suivant(e)</span>
-						{/if}
-						<span class="sm:hidden">{nextItem ? '' : 'Suivant'}</span>
-						<div class="i-carbon-chevron-right text-lg nav-icon nav-icon-right"></div>
+						{/if}						<div class="i-carbon-chevron-right text-lg nav-icon nav-icon-right"></div>
 					</button>
 				</nav>
 			{/if}

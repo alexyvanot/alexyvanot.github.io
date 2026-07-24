@@ -153,11 +153,10 @@ html.theme-transitioning [role="tooltip"] {
 	/* Pas de transition sur color/border = changement instantané */
 }
 
-/* Optimisations des performances */
-* {
-	backface-visibility: hidden;
-	-webkit-backface-visibility: hidden;
-}
+/* Note : pas de backface-visibility global (ancien `* { backface-visibility:
+   hidden }`) : forcer la composition GPU de chaque element provoque des
+   carres noirs sur iOS Safari, notamment sous les elements en backdrop-filter
+   contenant du contenu transforme (carrousel). */
 
 /* Transitions pour les interactions uniquement (pas pendant le changement de thème) */
 html:not(.theme-transitioning) a, 

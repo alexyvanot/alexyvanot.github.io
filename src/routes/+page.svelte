@@ -114,8 +114,11 @@
 
 <Title title={title} description={heroDescription} />
 <ResponsiveContainer className="flex flex-col justify-center flex-1 relative z-10">
+	<!-- isolate + transform-gpu : contournement du bug iOS Safari qui rend des
+	     carres noirs quand un element backdrop-filter contient du contenu
+	     transforme (piste du carrousel en translate3d) -->
 	<div
-		class="flex flex-1 flex-col items-center justify-center gap-8 px-14 md:flex-row md:justify-between backdrop-blur-sm rounded-lg p-8"
+		class="flex flex-1 flex-col items-center justify-center gap-8 px-14 md:flex-row md:justify-between backdrop-blur-sm rounded-lg p-8 isolate transform-gpu"
 	>
 		<div
 			class="flex flex-col items-center justify-center gap-4 text-center md:items-start md:text-left"
