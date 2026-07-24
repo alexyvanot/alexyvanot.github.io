@@ -55,17 +55,35 @@ body {
 	}
 }
 
-/* Évite le flash pendant les transitions */
+/* Verrouille le scroll du document : seul .app-scroll doit scroller.
+   Sans ça, sur iOS, 100vh dépasse le viewport visible quand la barre
+   d'URL de Safari est affichée : le document devient lui-même scrollable
+   et on "soulève" tout le site (header compris) au lieu de scroller. */
 html, body {
-	min-height: 100%;
+	height: 100%;
+	overflow: hidden;
+	overscroll-behavior: none;
 }
 
 /* S'assurer que l'app container a le bon background */
 .app-container {
-	min-height: 100vh;
+	min-height: 100%;
 	background-color: transparent; /* Transparent pour laisser voir l'AnimatedBackground */
 	position: relative;
 	z-index: 1;
+}
+
+/* Conteneur de scroll principal de l'app.
+   Surtout ne pas ajouter -webkit-overflow-scrolling: touch ici : ce mode
+   legacy iOS crée des zones mortes au toucher sur les éléments transformés
+   (cartes avec will-change/preserve-3d) et bloque le scroll. Le momentum
+   est natif depuis iOS 13. */
+.app-scroll {
+	height: 100vh; /* fallback pour navigateurs sans dvh */
+	height: 100dvh; /* hauteur dynamique : suit la barre d'URL mobile */
+	overflow-x: hidden;
+	overflow-y: auto;
+	overscroll-behavior-y: contain;
 }
 
 @layer base {
@@ -147,10 +165,11 @@ html:not(.theme-transitioning) button {
 	transition: all 0.15s ease-out;
 }
 
-/* Améliorer le rendu */
-html {
+/* Améliorer le rendu du scroll (sur le vrai conteneur de scroll).
+   Surtout pas de transform sur html : un ancêtre transformé du conteneur
+   de scroll casse le scroll tactile sur iOS/WebKit. */
+.app-scroll {
 	will-change: scroll-position;
-	transform: translateZ(0);
 }
 
 /* Preload hover effects */

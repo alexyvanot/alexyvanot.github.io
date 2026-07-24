@@ -185,7 +185,7 @@
 		class="app-container" 
 		transition:fade={{ duration: 200 }}
 	>
-		<div class="flex h-screen w-screen flex-col overflow-x-hidden">
+		<div class="app-scroll flex w-screen flex-col">
 			<NavBar />
 			<div class="mt-[50px] flex flex-1 flex-col">{@render children()}</div>
 			<InConstruction />

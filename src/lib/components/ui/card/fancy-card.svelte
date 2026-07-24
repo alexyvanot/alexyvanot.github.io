@@ -130,33 +130,44 @@
 			inset 0 1px 0 rgba(255, 255, 255, 0.1),
 			inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
 		transition: all 0.2s ease-out;
-		transform-style: preserve-3d;
-		will-change: transform;
-	}
-
-	.card:hover {
-		transform: perspective(1000px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.01);
-		border-color: var(--border-color);
-		box-shadow: 
-			0 20px 40px var(--shadow-color),
-			inset 0 2px 0 rgba(255, 255, 255, 0.2),
-			inset 0 -2px 0 rgba(0, 0, 0, 0.2);
 	}
 
 	.card-color {
 		background: transparent;
 		border-radius: inherit;
-		transform-style: preserve-3d;
 		height: 100%;
 	}
 
-	.card-color:hover {
-		background: 
-			radial-gradient(
-				circle at var(--drop-x) var(--drop-y),
-				var(--drop-color) 0%,
-				transparent 60%
-			);
-		background-color: var(--hover-backdrop);
+	/* Effet tilt 3D uniquement sur les appareils avec souris : sur tactile,
+	   les transforms/will-change au toucher gênent le scroll (zones mortes
+	   iOS) et l'effet n'a pas de sens sans survol. */
+	@media (hover: hover) {
+		.card {
+			transform-style: preserve-3d;
+			will-change: transform;
+		}
+
+		.card:hover {
+			transform: perspective(1000px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.01);
+			border-color: var(--border-color);
+			box-shadow:
+				0 20px 40px var(--shadow-color),
+				inset 0 2px 0 rgba(255, 255, 255, 0.2),
+				inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.card-color {
+			transform-style: preserve-3d;
+		}
+
+		.card-color:hover {
+			background:
+				radial-gradient(
+					circle at var(--drop-x) var(--drop-y),
+					var(--drop-color) 0%,
+					transparent 60%
+				);
+			background-color: var(--hover-backdrop);
+		}
 	}
 </style>
