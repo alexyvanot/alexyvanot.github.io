@@ -4,7 +4,30 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
+
+		<!-- SEO : meta constantes (les meta variables par page sont dans title.svelte) -->
+		<meta name="author" content="Alexy VANOT" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<meta name="theme-color" content="#000000" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Alexy VANOT" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:image" content="https://avatars.githubusercontent.com/u/48055002" />
+		<meta property="og:image:alt" content="Alexy VANOT" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/48055002" />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Alexy VANOT",
+				"url": "https://alexyvanot.fr",
+				"jobTitle": "Full Stack Developer & Software Engineer",
+				"image": "https://avatars.githubusercontent.com/u/48055002",
+				"sameAs": ["https://github.com/alexyvanot", "https://linkedin.com/in/vanot"]
+			}
+		</script>
+
 		<!-- Preload Google Fonts pour éviter le FOUT -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,21 +36,21 @@
 
 		<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50068246c26741df8f43f5c9614c496d"}'></script><!-- End Cloudflare Web Analytics -->
 
-		<link href="/_app/immutable/entry/start.DOIaNhST.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/DZV9zaoq.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CZeBVQt6.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/Bjudbaq5.js" rel="modulepreload">
-		<link href="/_app/immutable/entry/app.Cm_dhoiy.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/JPshRefV.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CGgzwgq9.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CgjRZXqN.js" rel="modulepreload">
-		<link href="/_app/immutable/nodes/0.BYLvoGMk.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CRsbi56I.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/-DlwktXC.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CNU2lzf3.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/DWNBWiYI.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CScH9WpP.js" rel="modulepreload">
-		<link href="/_app/immutable/chunks/CYxTksUi.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/start.C5NlkgTQ.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Da7pojWZ.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Bn0Hnw3Y.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DP3COF0W.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/app.Br3-S2r1.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BPl2JJnG.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/ROQPoxQ3.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Cn_e8dPq.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/0.4j1tZdq4.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DJI6Frne.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DhJc7kFq.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/IXMz04gq.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Mr1xMH2u.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/D-rYnWqf.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BUZckwDZ.js" rel="modulepreload">
 		<link href="/_app/env.js" rel="modulepreload">
 		
 		<link href="/_app/immutable/assets/in-construction.DkE0ZA1I.css" rel="stylesheet">
@@ -38,7 +61,7 @@
 		<div id="svelte" style="display: contents">
 			<script>
 				{
-					__sveltekit_m469dk = {
+					__sveltekit_vrfz16 = {
 						base: "",
 						env: null
 					};
@@ -46,11 +69,11 @@
 					const element = document.currentScript.parentElement;
 
 					import("/_app/env.js").then(({ env }) => {
-						__sveltekit_m469dk.env = env;
+						__sveltekit_vrfz16.env = env;
 
 						Promise.all([
-							import("/_app/immutable/entry/start.DOIaNhST.js"),
-							import("/_app/immutable/entry/app.Cm_dhoiy.js")
+							import("/_app/immutable/entry/start.C5NlkgTQ.js"),
+							import("/_app/immutable/entry/app.Br3-S2r1.js")
 						]).then(([kit, app]) => {
 							kit.start(app, element);
 						});
