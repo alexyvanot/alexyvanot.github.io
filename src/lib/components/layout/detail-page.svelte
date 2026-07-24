@@ -223,7 +223,14 @@
 					</div>
 					
 					<!-- Titre -->
-					<h1 class="header-title">{itemTitle}</h1>
+					<!-- {#key} : force Svelte à recréer le nœud plutôt qu'à patcher son
+					     texte. Google Traduction enveloppe le texte dans des <font> lors
+					     de la traduction ; un patch ciblé sur ce nœud altéré échoue
+					     silencieusement et le titre reste figé sur l'élément précédent
+					     lors de la navigation suivante (prev/next). -->
+					{#key itemTitle}
+						<h1 class="header-title">{itemTitle}</h1>
+					{/key}
 					
 					<!-- Métadonnées (slot personnalisable) -->
 					{#if headerMeta}
